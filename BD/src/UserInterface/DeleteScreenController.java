@@ -31,6 +31,9 @@ public class DeleteScreenController implements Initializable {
     @FXML
     private JFXButton search;
     
+    @FXML
+    private JFXButton view;
+    
     private static Stage myStage;
     
     /**
@@ -92,5 +95,16 @@ public class DeleteScreenController implements Initializable {
         myStage.show();
     }
    
+    @FXML
+    void openViewScreen(ActionEvent event) throws IOException{
+    	AnchorPane pane = FXMLLoader.load(getClass().getResource("ViewScreen.fxml"));
+    	
+    	Scene scene = new Scene(pane);
+        
+        myStage = Main.getMyStage();      
+                
+        myStage.setScene(scene);
+        myStage.show();
+    }
 }
 

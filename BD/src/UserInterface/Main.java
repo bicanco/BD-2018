@@ -44,9 +44,11 @@ public class Main extends Application {
      * Metodo estatico main que inicializa os argumentos.
      * 
      * @param args os argumentos da linha de comando
+     * @throws Exception 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         launch(args);
+        
     }
     
 }

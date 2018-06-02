@@ -13,11 +13,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Classe de controle da Interface Inicial.
+ * Classe de controle da Interface de Visualizacao.
  * 
  * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
  */
-public class MainScreenController implements Initializable {
+public class ViewScreenController implements Initializable {
 	
     @FXML
     private JFXButton insert;
