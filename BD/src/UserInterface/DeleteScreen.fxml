@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.DeleteScreenController">
+   <children>
+      <BorderPane prefHeight="596.0" prefWidth="842.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane prefHeight="564.0" prefWidth="842.0">
+                     <top>
+                        <AnchorPane prefHeight="54.0" prefWidth="842.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="14.0" layoutY="17.0" text="FF Assessoria de Eventos" textFill="WHITE" />
+                           </children>
+                        </AnchorPane>
+                     </top>
+                     <left>
+                        <AnchorPane prefHeight="510.0" prefWidth="258.0" style="-fx-background-color: #595959;" BorderPane.alignment="CENTER">
+                           <children>
+                              <JFXButton fx:id="insert" buttonType="RAISED" onAction="#openInsertionScreen" prefHeight="64.0" prefWidth="246.0" text="Inserir Registro" textFill="WHITE" AnchorPane.bottomAnchor="446.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Lucida Sans Regular" size="25.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="delete" layoutY="64.0" onAction="#openDeleteScreen" prefHeight="64.0" prefWidth="246.0" ripplerFill="WHITE" style="-fx-background-color: #8e8e8e;" text="Remover Registro" textFill="WHITE" AnchorPane.bottomAnchor="382.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+                                 <font>
+                                    <Font name="Lucida Sans Regular" size="25.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="alter" layoutY="128.0" onAction="#openAlterScreen" prefHeight="64.0" prefWidth="246.0" text="Alterar Registro" textFill="WHITE" AnchorPane.bottomAnchor="318.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="128.0">
+                                 <font>
+                                    <Font name="Lucida Sans Regular" size="25.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="search" layoutY="192.0" onAction="#openSearchScreen" prefHeight="65.0" prefWidth="258.0" text="Buscar Registros" textFill="WHITE" AnchorPane.bottomAnchor="253.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="192.0">
+                                 <font>
+                                    <Font name="Lucida Sans Regular" size="25.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                     </left>
+                     <right>
+                        <AnchorPane prefHeight="510.0" prefWidth="584.0" style="-fx-background-color: #bcbcbc;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="201.0" text="Remover registro(s) da tabela:" textAlignment="CENTER" />
+                              <ChoiceBox layoutX="217.0" layoutY="19.0" prefWidth="150.0" />
+                           </children>
+                        </AnchorPane>
+                     </right>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
