@@ -18,7 +18,7 @@ public class ConnectionManager{
 	public void endConnection() throws Exception{
 		con.close();
 	}
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		return con;
 	}
 }
