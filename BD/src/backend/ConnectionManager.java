@@ -3,6 +3,7 @@ import java.sql.*;
 
 public class ConnectionManager{
 	private static Connection con;
+	private static PreparedStatement stmt;
 	
 	public static void connect(String login, String password) {
 		String driver = "jdbc:oracle:thin:@grad.icmc.usp.br:15215:orcl";
@@ -13,6 +14,17 @@ public class ConnectionManager{
 			System.exit(1);
 		}
 		System.out.println("Connected to database");
+	}
+	
+	public static ResultSet query(String sql) throws Exception{
+		ResultSet res = null;
+		stmt = ConnectionManager.getConnection().prepareStatement(sql);
+		res = stmt.executeQuery();
+		return res;
+	}
+	
+	public static void closeQuery() throws Exception {
+		stmt.close();
 	}
 
 	public void endConnection() throws Exception{
