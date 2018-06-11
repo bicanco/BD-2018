@@ -103,247 +103,247 @@
                     <tabs>
                       <Tab text="Empresa">
                            <content>
-                              <TableView fx:id="empresaTabela" prefHeight="633.0" prefWidth="706.0">
+                              <TableView prefHeight="633.0" prefWidth="706.0">
                                 <columns>
-                                  <TableColumn fx:id="cnpjEmpresa" prefWidth="127.0" text="CNPJ" />
-                                  <TableColumn fx:id="nomeEmpresa" prefWidth="161.0" text="Nome Fantasia" />
-                                    <TableColumn fx:id="razaoEmpresa" prefWidth="194.0" text="Razão Social" />
-                                    <TableColumn fx:id="enderecoEmpresa" prefWidth="273.0" text="Endereço" />
+                                  <TableColumn prefWidth="127.0" text="CNPJ" />
+                                  <TableColumn prefWidth="161.0" text="Nome Fantasia" />
+                                    <TableColumn prefWidth="194.0" text="Razão Social" />
+                                    <TableColumn prefWidth="273.0" text="Endereço" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
-                        <Tab fx:id="contatosTabela" text="Contatos da Empresa">
+                        <Tab text="Contatos da Empresa">
                            <content>
                               <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="empresaContatos" prefWidth="173.0" text="Empresa" />
-                                  <TableColumn fx:id="emailContatos" prefWidth="307.0" text="E-mail" />
-                                    <TableColumn fx:id="nomeContatos" minWidth="0.0" prefWidth="152.0" text="Nome" />
-                                    <TableColumn fx:id="telefoneContatos" prefWidth="123.0" text="Telefone" />
+                                  <TableColumn prefWidth="114.0" text="CNPJ" />
+                                  <TableColumn prefWidth="366.0" text="E-mail" />
+                                    <TableColumn minWidth="0.0" prefWidth="152.0" text="Nome" />
+                                    <TableColumn prefWidth="123.0" text="Telefone" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
-                        <Tab fx:id="contratanteTabela" text="Contratante">
+                        <Tab text="Contratante">
                            <content>
-                              <TableView fx:id="contratanteTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                  <columns>
-                                    <TableColumn fx:id="cnpjContratante" prefWidth="755.0" text="CNPJ" />
+                                    <TableColumn prefWidth="755.0" text="CNPJ" />
                                  </columns>
                               </TableView>
                            </content></Tab>
                       <Tab text="Fornecedora">
                            <content>
-                              <TableView fx:id="fornecedoraTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="cnpjFornecedora" prefWidth="755.0" text="CNPJ" />
+                                  <TableColumn prefWidth="755.0" text="CNPJ" />
                                 </columns>
                               </TableView>
                            </content></Tab>
                         <Tab text="Categoria de Fornecimento">
                            <content>
-                              <TableView fx:id="catFornecimentoTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="nomeCatFornecimento" prefWidth="160.0" text="Nome" />
-                                  <TableColumn fx:id="descCatFornecimento" prefWidth="595.0" text="Descrição" />
+                                  <TableColumn prefWidth="133.0" text="Nome" />
+                                  <TableColumn prefWidth="622.0" text="Descrição" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Categoria Fornecedora">
                            <content>
-                              <TableView fx:id="catFornecedoraTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="fornecedoraCatFornecedora" prefWidth="241.0" text="Fornecedora" />
-                                  <TableColumn fx:id="categoriaCatFornecedora" prefWidth="258.0" text="Categoria" />
-                                    <TableColumn fx:id="precoCatFornecedora" prefWidth="256.0" text="Faixa de Preço" />
+                                  <TableColumn prefWidth="241.0" text="Fornecedora" />
+                                  <TableColumn prefWidth="258.0" text="Categoria" />
+                                    <TableColumn prefWidth="256.0" text="Faixa de Preço" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Festa">
                            <content>
-                              <TableView fx:id="festaTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                    <TableColumn fx:id="idFesta" prefWidth="77.0" text="ID" />
-                                  <TableColumn fx:id="nomeFesta" prefWidth="125.0" text="Nome" />
-                                  <TableColumn fx:id="contratanteFesta" prefWidth="160.0" text="Contratante" />
-                                    <TableColumn fx:id="dataFesta" prefWidth="130.0" text="Data" />
-                                    <TableColumn fx:id="horarioFesta" prefWidth="143.0" text="Horário de Início" />
-                                    <TableColumn fx:id="duracaoFesta" prefWidth="120.0" text="Duração" />
+                                    <TableColumn prefWidth="77.0" text="ID" />
+                                  <TableColumn prefWidth="125.0" text="Nome" />
+                                  <TableColumn prefWidth="160.0" text="Contratante" />
+                                    <TableColumn prefWidth="130.0" text="Data" />
+                                    <TableColumn prefWidth="143.0" text="Horário de Início" />
+                                    <TableColumn prefWidth="120.0" text="Duração" />
                                 </columns>
                               </TableView>
                            </content></Tab>
                         <Tab text="Fest Food">
                            <content>
-                              <TableView fx:id="festfoodTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="festaFestFood" prefWidth="379.0" text="Festa" />
-                                  <TableColumn fx:id="ingressoFestFood" prefWidth="376.0" text="Preço do Ingresso" />
+                                  <TableColumn prefWidth="379.0" text="Festa" />
+                                  <TableColumn prefWidth="376.0" text="Preço do Ingresso" />
                                 </columns>
                               </TableView>
                            </content></Tab>
                         <Tab text="Ingresso">
                            <content>
-                              <TableView fx:id="ingressoTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="festfoodIngresso" prefWidth="255.0" text="Fest Food" />
-                                  <TableColumn fx:id="numeroIngresso" minWidth="0.0" prefWidth="276.0" text="Número" />
-                                    <TableColumn fx:id="compradorIngresso" prefWidth="224.0" text="Comprador" />
+                                  <TableColumn prefWidth="255.0" text="Fest Food" />
+                                  <TableColumn minWidth="0.0" prefWidth="276.0" text="Número" />
+                                    <TableColumn prefWidth="224.0" text="Comprador" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Coquetel de Lançamento">
                            <content>
-                              <TableView fx:id="coquetelTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="festaCoquetel" prefWidth="202.0" text="Festa" />
-                                    <TableColumn fx:id="localCoquetel" prefWidth="208.0" text="Local" />
-                                    <TableColumn fx:id="cidadeCoquetel" prefWidth="176.0" text="Cidade" />
-                                  <TableColumn fx:id="orcamentoCoquetel" prefWidth="169.0" text="Orçamento" />
+                                  <TableColumn prefWidth="202.0" text="Festa" />
+                                    <TableColumn prefWidth="208.0" text="Local" />
+                                    <TableColumn prefWidth="176.0" text="Cidade" />
+                                  <TableColumn prefWidth="169.0" text="Orçamento" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Convidado">
                            <content>
-                              <TableView fx:id="convidadoTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="emailConvidado" prefWidth="245.0" text="E-mail" />
-                                  <TableColumn fx:id="nomeConvidado" prefWidth="274.0" text="Nome" />
-                                    <TableColumn fx:id="telefoneConvidado" prefWidth="236.0" text="Telefone" />
+                                  <TableColumn prefWidth="245.0" text="E-mail" />
+                                  <TableColumn prefWidth="274.0" text="Nome" />
+                                    <TableColumn prefWidth="236.0" text="Telefone" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Convite">
                            <content>
-                              <TableView fx:id="conviteTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="convidadoConvite" prefWidth="374.0" text="Convidado" />
-                                  <TableColumn fx:id="coquetelConvite" prefWidth="381.0" text="Coquetel" />
+                                  <TableColumn prefWidth="374.0" text="Convidado" />
+                                  <TableColumn prefWidth="381.0" text="Coquetel" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Brinde">
                            <content>
-                              <TableView fx:id="brindeTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="coquetelBrinde" prefWidth="142.0" text="Coquetel" />
-                                  <TableColumn fx:id="nomeBrinde" prefWidth="152.0" text="Nome" />
-                                    <TableColumn fx:id="descBrinde" prefWidth="461.0" text="Descrição" />
+                                  <TableColumn prefWidth="119.0" text="Coquetel" />
+                                  <TableColumn prefWidth="118.0" text="Nome" />
+                                    <TableColumn prefWidth="518.0" text="Descrição" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Fornecimento Coquetel">
                            <content>
-                              <TableView fx:id="fornCoquetelTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="fornecedoraFornCoquetel" prefWidth="243.0" text="Fornecedora" />
-                                  <TableColumn fx:id="coquetelFornCoquetel" prefWidth="279.0" text="Coquetel" />
-                                    <TableColumn fx:id="precoFornCoquetel" prefWidth="233.0" text="Preço" />
+                                  <TableColumn prefWidth="243.0" text="Fornecedora" />
+                                  <TableColumn prefWidth="279.0" text="Coquetel" />
+                                    <TableColumn prefWidth="233.0" text="Preço" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Produtos Fornecidos">
                            <content>
-                              <TableView fx:id="produtosTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="fornecedoraProdutos" prefWidth="237.0" text="Fornecedora" />
-                                  <TableColumn fx:id="coquetelProdutos" prefWidth="240.0" text="Coquetel" />
-                                    <TableColumn fx:id="nomeProdutos" prefWidth="180.0" text="Nome" />
-                                    <TableColumn fx:id="quantidadeProdutos" prefWidth="98.0" text="Quantidade" />
+                                  <TableColumn prefWidth="237.0" text="Fornecedora" />
+                                  <TableColumn prefWidth="240.0" text="Coquetel" />
+                                    <TableColumn prefWidth="180.0" text="Nome" />
+                                    <TableColumn prefWidth="98.0" text="Quantidade" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Local">
                            <content>
-                              <TableView fx:id="localTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="nomeLocal" prefWidth="106.0" text="Nome" />
-                                  <TableColumn fx:id="cidadeLocal" prefWidth="100.0" text="Cidade" />
-                                    <TableColumn fx:id="estadoLocal" prefWidth="58.0" text="Estado" />
-                                    <TableColumn fx:id="ruaLocal" prefWidth="129.0" text="Rua" />
-                                    <TableColumn fx:id="numeroLocal" prefWidth="70.0" text="Número" />
-                                    <TableColumn fx:id="capacidadeLocal" prefWidth="88.0" text="Capacidade" />
-                                    <TableColumn fx:id="diariaLocal" prefWidth="96.0" text="Valor Diária" />
-                                    <TableColumn fx:id="aberturaLocal" prefWidth="108.0" text="Espaço Aberto" />
+                                  <TableColumn prefWidth="106.0" text="Nome" />
+                                  <TableColumn prefWidth="100.0" text="Cidade" />
+                                    <TableColumn prefWidth="58.0" text="Estado" />
+                                    <TableColumn prefWidth="129.0" text="Rua" />
+                                    <TableColumn prefWidth="70.0" text="Número" />
+                                    <TableColumn prefWidth="88.0" text="Capacidade" />
+                                    <TableColumn prefWidth="96.0" text="Valor Diária" />
+                                    <TableColumn prefWidth="108.0" text="Espaço Aberto" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Locação">
                            <content>
-                              <TableView fx:id="locacaoTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="idLocacao" prefWidth="81.0" text="ID" />
-                                  <TableColumn fx:id="festfoodLocacao" prefWidth="255.0" text="Fest Food" />
-                                    <TableColumn fx:id="localLocacao" prefWidth="238.0" text="Local" />
-                                    <TableColumn fx:id="cidadeLocacao" prefWidth="181.0" text="Cidade" />
+                                  <TableColumn prefWidth="81.0" text="ID" />
+                                  <TableColumn prefWidth="255.0" text="Fest Food" />
+                                    <TableColumn prefWidth="238.0" text="Local" />
+                                    <TableColumn prefWidth="181.0" text="Cidade" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Lote">
                            <content>
-                              <TableView fx:id="loteTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="fornecedoraLote" prefWidth="189.0" text="Fornecedora" />
-                                  <TableColumn fx:id="locacaoLote" prefWidth="187.0" text="Locação" />
-                                    <TableColumn fx:id="numeroLote" prefWidth="70.0" text="Número" />
-                                    <TableColumn fx:id="precoLote" prefWidth="88.0" text="Preço" />
-                                    <TableColumn fx:id="larguraLote" prefWidth="95.0" text="Largura" />
-                                    <TableColumn fx:id="comprimentoLote" prefWidth="139.0" text="Comprimento" />
+                                  <TableColumn prefWidth="189.0" text="Fornecedora" />
+                                  <TableColumn prefWidth="187.0" text="Locação" />
+                                    <TableColumn prefWidth="70.0" text="Número" />
+                                    <TableColumn prefWidth="88.0" text="Preço" />
+                                    <TableColumn prefWidth="95.0" text="Largura" />
+                                    <TableColumn prefWidth="139.0" text="Comprimento" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Funcionário">
                            <content>
-                              <TableView fx:id="funcionarioTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="cpfFuncionario" prefWidth="40.0" text="CPF" />
-                                  <TableColumn fx:id="nomeFuncionario" prefWidth="50.0" text="Nome" />
-                                    <TableColumn fx:id="rgFuncionario" prefWidth="33.0" text="RG" />
-                                    <TableColumn fx:id="ruaFuncionario" prefWidth="40.0" text="Rua" />
-                                    <TableColumn fx:id="numeroFuncionario" prefWidth="66.0" text="Número" />
-                                    <TableColumn fx:id="cidadeFuncionario" prefWidth="61.0" text="Cidade" />
-                                    <TableColumn fx:id="estadoFuncionario" prefWidth="55.0" text="Estado" />
-                                    <TableColumn fx:id="emailFuncionario" prefWidth="70.0" text="E-mail" />
-                                    <TableColumn fx:id="celularFuncionario" prefWidth="68.0" text="Celular" />
-                                    <TableColumn fx:id="telefoneFuncionario" prefWidth="76.0" text="Telefone" />
-                                    <TableColumn fx:id="valorFuncionario" prefWidth="125.0" text="Valor por Hora" />
-                                    <TableColumn fx:id="funcaoFuncionario" prefWidth="71.0" text="Função" />
+                                  <TableColumn prefWidth="40.0" text="CPF" />
+                                  <TableColumn prefWidth="50.0" text="Nome" />
+                                    <TableColumn prefWidth="33.0" text="RG" />
+                                    <TableColumn prefWidth="40.0" text="Rua" />
+                                    <TableColumn prefWidth="66.0" text="Número" />
+                                    <TableColumn prefWidth="61.0" text="Cidade" />
+                                    <TableColumn prefWidth="55.0" text="Estado" />
+                                    <TableColumn prefWidth="70.0" text="E-mail" />
+                                    <TableColumn prefWidth="68.0" text="Celular" />
+                                    <TableColumn prefWidth="76.0" text="Telefone" />
+                                    <TableColumn prefWidth="125.0" text="Valor por Hora" />
+                                    <TableColumn prefWidth="71.0" text="Função" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Contrato Coquetel">
                            <content>
-                              <TableView fx:id="contCoquetelTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="coquetelContCoquetel" prefWidth="180.0" text="Coquetel" />
-                                  <TableColumn fx:id="funcionarioContCoquetel" prefWidth="200.0" text="Funcionário" />
-                                    <TableColumn fx:id="horastrabContCoquetel" prefWidth="192.0" text="Horas Trabalhadas" />
-                                    <TableColumn fx:id="valorContCoquetel" prefWidth="183.0" text="Valor Pago" />
+                                  <TableColumn prefWidth="180.0" text="Coquetel" />
+                                  <TableColumn prefWidth="200.0" text="Funcionário" />
+                                    <TableColumn prefWidth="192.0" text="Horas Trabalhadas" />
+                                    <TableColumn prefWidth="183.0" text="Valor Pago" />
                                 </columns>
                               </TableView>
                            </content>
                         </Tab>
                         <Tab text="Contrato Fest Food">
                            <content>
-                              <TableView fx:id="contFestFoodTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="festfoodContFestFood" prefWidth="171.0" text="Fest Food" />
-                                  <TableColumn fx:id="segurancaContFestFood" prefWidth="207.0" text="Segurança" />
-                                    <TableColumn fx:id="horastrabContFestFood" prefWidth="186.0" text="Horas Trabalhadas" />
-                                    <TableColumn fx:id="valorContFestFood" prefWidth="191.0" text="Valor Pago" />
+                                  <TableColumn prefWidth="171.0" text="Fest Food" />
+                                  <TableColumn prefWidth="207.0" text="Segurança" />
+                                    <TableColumn prefWidth="186.0" text="Horas Trabalhadas" />
+                                    <TableColumn prefWidth="191.0" text="Valor Pago" />
                                 </columns>
                               </TableView>
                            </content>

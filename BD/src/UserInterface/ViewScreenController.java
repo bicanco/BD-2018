@@ -56,7 +56,7 @@ public class ViewScreenController implements Initializable {
     @FXML
     private TableColumn<Empresa, String> enderecoEmpresa;
     
-    /**    
+    /**
     @FXML
     private TableView<Contatos> contatosTabela;
     @FXML
@@ -323,6 +323,13 @@ public class ViewScreenController implements Initializable {
 		}  
         
         /**
+        Empresa empresa = new Empresa();
+        Contatos contato = new Contatos();
+        Contratante contratante = new Contratante();
+        
+        ObservableList<Empresa> empresas = empresa.viewTable();
+        if(empresas != null) empresaTabela.setItems(empresa.viewTable());
+        
         ObservableList<Contatos> contatos = contato.viewTable();
         if(allcontatos != null) contatosTabela.setItems(contato.viewTable());
         
