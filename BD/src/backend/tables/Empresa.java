@@ -14,16 +14,16 @@ import javafx.collections.ObservableList;
  * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
  */
 public class Empresa {
-	private String CNPJ;
-	private String NomeFantasia;
-	private String RazaoSocial;
-	private String Endereco;
+	public String enderecoEmpresa;
+	public String cnpjEmpresa;
+	public String nomeEmpresa;
+	public String razaoEmpresa;
 	
 	public Empresa(String cnpj, String nomeFantasia, String razaoSocial, String endereco) {
-		this.CNPJ = cnpj;
-		this.NomeFantasia = nomeFantasia;
-		this.RazaoSocial = razaoSocial;
-		this.Endereco = endereco;
+		this.cnpjEmpresa = cnpj;
+		this.nomeEmpresa = nomeFantasia;
+		this.razaoEmpresa = razaoSocial;
+		this.enderecoEmpresa = endereco;
 	}
 
 	public static ObservableList<Empresa> TableView() throws Exception{
@@ -32,7 +32,7 @@ public class Empresa {
 		while(res.next())
 			list.add(new Empresa(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
 		ConnectionManager.closeQuery();
-		
+			
 		return FXCollections.observableList(list);
 	}
 }

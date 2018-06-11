@@ -1,5 +1,6 @@
 package UserInterface;
 
+import backend.ConnectionManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,6 +30,8 @@ public class Main extends Application {
      * Metodo que carregar a tela inicial de login.
      */
     public void start(Stage stage) throws Exception {
+    	ConnectionManager.connect("M9791351", "@aws161803");
+    	
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         
         Scene scene = new Scene(root);
@@ -48,7 +51,6 @@ public class Main extends Application {
      */
     public static void main(String[] args) throws Exception {
         launch(args);
-        
     }
     
 }
