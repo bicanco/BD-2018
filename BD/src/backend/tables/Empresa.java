@@ -8,32 +8,31 @@ import backend.ConnectionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe que gerencia a tabela EMPRESA
+ * 
+ * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
+ */
 public class Empresa {
-	private ObservableList<Object> observableList;
+	private String CNPJ;
+	private String NomeFantasia;
+	private String RazaoSocial;
+	private String Endereco;
 	
-	public Empresa() {
-		try {
-			updateTableView();
-		}catch(Exception e) {
-			System.out.println(e);
-		}
+	public Empresa(String cnpj, String nomeFantasia, String razaoSocial, String endereco) {
+		this.CNPJ = cnpj;
+		this.NomeFantasia = nomeFantasia;
+		this.RazaoSocial = razaoSocial;
+		this.Endereco = endereco;
 	}
 
-	public void updateTableView() throws Exception{
+	public static ObservableList<Empresa> TableView() throws Exception{
 		ResultSet res = ConnectionManager.query("select * from EMPRESA");
-		List<Object> list = new ArrayList<Object>();
-		while(res.next()) {
-			list.add(res.getString(1));
-			list.add(res.getString(2));
-			list.add(res.getString(3));
-			list.add(res.getString(4));
-		}
+		List<Empresa> list = new ArrayList<Empresa>();
+		while(res.next())
+			list.add(new Empresa(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
 		ConnectionManager.closeQuery();
 		
-		this.observableList = FXCollections.observableList(list);
-	}
-	
-	public ObservableList<Object> viewTable(){
-		return observableList;
+		return FXCollections.observableList(list);
 	}
 }
