@@ -15,26 +15,51 @@ import javafx.collections.ObservableList;
  * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
  */
 public class Empresa {
-	private String cnpjEmpresa;
-	private String nomeEmpresa;
-	private String razaoEmpresa;
-	private String enderecoEmpresa;
+	private String cnpj;
+	private String nome;
+	private String razao;
+	private String endereco;
 	
 	public Empresa(String cnpj, String nomeFantasia, String razaoSocial, String endereco) {
-		this.cnpjEmpresa = cnpj;
-		this.nomeEmpresa = nomeFantasia;
-		this.razaoEmpresa = razaoSocial;
-		this.enderecoEmpresa = endereco;
+		this.cnpj = cnpj;
+		this.nome = nomeFantasia;
+		this.razao = razaoSocial;
+		this.endereco = endereco;
 	}
 
+	public String getCnpj(){
+		return cnpj;
+	}
+	public void setCnpj(String cnpj){
+		this.cnpj = cnpj;
+	}
+	public String getNome(){
+		return nome;
+	}
+	public void setNome(String nome){
+		this.nome = nome;
+	}
+	public String getRazao(){
+		return razao;
+	}
+	public void setRazao(String razao){
+		this.razao = cnpj;
+	}
+	public String getEndereco(){
+		return endereco;
+	}
+	public void setEndereco(String endereco){
+		this.endereco = endereco;
+	}
+	
 	public static ObservableList<Empresa> TableView(){
 		ResultSet res;
 		List<Empresa> list = new ArrayList<>();
 		try {
 			res = ConnectionManager.query("select * from EMPRESA");
-			while(res.next()) 
-				list.add(new Empresa(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
-			
+			while(res.next())			
+				list.add(new Empresa(res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
+				
 			res.close();
 			ConnectionManager.closeQuery();
 			
@@ -43,11 +68,5 @@ public class Empresa {
 			System.out.println();
             throw new RuntimeException(e);
 		}
-	}
-	
-	@Override
-	public String toString() {
-		return this.cnpjEmpresa+" "+this.enderecoEmpresa+" "+this.nomeEmpresa+" "+this.razaoEmpresa+"\n";
-	}
-	
+	}	
 }

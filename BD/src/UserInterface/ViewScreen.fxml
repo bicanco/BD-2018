@@ -113,9 +113,9 @@
                               </TableView>
                            </content>
                         </Tab>
-                        <Tab fx:id="contatosTabela" text="Contatos da Empresa">
+                        <Tab text="Contatos da Empresa">
                            <content>
-                              <TableView fx:id="contantosTabela" prefHeight="200.0" prefWidth="200.0">
+                              <TableView fx:id="contatosTabela" prefHeight="200.0" prefWidth="200.0">
                                 <columns>
                                   <TableColumn fx:id="empresaContatos" prefWidth="173.0" text="Empresa" />
                                   <TableColumn fx:id="emailContatos" prefWidth="307.0" text="E-mail" />

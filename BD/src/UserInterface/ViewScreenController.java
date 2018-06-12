@@ -304,9 +304,11 @@ public class ViewScreenController implements Initializable {
      * @param rb 
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb){
-        myStage = Main.getMyStage();
-        
+    public void initialize(URL url, ResourceBundle rb){      
+    	cnpjEmpresa.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
+        nomeEmpresa.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        razaoEmpresa.setCellValueFactory(new PropertyValueFactory<>("razao"));
+        enderecoEmpresa.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         empresaTabela.setItems(Empresa.TableView()); 
         
         /**
@@ -317,7 +319,7 @@ public class ViewScreenController implements Initializable {
         contatosTabela.setItems(catfornecedora.viewTable());
        	contatosTabela.setItems(contatos.viewTable());
         **/       
-    }    
+    } 
     
     @FXML
     void openInsertionScreen(ActionEvent event) throws IOException{
