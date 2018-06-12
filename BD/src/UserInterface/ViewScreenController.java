@@ -157,15 +157,6 @@ public class ViewScreenController implements Initializable {
     private TableColumn<Brinde, String> descricaoBrinde;
     
     @FXML
-    private TableView<Brinde> brindeTabela;
-    @FXML
-    private TableColumn<Brinde, String> coquetelBrinde;
-    @FXML
-    private TableColumn<Brinde, String> nomeBrinde;
-    @FXML
-    private TableColumn<Brinde, String> descricaoBrinde;
-    
-    @FXML
     private TableView<FornecimentoCoquetel> fornCoquetelTabela;
     @FXML
     private TableColumn<FornecimentoCoquetel, String> fornecedoraFornCoquetel;
@@ -312,12 +303,58 @@ public class ViewScreenController implements Initializable {
         empresaTabela.setItems(Empresa.TableView()); 
         
         /**
-       	contatosTabela.setItems(contato.viewTable());
-        contratanteTabela.setItems(contratante.viewTable());
-        fornecedoraTabela.setItems(fornecedora.viewTable());
-      	contatosTabela.setItems(catfornecimento.viewTable());
-        contatosTabela.setItems(catfornecedora.viewTable());
-       	contatosTabela.setItems(contatos.viewTable());
+        empresaContatos.setCellValueFactory(new PropertyValueFactory<>("empresa"));
+        emailContatos.setCellValueFactory(new PropertyValueFactory<>("email"));
+        razaoContatos.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        enderecoContatos.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+       	contatosTabela.setItems(Contatos.TableView());
+       	
+       	cnpjContratante.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
+       	contratanteTabela.setItems(Contratante.TableView());
+       	
+       	cnpjContratante.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
+        fornecedoraTabela.setItems(Fornecedora.TableView());
+        
+        nomeCatFornecimento.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        descCatFornecimento.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+      	catFornecimentoTabela.setItems(CategoriaFornecimento.TableView());
+      	
+      	fornecedoraCatFornecedora.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
+        categoriaCatFornecedora.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        precoCatFornecedora.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        catFornecedoraTabela.setItems(CategoriaFornecedora.TableView());
+        
+        idFesta.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nomeFesta.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        contratanteFesta.setCellValueFactory(new PropertyValueFactory<>("contratante"));
+        dataFesta.setCellValueFactory(new PropertyValueFactory<>("data"));
+        horarioFesta.setCellValueFactory(new PropertyValueFactory<>("horario"));
+        duracaoFesta.setCellValueFactory(new PropertyValueFactory<>("duracao"));
+       	festaTabela.setItems(Festa.TableView());
+       	
+       	festaFestFood.setCellValueFactory(new PropertyValueFactory<>("festa"));
+        ingressoFestFood.setCellValueFactory(new PropertyValueFactory<>("ingresso"));
+       	festfoodTabela.setItems(FestFood.TableView());
+       	
+       	festfoodIngresso.setCellValueFactory(new PropertyValueFactory<>("festfood"));
+        numeroIngresso.setCellValueFactory(new PropertyValueFactory<>("numeoro"));
+        compradorIngresso.setCellValueFactory(new PropertyValueFactory<>("comprador"));
+       	ingressoTabela.setItems(Ingresso.TableView());
+       	
+       	festaCoquetel.setCellValueFactory(new PropertyValueFactory<>("festa"));
+        localCoquetel.setCellValueFactory(new PropertyValueFactory<>("local"));
+        cidadeCoquetel.setCellValueFactory(new PropertyValueFactory<>("cidade"));
+        orcamentoCoquetel.setCellValueFactory(new PropertyValueFactory<>("orcamento"));
+        coquetelTabela.setItems(Coquetel.TableView());
+ 
+        emailConvidado.setCellValueFactory(new PropertyValueFactory<>("email"));
+        nomeConvidado.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        telefoneConvidado.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+        convidadoTabela.setItems(Convidado.TableView());
+        
+        coquetelConvite.setCellValueFactory(new PropertyValueFactory<>("convidado"));
+        convidadoConvite.setCellValueFactory(new PropertyValueFactory<>("convite"));
+        conviteTabela.setItems(Convite.TableView());
         **/       
     } 
     

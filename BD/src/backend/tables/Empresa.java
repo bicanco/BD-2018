@@ -27,6 +27,9 @@ public class Empresa {
 		this.endereco = endereco;
 	}
 
+	// Deixar os set e gets - sao necessarios devido CellValueFactory
+	// Usar o mesmo nome da variavel que esta no PropertyValueFactory e deixar a primeira letra maiuscula nos sets e gets
+	
 	public String getCnpj(){
 		return cnpj;
 	}
