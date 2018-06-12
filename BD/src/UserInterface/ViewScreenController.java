@@ -4,22 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.List;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.Modality;
 import backend.tables.*;
 
 /**
@@ -56,7 +51,7 @@ public class ViewScreenController implements Initializable {
     @FXML
     private TableColumn<Empresa, String> enderecoEmpresa;
     
-    /**
+    /**    
     @FXML
     private TableView<Contatos> contatosTabela;
     @FXML
@@ -311,42 +306,16 @@ public class ViewScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         myStage = Main.getMyStage();
-        //Contatos contato = new Contatos();
-        //Contratante contratante = new Contratante();
         
-        ObservableList<Empresa> empresas;
-		try {
-			empresas = Empresa.TableView();
-			if(empresas != null) empresaTabela.setItems(empresas);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}  
+        empresaTabela.setItems(Empresa.TableView()); 
         
         /**
-        Empresa empresa = new Empresa();
-        Contatos contato = new Contatos();
-        Contratante contratante = new Contratante();
-        
-        ObservableList<Empresa> empresas = empresa.viewTable();
-        if(empresas != null) empresaTabela.setItems(empresa.viewTable());
-        
-        ObservableList<Contatos> contatos = contato.viewTable();
-        if(allcontatos != null) contatosTabela.setItems(contato.viewTable());
-        
-        ObservableList<Contratante> contratantes = contratante.viewTable();
-        if(contratantes != null) contratanteTabela.setItems(contratante.viewTable());
-        
-        ObservableList<Fornecedora> fornecedoras = fornecedora.viewTable();
-        if(fornecedoras != null) fornecedoraTabela.setItems(fornecedora.viewTable());
-        
-        ObservableList<CategoriaFornecimento> catsfornecimento = catfornecimento.viewTable();
-        if(catsfornecimento != null) contatosTabela.setItems(catfornecimento.viewTable());
-        
-        ObservableList<CategoriaFornecedora> catsfornecedora = catfornecedora.viewTable();
-        if(catsfornecedora != null) contatosTabela.setItems(catfornecedora.viewTable());
-        
-        ObservableList<Contatos> contatos = contatos.viewTable();
-        if(contatos != null) contatosTabela.setItems(contatos.viewTable());
+       	contatosTabela.setItems(contato.viewTable());
+        contratanteTabela.setItems(contratante.viewTable());
+        fornecedoraTabela.setItems(fornecedora.viewTable());
+      	contatosTabela.setItems(catfornecimento.viewTable());
+        contatosTabela.setItems(catfornecedora.viewTable());
+       	contatosTabela.setItems(contatos.viewTable());
         **/       
     }    
     

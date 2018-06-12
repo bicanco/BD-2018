@@ -1,6 +1,7 @@
 package backend.tables;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +15,10 @@ import javafx.collections.ObservableList;
  * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
  */
 public class Empresa {
-	public String enderecoEmpresa;
-	public String cnpjEmpresa;
-	public String nomeEmpresa;
-	public String razaoEmpresa;
+	private String cnpjEmpresa;
+	private String nomeEmpresa;
+	private String razaoEmpresa;
+	private String enderecoEmpresa;
 	
 	public Empresa(String cnpj, String nomeFantasia, String razaoSocial, String endereco) {
 		this.cnpjEmpresa = cnpj;
@@ -26,16 +27,22 @@ public class Empresa {
 		this.enderecoEmpresa = endereco;
 	}
 
-	public static ObservableList<Empresa> TableView() throws Exception{
-		ResultSet res = ConnectionManager.query("select * from EMPRESA");
-		List<Empresa> list = new ArrayList<Empresa>();
-		while(res.next()) 
-			list.add(new Empresa(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
-		
-		ConnectionManager.closeQuery();
-		System.out.println(list);
-		
-		return FXCollections.observableList(list);
+	public static ObservableList<Empresa> TableView(){
+		ResultSet res;
+		List<Empresa> list = new ArrayList<>();
+		try {
+			res = ConnectionManager.query("select * from EMPRESA");
+			while(res.next()) 
+				list.add(new Empresa(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
+			
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableArrayList(list);
+		} catch (SQLException e) {
+			System.out.println();
+            throw new RuntimeException(e);
+		}
 	}
 	
 	@Override
