@@ -29,10 +29,18 @@ public class Empresa {
 	public static ObservableList<Empresa> TableView() throws Exception{
 		ResultSet res = ConnectionManager.query("select * from EMPRESA");
 		List<Empresa> list = new ArrayList<Empresa>();
-		while(res.next())
+		while(res.next()) 
 			list.add(new Empresa(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
+		
 		ConnectionManager.closeQuery();
-			
+		System.out.println(list);
+		
 		return FXCollections.observableList(list);
 	}
+	
+	@Override
+	public String toString() {
+		return this.cnpjEmpresa+" "+this.enderecoEmpresa+" "+this.nomeEmpresa+" "+this.razaoEmpresa+"\n";
+	}
+	
 }
