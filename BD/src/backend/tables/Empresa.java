@@ -55,9 +55,9 @@ public class Empresa {
 		this.endereco = endereco;
 	}
 	
-	public static ObservableList<Empresa> TableView(){
+	public static ObservableList<Empresa> tableView(){
 		ResultSet res;
-		List<Empresa> list = new ArrayList<>();
+		List<Empresa> list = new ArrayList<Empresa>();
 		try {
 			res = ConnectionManager.query("select * from EMPRESA");
 			while(res.next())			
@@ -66,9 +66,8 @@ public class Empresa {
 			res.close();
 			ConnectionManager.closeQuery();
 			
-			return FXCollections.observableArrayList(list);
+			return FXCollections.observableList(list);
 		} catch (SQLException e) {
-			System.out.println();
             throw new RuntimeException(e);
 		}
 	}	

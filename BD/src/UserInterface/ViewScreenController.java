@@ -300,7 +300,7 @@ public class ViewScreenController implements Initializable {
         nomeEmpresa.setCellValueFactory(new PropertyValueFactory<>("nome"));
         razaoEmpresa.setCellValueFactory(new PropertyValueFactory<>("razao"));
         enderecoEmpresa.setCellValueFactory(new PropertyValueFactory<>("endereco"));
-        empresaTabela.setItems(Empresa.TableView()); 
+        empresaTabela.setItems(Empresa.tableView()); 
         
         /**
         empresaContatos.setCellValueFactory(new PropertyValueFactory<>("empresa"));
