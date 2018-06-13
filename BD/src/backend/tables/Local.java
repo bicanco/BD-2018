@@ -10,7 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Local {
-	private String local;
+	private String nome;
 	private String cidade;
 	private String estado;
 	private String rua;
@@ -19,8 +19,8 @@ public class Local {
 	private String possuiAbertura;
 	private float diariaLocacao;
 	
-	public Local(String local, String cidade, String estado, String rua, int numero, int maxFrequentadores, String possuiAbertura, float diariaLocacao) {
-		this.local = local;
+	public Local(String nome, String cidade, String estado, String rua, int numero, int maxFrequentadores, String possuiAbertura, float diariaLocacao) {
+		this.nome = nome;
 		this.cidade = cidade;
 		this.estado = estado;
 		this.rua = rua;
@@ -30,12 +30,12 @@ public class Local {
 		this.diariaLocacao = diariaLocacao;
 	}
 	
-	public String getLocal() {
-		return local;
+	public String getNome() {
+		return nome;
 	}
 	
-	public void setId(String local) {
-		this.local = local;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	public String getCidade() {
@@ -94,7 +94,7 @@ public class Local {
 		this.diariaLocacao = diariaLocacao;
 	}
 	
-	public ObservableList<Local> tableView(){
+	public static ObservableList<Local> tableView(){
 		ResultSet res;
 		List<Local> list = new ArrayList<Local>();
 		try {

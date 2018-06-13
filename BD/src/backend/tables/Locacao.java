@@ -54,7 +54,7 @@ public class Locacao {
 		this.cidadeLocal = cidadeLocal;
 	}
 	
-	public ObservableList<Locacao> tableView(){
+	public static ObservableList<Locacao> tableView(){
 		ResultSet res;
 		List<Locacao> list = new ArrayList<Locacao>();
 		try {

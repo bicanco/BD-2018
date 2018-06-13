@@ -24,7 +24,7 @@ public class Fornecedora {
 		this.cnpj = cnpj;
 	}
 	
-	public ObservableList<Fornecedora> tableView(){
+	public static ObservableList<Fornecedora> tableView(){
 		ResultSet res;
 		List<Fornecedora> list = new ArrayList<Fornecedora>();
 		try {

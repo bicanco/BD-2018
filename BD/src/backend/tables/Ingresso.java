@@ -44,7 +44,7 @@ public class Ingresso {
 		this.cpfComprador = cpfComprador;
 	}
 	
-	public ObservableList<Ingresso> tableView(){
+	public static ObservableList<Ingresso> tableView(){
 		ResultSet res;
 		List<Ingresso> list = new ArrayList<Ingresso>();
 		try {

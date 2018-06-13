@@ -24,7 +24,7 @@ public class Contratante {
 		this.cnpj = cnpj;
 	}
 	
-	public ObservableList<Contratante> tableView(){
+	public static ObservableList<Contratante> tableView(){
 		ResultSet res;
 		List<Contratante> list = new ArrayList<Contratante>();
 		try {

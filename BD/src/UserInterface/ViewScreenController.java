@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,18 +49,17 @@ public class ViewScreenController implements Initializable {
     private TableColumn<Empresa, String> razaoEmpresa;
     @FXML
     private TableColumn<Empresa, String> enderecoEmpresa;
-    
-    /**    
+       
     @FXML
-    private TableView<Contatos> contatosTabela;
+    private TableView<ContatoEmpresa> contatosTabela;
     @FXML
-    private TableColumn<Contatos, String> empresaContatos;
+    private TableColumn<ContatoEmpresa, String> empresaContatos;
     @FXML
-    private TableColumn<Contatos, String> emailContatos;
+    private TableColumn<ContatoEmpresa, String> emailContatos;
     @FXML
-    private TableColumn<Contatos, String> nomeContatos;
+    private TableColumn<ContatoEmpresa, String> nomeContatos;
     @FXML
-    private TableColumn<Contatos, String> telefoneContatos;
+    private TableColumn<ContatoEmpresa, String> telefoneContatos;
     
     @FXML
     private TableView<Contratante> contratanteTabela;
@@ -73,6 +71,7 @@ public class ViewScreenController implements Initializable {
     @FXML
     private TableColumn<Fornecedora, String> cnpjFornecedora;
     
+    /*
     @FXML
     private TableView<CatFornecimento> catFornecimentoTabela;
     @FXML
@@ -88,6 +87,7 @@ public class ViewScreenController implements Initializable {
     private TableColumn<CatFornecedora, String> categoriaCatFornecedora;
     @FXML
     private TableColumn<CatFornecedora, String> precoCatFornecedora;
+    */
     
     @FXML
     private TableView<Festa> festaTabela;
@@ -103,6 +103,8 @@ public class ViewScreenController implements Initializable {
     private TableColumn<Festa, String> horarioFesta;
     @FXML
     private TableColumn<Festa, String> duracaoFesta;
+    @FXML
+    private TableColumn<Festa, String> tipoFesta;
     
     @FXML
     private TableView<FestFood> festfoodTabela;
@@ -120,6 +122,7 @@ public class ViewScreenController implements Initializable {
     @FXML
     private TableColumn<Ingresso, String> compradorIngresso;
     
+    /*
     @FXML
     private TableView<Coquetel> coquetelTabela;
     @FXML
@@ -175,6 +178,7 @@ public class ViewScreenController implements Initializable {
     private TableColumn<Produtos, String> nomeProdutos;
     @FXML
     private TableColumn<Produtos, String> quantidadeProdutos;
+    */
     
     @FXML
     private TableView<Local> localTabela;
@@ -221,21 +225,7 @@ public class ViewScreenController implements Initializable {
     @FXML
     private TableColumn<Lote, String> comprimentoLote;
     
-    @FXML
-    private TableView<Lote> loteTabela;
-    @FXML
-    private TableColumn<Lote, String> fornecedoraLote;
-    @FXML
-    private TableColumn<Lote, String> locacaoLote;
-    @FXML
-    private TableColumn<Lote, String> numeroLote;
-    @FXML
-    private TableColumn<Lote, String> precoLote;
-    @FXML
-    private TableColumn<Lote, String> larguraLote;
-    @FXML
-    private TableColumn<Lote, String> comprimentoLote;
-    
+    /*
     @FXML
     private TableView<Funcionario> funcionarioTabela;
     @FXML
@@ -284,7 +274,7 @@ public class ViewScreenController implements Initializable {
     private TableColumn<ContratoFestFood, String> horastrabContFestFood;
     @FXML
     private TableColumn<ContratoFestFood, String> valorContFestFood;
-    **/
+    */
     
     private static Stage myStage;
     
@@ -301,61 +291,132 @@ public class ViewScreenController implements Initializable {
         razaoEmpresa.setCellValueFactory(new PropertyValueFactory<>("razao"));
         enderecoEmpresa.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         empresaTabela.setItems(Empresa.tableView()); 
-        
-        /**
+ 
         empresaContatos.setCellValueFactory(new PropertyValueFactory<>("empresa"));
         emailContatos.setCellValueFactory(new PropertyValueFactory<>("email"));
-        razaoContatos.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        enderecoContatos.setCellValueFactory(new PropertyValueFactory<>("telefone"));
-       	contatosTabela.setItems(Contatos.TableView());
+        nomeContatos.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        telefoneContatos.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+       	contatosTabela.setItems(ContatoEmpresa.tableView());
        	
        	cnpjContratante.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
-       	contratanteTabela.setItems(Contratante.TableView());
+       	contratanteTabela.setItems(Contratante.tableView());
        	
-       	cnpjContratante.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
-        fornecedoraTabela.setItems(Fornecedora.TableView());
+       	cnpjFornecedora.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
+        fornecedoraTabela.setItems(Fornecedora.tableView());
         
+        /*
         nomeCatFornecimento.setCellValueFactory(new PropertyValueFactory<>("nome"));
         descCatFornecimento.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-      	catFornecimentoTabela.setItems(CategoriaFornecimento.TableView());
+      	catFornecimentoTabela.setItems(CategoriaFornecimento.tableView());
       	
       	fornecedoraCatFornecedora.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
         categoriaCatFornecedora.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         precoCatFornecedora.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        catFornecedoraTabela.setItems(CategoriaFornecedora.TableView());
+        catFornecedoraTabela.setItems(CategoriaFornecedora.tableView());
+        */
         
         idFesta.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeFesta.setCellValueFactory(new PropertyValueFactory<>("nome"));
         contratanteFesta.setCellValueFactory(new PropertyValueFactory<>("contratante"));
         dataFesta.setCellValueFactory(new PropertyValueFactory<>("data"));
-        horarioFesta.setCellValueFactory(new PropertyValueFactory<>("horario"));
+        horarioFesta.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
         duracaoFesta.setCellValueFactory(new PropertyValueFactory<>("duracao"));
-       	festaTabela.setItems(Festa.TableView());
+        tipoFesta.setCellValueFactory(new PropertyValueFactory<>("tipoFesta"));
+       	festaTabela.setItems(Festa.tableView());
        	
        	festaFestFood.setCellValueFactory(new PropertyValueFactory<>("festa"));
-        ingressoFestFood.setCellValueFactory(new PropertyValueFactory<>("ingresso"));
-       	festfoodTabela.setItems(FestFood.TableView());
+        ingressoFestFood.setCellValueFactory(new PropertyValueFactory<>("precoIngresso"));
+       	festfoodTabela.setItems(FestFood.tableView());
        	
-       	festfoodIngresso.setCellValueFactory(new PropertyValueFactory<>("festfood"));
-        numeroIngresso.setCellValueFactory(new PropertyValueFactory<>("numeoro"));
-        compradorIngresso.setCellValueFactory(new PropertyValueFactory<>("comprador"));
-       	ingressoTabela.setItems(Ingresso.TableView());
+       	festfoodIngresso.setCellValueFactory(new PropertyValueFactory<>("festFood"));
+        numeroIngresso.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        compradorIngresso.setCellValueFactory(new PropertyValueFactory<>("cpfComprador"));
+       	ingressoTabela.setItems(Ingresso.tableView());
        	
+       	/*
        	festaCoquetel.setCellValueFactory(new PropertyValueFactory<>("festa"));
         localCoquetel.setCellValueFactory(new PropertyValueFactory<>("local"));
         cidadeCoquetel.setCellValueFactory(new PropertyValueFactory<>("cidade"));
         orcamentoCoquetel.setCellValueFactory(new PropertyValueFactory<>("orcamento"));
-        coquetelTabela.setItems(Coquetel.TableView());
+        coquetelTabela.setItems(Coquetel.tableView());
  
         emailConvidado.setCellValueFactory(new PropertyValueFactory<>("email"));
         nomeConvidado.setCellValueFactory(new PropertyValueFactory<>("nome"));
         telefoneConvidado.setCellValueFactory(new PropertyValueFactory<>("telefone"));
-        convidadoTabela.setItems(Convidado.TableView());
+        convidadoTabela.setItems(Convidado.tableView());
         
         coquetelConvite.setCellValueFactory(new PropertyValueFactory<>("convidado"));
         convidadoConvite.setCellValueFactory(new PropertyValueFactory<>("convite"));
-        conviteTabela.setItems(Convite.TableView());
-        **/       
+        conviteTabela.setItems(Convite.tableView());
+        
+        coquetelBrinde.setCellValueFactory(new PropertyValueFactory<>("coquetel"));
+        nomeBrinde.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        descricaoBrinde.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+       	brindeTabela.setItems(Brinde.tableView());
+       	
+       	fornecedoraFornCoquetel.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
+        coquetelFornCoquetel.setCellValueFactory(new PropertyValueFactory<>("coquetel"));
+        precoFornCoquetel.setCellValueFactory(new PropertyValueFactory<>("nome"));
+       	fornCoquetelTabela.setItems(ForncecimentoCoquetel.tableView());
+       	
+       	fornecedoraProdutos.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
+        coquetelProdutos.setCellValueFactory(new PropertyValueFactory<>("coquetel"));
+        nomeProdutos.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        quantidadeProdutos.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        produtosTabela.setItems(Produtos.tableView());
+        */
+        
+        nomeLocal.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        cidadeLocal.setCellValueFactory(new PropertyValueFactory<>("cidade"));
+        estadoLocal.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        numeroLocal.setCellValueFactory(new PropertyValueFactory<>("rua"));
+        ruaLocal.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        capacidadeLocal.setCellValueFactory(new PropertyValueFactory<>("maxFrequentadores"));
+        diariaLocal.setCellValueFactory(new PropertyValueFactory<>("diariaLocacao"));
+        aberturaLocal.setCellValueFactory(new PropertyValueFactory<>("possuiAbertura"));
+        localTabela.setItems(Local.tableView());
+        
+        idLocacao.setCellValueFactory(new PropertyValueFactory<>("id"));
+        festfoodLocacao.setCellValueFactory(new PropertyValueFactory<>("festfood"));
+        localLocacao.setCellValueFactory(new PropertyValueFactory<>("nomeLocal"));
+        cidadeLocacao.setCellValueFactory(new PropertyValueFactory<>("cidadeLocal"));
+        locacaoTabela.setItems(Locacao.tableView());
+        
+        fornecedoraLote.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
+        locacaoLote.setCellValueFactory(new PropertyValueFactory<>("locacao"));
+        numeroLote.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        precoLote.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        larguraLote.setCellValueFactory(new PropertyValueFactory<>("largura"));
+        comprimentoLote.setCellValueFactory(new PropertyValueFactory<>("comprimento"));
+        loteTabela.setItems(Lote.tableView());
+        
+        /*
+        cpfFuncionario.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        nomeFuncionario.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        rgFuncionario.setCellValueFactory(new PropertyValueFactory<>("rg"));
+        numeroFuncionario.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        ruaFuncionario.setCellValueFactory(new PropertyValueFactory<>("rua"));
+        cidadeFuncionario.setCellValueFactory(new PropertyValueFactory<>("cidade"));
+        estadoFuncionario.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        emailFuncionario.setCellValueFactory(new PropertyValueFactory<>("email"));
+        celularFuncionario.setCellValueFactory(new PropertyValueFactory<>("celular"));
+        telefoneFuncionario.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+        valorFuncionario.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        funcaoFuncionario.setCellValueFactory(new PropertyValueFactory<>("funcao"));
+        funcionarioTabela.setItems(Funcionario.tableView());
+        
+        coquetelContCoquetel.setCellValueFactory(new PropertyValueFactory<>("coquetel"));
+        funcionarioContCoquetel.setCellValueFactory(new PropertyValueFactory<>("funcionario"));
+        horastrabContCoquetel.setCellValueFactory(new PropertyValueFactory<>("horastrabalhadas"));
+        valorContCoquetel.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        contCoquetelTabela.setItems(ContratoCoquetel.tableView());
+        
+        festfoodContFestFood.setCellValueFactory(new PropertyValueFactory<>("festfood"));
+        segurancaContFestFood.setCellValueFactory(new PropertyValueFactory<>("seguranca"));
+        horastrabContFestFood.setCellValueFactory(new PropertyValueFactory<>("horastrabalhadas"));
+        valorContFestFood.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        contFestFoodTabela.setItems(ContratoFestFood.tableView());
+        */
     } 
     
     @FXML

@@ -74,7 +74,7 @@ public class Lote {
 		this.comprimento = comprimento;
 	}
 	
-	public ObservableList<Lote> tableView(){
+	public static ObservableList<Lote> tableView(){
 		ResultSet res;
 		List<Lote> list = new ArrayList<Lote>();
 		try {

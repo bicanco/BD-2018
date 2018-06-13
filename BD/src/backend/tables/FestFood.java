@@ -34,7 +34,7 @@ public class FestFood {
 		this.precoIngresso = precoIngresso;
 	}
 	
-	public ObservableList<FestFood> tableView(){
+	public static ObservableList<FestFood> tableView(){
 		ResultSet res;
 		List<FestFood> list = new ArrayList<FestFood>();
 		try {

@@ -84,7 +84,7 @@ public class Festa {
 		this.tipoFesta = tipoFesta;
 	}
 	
-	public ObservableList<Festa> tableView(){
+	public static ObservableList<Festa> tableView(){
 		ResultSet res;
 		List<Festa> list = new ArrayList<Festa>();
 		try {
