@@ -19,12 +19,14 @@ public class Empresa {
 	private String nome;
 	private String razao;
 	private String endereco;
+	private String tipo;
 	
-	public Empresa(String cnpj, String nomeFantasia, String razaoSocial, String endereco) {
+	public Empresa(String cnpj, String nomeFantasia, String razaoSocial, String endereco, String tipo) {
 		this.cnpj = cnpj;
 		this.nome = nomeFantasia;
 		this.razao = razaoSocial;
 		this.endereco = endereco;
+		this.tipo = tipo;
 	}
 
 	// Deixar os set e gets - sao necessarios devido CellValueFactory
@@ -54,6 +56,12 @@ public class Empresa {
 	public void setEndereco(String endereco){
 		this.endereco = endereco;
 	}
+	public String getTipo(){
+		return tipo;
+	}
+	public void setTipo(String tipo){
+		this.tipo = tipo;
+	}
 	
 	public static ObservableList<Empresa> tableView(){
 		ResultSet res;
@@ -61,7 +69,7 @@ public class Empresa {
 		try {
 			res = ConnectionManager.query("select * from EMPRESA");
 			while(res.next())			
-				list.add(new Empresa(res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
+				list.add(new Empresa(res.getString(1), res.getString(2), res.getString(3), res.getString(4), null));
 				
 			res.close();
 			ConnectionManager.closeQuery();
@@ -70,5 +78,23 @@ public class Empresa {
 		} catch (SQLException e) {
             throw new RuntimeException(e);
 		}
-	}	
+	}
+	
+	public static ObservableList<String> getListaEmpresa(){
+		ResultSet res;
+		List<String> list = new ArrayList<>();
+		
+		try {
+			res = ConnectionManager.query("select CNPJ from EMPRESA");
+			while(res.next())			
+				list.add(res.getString(1));
+				
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		} catch (SQLException e) {
+            throw new RuntimeException(e);
+		}
+	}
 }

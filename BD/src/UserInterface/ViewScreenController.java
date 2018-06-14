@@ -478,8 +478,5 @@ public class ViewScreenController implements Initializable {
         myStage.setScene(scene);
         myStage.show();
     }
-    
-    @FXML
-    void tupla(){}
    
 }
