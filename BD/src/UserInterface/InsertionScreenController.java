@@ -1,6 +1,7 @@
 package UserInterface;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.layout.AnchorPane;
@@ -180,7 +181,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     private JFXTextField diariaLocal;
     @FXML
-    private JFXTextField aberturaLocal;
+    private JFXCheckBox aberturaLocal;
     @FXML
     private JFXButton inserirLocal;
     
@@ -405,6 +406,7 @@ public class InsertionScreenController implements Initializable {
    		*/
     }
     
+    
     @FXML
     void inserirContato(ActionEvent event) throws IOException{
     	/*
@@ -426,7 +428,7 @@ public class InsertionScreenController implements Initializable {
     		c.inserir();
     	else
     		tratamento dos erros (telas);
-   		*/
+    	*/
     }
     
     @FXML
@@ -610,7 +612,7 @@ public class InsertionScreenController implements Initializable {
     }
     
     @FXML
-    void inserirContratoFornecedora(ActionEvent event) throws IOException{
+    void inserirContratoFestFood(ActionEvent event) throws IOException{
     	/*
     	ContratoFestFood cf = new ContratoFestFood(festfoodContFestFood.getValue(), segurancaContFestFood.getValue(), horastrabContFestFood.getText());
     	
