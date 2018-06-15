@@ -50,7 +50,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXComboBox<String> tipoEmpresa;
     @FXML
-    private JFXButton inserirEmpresa;
+    private JFXButton buscarEmpresa;
     
     @FXML
     private JFXTextField empresaContatos;
@@ -61,14 +61,14 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField telefoneContatos;
     @FXML
-    private JFXButton inserirContatos;
+    private JFXButton buscarContatos;
     
     @FXML
     private JFXTextField nomeCatFornecimento;
     @FXML
     private JFXTextField descricaoCatFornecimento;
     @FXML
-    private JFXButton inserirCatFornecimento;
+    private JFXButton buscarCatFornecimento;
     
     @FXML
     private JFXTextField fornecedoraCatFornecedora;
@@ -77,7 +77,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField precoCatFornecedora;
     @FXML
-    private JFXButton inserirCatFornecedora;
+    private JFXButton buscarCatFornecedora;
     
     @FXML
     private JFXTextField contratanteFesta;
@@ -92,14 +92,14 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXComboBox<String> tipoFesta;
     @FXML
-    private JFXButton inserirFesta;
+    private JFXButton buscarFesta;
     
     @FXML
     private JFXTextField festaFestFood;
     @FXML
     private JFXTextField precoFestFood;
     @FXML
-    private JFXButton inserirFestFood;
+    private JFXButton buscarFestFood;
     
     @FXML
     private JFXTextField festfoodIngresso;
@@ -108,7 +108,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField compradorIngresso;
     @FXML
-    private JFXButton inserirIngresso;
+    private JFXButton buscarIngresso;
     
     @FXML
     private JFXTextField festaCoquetel;
@@ -117,7 +117,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField cidadeCoquetel;
     @FXML
-    private JFXButton inserirCoquetel;
+    private JFXButton buscarCoquetel;
     
     @FXML
     private JFXTextField nomeConvidado;
@@ -126,14 +126,14 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField telefoneConvidado;
     @FXML
-    private JFXButton inserirConvidado;
+    private JFXButton buscarConvidado;
     
     @FXML
     private JFXTextField coquetelConvite;
     @FXML
     private JFXTextField convidadoConvite;
     @FXML
-    private JFXButton inserirConvite;
+    private JFXButton buscarConvite;
     
     @FXML
     private JFXTextField coquetelBrinde;
@@ -142,7 +142,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField descricaoBrinde;
     @FXML
-    private JFXButton inserirBrinde;
+    private JFXButton buscarBrinde;
     
     @FXML
     private JFXTextField fornecedoraFornecimento;
@@ -151,7 +151,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField precoFornecimento;
     @FXML
-    private JFXButton inserirFornecimento;
+    private JFXButton buscarFornecimento;
     
     @FXML
     private JFXTextField fornecedoraProdutos;
@@ -162,7 +162,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField quantidadeProdutos;
     @FXML
-    private JFXButton inserirProdutos;
+    private JFXButton buscarProdutos;
     
     @FXML
     private JFXTextField nomeLocal;
@@ -181,7 +181,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXCheckBox aberturaLocal;
     @FXML
-    private JFXButton inserirLocal;
+    private JFXButton buscarLocal;
     
     @FXML
     private JFXTextField festfoodLocacao;
@@ -190,7 +190,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField cidadeLocacao;
     @FXML
-    private JFXButton inserirLocacao;
+    private JFXButton buscarLocacao;
     
     @FXML
     private JFXTextField fornecedoraLote;
@@ -205,7 +205,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField comprimentoLote;
     @FXML
-    private JFXButton inserirLote;
+    private JFXButton buscarLote;
     
     @FXML
     private JFXTextField cpfFuncionario;
@@ -232,7 +232,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField funcaoFuncionario;
     @FXML
-    private JFXButton inserirFuncionario;
+    private JFXButton buscarFuncionario;
     
     @FXML
     private JFXTextField coquetelContCoquetel;
@@ -241,7 +241,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField horastrabContCoquetel;
     @FXML
-    private JFXButton inserirContCoquetel;
+    private JFXButton buscarContCoquetel;
     
     @FXML
     private JFXTextField festfoodContFestFood;
@@ -250,7 +250,7 @@ public class SearchScreenController implements Initializable {
     @FXML
     private JFXTextField horastrabContFestFood;
     @FXML
-    private JFXButton inserirContFestFood;
+    private JFXButton buscarContFestFood;
     
     private static Stage myStage;
     

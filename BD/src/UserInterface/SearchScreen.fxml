@@ -110,7 +110,7 @@
                                  <content>
                                     <Pane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <JFXButton fx:id="buscaadv" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirEmpresa" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Busca" textAlignment="JUSTIFY" textFill="WHITE" />
+                                          <JFXButton fx:id="buscaadv" buttonType="RAISED" layoutX="349.0" layoutY="526.0" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
                                  </content>
@@ -382,7 +382,7 @@
                                           <Label layoutX="124.0" layoutY="126.0" text="Fest Food:" />
                                           <Label layoutX="154.0" layoutY="259.0" text="Local:" />
                                           <Label layoutX="141.0" layoutY="406.0" text="Cidade:" />
-                                          <JFXButton fx:id="inserirLocacao" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirLocacao" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Busca" textAlignment="JUSTIFY" textFill="WHITE" />
+                                          <JFXButton fx:id="buscarLocacao" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#buscarLocacao" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
                                  </content>
@@ -405,7 +405,7 @@
                                           <Label layoutX="98.0" layoutY="447.0" text="Comprimento:" />
                                           <Label layoutX="153.0" layoutY="289.0" text="Preço:" />
                                           <Label layoutX="140.0" layoutY="369.0" text="Largura:" />
-                                          <JFXButton fx:id="inserirLote" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirLote" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Busca" textAlignment="JUSTIFY" textFill="WHITE" />
+                                          <JFXButton fx:id="buscarLote" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#buscarLote" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
                                  </content></Tab>
@@ -439,7 +439,7 @@
                                           <Label layoutX="397.0" layoutY="138.0" text="E-mail:" />
                                           <Label layoutX="364.0" layoutY="357.0" text="Valor/Hora:" />
                                           <Label layoutX="386.0" layoutY="425.0" text="Função:" />
-                                          <JFXButton fx:id="inserirFuncionario" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirFuncionario" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Busca" textAlignment="JUSTIFY" textFill="WHITE" />
+                                          <JFXButton fx:id="buscarFuncionario" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#buscarFuncionario" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
                                  </content></Tab>
@@ -455,7 +455,7 @@
                                           <Label layoutX="134.0" layoutY="140.0" text="Coquetel:" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações para buscar o(s) registro(s):" />
                                           <Label layoutX="71.0" layoutY="376.0" text="Horas Trabalhadas:" />
-                                          <JFXButton fx:id="inserirContCoquetel" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirContratoCoquetel" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Busca" textAlignment="JUSTIFY" textFill="WHITE" />
+                                          <JFXButton fx:id="buscarContCoquetel" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#buscarContratoCoquetel" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
                                  </content></Tab>
@@ -465,13 +465,13 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações para buscar o(s) registro(s):" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXTextField fx:id="festfoodContFestFood" layoutX="212.0" layoutY="136.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="festfoodContFestFood" layoutX="209.0" layoutY="136.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="segurancaContFestFood" layoutX="212.0" layoutY="255.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="horastrabContFestFood" layoutX="212.0" layoutY="372.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="125.0" layoutY="259.0" text="Segurança:" />
                                           <Label layoutX="129.0" layoutY="140.0" text="Fest Food:" />
                                           <Label layoutX="71.0" layoutY="376.0" text="Horas Trabalhadas:" />
-                                          <JFXButton fx:id="inserirContFestFood" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirContratoFestFood" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Busca" textAlignment="JUSTIFY" textFill="WHITE" />
+                                          <JFXButton fx:id="buscarContFestFood" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#buscarContratoFestFood" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
                                  </content></Tab>
