@@ -17,7 +17,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import backend.tables.*;
 
 /**
  * Classe de controle da Interface de Insercao.
@@ -73,7 +72,7 @@ public class InsertionScreenController implements Initializable {
     private JFXButton inserirCatFornecimento;
     
     @FXML
-    private JFXComboBox<String> empresaCatFornecedora;
+    private JFXComboBox<String> fornecedoraCatFornecedora;
     @FXML
     private JFXComboBox<String> categoriaCatFornecedora;
     @FXML
@@ -254,7 +253,6 @@ public class InsertionScreenController implements Initializable {
     @FXML
     private JFXButton inserirContFestFood;
 
-    
     private static Stage myStage;
     
     /**

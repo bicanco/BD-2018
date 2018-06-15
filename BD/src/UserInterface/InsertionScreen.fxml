@@ -167,10 +167,10 @@
                                        <children>
                                           <Label layoutX="113.0" prefHeight="48.0" prefWidth="529.0" text="Preencha os campos abaixo com as informações da Categoria de Fornecimento&#10;a qual uma Empresa pertence:" textAlignment="CENTER" textOverrun="CLIP" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="empresaCatFornecedora" layoutX="212.0" layoutY="106.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="fornecedoraCatFornecedora" layoutX="212.0" layoutY="106.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXComboBox fx:id="categoriaCatFornecedora" layoutX="212.0" layoutY="249.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="precoCatFornecedora" layoutX="212.0" layoutY="392.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="133.0" layoutY="111.0" text="Empresa:" />
+                                          <Label layoutX="106.0" layoutY="111.0" text="Fornecedora:" />
                                           <Label layoutX="125.0" layoutY="254.0" text="Categoria:" />
                                           <Label layoutX="95.0" layoutY="396.0" text="Faixa de Preço:" />
                                           <JFXButton fx:id="inserirCatFornecedora" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirCategoriaFornecedora" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Inserir" textAlignment="JUSTIFY" textFill="WHITE" />
