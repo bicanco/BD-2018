@@ -2,6 +2,8 @@ package UserInterface;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+
+import backend.tables.Empresa;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
@@ -259,9 +261,9 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerEmpresa(ActionEvent event) throws IOException{
-    	/*
     	Empresa e = new Empresa(cnpjEmpresa.getText(), nomeEmpresa.getText(), null, null, null);
-    	
+    	Empresa.deleteEmpresa(e);
+    	/*
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		Empresa.remover(e);
     		ou
