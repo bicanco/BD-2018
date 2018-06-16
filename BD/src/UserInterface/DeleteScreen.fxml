@@ -125,7 +125,7 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
-                                          <JFXTextField fx:id="empresaContatos" layoutX="211.0" layoutY="92.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="empresaContatos" layoutX="211.0" layoutY="92.0" prefHeight="29.0" prefWidth="337.0" promptText="CNPJ" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="nomeContatos" layoutX="210.0" layoutY="242.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="emailContatos" layoutX="210.0" layoutY="385.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="132.0" layoutY="96.0" text="Empresa:" />
@@ -155,8 +155,8 @@
                                        <children>
                                           <Label layoutX="54.0" prefHeight="48.0" prefWidth="567.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" textAlignment="CENTER" textOverrun="CLIP" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXTextField fx:id="fornecedoraCatFornecedora" layoutX="209.0" layoutY="165.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="categoriaCatFornecedora" layoutX="209.0" layoutY="338.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="fornecedoraCatFornecedora" layoutX="209.0" layoutY="165.0" prefHeight="29.0" prefWidth="337.0" promptText="CNPJ" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="categoriaCatFornecedora" layoutX="209.0" layoutY="338.0" prefHeight="29.0" prefWidth="337.0" promptText="Nome" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="104.0" layoutY="169.0" text="Fornecedora:" />
                                           <Label layoutX="124.0" layoutY="342.0" text="Categoria:" />
                                           <JFXButton fx:id="removerCatFornecedora" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerCategoriaFornecedora" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />
@@ -170,7 +170,7 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="53.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
-                                          <JFXTextField fx:id="contratanteFesta" layoutX="228.0" layoutY="93.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="contratanteFesta" layoutX="228.0" layoutY="93.0" prefHeight="29.0" prefWidth="337.0" promptText="CNPJ" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="dataFesta" layoutX="229.0" layoutY="236.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="nomeFesta" layoutX="229.0" layoutY="376.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="130.0" layoutY="97.0" text="Contratante:" />
@@ -187,7 +187,7 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXTextField fx:id="festaFestFood" layoutX="211.0" layoutY="235.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="festaFestFood" layoutX="211.0" layoutY="235.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="158.0" layoutY="239.0" text="Festa:" />
                                           <JFXButton fx:id="removerFestFood" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerFestFood" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
@@ -200,7 +200,7 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXTextField fx:id="festfoodIngresso" layoutX="212.0" layoutY="136.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="festfoodIngresso" layoutX="212.0" layoutY="136.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="codigoIngresso" layoutX="212.0" layoutY="255.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="compradorIngresso" layoutX="212.0" layoutY="372.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="129.0" layoutY="140.0" text="Fest Food:" />
@@ -217,7 +217,7 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
-                                          <JFXTextField fx:id="festaCoquetel" layoutX="212.0" layoutY="136.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="festaCoquetel" layoutX="212.0" layoutY="136.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="localCoquetel" layoutX="212.0" layoutY="255.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="cidadeCoquetel" layoutX="212.0" layoutY="372.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="157.0" layoutY="140.0" text="Festa:" />
@@ -234,12 +234,10 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXTextField fx:id="nomeConvidado" layoutX="212.0" layoutY="136.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="emailConvidado" layoutX="212.0" layoutY="255.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="telefoneConvidado" layoutX="212.0" layoutY="372.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="152.0" layoutY="140.0" text="Nome:" />
-                                          <Label layoutX="152.0" layoutY="259.0" text="E-mail:" />
-                                          <Label layoutX="135.0" layoutY="376.0" text="Telefone:" />
+                                          <JFXTextField fx:id="nomeConvidado" layoutX="211.0" layoutY="165.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="emailConvidado" layoutX="211.0" layoutY="316.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <Label layoutX="152.0" layoutY="169.0" text="Nome:" />
+                                          <Label layoutX="152.0" layoutY="320.0" text="E-mail:" />
                                           <JFXButton fx:id="removerConvidado" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerConvidado" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
@@ -251,8 +249,8 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="55.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
-                                          <JFXTextField fx:id="coquetelConvite" layoutX="211.0" layoutY="167.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="convidadoConvite" layoutX="212.0" layoutY="321.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="coquetelConvite" layoutX="211.0" layoutY="167.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="convidadoConvite" layoutX="212.0" layoutY="321.0" prefHeight="29.0" prefWidth="337.0" promptText="CPF" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="135.0" layoutY="171.0" text="Coquetel:" />
                                           <Label layoutX="123.0" layoutY="325.0" text="Convidado:" />
                                           <JFXButton fx:id="removerConvite" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerConvite" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />
@@ -266,7 +264,7 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
-                                          <JFXTextField fx:id="coquetelBrinde" layoutX="212.0" layoutY="166.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="coquetelBrinde" layoutX="212.0" layoutY="166.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="nomeBrinde" layoutX="212.0" layoutY="315.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="137.0" layoutY="170.0" text="Coquetel:" />
                                           <Label layoutX="155.0" layoutY="319.0" text="Nome:" />
@@ -281,8 +279,8 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
-                                          <JFXTextField fx:id="fornecedoraFornecimento" layoutX="212.0" layoutY="166.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="coquetelFornecimento" layoutX="212.0" layoutY="315.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="fornecedoraFornecimento" layoutX="212.0" layoutY="166.0" prefHeight="29.0" prefWidth="337.0" promptText="CNPJ" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="coquetelFornecimento" layoutX="212.0" layoutY="315.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="133.0" layoutY="319.0" text="Coquetel:" />
                                           <Label layoutX="111.0" layoutY="170.0" text="Fornecedora:" />
                                           <JFXButton fx:id="removerFornecimento" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerFornecimentoCoquetel" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />
@@ -296,8 +294,8 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXTextField fx:id="fornecedoraProdutos" layoutX="211.0" layoutY="122.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="coquetelProdutos" layoutX="209.0" layoutY="232.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="fornecedoraProdutos" layoutX="211.0" layoutY="122.0" prefHeight="29.0" prefWidth="337.0" promptText="CNPJ" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="coquetelProdutos" layoutX="209.0" layoutY="232.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="nomeProdutos" layoutX="210.0" layoutY="345.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="106.0" layoutY="126.0" text="Fornecedora:" />
                                           <Label layoutX="128.0" layoutY="236.0" text="Coquetel:" />
@@ -313,14 +311,12 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXTextField fx:id="cidadeLocal" layoutX="214.0" layoutY="200.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="estadoLocal" layoutX="214.0" layoutY="288.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="cidadeLocal" layoutX="215.0" layoutY="243.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="estadoLocal" layoutX="215.0" layoutY="367.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="nomeLocal" layoutX="215.0" layoutY="113.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="capacidadeLocal" layoutX="214.0" layoutY="375.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="152.0" layoutY="117.0" text="Nome:" />
-                                          <Label layoutX="146.0" layoutY="204.0" text="Cidade:" />
-                                          <Label layoutX="147.0" layoutY="292.0" text="Estado:" />
-                                          <Label layoutX="116.0" layoutY="379.0" text="Capacidade:" />
+                                          <Label layoutX="146.0" layoutY="247.0" text="Cidade:" />
+                                          <Label layoutX="147.0" layoutY="371.0" text="Estado:" />
                                           <JFXButton fx:id="removerLocal" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerLocal" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
@@ -332,7 +328,7 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="53.0" layoutY="38.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
-                                          <JFXTextField fx:id="festfoodLocacao" layoutX="210.0" layoutY="115.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="festfoodLocacao" layoutX="210.0" layoutY="115.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="localLocacao" layoutX="210.0" layoutY="258.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="cidadeLocacao" layoutX="210.0" layoutY="395.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="122.0" layoutY="119.0" text="Fest Food:" />
@@ -349,8 +345,8 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXTextField fx:id="fornecedoraLote" layoutX="218.0" layoutY="101.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="locacaoLote" layoutX="218.0" layoutY="253.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="fornecedoraLote" layoutX="218.0" layoutY="101.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="locacaoLote" layoutX="218.0" layoutY="253.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="numeroLote" layoutX="218.0" layoutY="390.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="113.0" layoutY="105.0" text="Fornecedora:" />
                                           <Label layoutX="142.0" layoutY="257.0" text="Locação:" />
@@ -383,7 +379,7 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
-                                          <JFXTextField fx:id="coquetelContCoquetel" layoutX="212.0" layoutY="156.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="coquetelContCoquetel" layoutX="212.0" layoutY="156.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="funcionarioContCoquetel" layoutX="212.0" layoutY="345.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="116.0" layoutY="349.0" text="Funcionário:" />
                                           <Label layoutX="134.0" layoutY="160.0" text="Coquetel:" />
@@ -397,8 +393,8 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
-                                          <JFXTextField fx:id="festfoodContFestFood" layoutX="212.0" layoutY="166.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="segurancaContFestFood" layoutX="212.0" layoutY="335.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="festfoodContFestFood" layoutX="212.0" layoutY="166.0" prefHeight="29.0" prefWidth="337.0" promptText="ID" style="-fx-background-color: ffffff;" />
+                                          <JFXTextField fx:id="segurancaContFestFood" layoutX="212.0" layoutY="335.0" prefHeight="29.0" prefWidth="337.0" promptText="CPF" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="125.0" layoutY="339.0" text="Segurança:" />
                                           <Label layoutX="129.0" layoutY="170.0" text="Fest Food:" />
                                           <JFXButton fx:id="removerContFestFood" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerContratoFestFood" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />

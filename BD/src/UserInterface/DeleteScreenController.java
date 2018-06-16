@@ -139,8 +139,6 @@ public class DeleteScreenController implements Initializable {
     @FXML
     private JFXTextField estadoLocal;
     @FXML
-    private JFXTextField capacidadeLocal;
-    @FXML
     private JFXButton removerLocal;
     
     @FXML
