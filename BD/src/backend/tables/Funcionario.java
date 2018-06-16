@@ -149,4 +149,38 @@ public class Funcionario {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public static ObservableList<String> getListaFuncionario(){
+		ResultSet res;
+		List<String> list = new ArrayList<String>();
+		try {
+			res = ConnectionManager.query("select F.NOME,F.CPF,F.FUNCAO from FUNCIONARIO F");
+			while(res.next())
+				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getString(3));
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		
+	}
+	
+	public static ObservableList<String> getListaSeguranca(){
+		ResultSet res;
+		List<String> list = new ArrayList<String>();
+		try {
+			res = ConnectionManager.query("select F.NOME,F.CPF from FUNCIONARIO F");
+			while(res.next())
+				list.add(res.getString(1)+" / "+res.getString(2));
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		
+	}
 }

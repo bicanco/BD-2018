@@ -6,9 +6,14 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
 import backend.tables.Contratante;
+import backend.tables.Convidado;
+import backend.tables.Coquetel;
 import backend.tables.Empresa;
 import backend.tables.FestFood;
 import backend.tables.Fornecedora;
+import backend.tables.Funcionario;
+import backend.tables.Locacao;
+import backend.tables.Local;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
@@ -290,45 +295,40 @@ public class InsertionScreenController implements Initializable {
         festaFestFood.setItems(FestFood.getListaFestFood());
         
         festfoodIngresso.setItems(FestFood.getListaFestFood());
-        /*
-        festaCoquetel.setItems(Festa.getListaCoquetel());
- 
+        
+        festaCoquetel.setItems(Coquetel.getListaCoquetel());
+        
         localCoquetel.setItems(Local.getListaLocal());
         
-        cidadeCoquetel.setItems(Local.getListaCidade());
+        coquetelConvite.setItems(Coquetel.getListaCoquetel());
         
-        coquetelConvite.setItems(Festa.getListaCoquetel());
+        convidadoConvite.setItems(Convidado.getListaConvidado());
         
-        convidadoConvite.setItems(Convidado.getListaConvidado);
+        coquetelBrinde.setItems(Coquetel.getListaCoquetel());
         
-        coquetelBrinde.setItems(Festa.getListaCoquetel());
+        fornecedoraFornecimento.setItems(Fornecedora.getListaFornecedora());
         
-        fornecedoraFornecimento.setItems(Empresa.getListaFornecedora());
+        coquetelFornecimento.setItems(Coquetel.getListaCoquetel());
         
-        coquetelFornecimento.setItems(Festa.getListaCoquetel());
+        fornecedoraProdutos.setItems(Fornecedora.getListaFornecedora());
         
-        fornecedoraProdutos.setItems(Empresa.getListaFornecedora());
+        coquetelProdutos.setItems(Coquetel.getListaCoquetel());
         
-        coquetelProdutos.setItems(Festa.getListaCoquetel());
-        
-        festfoodLocacao.setItems(Festa.getListaFestFood());
+        festfoodLocacao.setItems(FestFood.getListaFestFood());
         
         localLocacao.setItems(Local.getListaLocal());
         
-        cidadeLocacao.setItems(Local.getListaCidade());
+        fornecedoraLote.setItems(Fornecedora.getListaFornecedora());
         
-        fornecedoraLote.setItems(Empresa.getListaFornecedora());
+        locacaoLote.setItems(Locacao.getListaLocacao());
         
-        locacaoLote.setItems(Local.getListaLocacao());
-        
-        coquetelContCoquetel.setItems(Festa.getListaCoquetel());
+        coquetelContCoquetel.setItems(Coquetel.getListaCoquetel());
         
         funcionarioContCoquetel.setItems(Funcionario.getListaFuncionario());
         
-        festfoodContFestFood.setItems(Festa.getListaFestFood());
+        festfoodContFestFood.setItems(FestFood.getListaFestFood());
         
         segurancaContFestFood.setItems(Funcionario.getListaSeguranca());
-        */
     }    
     
     @FXML

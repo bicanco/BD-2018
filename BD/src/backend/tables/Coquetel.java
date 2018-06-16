@@ -70,4 +70,21 @@ public class Coquetel {
             throw new RuntimeException(e);
 		}
 	}
+	
+	public static ObservableList<String> getListaCoquetel(){
+		ResultSet res;
+		List<String> list = new ArrayList<String>();
+		try {
+			res = ConnectionManager.query("select E.CNPJ, E.NOMEFANTASIA, F.DATA from EMPRESA E, FESTA F where F.TIPOFESTA = 'COQUETEL' and F.CONTRATANTE = E.CNPJ");
+			while(res.next())
+				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getDate(3));
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		
+	}
 }

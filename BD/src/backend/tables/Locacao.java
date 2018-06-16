@@ -69,4 +69,21 @@ public class Locacao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public static ObservableList<String> getListaLocacao(){
+		ResultSet res;
+		List<String> list = new ArrayList<String>();
+		try {
+			res = ConnectionManager.query("select E.CNPJ, E.NOMEFANTASIA, F.DATA, L.NOME, L.CIDADE from EMPRESA E, FESTA F, LOCAL L, LOCACAO LO where F.TIPOFESTA = 'FESTFOOD' and F.CONTRATANTE = E.CNPJ and LO.FESTFOOD = F.ID and LO.NOMELOCAL = L.NOME and LO.CIDADELOCAL = L.CIDADE");
+			while(res.next())
+				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getDate(3)+" \\/ "+res.getString(4)+" / "+res.getString(5));
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		
+	}
 }

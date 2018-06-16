@@ -58,7 +58,7 @@ public class ContatoEmpresa {
 		ResultSet res;
 		List<ContatoEmpresa> list = new ArrayList<ContatoEmpresa>();
 		try {
-			res = ConnectionManager.query("select * from CONTATO_EMPRESA");
+			res = ConnectionManager.query("select * from CONTATOEMPRESA");
 			while(res.next())
 				list.add(new ContatoEmpresa(res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
 			res.close();
