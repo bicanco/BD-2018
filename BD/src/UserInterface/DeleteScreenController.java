@@ -100,8 +100,6 @@ public class DeleteScreenController implements Initializable {
     @FXML
     private JFXTextField emailConvidado;
     @FXML
-    private JFXTextField telefoneConvidado;
-    @FXML
     private JFXButton removerConvidado;
     
     @FXML
@@ -364,7 +362,7 @@ public class DeleteScreenController implements Initializable {
     @FXML
     void removerConvidado(ActionEvent event) throws IOException{
     	/*
-    	Convidado c = new Convidado(nomeConvidado.getText(), emailConvidado.getText(), telefoneConvidado.getText());
+    	Convidado c = new Convidado(nomeConvidado.getText(), emailConvidado.getText(), null);
     	
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		c.remover();

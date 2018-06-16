@@ -5,15 +5,8 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
-import backend.tables.Contratante;
-import backend.tables.Convidado;
-import backend.tables.Coquetel;
-import backend.tables.Empresa;
-import backend.tables.FestFood;
-import backend.tables.Fornecedora;
-import backend.tables.Funcionario;
-import backend.tables.Locacao;
-import backend.tables.Local;
+import backend.tables.*;
+
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
@@ -282,6 +275,8 @@ public class InsertionScreenController implements Initializable {
         empresaContatos.setItems(Empresa.getListaEmpresa());
         
         fornecedoraCatFornecedora.setItems(Fornecedora.getListaFornecedora());
+        
+        //categoriaCatFornecedora.setItems(CategoriaFornecimento.getListaCategoria());
         
         contratanteFesta.setItems(Contratante.getListaContratante());
         

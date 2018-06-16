@@ -133,7 +133,7 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do novo Contato da Empresa a ser inserido:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="empresaContatos" layoutX="209.0" layoutY="91.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="empresaContatos" layoutX="209.0" layoutY="91.0" prefHeight="29.0" prefWidth="337.0" promptText="CNPJ / Nome Fantasia" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="nomeContatos" layoutX="210.0" layoutY="192.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="emailContatos" layoutX="210.0" layoutY="295.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="telefoneContatos" layoutX="209.0" layoutY="402.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
@@ -167,7 +167,7 @@
                                        <children>
                                           <Label layoutX="113.0" prefHeight="48.0" prefWidth="529.0" text="Preencha os campos abaixo com as informações da Categoria de Fornecimento&#10;a qual uma Empresa pertence:" textAlignment="CENTER" textOverrun="CLIP" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="fornecedoraCatFornecedora" layoutX="212.0" layoutY="106.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="fornecedoraCatFornecedora" layoutX="212.0" layoutY="106.0" prefHeight="31.0" prefWidth="337.0" promptText="CNPJ / Nome Fantasia" style="-fx-background-color: ffffff;" />
                                           <JFXComboBox fx:id="categoriaCatFornecedora" layoutX="212.0" layoutY="249.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="precoCatFornecedora" layoutX="212.0" layoutY="392.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="106.0" layoutY="111.0" text="Fornecedora:" />
@@ -185,7 +185,7 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="53.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações da nova Festa a ser inserida:" />
                                           <JFXTextField fx:id="dataFesta" layoutX="211.0" layoutY="122.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="contratanteFesta" layoutX="211.0" layoutY="50.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="contratanteFesta" layoutX="211.0" layoutY="50.0" prefHeight="29.0" prefWidth="337.0" promptText="CNPJ / Nome Fantasia" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="nomeFesta" layoutX="211.0" layoutY="195.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="horarioFesta" layoutX="211.0" layoutY="277.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="duracaoFesta" layoutX="211.0" layoutY="359.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
@@ -211,7 +211,7 @@
                                           <Label layoutX="158.0" layoutY="171.0" text="Festa:" />
                                           <Label layoutX="73.0" layoutY="325.0" text="Preço do Ingresso:" />
                                           <JFXButton fx:id="inserirFestFood" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirFestFood" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Inserir" textAlignment="JUSTIFY" textFill="WHITE" />
-                                          <JFXComboBox fx:id="festaFestFood" layoutX="211.0" layoutY="166.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="festaFestFood" layoutX="211.0" layoutY="166.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante ( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
                                        </children>
                                     </Pane>
                                  </content>
@@ -222,7 +222,7 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do novo Ingresso a ser inserido:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="festfoodIngresso" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="festfoodIngresso" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante ( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="codigoIngresso" layoutX="212.0" layoutY="255.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="compradorIngresso" layoutX="212.0" layoutY="372.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="129.0" layoutY="140.0" text="Fest Food:" />
@@ -239,10 +239,10 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do novo Coquetel a ser inserido:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="festaCoquetel" layoutX="212.0" layoutY="184.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="localCoquetel" layoutX="209.0" layoutY="342.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="festaCoquetel" layoutX="212.0" layoutY="184.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante ( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="localCoquetel" layoutX="209.0" layoutY="342.0" prefHeight="31.0" prefWidth="337.0" promptText="Nome / Cidade" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="164.0" layoutY="189.0" text="Festa:" />
-                                          <Label layoutX="63.0" layoutY="347.0" text="Local/Cidade/Estado:" />
+                                          <Label layoutX="162.0" layoutY="347.0" text="Local:" />
                                           <JFXButton fx:id="inserirCoquetel" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirCoquetel" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Inserir" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
@@ -271,8 +271,8 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do novo Convite a ser inserido:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="55.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="coquetelConvite" layoutX="211.0" layoutY="166.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="convidadoConvite" layoutX="211.0" layoutY="320.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="coquetelConvite" layoutX="211.0" layoutY="166.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="convidadoConvite" layoutX="211.0" layoutY="320.0" prefHeight="31.0" prefWidth="337.0" promptText="Nome / Email" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="135.0" layoutY="171.0" text="Coquetel:" />
                                           <Label layoutX="123.0" layoutY="325.0" text="Convidado:" />
                                           <JFXButton fx:id="inserirConvite" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirConvite" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Inserir" textAlignment="JUSTIFY" textFill="WHITE" />
@@ -286,7 +286,7 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do novo Brinde a ser inserido:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="coquetelBrinde" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="coquetelBrinde" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante ( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="nomeBrinde" layoutX="212.0" layoutY="255.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="descricaoBrinde" layoutX="212.0" layoutY="372.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="137.0" layoutY="140.0" text="Coquetel:" />
@@ -303,8 +303,8 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do novo Fornecimento a ser inserido:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="fornecedoraFornecimento" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="coquetelFornecimento" layoutX="212.0" layoutY="254.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="fornecedoraFornecimento" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" promptText="CNPJ / Nome Fantasia" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="coquetelFornecimento" layoutX="212.0" layoutY="254.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante ( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="precoFornecimento" layoutX="212.0" layoutY="372.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="134.0" layoutY="259.0" text="Coquetel:" />
                                           <Label layoutX="111.0" layoutY="140.0" text="Fornecedora:" />
@@ -320,8 +320,8 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do novo Produto Fornecido a ser inserido:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="fornecedoraProdutos" layoutX="209.0" layoutY="91.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="coquetelProdutos" layoutX="210.0" layoutY="191.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="fornecedoraProdutos" layoutX="209.0" layoutY="91.0" prefHeight="31.0" prefWidth="337.0" promptText="CNPJ / Nome Fantasia" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="coquetelProdutos" layoutX="210.0" layoutY="191.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante ( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="nomeProdutos" layoutX="210.0" layoutY="295.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="quantidadeProdutos" layoutX="209.0" layoutY="402.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="106.0" layoutY="96.0" text="Fornecedora:" />
@@ -365,10 +365,10 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="53.0" layoutY="38.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações da nova Locação a ser inserida:" />
-                                          <JFXComboBox fx:id="festfoodLocacao" layoutX="212.0" layoutY="178.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="localLocacao" layoutX="212.0" layoutY="329.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="festfoodLocacao" layoutX="212.0" layoutY="178.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante ( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="localLocacao" layoutX="212.0" layoutY="329.0" prefHeight="31.0" prefWidth="337.0" promptText="Nome / Cidade" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="136.0" layoutY="183.0" text="Fest Food:" />
-                                          <Label layoutX="66.0" layoutY="334.0" text="Local/Cidade/Estado:" />
+                                          <Label layoutX="166.0" layoutY="334.0" text="Local:" />
                                           <JFXButton fx:id="inserirLocacao" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirLocacao" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Inserir" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
@@ -386,8 +386,8 @@
                                           <Label layoutX="98.0" layoutY="447.0" text="Comprimento:" />
                                           <Label layoutX="153.0" layoutY="289.0" text="Preço:" />
                                           <Label layoutX="140.0" layoutY="369.0" text="Largura:" />
-                                          <JFXComboBox fx:id="fornecedoraLote" layoutX="212.0" layoutY="55.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="locacaoLote" layoutX="212.0" layoutY="128.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="fornecedoraLote" layoutX="212.0" layoutY="55.0" prefHeight="31.0" prefWidth="337.0" promptText="CNPJ / Nome Fantasia" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="locacaoLote" layoutX="212.0" layoutY="128.0" prefHeight="31.0" prefWidth="337.0" promptText="Festa ||| Local" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="numeroLote" layoutX="212.0" layoutY="204.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="precoLote" layoutX="212.0" layoutY="285.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="larguraLote" layoutX="212.0" layoutY="365.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
@@ -435,8 +435,8 @@
                                     <Pane prefHeight="200.0" prefWidth="200.0">
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="funcionarioContCoquetel" layoutX="212.0" layoutY="254.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="coquetelContCoquetel" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="funcionarioContCoquetel" layoutX="212.0" layoutY="254.0" prefHeight="31.0" prefWidth="337.0" promptText="Nome / CPF / Função" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="coquetelContCoquetel" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante ( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="horastrabContCoquetel" layoutX="212.0" layoutY="372.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="116.0" layoutY="259.0" text="Funcionário:" />
                                           <Label layoutX="134.0" layoutY="140.0" text="Coquetel:" />
@@ -452,8 +452,8 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do novo Contrato a ser inserido:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="festfoodContFestFood" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="segurancaContFestFood" layoutX="212.0" layoutY="254.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="festfoodContFestFood" layoutX="212.0" layoutY="135.0" prefHeight="31.0" prefWidth="337.0" promptText="Contratante ( CNPJ / Nome ) / Data" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="segurancaContFestFood" layoutX="212.0" layoutY="254.0" prefHeight="31.0" prefWidth="337.0" promptText="Nome / CPF / Função" style="-fx-background-color: ffffff;" />
                                           <JFXTextField fx:id="horastrabContFestFood" layoutX="212.0" layoutY="372.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="125.0" layoutY="259.0" text="Segurança:" />
                                           <Label layoutX="129.0" layoutY="140.0" text="Fest Food:" />
