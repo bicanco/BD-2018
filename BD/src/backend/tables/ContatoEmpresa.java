@@ -71,6 +71,24 @@ public class ContatoEmpresa {
 		}
 	}
 	
+	public static ObservableList<String> getListaEmail(){
+		ResultSet res;
+		List<String> list = new ArrayList<>();
+		String sql = "select EMAIL,NOME from CONTATOEMPRESA";
+		try {
+			res = ConnectionManager.query(sql);
+			while(res.next())			
+				list.add(res.getString(1)+" / "+res.getString(2));
+				
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		} catch (SQLException e) {
+            throw new RuntimeException(e);
+		}
+	}
+	
 	public static void insertContatoEmpresa(ContatoEmpresa contatoEmpresa) {
 		String sql = "insert into CONTATOEMPRESA (EMPRESA, EMAIL, NOME, TELEFONE) values("+contatoEmpresa+")";
 		try {

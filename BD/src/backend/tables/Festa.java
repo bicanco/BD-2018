@@ -101,6 +101,24 @@ public class Festa {
 		}
 	}
 	
+	public static ObservableList<Number> getListaFesta(){
+		ResultSet res;
+		List<Number> list = new ArrayList<Number>();
+		String sql = "select ID from FESTA";
+		try {
+			res = ConnectionManager.query(sql);
+			while(res.next())			
+				list.add(res.getInt(1));
+				
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		} catch (SQLException e) {
+            throw new RuntimeException(e);
+		}
+	}
+	
 	public static void insertFesta(Festa festa) {
 		String sql = "insert into FESTA (ID, CONTRATANTE, DATA, NOME, HORAINICIO, DURACAO, TIPOFESTA) values("+festa+")";
 		try {
