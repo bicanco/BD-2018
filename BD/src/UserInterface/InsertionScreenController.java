@@ -121,8 +121,6 @@ public class InsertionScreenController implements Initializable {
     @FXML
     private JFXComboBox<String> localCoquetel;
     @FXML
-    private JFXComboBox<String> cidadeCoquetel;
-    @FXML
     private JFXButton inserirCoquetel;
     
     @FXML
@@ -193,8 +191,6 @@ public class InsertionScreenController implements Initializable {
     private JFXComboBox<String> festfoodLocacao;
     @FXML
     private JFXComboBox<String> localLocacao;
-    @FXML
-    private JFXComboBox<String> cidadeLocacao;
     @FXML
     private JFXButton inserirLocacao;
     
@@ -486,7 +482,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirCoquetel(ActionEvent event) throws IOException{
     	/*
-    	Coquetel c = new Coquetel(festaCoquetel.getValue(), localCoquetel.getValue(), cidadeCoquetel.getValue());
+    	Coquetel c = new Coquetel(festaCoquetel.getValue(), localCoquetel.getValue());
     	
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		c.inserir();
@@ -570,7 +566,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirLocacao(ActionEvent event) throws IOException{
     	/*
-    	Locacao l = new Locacao(festfoodLocacao.getValue(), localLocacao.getValue(), cidadeLocacao.getValue());
+    	Locacao l = new Locacao(festfoodLocacao.getValue(), localLocacao.getValue());
     	
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		l.inserir();
