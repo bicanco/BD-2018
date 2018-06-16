@@ -129,7 +129,7 @@
                            <content>
                               <TableView fx:id="contratanteTabela" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
-                                    <TableColumn fx:id="cnpjContratante" prefWidth="755.0" text="CNPJ" />
+                                    <TableColumn fx:id="cnpjContratante" prefWidth="755.0" style="-fx-alignment: CENTER;" text="CNPJ" />
                                  </columns>
                               </TableView>
                            </content></Tab>
@@ -137,7 +137,7 @@
                            <content>
                               <TableView fx:id="fornecedoraTabela" prefHeight="200.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn fx:id="cnpjFornecedora" prefWidth="755.0" text="CNPJ" />
+                                  <TableColumn fx:id="cnpjFornecedora" prefWidth="755.0" style="-fx-alignment: CENTER;" text="CNPJ" />
                                 </columns>
                               </TableView>
                            </content></Tab>
