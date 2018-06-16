@@ -235,7 +235,7 @@
                                 <columns>
                                   <TableColumn fx:id="coquetelBrinde" prefWidth="142.0" text="Coquetel" />
                                   <TableColumn fx:id="nomeBrinde" prefWidth="152.0" text="Nome" />
-                                    <TableColumn fx:id="descBrinde" prefWidth="461.0" text="Descrição" />
+                                    <TableColumn fx:id="descricaoBrinde" prefWidth="461.0" text="Descrição" />
                                 </columns>
                               </TableView>
                            </content>
@@ -317,9 +317,9 @@
                                     <TableColumn fx:id="cidadeFuncionario" prefWidth="61.0" text="Cidade" />
                                     <TableColumn fx:id="estadoFuncionario" prefWidth="55.0" text="Estado" />
                                     <TableColumn fx:id="emailFuncionario" prefWidth="70.0" text="E-mail" />
-                                    <TableColumn fx:id="celularFuncionario" prefWidth="68.0" text="Celular" />
-                                    <TableColumn fx:id="telefoneFuncionario" prefWidth="76.0" text="Telefone" />
-                                    <TableColumn fx:id="valorFuncionario" prefWidth="125.0" text="Valor por Hora" />
+                                    <TableColumn fx:id="celularFuncionario" prefWidth="61.0" text="Celular" />
+                                    <TableColumn fx:id="telefoneFuncionario" prefWidth="93.0" text="Residencial" />
+                                    <TableColumn fx:id="valorFuncionario" prefWidth="115.0" text="Valor por Hora" />
                                     <TableColumn fx:id="funcaoFuncionario" prefWidth="71.0" text="Função" />
                                 </columns>
                               </TableView>
