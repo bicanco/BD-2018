@@ -241,8 +241,8 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <JFXComboBox fx:id="festaCoquetel" layoutX="212.0" layoutY="184.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXComboBox fx:id="localCoquetel" layoutX="209.0" layoutY="342.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="156.0" layoutY="189.0" text="Festa:" />
-                                          <Label layoutX="105.0" layoutY="347.0" text="Local/Cidade:" />
+                                          <Label layoutX="164.0" layoutY="189.0" text="Festa:" />
+                                          <Label layoutX="63.0" layoutY="347.0" text="Local/Cidade/Estado:" />
                                           <JFXButton fx:id="inserirCoquetel" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirCoquetel" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Inserir" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
@@ -367,8 +367,8 @@
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações da nova Locação a ser inserida:" />
                                           <JFXComboBox fx:id="festfoodLocacao" layoutX="212.0" layoutY="178.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <JFXComboBox fx:id="localLocacao" layoutX="212.0" layoutY="329.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="123.0" layoutY="193.0" text="Fest Food:" />
-                                          <Label layoutX="101.0" layoutY="334.0" text="Local/Cidade:" />
+                                          <Label layoutX="136.0" layoutY="183.0" text="Fest Food:" />
+                                          <Label layoutX="66.0" layoutY="334.0" text="Local/Cidade/Estado:" />
                                           <JFXButton fx:id="inserirLocacao" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#inserirLocacao" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Inserir" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
