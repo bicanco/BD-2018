@@ -89,4 +89,9 @@ public class Coquetel {
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		return this.festa+","+this.orcamento+",'"+this.local+"','"+this.cidade+"'";
+	}
 }

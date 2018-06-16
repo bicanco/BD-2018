@@ -104,8 +104,15 @@ public class Empresa {
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
+			/*
+			switch(empresa.tipo) {
+				case "fornecedora":
+					Forncedora fornecedora = new Fornecedora(empresa.getCnpj());
+					Fornecedora.insertFornecedo(fornecedora);
+				break;
+			}
+			*/
 		}catch(SQLException e) {
-			System.out.println(sql);
 			throw new RuntimeException();
 		}
 	}

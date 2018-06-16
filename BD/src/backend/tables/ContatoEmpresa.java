@@ -70,4 +70,9 @@ public class ContatoEmpresa {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.empresa+"','"+this.email+"','"+this.nome+"','"+this.telefone+"'";
+	}
 }

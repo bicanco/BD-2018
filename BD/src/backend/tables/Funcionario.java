@@ -186,4 +186,9 @@ public class Funcionario {
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.cpf+"','"+this.rg+"','"+this.estado+"','"+this.nome+"','"+this.cidade+"','"+this.rua+"',"+this.numero+",'"+this.email+"','"+this.telResidencial+"','"+this.telCelular+"',"+this.valorPorHora+",'"+this.funcao+"'";
+	}
 }

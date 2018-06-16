@@ -58,4 +58,9 @@ public class Contratante {
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.cnpj+"'";
+	}
 }

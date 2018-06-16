@@ -71,4 +71,9 @@ public class ProdutosFornecidos {
             throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.fornecedora+"',"+this.coquetel+",'"+this.nome+"',"+this.quantidade;
+	}
 }

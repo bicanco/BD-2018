@@ -88,4 +88,9 @@ public class Locacao {
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		return this.id+","+this.festFood+",'"+this.nomeLocal+"','"+this.cidadeLocal+"'";
+	}
 }

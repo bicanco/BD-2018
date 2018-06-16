@@ -68,4 +68,9 @@ public class FestFood {
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.festa+"',"+this.precoIngresso;
+	}
 }

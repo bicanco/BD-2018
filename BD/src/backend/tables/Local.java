@@ -129,4 +129,8 @@ public class Local {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "'"+this.nome+"','"+this.cidade+"','"+this.estado+"','"+this.rua+"',"+this.numero+","+this.maxFrequentadores+",'"+this.possuiAbertura+"',"+this.diariaLocacao;
+	}
 }

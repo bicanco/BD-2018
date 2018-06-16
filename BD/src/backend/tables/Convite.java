@@ -51,4 +51,9 @@ public class Convite {
             throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.convidado+"',"+this.coquetel;
+	}
 }

@@ -61,4 +61,9 @@ public class AtribuicaoCategoria {
             throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.fornecedora+"','"+this.categoria+"','"+this.faixaPreco+"'";
+	}
 }

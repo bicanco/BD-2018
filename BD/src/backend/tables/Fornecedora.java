@@ -58,4 +58,19 @@ public class Fornecedora {
 		}
 		
 	}
+	
+	public static void insertFornecedora(Fornecedora fornecedora) {
+		String sql = "insert into FORNECEDORA (CNPJ) values("+fornecedora+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.cnpj+"'";
+	}
 }

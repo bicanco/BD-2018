@@ -51,4 +51,9 @@ public class CategoriaFornecimento {
             throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.nomeRef+"','"+this.descricao+"'";
+	}
 }

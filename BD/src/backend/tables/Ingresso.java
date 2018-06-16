@@ -60,4 +60,9 @@ public class Ingresso {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return this.festFood+","+this.numero+",'"+this.cpfComprador+"'";
+	}
 }

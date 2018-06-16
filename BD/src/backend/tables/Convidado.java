@@ -79,4 +79,9 @@ public class Convidado {
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.email+"','"+this.nome+"','"+this.telefone+"'";
+	}
 }

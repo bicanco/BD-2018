@@ -71,4 +71,9 @@ public class ContratoCoquetel {
             throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return this.coquetel+",'"+this.funcionario+"',"+this.horasTrabalhadas+","+this.valorPago;
+	}
 }

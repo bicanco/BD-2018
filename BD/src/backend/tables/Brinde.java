@@ -61,4 +61,9 @@ public class Brinde {
             throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return this.coquetel+",'"+this.nome+"','"+this.descricao+"'";
+	}
 }

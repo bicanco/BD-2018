@@ -100,4 +100,9 @@ public class Festa {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return this.id+",'"+this.contratante+"','"+this.data+"','"+this.nome+"','"+this.horaInicio+"','"+this.duracao+"','"+this.tipoFesta+"'";
+	}
 }

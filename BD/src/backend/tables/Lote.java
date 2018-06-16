@@ -90,4 +90,9 @@ public class Lote {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return this.locacao+","+this.numero+",'"+this.fornecedora+"',"+this.preco+","+this.largura+","+this.comprimento;
+	}
 }

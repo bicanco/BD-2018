@@ -71,4 +71,9 @@ public class ContratoFestFood {
             throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return this.festFood+",'"+this.seguranca+"',"+this.horasTrabalhadas+","+this.valorPago;
+	}
 }
