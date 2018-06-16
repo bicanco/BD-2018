@@ -117,6 +117,33 @@ public class Empresa {
 		}
 	}
 	
+	public static void deleteEmpresa(Empresa empresa) {
+		String sql = "delete from EMPRESA"+empresa.toStringRestritions();
+		System.out.println(sql);
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(cnpj.compareTo("") != 0) {
+			res += " CNPJ = '"+this.cnpj+"'";
+		}
+		if(nome != null) {
+			if(res.compareTo(" where ") != 0) {
+				res += " and ";
+			}
+			res += " NOMEFANTASIA = '"+this.nome+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.cnpj+"','"+this.nome+"','"+this.razao+"','"+this.endereco+"'";
