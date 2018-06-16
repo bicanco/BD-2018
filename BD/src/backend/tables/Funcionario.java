@@ -187,6 +187,24 @@ public class Funcionario {
 		
 	}
 	
+	public static ObservableList<String> getListaCpf(){
+		ResultSet res;
+		List<String> list = new ArrayList<>();
+		String sql = "select CPF from FUNCIONARIO";
+		try {
+			res = ConnectionManager.query(sql);
+			while(res.next())			
+				list.add(res.getString(1));
+				
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		} catch (SQLException e) {
+            throw new RuntimeException(e);
+		}
+	}
+	
 	public static void insertFuncionario(Funcionario funcionario) {
 		String sql = "insert into FUNCIONARIO (CPF, RG, ESTADO, NOME, CIDADE, RUA, NUMERO, EMAIL, TELRESIDENCIAL, TELCELULAR, VALORPORHORA, FUNCAO) values("+funcionario+")";
 		try {

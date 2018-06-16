@@ -89,6 +89,24 @@ public class Locacao {
 		
 	}
 	
+	public static ObservableList<Number> getListaId(){
+		ResultSet res;
+		List<Number> list = new ArrayList<Number>();
+		String sql = "select ID from LOCACAO";
+		try {
+			res = ConnectionManager.query(sql);
+			while(res.next())			
+				list.add(res.getInt(1));
+				
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		} catch (SQLException e) {
+            throw new RuntimeException(e);
+		}
+	}
+	
 	public static void insertLocacao(Locacao locacao) {
 		String sql = "insert into LOCACAO (ID, FESTFOOD, NOMELOCAL, CIDADELOCAL) values("+locacao+")";
 		try {

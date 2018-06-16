@@ -52,6 +52,24 @@ public class CategoriaFornecimento {
 		}
 	}
 	
+	public static ObservableList<String> getListaCategoria(){
+		ResultSet res;
+		List<String> list = new ArrayList<>();
+		String sql = "select NOMEREF from CATEGORIAFORNECIMENTO";
+		try {
+			res = ConnectionManager.query(sql);
+			while(res.next())			
+				list.add(res.getString(1));
+				
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		} catch (SQLException e) {
+            throw new RuntimeException(e);
+		}
+	}
+	
 	public static void insertCategoriaFornecimento(CategoriaFornecimento categoriaFornecimento) {
 		String sql = "insert into CATEGORIAFORNECIMENTO (NOMEREF, DESCRICAO) values("+categoriaFornecimento+")";
 		try {

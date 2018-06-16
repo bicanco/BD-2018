@@ -227,15 +227,15 @@ public class AlterScreenController implements Initializable {
         
         cnpjEmpresa.setItems(Empresa.getListaEmpresa());
         
-        //emailContatos.setItems(ContatoEmpresa.getListaEmail());
+        emailContatos.setItems(ContatoEmpresa.getListaEmail());
         
-        //nomeCatFornecimento.setItems(CategoriaFornecimento.getListaCategoria());
+        nomeCatFornecimento.setItems(CategoriaFornecimento.getListaCategoria());
         
         fornecedoraCatFornecedora.setItems(Fornecedora.getListaFornecedora());
         
-        //categoriaCatFornecedora.setItems(CategoriaFornecimento.getListaCategoria());
+        categoriaCatFornecedora.setItems(CategoriaFornecimento.getListaCategoria());
         
-        //idFesta.setItems(Festa.getListaId());
+        idFesta.setItems(Festa.getListaFesta());
         
         festaFestFood.setItems(FestFood.getListaFestFood());
         
@@ -255,9 +255,9 @@ public class AlterScreenController implements Initializable {
         
         coquetelProdutos.setItems(Coquetel.getListaCoquetel());
         
-        //nomeLocal.setItems(Local.getListaNome());
+        nomeLocal.setItems(Local.getListaNome());
         
-        //idLocacao.setItems(Locacao.getListaId());
+        idLocacao.setItems(Locacao.getListaId());
         
         localLocacao.setItems(Local.getListaLocal());
         
@@ -265,7 +265,7 @@ public class AlterScreenController implements Initializable {
         
         locacaoLote.setItems(Locacao.getListaLocacao());
         
-        //cpfFuncionario.setItems(Funcionario.getListaCpf());
+        cpfFuncionario.setItems(Funcionario.getListaCpf());
         
         coquetelContCoquetel.setItems(Coquetel.getListaCoquetel());
         
