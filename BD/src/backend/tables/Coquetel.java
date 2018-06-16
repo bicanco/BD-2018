@@ -90,6 +90,16 @@ public class Coquetel {
 		
 	}
 	
+	public static void insertCoquetel(Coquetel coquetel) {
+		String sql = "insert into COQUETEL (FESTA, ORCAMENTO, LOCAL, CIDADE) values("+coquetel+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return this.festa+","+this.orcamento+",'"+this.local+"','"+this.cidade+"'";

@@ -72,6 +72,16 @@ public class ContratoCoquetel {
 		}
 	}
 	
+	public static void insertContratoCoquetel(ContratoCoquetel contratoCoquetel) {
+		String sql = "insert into CONTRATOCOQUETEL (COQUETEL, FUNCIONARIO, HORASTRABALHADAS, VALORPAGO) values("+contratoCoquetel+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return this.coquetel+",'"+this.funcionario+"',"+this.horasTrabalhadas+","+this.valorPago;

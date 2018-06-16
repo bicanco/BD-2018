@@ -49,7 +49,7 @@ public class Brinde {
 		List<Brinde> list = new ArrayList<Brinde>();
 		String sql ="select * from BRINDE";
 		try {
-			res = ConnectionManager.query("select * from BRINDE");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(new Brinde(res.getInt(1), res.getString(2), res.getString(3)));
 				
@@ -59,6 +59,16 @@ public class Brinde {
 			return FXCollections.observableList(list);
 		} catch (SQLException e) {
             throw new RuntimeException(e);
+		}
+	}
+	
+	public static void insertBrinde(Brinde brinde) {
+		String sql = "insert into BRINDE (COQUETEL, NOME, DESCRICAO) values("+brinde+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
 		}
 	}
 	

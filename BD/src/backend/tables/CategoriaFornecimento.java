@@ -52,6 +52,16 @@ public class CategoriaFornecimento {
 		}
 	}
 	
+	public static void insertCategoriaFornecimento(CategoriaFornecimento categoriaFornecimento) {
+		String sql = "insert into CATEGORIAFORNECIMENTO (NOMEREF, DESCRICAO) values("+categoriaFornecimento+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.nomeRef+"','"+this.descricao+"'";

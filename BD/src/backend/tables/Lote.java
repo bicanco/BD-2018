@@ -91,6 +91,16 @@ public class Lote {
 		}
 	}
 	
+	public static void insertLote(Lote lote) {
+		String sql = "insert into LOTE (LOCACAO, NUMERO, FORNECEDORA, PRECO, LARGURA, COMPRIMENTO) values("+lote+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return this.locacao+","+this.numero+",'"+this.fornecedora+"',"+this.preco+","+this.largura+","+this.comprimento;

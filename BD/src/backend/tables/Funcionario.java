@@ -187,6 +187,16 @@ public class Funcionario {
 		
 	}
 	
+	public static void insertFuncionario(Funcionario funcionario) {
+		String sql = "insert into FUNCIONARIO (CPF, RG, ESTADO, NOME, CIDADE, RUA, NUMERO, EMAIL, TELRESIDENCIAL, TELCELULAR, VALORPORHORA, FUNCAO) values("+funcionario+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.cpf+"','"+this.rg+"','"+this.estado+"','"+this.nome+"','"+this.cidade+"','"+this.rua+"',"+this.numero+",'"+this.email+"','"+this.telResidencial+"','"+this.telCelular+"',"+this.valorPorHora+",'"+this.funcao+"'";

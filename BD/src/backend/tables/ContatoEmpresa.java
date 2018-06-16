@@ -71,6 +71,16 @@ public class ContatoEmpresa {
 		}
 	}
 	
+	public static void insertContatoEmpresa(ContatoEmpresa contatoEmpresa) {
+		String sql = "insert into CONTATOEMPRESA (EMPRESA, EMAIL, NOME, TELEFONE) values("+contatoEmpresa+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.empresa+"','"+this.email+"','"+this.nome+"','"+this.telefone+"'";

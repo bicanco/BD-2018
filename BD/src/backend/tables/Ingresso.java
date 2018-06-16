@@ -61,6 +61,16 @@ public class Ingresso {
 		}
 	}
 	
+	public static void insertIngresso(Ingresso ingresso) {
+		String sql = "insert into INGRESSO (FESTFOOD, NUMERO, CPFCOMPRADOR) values("+ingresso+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return this.festFood+","+this.numero+",'"+this.cpfComprador+"'";

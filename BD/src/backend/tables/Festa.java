@@ -101,6 +101,16 @@ public class Festa {
 		}
 	}
 	
+	public static void insertFesta(Festa festa) {
+		String sql = "insert into FESTA (ID, CONTRATANTE, DATA, NOME, HORAINICIO, DURACAO, TIPOFESTA) values("+festa+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return this.id+",'"+this.contratante+"','"+this.data+"','"+this.nome+"','"+this.horaInicio+"','"+this.duracao+"','"+this.tipoFesta+"'";

@@ -69,6 +69,26 @@ public class FestFood {
 		
 	}
 	
+	public static void insertFesta(Festa festa) {
+		String sql = "insert into FESTA (ID, CONTRATANTE, DATA, NOME, HORAINICIO, DURACAO, TIPOFESTA) values("+festa+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	public static void insertFestFood(FestFood festFood) {
+		String sql = "insert into FESTFOOD (FESTA, PRECOINGRESSO) values("+festFood+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.festa+"',"+this.precoIngresso;

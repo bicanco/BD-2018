@@ -72,6 +72,16 @@ public class ProdutosFornecidos {
 		}
 	}
 	
+	public static void insertProdutosFornecidos(ProdutosFornecidos produtosFornecidos) {
+		String sql = "insert into PRODUTOSFORNECIDOS (FORNECEDORA, COQUETEL, NOME, QUANTIDADE) values("+produtosFornecidos+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.fornecedora+"',"+this.coquetel+",'"+this.nome+"',"+this.quantidade;

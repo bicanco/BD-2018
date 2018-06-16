@@ -129,6 +129,16 @@ public class Local {
 		
 	}
 	
+	public static void insertLocal(Local local) {
+		String sql = "insert into LOCAL (NOME, CIDADE, ESTADO, RUA, NUMERO, MAXFREQUENTADORES, POSSUIABERTURA, DIARIALOCACAO) values("+local+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.nome+"','"+this.cidade+"','"+this.estado+"','"+this.rua+"',"+this.numero+","+this.maxFrequentadores+",'"+this.possuiAbertura+"',"+this.diariaLocacao;

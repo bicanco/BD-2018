@@ -52,6 +52,16 @@ public class Convite {
 		}
 	}
 	
+	public static void insertConvite(Convite convite) {
+		String sql = "insert into CONVITE (CONVIDADO, COQUETEL) values("+convite+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.convidado+"',"+this.coquetel;

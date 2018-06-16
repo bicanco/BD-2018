@@ -80,6 +80,16 @@ public class Convidado {
 		
 	}
 	
+	public static void insertConvidado(Convidado convidado) {
+		String sql = "insert into CONVIDADO (EMAIL, NOME, TELEFONE) values("+convidado+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.email+"','"+this.nome+"','"+this.telefone+"'";

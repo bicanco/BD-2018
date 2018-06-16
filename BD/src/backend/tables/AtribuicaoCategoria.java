@@ -62,6 +62,16 @@ public class AtribuicaoCategoria {
 		}
 	}
 	
+	public static void insertAtribuicaoCategoria(AtribuicaoCategoria atribuicaoCategoria) {
+		String sql = "insert into ATRIBUICAOCATEGORIA (FORNECEDORA, CATEGORIA, FAIXAPRECO) values("+atribuicaoCategoria+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.fornecedora+"','"+this.categoria+"','"+this.faixaPreco+"'";

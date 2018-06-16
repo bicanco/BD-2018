@@ -78,7 +78,7 @@ public class Locacao {
 		try {
 			res = ConnectionManager.query(sql);
 			while(res.next())
-				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getDate(3)+" \\/ "+res.getString(4)+" / "+res.getString(5));
+				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getDate(3)+" ||| "+res.getString(4)+" / "+res.getString(5));
 			res.close();
 			ConnectionManager.closeQuery();
 			
@@ -87,6 +87,16 @@ public class Locacao {
 			throw new RuntimeException(e);
 		}
 		
+	}
+	
+	public static void insertLocacao(Locacao locacao) {
+		String sql = "insert into LOCACAO (ID, FESTFOOD, NOMELOCAL, CIDADELOCAL) values("+locacao+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
 	}
 	
 	@Override

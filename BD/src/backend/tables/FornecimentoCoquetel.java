@@ -62,6 +62,16 @@ public class FornecimentoCoquetel {
 		}
 	}
 	
+	public static void insertFornecimentoCoquetel(FornecimentoCoquetel fornecimentoCoquetel) {
+		String sql = "insert into FORNECIMENTOCOQUETEL (FORNECEDORA, COQUETEL, PRECO) values("+fornecimentoCoquetel+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.fornecedora+"',"+this.coquetel+","+this.preco;

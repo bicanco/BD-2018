@@ -59,6 +59,17 @@ public class Contratante {
 		
 	}
 	
+	public static void insertContratante(Contratante contratante) {
+		String sql = "insert into CONTRATANTE (CNPJ) values("+contratante+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "'"+this.cnpj+"'";

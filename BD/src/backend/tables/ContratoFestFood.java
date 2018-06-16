@@ -72,6 +72,16 @@ public class ContratoFestFood {
 		}
 	}
 	
+	public static void insertContratoFestFood(ContratoFestFood contratoFestFood) {
+		String sql = "insert into CONTRATOFESTFOOD (FESTFOOD, SEGURANCA, HORASTRABALHADAS, VALORPAGO) values("+contratoFestFood+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return this.festFood+",'"+this.seguranca+"',"+this.horasTrabalhadas+","+this.valorPago;
