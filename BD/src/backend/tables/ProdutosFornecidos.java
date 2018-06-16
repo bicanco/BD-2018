@@ -57,8 +57,9 @@ public class ProdutosFornecidos {
 	public static ObservableList<ProdutosFornecidos> tableView(){
 		ResultSet res;
 		List<ProdutosFornecidos> list = new ArrayList<ProdutosFornecidos>();
+		String sql="select * from PRODUTOSFORNECIDOS";
 		try {
-			res = ConnectionManager.query("select * from PRODUTOSFORNECIDOS");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(new ProdutosFornecidos(res.getString(1), res.getInt(2), res.getString(3), res.getInt(4)));
 				

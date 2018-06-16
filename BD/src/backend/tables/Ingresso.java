@@ -47,8 +47,9 @@ public class Ingresso {
 	public static ObservableList<Ingresso> tableView(){
 		ResultSet res;
 		List<Ingresso> list = new ArrayList<Ingresso>();
+		String sql="select * from INGRESSO";
 		try {
-			res = ConnectionManager.query("select * from INGRESSO");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(new Ingresso(res.getInt(1), res.getInt(2), res.getString(3)));
 			res.close();

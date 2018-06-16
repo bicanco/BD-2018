@@ -87,8 +87,9 @@ public class Festa {
 	public static ObservableList<Festa> tableView(){
 		ResultSet res;
 		List<Festa> list = new ArrayList<Festa>();
+		String sql="select * from FESTA";
 		try {
-			res = ConnectionManager.query("select * from FESTA");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(new Festa(res.getInt(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getString(6),res.getString(7)));
 			res.close();

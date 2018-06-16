@@ -47,6 +47,7 @@ public class Brinde {
 	public static ObservableList<Brinde> tableView(){
 		ResultSet res;
 		List<Brinde> list = new ArrayList<Brinde>();
+		String sql ="select * from BRINDE";
 		try {
 			res = ConnectionManager.query("select * from BRINDE");
 			while(res.next())			

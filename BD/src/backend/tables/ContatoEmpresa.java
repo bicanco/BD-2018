@@ -57,8 +57,9 @@ public class ContatoEmpresa {
 	public static ObservableList<ContatoEmpresa> tableView(){
 		ResultSet res;
 		List<ContatoEmpresa> list = new ArrayList<ContatoEmpresa>();
+		String sql="select * from CONTATOEMPRESA";
 		try {
-			res = ConnectionManager.query("select * from CONTATOEMPRESA");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(new ContatoEmpresa(res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
 			res.close();

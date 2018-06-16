@@ -47,8 +47,9 @@ public class FornecimentoCoquetel {
 	public static ObservableList<FornecimentoCoquetel> tableView(){
 		ResultSet res;
 		List<FornecimentoCoquetel> list = new ArrayList<FornecimentoCoquetel>();
+		String sql="select * from FORNECIMENTOCOQUETEL";
 		try {
-			res = ConnectionManager.query("select * from FORNECIMENTOCOQUETEL");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(new FornecimentoCoquetel(res.getString(1), res.getInt(2), res.getFloat(3)));
 				

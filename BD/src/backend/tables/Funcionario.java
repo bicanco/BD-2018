@@ -137,8 +137,9 @@ public class Funcionario {
 	public static ObservableList<Funcionario> tableView(){
 		ResultSet res;
 		List<Funcionario> list = new ArrayList<Funcionario>();
+		String sql="select * from FUNCIONARIO";
 		try {
-			res = ConnectionManager.query("select * from FUNCIONARIO");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(new Funcionario(res.getString(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getString(6),res.getInt(7),res.getString(8),res.getString(9),res.getString(10),res.getFloat(11),res.getString(12)));
 			res.close();
@@ -153,8 +154,9 @@ public class Funcionario {
 	public static ObservableList<String> getListaFuncionario(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
+		String sql="select F.NOME,F.CPF,F.FUNCAO from FUNCIONARIO F";
 		try {
-			res = ConnectionManager.query("select F.NOME,F.CPF,F.FUNCAO from FUNCIONARIO F");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getString(3));
 			res.close();
@@ -170,8 +172,9 @@ public class Funcionario {
 	public static ObservableList<String> getListaSeguranca(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
+		String sql="select F.NOME,F.CPF from FUNCIONARIO F";
 		try {
-			res = ConnectionManager.query("select F.NOME,F.CPF from FUNCIONARIO F");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(res.getString(1)+" / "+res.getString(2));
 			res.close();

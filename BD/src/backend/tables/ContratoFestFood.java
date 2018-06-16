@@ -57,8 +57,9 @@ public class ContratoFestFood {
 	public static ObservableList<ContratoFestFood> tableView(){
 		ResultSet res;
 		List<ContratoFestFood> list = new ArrayList<ContratoFestFood>();
+		String sql="select * from CONTRATOFESTFOOD";
 		try {
-			res = ConnectionManager.query("select * from CONTRATOFESTFOOD");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(new ContratoFestFood(res.getInt(1), res.getString(2), res.getInt(3), res.getFloat(4)));
 				

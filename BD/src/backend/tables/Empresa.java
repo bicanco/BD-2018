@@ -66,8 +66,9 @@ public class Empresa {
 	public static ObservableList<Empresa> tableView(){
 		ResultSet res;
 		List<Empresa> list = new ArrayList<Empresa>();
+		String sql="select * from EMPRESA";
 		try {
-			res = ConnectionManager.query("select * from EMPRESA");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(new Empresa(res.getString(1), res.getString(2), res.getString(3), res.getString(4), null));
 				
@@ -83,9 +84,9 @@ public class Empresa {
 	public static ObservableList<String> getListaEmpresa(){
 		ResultSet res;
 		List<String> list = new ArrayList<>();
-		
+		String sql = "select CNPJ, NOMEFANTASIA from EMPRESA";
 		try {
-			res = ConnectionManager.query("select CNPJ, NOMEFANTASIA from EMPRESA");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(res.getString(1)+" / "+res.getString(2));
 				
@@ -96,5 +97,21 @@ public class Empresa {
 		} catch (SQLException e) {
             throw new RuntimeException(e);
 		}
+	}
+	
+	public static void insertEmpresa(Empresa empresa) {
+		String sql = "insert into EMPRESA (CNPJ, NOMEFANTASIA, RAZAOSOCIAL, ENDERECO) values("+empresa+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			System.out.println(sql);
+			throw new RuntimeException();
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return "'"+this.cnpj+"','"+this.nome+"','"+this.razao+"','"+this.endereco+"'";
 	}
 }

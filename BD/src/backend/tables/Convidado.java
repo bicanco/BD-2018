@@ -47,8 +47,9 @@ public class Convidado {
 	public static ObservableList<Convidado> tableView(){
 		ResultSet res;
 		List<Convidado> list = new ArrayList<Convidado>();
+		String sql="select * from CONVIDADO";
 		try {
-			res = ConnectionManager.query("select * from CONVIDADO");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(new Convidado(res.getString(1), res.getString(2), res.getString(3)));
 				
@@ -64,8 +65,9 @@ public class Convidado {
 	public static ObservableList<String> getListaConvidado(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
+		String sql="select NOME,EMAIL from CONVIDADO";
 		try {
-			res = ConnectionManager.query("select NOME,EMAIL from CONVIDADO");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(res.getString(1)+" / "+res.getString(2));
 			res.close();

@@ -57,8 +57,9 @@ public class Locacao {
 	public static ObservableList<Locacao> tableView(){
 		ResultSet res;
 		List<Locacao> list = new ArrayList<Locacao>();
+		String sql="select * from LOCACAO";
 		try {
-			res = ConnectionManager.query("select * from LOCACAO");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(new Locacao(res.getInt(1),res.getInt(2),res.getString(3), res.getString(4)));
 			res.close();
@@ -73,8 +74,9 @@ public class Locacao {
 	public static ObservableList<String> getListaLocacao(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
+		String sql="select E.CNPJ, E.NOMEFANTASIA, F.DATA, L.NOME, L.CIDADE from EMPRESA E, FESTA F, LOCAL L, LOCACAO LO where F.TIPOFESTA = 'FESTFOOD' and F.CONTRATANTE = E.CNPJ and LO.FESTFOOD = F.ID and LO.NOMELOCAL = L.NOME and LO.CIDADELOCAL = L.CIDADE";
 		try {
-			res = ConnectionManager.query("select E.CNPJ, E.NOMEFANTASIA, F.DATA, L.NOME, L.CIDADE from EMPRESA E, FESTA F, LOCAL L, LOCACAO LO where F.TIPOFESTA = 'FESTFOOD' and F.CONTRATANTE = E.CNPJ and LO.FESTFOOD = F.ID and LO.NOMELOCAL = L.NOME and LO.CIDADELOCAL = L.CIDADE");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getDate(3)+" \\/ "+res.getString(4)+" / "+res.getString(5));
 			res.close();

@@ -97,8 +97,9 @@ public class Local {
 	public static ObservableList<Local> tableView(){
 		ResultSet res;
 		List<Local> list = new ArrayList<Local>();
+		String sql="select * from LOCAL";
 		try {
-			res = ConnectionManager.query("select * from LOCAL");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(new Local(res.getString(1),res.getString(2),res.getString(3),res.getString(4),res.getInt(5),res.getInt(6),res.getString(7),res.getFloat(8)));
 			res.close();
@@ -113,8 +114,9 @@ public class Local {
 	public static ObservableList<String> getListaLocal(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
+		String sql="select NOME,CIDADE from LOCAL";
 		try {
-			res = ConnectionManager.query("select NOME,CIDADE from LOCAL");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(res.getString(1)+" / "+res.getString(2));
 			res.close();

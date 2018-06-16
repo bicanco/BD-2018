@@ -47,8 +47,9 @@ public class AtribuicaoCategoria {
 	public static ObservableList<AtribuicaoCategoria> tableView(){
 		ResultSet res;
 		List<AtribuicaoCategoria> list = new ArrayList<AtribuicaoCategoria>();
+		String sql ="select * from ATRIBUICAOCATEGORIA";
 		try {
-			res = ConnectionManager.query("select * from ATRIBUICAOCATEGORIA");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(new AtribuicaoCategoria( res.getString(1), res.getString(2), res.getString(3)));
 				

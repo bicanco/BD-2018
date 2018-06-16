@@ -77,8 +77,9 @@ public class Lote {
 	public static ObservableList<Lote> tableView(){
 		ResultSet res;
 		List<Lote> list = new ArrayList<Lote>();
+		String sql="select * from LOTE";
 		try {
-			res = ConnectionManager.query("select * from LOTE");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(new Lote(res.getInt(1),res.getInt(2),res.getString(3),res.getFloat(4),res.getFloat(5),res.getFloat(6)));
 			res.close();

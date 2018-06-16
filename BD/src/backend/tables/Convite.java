@@ -37,8 +37,9 @@ public class Convite {
 	public static ObservableList<Convite> tableView(){
 		ResultSet res;
 		List<Convite> list = new ArrayList<Convite>();
+		String sql="select * from CONVITE";
 		try {
-			res = ConnectionManager.query("select * from CONVITE");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(new Convite(res.getString(1), res.getInt(2)));
 				

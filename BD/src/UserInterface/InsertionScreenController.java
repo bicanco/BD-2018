@@ -393,9 +393,10 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirEmpresa(ActionEvent event) throws IOException{
-    	/*
-    	Empresa e = new Empresa(cnpjEmpresa.getText(), nomeEmpresa.getText(), razaoEmpresa.getText(), enderecoEmpresa.getText(), tipoEmpresa.getValue());
     	
+    	Empresa e = new Empresa(cnpjEmpresa.getText(), nomeEmpresa.getText(), razaoEmpresa.getText(), enderecoEmpresa.getText(), tipoEmpresa.getValue());
+    	Empresa.insertEmpresa(e);
+    	/*
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		Empresa.inserir(e);
     		ou

@@ -27,8 +27,9 @@ public class Contratante {
 	public static ObservableList<Contratante> tableView(){
 		ResultSet res;
 		List<Contratante> list = new ArrayList<Contratante>();
+		String sql="select * from CONTRATANTE";
 		try {
-			res = ConnectionManager.query("select * from CONTRATANTE");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(new Contratante(res.getString(1)));
 			res.close();
@@ -43,8 +44,9 @@ public class Contratante {
 	public static ObservableList<String> getListaContratante(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
+		String sql="select C.CNPJ,E.NOMEFANTASIA from CONTRATANTE C, EMPRESA E where C.CNPJ = E.CNPJ";
 		try {
-			res = ConnectionManager.query("select C.CNPJ,E.NOMEFANTASIA from CONTRATANTE C, EMPRESA E where C.CNPJ = E.CNPJ");
+			res = ConnectionManager.query(sql);
 			while(res.next())
 				list.add(res.getString(1)+" / "+res.getString(2));
 			res.close();

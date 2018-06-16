@@ -37,8 +37,9 @@ public class CategoriaFornecimento {
 	public static ObservableList<CategoriaFornecimento> tableView(){
 		ResultSet res;
 		List<CategoriaFornecimento> list = new ArrayList<CategoriaFornecimento>();
+		String sql="select * from CATEGORIAFORNECIMENTO";
 		try {
-			res = ConnectionManager.query("select * from CATEGORIAFORNECIMENTO");
+			res = ConnectionManager.query(sql);
 			while(res.next())			
 				list.add(new CategoriaFornecimento(res.getString(1), res.getString(2)));
 				
