@@ -71,23 +71,21 @@ public class ViewScreenController implements Initializable {
     @FXML
     private TableColumn<Fornecedora, String> cnpjFornecedora;
     
-    /*
     @FXML
-    private TableView<CatFornecimento> catFornecimentoTabela;
+    private TableView<CategoriaFornecimento> catFornecimentoTabela;
     @FXML
-    private TableColumn<CatFornecimento, String> nomeCatFornecimento;
+    private TableColumn<CategoriaFornecimento, String> nomeCatFornecimento;
     @FXML
-    private TableColumn<CatFornecimento, String> descCatFornecimento;
+    private TableColumn<CategoriaFornecimento, String> descCatFornecimento;
     
     @FXML
-    private TableView<CatFornecedora> catFornecedoraTabela;
+    private TableView<AtribuicaoCategoria> catFornecedoraTabela;
     @FXML
-    private TableColumn<CatFornecedora, String> fornecedoraCatFornecedora;
+    private TableColumn<AtribuicaoCategoria, String> fornecedoraCatFornecedora;
     @FXML
-    private TableColumn<CatFornecedora, String> categoriaCatFornecedora;
+    private TableColumn<AtribuicaoCategoria, String> categoriaCatFornecedora;
     @FXML
-    private TableColumn<CatFornecedora, String> precoCatFornecedora;
-    */
+    private TableColumn<AtribuicaoCategoria, String> precoCatFornecedora;
     
     @FXML
     private TableView<Festa> festaTabela;
@@ -122,7 +120,7 @@ public class ViewScreenController implements Initializable {
     @FXML
     private TableColumn<Ingresso, String> compradorIngresso;
     
-    /*
+    
     @FXML
     private TableView<Coquetel> coquetelTabela;
     @FXML
@@ -169,16 +167,15 @@ public class ViewScreenController implements Initializable {
     private TableColumn<FornecimentoCoquetel, String> precoFornCoquetel;
     
     @FXML
-    private TableView<Produtos> produtosTabela;
+    private TableView<ProdutosFornecidos> produtosTabela;
     @FXML
-    private TableColumn<Produtos, String> fornecedoraProdutos;
+    private TableColumn<ProdutosFornecidos, String> fornecedoraProdutos;
     @FXML
-    private TableColumn<Produtos, String> coquetelProdutos;
+    private TableColumn<ProdutosFornecidos, String> coquetelProdutos;
     @FXML
-    private TableColumn<Produtos, String> nomeProdutos;
+    private TableColumn<ProdutosFornecidos, String> nomeProdutos;
     @FXML
-    private TableColumn<Produtos, String> quantidadeProdutos;
-    */
+    private TableColumn<ProdutosFornecidos, String> quantidadeProdutos;
     
     @FXML
     private TableView<Local> localTabela;
@@ -225,7 +222,6 @@ public class ViewScreenController implements Initializable {
     @FXML
     private TableColumn<Lote, String> comprimentoLote;
     
-    /*
     @FXML
     private TableView<Funcionario> funcionarioTabela;
     @FXML
@@ -274,7 +270,6 @@ public class ViewScreenController implements Initializable {
     private TableColumn<ContratoFestFood, String> horastrabContFestFood;
     @FXML
     private TableColumn<ContratoFestFood, String> valorContFestFood;
-    */
     
     private static Stage myStage;
     
@@ -304,7 +299,6 @@ public class ViewScreenController implements Initializable {
        	cnpjFornecedora.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
         fornecedoraTabela.setItems(Fornecedora.tableView());
         
-        /*
         nomeCatFornecimento.setCellValueFactory(new PropertyValueFactory<>("nome"));
         descCatFornecimento.setCellValueFactory(new PropertyValueFactory<>("descricao"));
       	catFornecimentoTabela.setItems(CategoriaFornecimento.tableView());
@@ -312,8 +306,8 @@ public class ViewScreenController implements Initializable {
       	fornecedoraCatFornecedora.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
         categoriaCatFornecedora.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         precoCatFornecedora.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        catFornecedoraTabela.setItems(CategoriaFornecedora.tableView());
-        */
+        catFornecedoraTabela.setItems(AtribuicaoCategoria.tableView());
+        
         
         idFesta.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomeFesta.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -333,7 +327,6 @@ public class ViewScreenController implements Initializable {
         compradorIngresso.setCellValueFactory(new PropertyValueFactory<>("cpfComprador"));
        	ingressoTabela.setItems(Ingresso.tableView());
        	
-       	/*
        	festaCoquetel.setCellValueFactory(new PropertyValueFactory<>("festa"));
         localCoquetel.setCellValueFactory(new PropertyValueFactory<>("local"));
         cidadeCoquetel.setCellValueFactory(new PropertyValueFactory<>("cidade"));
@@ -357,14 +350,13 @@ public class ViewScreenController implements Initializable {
        	fornecedoraFornCoquetel.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
         coquetelFornCoquetel.setCellValueFactory(new PropertyValueFactory<>("coquetel"));
         precoFornCoquetel.setCellValueFactory(new PropertyValueFactory<>("nome"));
-       	fornCoquetelTabela.setItems(ForncecimentoCoquetel.tableView());
+       	fornCoquetelTabela.setItems(FornecimentoCoquetel.tableView());
        	
        	fornecedoraProdutos.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
         coquetelProdutos.setCellValueFactory(new PropertyValueFactory<>("coquetel"));
         nomeProdutos.setCellValueFactory(new PropertyValueFactory<>("nome"));
         quantidadeProdutos.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
-        produtosTabela.setItems(Produtos.tableView());
-        */
+        produtosTabela.setItems(ProdutosFornecidos.tableView());
         
         nomeLocal.setCellValueFactory(new PropertyValueFactory<>("nome"));
         cidadeLocal.setCellValueFactory(new PropertyValueFactory<>("cidade"));
