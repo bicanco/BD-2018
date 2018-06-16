@@ -292,11 +292,11 @@ public class InsertionScreenController implements Initializable {
         tipoFesta.setItems(tipofesta);
         
         festaFestFood.setItems(FestFood.getListaFestFood());
+        
+        festfoodIngresso.setItems(FestFood.getListaFestFood());
         /*
-        festfoodIngresso.setItems(Festa.getListaFestFood());
-        
         festaCoquetel.setItems(Festa.getListaCoquetel());
-        
+ 
         localCoquetel.setItems(Local.getListaLocal());
         
         cidadeCoquetel.setItems(Local.getListaCidade());

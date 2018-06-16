@@ -56,7 +56,7 @@ public class FestFood {
 		try {
 			res = ConnectionManager.query("select E.CNPJ, E.NOMEFANTASIA, F.DATA from EMPRESA E, FESTA F where F.TIPOFESTA = 'FESTFOOD' and F.CONTRATANTE = E.CNPJ");
 			while(res.next())
-				list.add(res.getString(1)+" / "+res.getString(2));
+				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getDate(3));
 			res.close();
 			ConnectionManager.closeQuery();
 			
