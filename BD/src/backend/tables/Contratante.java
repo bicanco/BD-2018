@@ -39,4 +39,21 @@ public class Contratante {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public static ObservableList<String> getListaContratante(){
+		ResultSet res;
+		List<String> list = new ArrayList<String>();
+		try {
+			res = ConnectionManager.query("select C.CNPJ,E.NOMEFANTASIA from CONTRATANTE C, EMPRESA E where C.CNPJ = E.CNPJ");
+			while(res.next())
+				list.add(res.getString(1)+" / "+res.getString(2));
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		
+	}
 }

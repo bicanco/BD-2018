@@ -85,9 +85,9 @@ public class Empresa {
 		List<String> list = new ArrayList<>();
 		
 		try {
-			res = ConnectionManager.query("select CNPJ from EMPRESA");
+			res = ConnectionManager.query("select CNPJ, NOMEFANTASIA from EMPRESA");
 			while(res.next())			
-				list.add(res.getString(1));
+				list.add(res.getString(1)+" / "+res.getString(2));
 				
 			res.close();
 			ConnectionManager.closeQuery();

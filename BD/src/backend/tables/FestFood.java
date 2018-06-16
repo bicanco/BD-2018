@@ -49,4 +49,21 @@ public class FestFood {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public static ObservableList<String> getListaFestFood(){
+		ResultSet res;
+		List<String> list = new ArrayList<String>();
+		try {
+			res = ConnectionManager.query("select E.CNPJ, E.NOMEFANTASIA, F.DATA from EMPRESA E, FESTA F where F.TIPOFESTA = 'FESTFOOD' and F.CONTRATANTE = E.CNPJ");
+			while(res.next())
+				list.add(res.getString(1)+" / "+res.getString(2));
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		
+	}
 }

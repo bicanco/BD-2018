@@ -4,6 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+
+import backend.tables.Contratante;
+import backend.tables.Empresa;
+import backend.tables.FestFood;
+import backend.tables.Fornecedora;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
@@ -272,21 +277,22 @@ public class InsertionScreenController implements Initializable {
         	        "Ambas");
         tipoEmpresa.setItems(tipoempresa);
         
-        /*
+        
         empresaContatos.setItems(Empresa.getListaEmpresa());
         
-        fornecedoraCatFornecedora(Empresa.getListaFornecedora());
+        fornecedoraCatFornecedora.setItems(Fornecedora.getListaFornecedora());
         
-        contratanteFesta.setItems(Empresa.getListaContratante());
+        contratanteFesta.setItems(Contratante.getListaContratante());
         
         ObservableList<String> tipofesta = 
         	    FXCollections.observableArrayList(
         	        "Fest Food",
         	        "Coquetel de Lançamento");
+       
         tipoFesta.setItems(tipofesta);
         
-        festaFestFood.setItems(Festa.getListaFestFood());
-        
+        festaFestFood.setItems(FestFood.getListaFestFood());
+        /*
         festfoodIngresso.setItems(Festa.getListaFestFood());
         
         festaCoquetel.setItems(Festa.getListaCoquetel());
