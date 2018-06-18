@@ -129,8 +129,38 @@ public class Festa {
 		}
 	}
 	
+	public static void deleteEmpresa(Festa festa) {
+		String sql = "delete from FESTA"+festa.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(contratante.compareTo("") != 0) {
+			res += " CONTRATANTE = '"+this.contratante+"'";
+		}
+		if(data.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " DATA = to_date("+this.data+",'dd/mm/yyyy')";
+		}
+		if(nome.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " NOME = '"+this.nome+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
-		return this.id+",'"+this.contratante+"','"+this.data+"','"+this.nome+"','"+this.horaInicio+"','"+this.duracao+"','"+this.tipoFesta+"'";
+		return this.id+",'"+this.contratante+"',to_date("+this.data+",'dd/mm/yyyy'),'"+this.nome+"','"+this.horaInicio+"','"+this.duracao+"','"+this.tipoFesta+"'";
 	}
 }

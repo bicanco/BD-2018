@@ -157,6 +157,36 @@ public class Local {
 		}
 	}
 	
+	public static void deleteEmpresa(Local local) {
+		String sql = "delete from LOCAL"+local.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(nome.compareTo("") != 0) {
+			res += " NOME = '"+this.nome+"'";
+		}
+		if(cidade.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " CIDADE = '"+this.cidade+"'";
+		}
+		if(estado.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " ESTADO = '"+this.estado+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.nome+"','"+this.cidade+"','"+this.estado+"','"+this.rua+"',"+this.numero+","+this.maxFrequentadores+",'"+this.possuiAbertura+"',"+this.diariaLocacao;

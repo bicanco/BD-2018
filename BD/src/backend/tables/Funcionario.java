@@ -215,6 +215,41 @@ public class Funcionario {
 		}
 	}
 	
+	public static void deleteEmpresa(Funcionario funcionario) {
+		String sql = "delete from FUNCIONARIO"+funcionario.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(cpf.compareTo("") != 0) {
+			res += " CPF = '"+this.cpf+"'";
+		}
+		if(nome.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " NOME = '"+this.nome+"'";
+		}
+		if(cidade.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " CIDADE = '"+this.cidade+"'";
+		}
+		if(estado.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " ESTADO = '"+this.estado+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.cpf+"','"+this.rg+"','"+this.estado+"','"+this.nome+"','"+this.cidade+"','"+this.rua+"',"+this.numero+",'"+this.email+"','"+this.telResidencial+"','"+this.telCelular+"',"+this.valorPorHora+",'"+this.funcao+"'";

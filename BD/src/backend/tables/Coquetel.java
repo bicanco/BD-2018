@@ -100,6 +100,36 @@ public class Coquetel {
 		}
 	}
 	
+	public static void deleteEmpresa(Coquetel coquetel) {
+		String sql = "delete from COQUETEL"+coquetel.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(festa != 0) {
+			res += " FESTA = "+this.festa;
+		}
+		if(local.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " LOCAL = '"+this.local+"'";
+		}
+		if(cidade.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " CIDADE = '"+this.cidade+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return this.festa+","+this.orcamento+",'"+this.local+"','"+this.cidade+"'";

@@ -82,6 +82,31 @@ public class ContratoFestFood {
 		}
 	}
 	
+	public static void deleteEmpresa(ContratoFestFood contratoFestFood) {
+		String sql = "delete from CONTRATOFESTFOOD"+contratoFestFood.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(festFood != 0) {
+			res += " FESTFOOD = "+this.festFood;
+		}
+		if(seguranca.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " SEGURANCA = '"+this.seguranca+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return this.festFood+",'"+this.seguranca+"',"+this.horasTrabalhadas+","+this.valorPago;

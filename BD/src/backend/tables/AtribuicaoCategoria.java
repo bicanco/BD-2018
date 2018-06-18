@@ -72,6 +72,31 @@ public class AtribuicaoCategoria {
 		}
 	}
 	
+	public static void deleteEmpresa(AtribuicaoCategoria atribuicaoCategoria) {
+		String sql = "delete from ATRIBUICAOCATEGORIA"+atribuicaoCategoria.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(fornecedora.compareTo("") != 0) {
+			res += " FORNECEDORA = '"+this.fornecedora+"'";
+		}
+		if(categoria.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " CATEGORIA = '"+this.categoria+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.fornecedora+"','"+this.categoria+"','"+this.faixaPreco+"'";

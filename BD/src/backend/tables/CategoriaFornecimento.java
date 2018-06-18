@@ -80,6 +80,26 @@ public class CategoriaFornecimento {
 		}
 	}
 	
+	public static void deleteEmpresa(CategoriaFornecimento categoriaFornecimento) {
+		String sql = "delete from CATEGORIAFORNECIMENTO"+categoriaFornecimento.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(nomeRef.compareTo("") != 0) {
+			res += " NOMEREF = '"+this.nomeRef+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.nomeRef+"','"+this.descricao+"'";

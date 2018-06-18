@@ -71,6 +71,36 @@ public class Ingresso {
 		}
 	}
 	
+	public static void deleteEmpresa(Ingresso ingresso) {
+		String sql = "delete from INGRESSO"+ingresso.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(festFood != 0) {
+			res += " FESTFOOD = "+this.festFood;
+		}
+		if(numero == 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " NUMERO = "+this.numero;
+		}
+		if(cpfComprador.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " CPFCOMPRADOR = '"+this.cpfComprador+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return this.festFood+","+this.numero+",'"+this.cpfComprador+"'";

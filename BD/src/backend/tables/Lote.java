@@ -101,6 +101,36 @@ public class Lote {
 		}
 	}
 	
+	public static void deleteEmpresa(Lote lote) {
+		String sql = "delete from LOTE"+lote.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(fornecedora.compareTo("") != 0) {
+			res += " FORNECEDORA = '"+this.fornecedora+"'";
+		}
+		if(locacao != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " LOCACAO = "+this.locacao;
+		}
+		if(numero != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " NUMERO = "+this.numero;
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return this.locacao+","+this.numero+",'"+this.fornecedora+"',"+this.preco+","+this.largura+","+this.comprimento;

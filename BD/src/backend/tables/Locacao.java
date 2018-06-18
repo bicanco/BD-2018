@@ -117,6 +117,36 @@ public class Locacao {
 		}
 	}
 	
+	public static void deleteEmpresa(Locacao locacao) {
+		String sql = "delete from LOCACAO"+locacao.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(festFood != 0) {
+			res += " FESTFOOD = "+this.festFood;
+		}
+		if(nomeLocal.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " NOMELOCAL = '"+this.nomeLocal+"'";
+		}
+		if(cidadeLocal.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " CIDADELOCAL = '"+this.cidadeLocal+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return this.id+","+this.festFood+",'"+this.nomeLocal+"','"+this.cidadeLocal+"'";

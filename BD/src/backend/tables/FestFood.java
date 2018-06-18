@@ -89,6 +89,26 @@ public class FestFood {
 		}
 	}
 	
+	public static void deleteEmpresa(FestFood festFood) {
+		String sql = "delete from FESTFOOD"+festFood.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(festa != 0) {
+			res += " FESTA = "+this.festa;
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.festa+"',"+this.precoIngresso;

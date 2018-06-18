@@ -62,6 +62,31 @@ public class Convite {
 		}
 	}
 	
+	public static void deleteEmpresa(Convite convite) {
+		String sql = "delete from CONVITE"+convite.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(coquetel != 0) {
+			res += " COQUETEL = "+this.coquetel;
+		}
+		if(convidado.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " CONVIDADO = '"+this.convidado+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.convidado+"',"+this.coquetel;

@@ -119,7 +119,6 @@ public class Empresa {
 	
 	public static void deleteEmpresa(Empresa empresa) {
 		String sql = "delete from EMPRESA"+empresa.toStringRestritions();
-		System.out.println(sql);
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -133,10 +132,9 @@ public class Empresa {
 		if(cnpj.compareTo("") != 0) {
 			res += " CNPJ = '"+this.cnpj+"'";
 		}
-		if(nome != null) {
-			if(res.compareTo(" where ") != 0) {
+		if(nome.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
 				res += " and ";
-			}
 			res += " NOMEFANTASIA = '"+this.nome+"'";
 		}
 		if(res.compareTo(" where ") == 0)

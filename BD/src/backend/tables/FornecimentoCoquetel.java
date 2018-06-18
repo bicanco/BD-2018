@@ -72,6 +72,31 @@ public class FornecimentoCoquetel {
 		}
 	}
 	
+	public static void deleteEmpresa(FornecimentoCoquetel fornecimentoCoquetel) {
+		String sql = "delete from FORNECIMENTOCOQUETEL"+fornecimentoCoquetel.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(fornecedora.compareTo("") != 0) {
+			res += " FORNECEDORA = '"+this.fornecedora+"'";
+		}
+		if(coquetel != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " COQUETEL = "+this.coquetel;
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.fornecedora+"',"+this.coquetel+","+this.preco;

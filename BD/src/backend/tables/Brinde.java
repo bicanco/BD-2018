@@ -72,6 +72,31 @@ public class Brinde {
 		}
 	}
 	
+	public static void deleteEmpresa(Brinde brinde) {
+		String sql = "delete from BRINDE"+brinde.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(coquetel != 0) {
+			res += " COQUETEL = "+this.coquetel;
+		}
+		if(nome.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " NOME = '"+this.nome+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return this.coquetel+",'"+this.nome+"','"+this.descricao+"'";

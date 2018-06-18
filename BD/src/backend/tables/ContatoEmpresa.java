@@ -99,6 +99,36 @@ public class ContatoEmpresa {
 		}
 	}
 	
+	public static void deleteEmpresa(ContatoEmpresa contatoEmpresa) {
+		String sql = "delete from CONTATOEMPRESA"+contatoEmpresa.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(empresa.compareTo("") != 0) {
+			res += " EMPRESA = '"+this.empresa+"'";
+		}
+		if(nome.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " NOME = '"+this.nome+"'";
+		}
+		if(email.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " EMAIL = '"+this.email+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.empresa+"','"+this.email+"','"+this.nome+"','"+this.telefone+"'";

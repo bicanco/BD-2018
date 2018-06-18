@@ -82,6 +82,31 @@ public class ContratoCoquetel {
 		}
 	}
 	
+	public static void deleteEmpresa(ContratoCoquetel contratoCoquetel) {
+		String sql = "delete from CONTRATOCOQUETEL"+contratoCoquetel.toStringRestritions();
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(coquetel != 0) {
+			res += " COQUETEL = "+this.coquetel;
+		}
+		if(funcionario.compareTo("") != 0) {
+			if(res.compareTo(" where ") != 0)
+				res += " and ";
+			res += " FUNCIONARIO = '"+this.funcionario+"'";
+		}
+		if(res.compareTo(" where ") == 0)
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return this.coquetel+",'"+this.funcionario+"',"+this.horasTrabalhadas+","+this.valorPago;
