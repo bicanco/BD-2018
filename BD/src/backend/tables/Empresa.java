@@ -121,7 +121,6 @@ public class Empresa {
 		String sql = "update EMPRESA set"
 				+ empresa.toStringUpdates()
 				+ " where CNPJ = '"+empresa.cnpj+"'";
-		System.out.println(sql);
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
