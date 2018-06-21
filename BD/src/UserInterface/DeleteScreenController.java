@@ -45,6 +45,16 @@ public class DeleteScreenController implements Initializable {
     private JFXButton removerEmpresa;
     
     @FXML
+    private JFXTextField cnpjFornecedora;
+    @FXML
+    private JFXButton removerFornecedora;
+    
+    @FXML
+    private JFXTextField cnpjContratante;
+    @FXML
+    private JFXButton removerContratante;
+    
+    @FXML
     private JFXTextField empresaContatos;
     @FXML
     private JFXTextField nomeContatos;
@@ -274,6 +284,29 @@ public class DeleteScreenController implements Initializable {
    		*/
     }
     
+    @FXML
+    void removerFornecedora(ActionEvent event) throws IOException{
+    	/*
+    	Fornecedora f = new Fornecedora(cnpjFornecedora.getText());
+    	
+    	if(verificação dos atributos para saber se estão conforme as especificações)
+    		f.remover();
+    	else
+    		tratamento dos erros (telas);
+   		*/
+    }
+    
+    @FXML
+    void removerContratante(ActionEvent event) throws IOException{
+    	/*
+    	Contratante c = new Contratante(cnpjContratante.getText());
+    	
+    	if(verificação dos atributos para saber se estão conforme as especificações)
+    		c.remover();
+    	else
+    		tratamento dos erros (telas);
+   		*/
+    }
     
     @FXML
     void removerContato(ActionEvent event) throws IOException{

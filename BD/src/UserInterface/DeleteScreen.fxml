@@ -119,6 +119,32 @@
                                     </Pane>
                                  </content>
                               </Tab>
+                              <Tab text="Fornecedora">
+                                 <content>
+                                    <Pane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+                                          <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
+                                          <JFXTextField fx:id="cnpjFornecedora" layoutX="211.0" layoutY="253.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <Label layoutX="162.0" layoutY="257.0" text="CNPJ:" />
+                                          <JFXButton fx:id="removerFornecedora" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerFornecedora" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Contratante">
+                                 <content>
+                                    <Pane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
+                                          <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
+                                          <JFXTextField fx:id="cnpjContratante" layoutX="211.0" layoutY="253.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <Label layoutX="159.0" layoutY="257.0" text="CNPJ:" />
+                                          <JFXButton fx:id="removerContratante" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerContratante" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </Tab>
                               <Tab text="Contatos da Empresa">
                                  <content>
                                     <Pane prefHeight="200.0" prefWidth="200.0">
@@ -142,8 +168,8 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo com as informações do(s) registro(s) a serem removidos:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="467.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXTextField fx:id="nomeCatFornecimento" layoutX="211.0" layoutY="237.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="153.0" layoutY="241.0" text="Nome:" />
+                                          <JFXTextField fx:id="nomeCatFornecimento" layoutX="211.0" layoutY="248.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <Label layoutX="153.0" layoutY="252.0" text="Nome:" />
                                           <JFXButton fx:id="removerCatFornecimento" buttonType="RAISED" layoutX="339.0" layoutY="526.0" onAction="#removerCategoriaFornecimento" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Remover" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
