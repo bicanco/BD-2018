@@ -117,6 +117,19 @@ public class Empresa {
 		}
 	}
 	
+	public static void updateEmpresa(Empresa empresa) {
+		String sql = "update EMPRESA set"
+				+ empresa.toStringUpdates()
+				+ " where CNPJ = '"+empresa.cnpj+"'";
+		System.out.println(sql);
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(Empresa empresa) {
 		String sql = "delete from EMPRESA"+empresa.toStringRestritions();
 		try {
@@ -125,6 +138,19 @@ public class Empresa {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(nome.compareTo("") != 0) {
+			res += " NOMEFANTASIA = '"+this.nome+"'";
+		}
+		if(endereco.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " ENDERECO = '"+this.endereco+"'";
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {
