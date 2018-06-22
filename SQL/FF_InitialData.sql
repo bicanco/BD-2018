@@ -20,11 +20,11 @@ INSERT INTO CONTATOEMPRESA (EMPRESA, EMAIL, NOME, TELEFONE)
     VALUES ('12345678901234', 'froze@iceland.com', 'Princesa da Froze', '41998731123');
 
 INSERT INTO LOCAL (NOME, CIDADE, ESTADO, RUA, NUMERO, MAXFREQUENTADORES, POSSUIABERTURA, DIARIALOCACAO)
-    VALUES ('Morumbi', 'São Paulo', 'São Paulo', 'Rua dos Craques', 1233, 50000, 'V', 40000.0);
+    VALUES ('Morumbi', 'São Paulo', 'São Paulo', 'Rua dos Craques', 1233, 50000, 'S', 40000.0);
 INSERT INTO LOCAL (NOME, CIDADE, ESTADO, RUA, NUMERO, MAXFREQUENTADORES, POSSUIABERTURA, DIARIALOCACAO)
-    VALUES ('Maracanã', 'Rio de Janeiro', 'Rio de Janeiro', 'Rua Principal', 2145, 65000, 'F', 55000.0);
+    VALUES ('Maracanã', 'Rio de Janeiro', 'Rio de Janeiro', 'Rua Principal', 2145, 65000, 'N', 55000.0);
 INSERT INTO LOCAL (NOME, CIDADE, ESTADO, RUA, NUMERO, MAXFREQUENTADORES, POSSUIABERTURA, DIARIALOCACAO)
-    VALUES ('O Salão de Festas', 'Brasília', 'Distrito Federal', 'Rua 13', 134, 300, 'F', 8500.0);
+    VALUES ('O Salão de Festas', 'Brasília', 'Distrito Federal', 'Rua 13', 134, 300, 'N', 8500.0);
     
 INSERT INTO FESTA (ID, CONTRATANTE, DATA, NOME, HORAINICIO, DURACAO, TIPOFESTA)
     VALUES (1, '11223344556677', TO_DATE('24/08/2018', 'dd/mm/yyyy'), 'Food Fan Fest', TO_DATE('11:00', 'hh:mi'), TO_DATE('06:00', 'hh:mi'), 'FESTFOOD');
