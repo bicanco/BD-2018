@@ -271,7 +271,6 @@ public class InsertionScreenController implements Initializable {
         	        "Ambas");
         tipoEmpresa.setItems(tipoempresa);
         
-        
         empresaContatos.setItems(Empresa.getListaEmpresa());
         
         fornecedoraCatFornecedora.setItems(Fornecedora.getListaFornecedora());

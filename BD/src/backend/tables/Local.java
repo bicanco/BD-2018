@@ -129,6 +129,24 @@ public class Local {
 		}
 	}
 	
+	public static ObservableList<String> getListaCidade() {
+		ResultSet res;
+		List<String> list = new ArrayList<>();
+		String sql = "select DISTINCT CIDADE from LOCAL";
+		try {
+			res = ConnectionManager.query(sql);
+			while(res.next())			
+				list.add(res.getString(1));
+				
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		} catch (SQLException e) {
+            throw new RuntimeException(e);
+		}
+	}
+	
 	public static ObservableList<String> getListaLocal(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();

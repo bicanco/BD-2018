@@ -136,13 +136,11 @@ public class AlterScreenController implements Initializable {
     @FXML
     private JFXComboBox<String> nomeLocal;
     @FXML
+    private JFXComboBox<String> cidadeLocal;
+    @FXML
     private JFXTextField ruaLocal;
     @FXML
     private JFXTextField numeroLocal;
-    @FXML
-    private JFXTextField cidadeLocal;
-    @FXML
-    private JFXTextField estadoLocal;
     @FXML
     private JFXTextField capacidadeLocal;
     @FXML
@@ -160,11 +158,11 @@ public class AlterScreenController implements Initializable {
     private JFXButton alterarLocacao;
     
     @FXML
-    private JFXComboBox<String> fornecedoraLote;
-    @FXML
     private JFXComboBox<String> locacaoLote;
     @FXML
     private JFXTextField numeroLote;
+    @FXML
+    private JFXComboBox<String> fornecedoraLote;
     @FXML
     private JFXTextField precoLote;
     @FXML
@@ -256,6 +254,8 @@ public class AlterScreenController implements Initializable {
         coquetelProdutos.setItems(Coquetel.getListaCoquetel());
         
         nomeLocal.setItems(Local.getListaNome());
+        
+        cidadeLocal.setItems(Local.getListaCidade());
         
         idLocacao.setItems(Locacao.getListaId());
         

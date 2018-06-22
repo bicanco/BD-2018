@@ -2,10 +2,20 @@ package UserInterface;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+
+import backend.tables.CategoriaFornecimento;
+import backend.tables.Coquetel;
+import backend.tables.Funcionario;
+import backend.tables.Locacao;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -81,6 +91,40 @@ public class SearchScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    	ObservableList<String> mes = 
+        	    FXCollections.observableArrayList(
+        	        "Janeiro", "Fevereiro", "Março",
+        	        "Abril", "Maio", "Junho",
+        	        "Julho", "Agosto", "Setembro",
+        	        "Outubro", "Novembro", "Dezembro");
+    	
+    	List<String> list = new ArrayList<String>();
+    	
+    	for(int i = 1900; i < 2020; i++){
+    		list.add(Integer.toString(i));
+    	}
+    	
+    	ObservableList<String> ano  = 
+        	    FXCollections.observableArrayList(list);
+    	
+    	mesInicial.setItems(mes);
+    	
+    	mesFinal.setItems(mes);
+    	
+    	anoInicial.setItems(ano);
+    	
+    	anoFinal.setItems(ano);
+    	
+    	locacaoBusca.setItems(Locacao.getListaLocacao());
+    	
+    	coquetelBusca.setItems(Coquetel.getListaCoquetel());
+    	
+    	funcionarioBusca.setItems(Funcionario.getListaFuncionario());
+    	
+    	estadoBusca.setItems(Funcionario.getListaEstado());
+    	
+    	categoriaBusca.setItems(CategoriaFornecimento.getListaCategoria());
+    	
         myStage = Main.getMyStage();
     }    
     

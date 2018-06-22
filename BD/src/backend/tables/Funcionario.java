@@ -205,6 +205,24 @@ public class Funcionario {
 		}
 	}
 	
+	public static ObservableList<String> getListaEstado() {
+		ResultSet res;
+		List<String> list = new ArrayList<>();
+		String sql = "select DISTINCT ESTADO from FUNCIONARIO";
+		try {
+			res = ConnectionManager.query(sql);
+			while(res.next())			
+				list.add(res.getString(1));
+				
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		} catch (SQLException e) {
+            throw new RuntimeException(e);
+		}
+	}
+	
 	public static void insertFuncionario(Funcionario funcionario) {
 		String sql = "insert into FUNCIONARIO (CPF, RG, ESTADO, NOME, CIDADE, RUA, NUMERO, EMAIL, TELRESIDENCIAL, TELCELULAR, VALORPORHORA, FUNCAO) values("+funcionario+")";
 		try {
@@ -308,5 +326,5 @@ public class Funcionario {
 	@Override
 	public String toString() {
 		return "'"+this.cpf+"','"+this.rg+"','"+this.estado+"','"+this.nome+"','"+this.cidade+"','"+this.rua+"',"+this.numero+",'"+this.email+"','"+this.telResidencial+"','"+this.telCelular+"',"+this.valorPorHora+",'"+this.funcao+"'";
-	}
+	}	
 }
