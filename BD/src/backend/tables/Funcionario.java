@@ -215,6 +215,18 @@ public class Funcionario {
 		}
 	}
 	
+	public static void updateFuncionario(Funcionario funcionario) {
+		String sql = "update FUNCIONARIO set"
+				+ funcionario.toStringUpdates()
+				+ " where CPF = '"+funcionario.cpf+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(Funcionario funcionario) {
 		String sql = "delete from FUNCIONARIO"+funcionario.toStringRestritions();
 		try {
@@ -223,6 +235,49 @@ public class Funcionario {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(rua.compareTo("") != 0) {
+			res += " RUA = '"+this.rua+"'";
+		}
+		if(email.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " EMAIL = '"+email+"'";
+		}
+		if(numero != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " NUMERO = "+this.numero;
+		}
+		if(telResidencial.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " TELRESIDENCIAL = '"+this.telResidencial+"'";
+		}
+		if(cidade.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " CIDADE = '"+cidade+"'";
+		}
+		if(telCelular.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " TELCELULAR = '"+this.telCelular+"'";
+		}
+		if(estado.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " ESTADO = '"+this.estado+"'";
+		}
+		if(valorPorHora != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " VALORPORHORA = "+this.telResidencial;
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

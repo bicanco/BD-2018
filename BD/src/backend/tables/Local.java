@@ -157,6 +157,19 @@ public class Local {
 		}
 	}
 	
+	public static void updateLocal(Local local) {
+		String sql = "update LOCAL set"
+				+ local.toStringUpdates()
+				+ " where NOME = '"+local.nome+"'"
+				+ "and CIDADE ='"+local.cidade+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(Local local) {
 		String sql = "delete from LOCAL"+local.toStringRestritions();
 		try {
@@ -165,6 +178,39 @@ public class Local {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(rua.compareTo("") != 0) {
+			res += " RUA = '"+this.rua+"'";
+		}
+		if(estado.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " ESTADO = '"+this.estado+"'";
+		}
+		if(numero != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " NUMERO = "+this.numero;
+		}
+		if(maxFrequentadores != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " MAXFREQUENTADORES = "+this.maxFrequentadores;
+		}
+		if(diariaLocacao != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " DIARIALOCAO = "+this.diariaLocacao;
+		}
+		if(possuiAbertura.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " POSSUIABERTURA = '"+this.possuiAbertura+"'";
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

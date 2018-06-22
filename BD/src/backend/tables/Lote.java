@@ -101,6 +101,19 @@ public class Lote {
 		}
 	}
 	
+	public static void updateLote(Lote lote) {
+		String sql = "update LOTE set"
+				+ lote.toStringUpdates()
+				+ " where LOCACAO = "+lote.locacao
+				+ "and NUMERO = "+lote.numero;
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(Lote lote) {
 		String sql = "delete from LOTE"+lote.toStringRestritions();
 		try {
@@ -109,6 +122,29 @@ public class Lote {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(fornecedora.compareTo("") != 0) {
+			res += " FORNECEDORA = '"+this.fornecedora+"'";
+		}
+		if(preco != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " PRECO = "+preco;
+		}
+		if(largura != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " LARGURA = "+this.largura;
+		}
+		if(comprimento != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " COMPRIMENTO = "+this.comprimento;
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

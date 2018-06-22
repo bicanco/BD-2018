@@ -129,6 +129,18 @@ public class Festa {
 		}
 	}
 	
+	public static void updateFesta(Festa festa) {
+		String sql = "update FESTA set"
+				+ festa.toStringUpdates()
+				+ " where ID = "+festa.id;
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(Festa festa) {
 		String sql = "delete from FESTA"+festa.toStringRestritions();
 		try {
@@ -137,6 +149,29 @@ public class Festa {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(data.compareTo("") != 0) {
+			res += " DATA = to_date('"+this.data+"','dd/mm/yyyy')";
+		}
+		if(nome.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " NOME = '"+this.nome+"'";
+		}
+		if(horaInicio.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " HORAINICIO = to_date('"+this.horaInicio+"','hh:mi')";
+		}
+		if(duracao.compareTo("") != 0) {
+			if(res.compareTo("") != 0)
+				res += ", ";
+			res += " DURACAO = to_date('"+this.duracao+"','hh:mi')";
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {
@@ -161,6 +196,6 @@ public class Festa {
 	
 	@Override
 	public String toString() {
-		return this.id+",'"+this.contratante+"',to_date("+this.data+",'dd/mm/yyyy'),'"+this.nome+"','"+this.horaInicio+"','"+this.duracao+"','"+this.tipoFesta+"'";
+		return this.id+",'"+this.contratante+"',to_date("+this.data+",'dd/mm/yyyy'),'"+this.nome+"',to_date('"+this.horaInicio+"','hh:mi'),to_date('"+this.duracao+"','hh:mi'),'"+this.tipoFesta+"'";
 	}
 }

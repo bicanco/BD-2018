@@ -69,8 +69,8 @@ public class FestFood {
 		
 	}
 	
-	public static void insertFesta(Festa festa) {
-		String sql = "insert into FESTA (ID, CONTRATANTE, DATA, NOME, HORAINICIO, DURACAO, TIPOFESTA) values("+festa+")";
+	public static void insertFestFood(FestFood festFood) {
+		String sql = "insert into FESTFOOD (FESTA, PRECOINGRESSO) values("+festFood+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -79,8 +79,10 @@ public class FestFood {
 		}
 	}
 	
-	public static void insertFestFood(FestFood festFood) {
-		String sql = "insert into FESTFOOD (FESTA, PRECOINGRESSO) values("+festFood+")";
+	public static void updateFestFood(FestFood festFood) {
+		String sql = "update FESTFOOD set"
+				+ festFood.toStringUpdates()
+				+ " where FESTA = "+festFood.festa;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -97,6 +99,14 @@ public class FestFood {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(precoIngresso != 0) {
+			res += " PRECOINGRESSO = "+this.precoIngresso;
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

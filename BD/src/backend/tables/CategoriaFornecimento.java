@@ -80,6 +80,18 @@ public class CategoriaFornecimento {
 		}
 	}
 	
+	public static void updateCategoriaFornecimento(CategoriaFornecimento categoriaFornecimento) {
+		String sql = "update CATEGORIAFORNECIMENTO set"
+				+ categoriaFornecimento.toStringUpdates()
+				+ " where NOMEREF = '"+categoriaFornecimento.nomeRef+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(CategoriaFornecimento categoriaFornecimento) {
 		String sql = "delete from CATEGORIAFORNECIMENTO"+categoriaFornecimento.toStringRestritions();
 		try {
@@ -88,6 +100,14 @@ public class CategoriaFornecimento {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(descricao.compareTo("") != 0) {
+			res += " DESCRICAO = '"+this.descricao+"'";
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

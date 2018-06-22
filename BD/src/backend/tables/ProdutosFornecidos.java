@@ -82,6 +82,20 @@ public class ProdutosFornecidos {
 		}
 	}
 	
+	public static void updateProdutosFornecidos(ProdutosFornecidos produtosFornecidos) {
+		String sql = "update PRODUTOSFORNECIDOS set"
+				+ produtosFornecidos.toStringUpdates()
+				+ " where FORNECEDORA = '"+produtosFornecidos.fornecedora+"'"
+				+ "and COQUETEl = "+produtosFornecidos.coquetel
+				+ "and NOME ='"+produtosFornecidos.nome+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(ProdutosFornecidos produtosFornecidos) {
 		String sql = "delete from PRODUTOSFORNECIDOS"+produtosFornecidos.toStringRestritions();
 		try {
@@ -90,6 +104,14 @@ public class ProdutosFornecidos {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(quantidade != 0) {
+			res += " QUANTIDADE = "+this.quantidade;
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

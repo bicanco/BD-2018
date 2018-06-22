@@ -99,6 +99,18 @@ public class ContatoEmpresa {
 		}
 	}
 	
+	public static void updateContatoEmpresa(ContatoEmpresa contatoEmpresa) {
+		String sql = "update CONTATOEMPRESA set"
+				+ contatoEmpresa.toStringUpdates()
+				+ " where EMAIL = '"+contatoEmpresa.email+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(ContatoEmpresa contatoEmpresa) {
 		String sql = "delete from CONTATOEMPRESA"+contatoEmpresa.toStringRestritions();
 		try {
@@ -109,6 +121,14 @@ public class ContatoEmpresa {
 		}
 	}
 	
+	private String toStringUpdates() {
+		String res = "";
+		if(telefone.compareTo("") != 0) {
+			res += " TELEFONE = '"+this.telefone+"'";
+		}
+		return res;
+	}
+		
 	private String toStringRestritions() {
 		String res = " where ";
 		if(empresa.compareTo("") != 0) {

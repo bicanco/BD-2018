@@ -82,6 +82,19 @@ public class ContratoFestFood {
 		}
 	}
 	
+	public static void updateContratoFestFood(ContratoFestFood contratoFestFood) {
+		String sql = "update CONTRATOFESTFOOD set"
+				+ contratoFestFood.toStringUpdates()
+				+ " where FESTFOOD = "+contratoFestFood.festFood
+				+ " and SEGURANCA = '"+contratoFestFood.seguranca+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(ContratoFestFood contratoFestFood) {
 		String sql = "delete from CONTRATOFESTFOOD"+contratoFestFood.toStringRestritions();
 		try {
@@ -90,6 +103,14 @@ public class ContratoFestFood {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(horasTrabalhadas != 0) {
+			res += " HORASTRABALHADAS = "+this.horasTrabalhadas;
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

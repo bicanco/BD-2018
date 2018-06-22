@@ -72,6 +72,19 @@ public class AtribuicaoCategoria {
 		}
 	}
 	
+	public static void updateAtribuicaoCategoria(AtribuicaoCategoria atribuicaoCategoria) {
+		String sql = "update ATRIBUICAOCATEGORIA set"
+				+ atribuicaoCategoria.toStringUpdates()
+				+ " where FORNECEDORA = '"+atribuicaoCategoria.fornecedora+"'"
+				+ "and CATEGORIA = '"+atribuicaoCategoria.categoria+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(AtribuicaoCategoria atribuicaoCategoria) {
 		String sql = "delete from ATRIBUICAOCATEGORIA"+atribuicaoCategoria.toStringRestritions();
 		try {
@@ -80,6 +93,14 @@ public class AtribuicaoCategoria {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(faixaPreco.compareTo("") != 0) {
+			res += " FAIXAPRECO = '"+this.faixaPreco+"'";
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

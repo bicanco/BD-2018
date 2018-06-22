@@ -100,6 +100,18 @@ public class Coquetel {
 		}
 	}
 	
+	public static void updateCoquetel(Coquetel coquetel) {
+		String sql = "update COQUETEL set"
+				+ coquetel.toStringUpdates()
+				+ " where FESTA = "+coquetel.festa;
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(Coquetel coquetel) {
 		String sql = "delete from COQUETEL"+coquetel.toStringRestritions();
 		try {
@@ -108,6 +120,14 @@ public class Coquetel {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(local.compareTo("") != 0) {
+			res += " LOCAL = '"+this.local+"'";
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

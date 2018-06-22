@@ -117,6 +117,18 @@ public class Locacao {
 		}
 	}
 	
+	public static void updateLocacao(Locacao locacao) {
+		String sql = "update LOCACAO set"
+				+ locacao.toStringUpdates()
+				+ " where ID = "+locacao.id;
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(Locacao locacao) {
 		String sql = "delete from LOCACAO"+locacao.toStringRestritions();
 		try {
@@ -125,6 +137,15 @@ public class Locacao {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+	if(nomeLocal.compareTo("") != 0 && cidadeLocal.compareTo("") != 0) {
+			res += " NOMELOCAL = '"+this.nomeLocal+"',"
+				+ "CIDADELOCAL = '"+this.cidadeLocal+"'";
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

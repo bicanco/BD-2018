@@ -72,6 +72,19 @@ public class FornecimentoCoquetel {
 		}
 	}
 	
+	public static void updateFornecimentoCoquetel(FornecimentoCoquetel fornecimentoCoquetel) {
+		String sql = "update FORNECIMENTOCOQUETEL set"
+				+ fornecimentoCoquetel.toStringUpdates()
+				+ " where COQUETEL = "+fornecimentoCoquetel.coquetel
+				+ "and FORNECEDORA ='"+fornecimentoCoquetel.fornecedora+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(FornecimentoCoquetel fornecimentoCoquetel) {
 		String sql = "delete from FORNECIMENTOCOQUETEL"+fornecimentoCoquetel.toStringRestritions();
 		try {
@@ -81,6 +94,15 @@ public class FornecimentoCoquetel {
 			throw new RuntimeException();
 		}
 	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(preco != 0) {
+			res += " PRECO = "+this.preco;
+		}
+		return res;
+	}
+	
 	
 	private String toStringRestritions() {
 		String res = " where ";

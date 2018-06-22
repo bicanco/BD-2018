@@ -82,6 +82,19 @@ public class ContratoCoquetel {
 		}
 	}
 	
+	public static void updateContratoCoquetel(ContratoCoquetel contratoCoquetel) {
+		String sql = "update CONTRATOCOQUETEL set"
+				+ contratoCoquetel.toStringUpdates()
+				+ " where COQUETEL = "+contratoCoquetel.coquetel
+				+ " and FUNCIONARIO = '"+contratoCoquetel.funcionario+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(ContratoCoquetel contratoCoquetel) {
 		String sql = "delete from CONTRATOCOQUETEL"+contratoCoquetel.toStringRestritions();
 		try {
@@ -90,6 +103,14 @@ public class ContratoCoquetel {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(horasTrabalhadas != 0) {
+			res += " HORASTRABALHADAS = "+this.horasTrabalhadas;
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

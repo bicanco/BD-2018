@@ -90,6 +90,18 @@ public class Convidado {
 		}
 	}
 	
+	public static void updateConvidado(Convidado convidado) {
+		String sql = "update CONVIDADO set"
+				+ convidado.toStringUpdates()
+				+ " where EMAIL = '"+convidado.email+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(Convidado convidado) {
 		String sql = "delete from CONVIDADO"+convidado.toStringRestritions();
 		try {
@@ -98,6 +110,14 @@ public class Convidado {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(telefone.compareTo("") != 0) {
+			res += " TELEFONE = '"+this.telefone+"'";
+		}
+		return res;
 	}
 	
 	private String toStringRestritions() {

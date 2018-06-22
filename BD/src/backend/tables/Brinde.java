@@ -72,6 +72,19 @@ public class Brinde {
 		}
 	}
 	
+	public static void updateBrinde(Brinde brinde) {
+		String sql = "update BRINDE set"
+				+ brinde.toStringUpdates()
+				+ " where COQUETEL = "+brinde.coquetel
+				+ "and NOME ='"+brinde.nome+"'";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
 	public static void deleteEmpresa(Brinde brinde) {
 		String sql = "delete from BRINDE"+brinde.toStringRestritions();
 		try {
@@ -81,6 +94,15 @@ public class Brinde {
 			throw new RuntimeException();
 		}
 	}
+	
+	private String toStringUpdates() {
+		String res = "";
+		if(descricao.compareTo("") != 0) {
+			res += " DESCRICAO = '"+this.descricao+"'";
+		}
+		return res;
+	}
+	
 	
 	private String toStringRestritions() {
 		String res = " where ";
