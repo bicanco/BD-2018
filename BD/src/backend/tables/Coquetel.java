@@ -75,11 +75,11 @@ public class Coquetel {
 	public static ObservableList<String> getListaCoquetel(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
-		String sql="select E.CNPJ, E.NOMEFANTASIA, F.DATA from EMPRESA E, FESTA F where F.TIPOFESTA = 'COQUETEL' and F.CONTRATANTE = E.CNPJ";
+		String sql="select F.ID,F.DATA,E.NOMEFANTASIA,E.CNPJ from EMPRESA E, FESTA F where F.TIPOFESTA = 'COQUETEL' and F.CONTRATANTE = E.CNPJ";
 		try {
 			res = ConnectionManager.query(sql);
 			while(res.next())
-				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getDate(3));
+				list.add(res.getInt(1)+" / "+res.getDate(2)+" / "+res.getString(3)+" / "+res.getString(4));
 			res.close();
 			ConnectionManager.closeQuery();
 			

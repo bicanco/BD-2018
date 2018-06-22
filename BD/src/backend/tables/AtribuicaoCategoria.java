@@ -96,7 +96,7 @@ public class AtribuicaoCategoria {
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-01747")){
 					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
-			}else if(aux.equals("ORA-02290")) {
+			}else if(aux.equals("ORA-02290") || aux.equals("ORA-12899")) {
 					mesg = "O campo faixa de preco deve ser preenchido com : 1,2,3,4 ou 5.";
 			}
 			throw new Exception(mesg);

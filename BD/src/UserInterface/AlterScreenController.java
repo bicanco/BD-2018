@@ -399,7 +399,12 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarBrinde(ActionEvent event) throws IOException{
-    	
+    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getValue().split("[ /]")[0]), nomeBrinde.getText(), descricaoBrinde.getText());
+    	try {
+			Brinde.updateBrinde(b);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML

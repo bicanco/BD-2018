@@ -62,17 +62,30 @@ public class Brinde {
 		}
 	}
 	
-	public static void insertBrinde(Brinde brinde) {
+	public static void insertBrinde(Brinde brinde) throws Exception {
 		String sql = "insert into BRINDE (COQUETEL, NOME, DESCRICAO) values("+brinde+")";
+		System.out.println(sql);
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			System.out.println(e);
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há um brinde com esse nome associado a esse coquetel. Por favo selecione outro coquetel e/ou nome";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Nome e Descrição devem ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg ="Os limites de caracters dos campos são: Nome-30 Descrição-60";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateBrinde(Brinde brinde) {
+	public static void updateBrinde(Brinde brinde) throws Exception {
 		String sql = "update BRINDE set"
 				+ brinde.toStringUpdates()
 				+ " where COQUETEL = "+brinde.coquetel
@@ -80,13 +93,26 @@ public class Brinde {
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}else if(aux.equals("ORA-12899")) {
+				mesg ="Os limites de caracters dos campos são: Descrição-60";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(Brinde brinde) {
-		String sql = "delete from BRINDE"+brinde.toStringRestritions();
+	public static void deleteBrinde(Brinde brinde) throws Exception {
+		String aux = brinde.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from BRINDE"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();

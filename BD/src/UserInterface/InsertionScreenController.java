@@ -520,9 +520,13 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirBrinde(ActionEvent event) throws IOException{
+    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getValue().split("[ /]")[0]), nomeBrinde.getText(), descricaoBrinde.getText());
+    	try {
+			Brinde.insertBrinde(b);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     	/*
-    	Brinde b = new Brinde(coquetelBrinde.getValue(), nomeBrinde.getText(), descricaoBrinde.getText());
-    	
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		b.inserir();
     	else

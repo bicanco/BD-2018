@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
 import backend.tables.AtribuicaoCategoria;
+import backend.tables.Brinde;
 import backend.tables.Empresa;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
@@ -428,9 +429,13 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerBrinde(ActionEvent event) throws IOException{
+    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getText()), nomeBrinde.getText(), null);
+    	try {
+			Brinde.deleteBrinde(b);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     	/*
-    	Brinde b = new Brinde(coquetelBrinde.getText(), nomeBrinde.getText(), null);
-    	
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		b.remover();
     	else
