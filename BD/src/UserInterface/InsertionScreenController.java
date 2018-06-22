@@ -390,7 +390,11 @@ public class InsertionScreenController implements Initializable {
     void inserirEmpresa(ActionEvent event) throws IOException{
     	
     	Empresa e = new Empresa(cnpjEmpresa.getText(), nomeEmpresa.getText(), razaoEmpresa.getText(), enderecoEmpresa.getText(), tipoEmpresa.getValue());
-    	Empresa.insertEmpresa(e);
+    	try {
+			Empresa.insertEmpresa(e);
+		} catch (Exception e1) {
+			System.out.println(e1);;
+		}
     	/*
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		Empresa.inserir(e);

@@ -337,9 +337,13 @@ public class AlterScreenController implements Initializable {
     }
 
     @FXML
-    void alterarEmpresa(ActionEvent event) throws IOException{
+    void alterarEmpresa(ActionEvent event){
     	Empresa e= new Empresa(cnpjEmpresa.getValue().split(" /")[0], nomeEmpresa.getText(), null, enderecoEmpresa.getText(), null);
-    	Empresa.updateEmpresa(e);
+    	try {
+			Empresa.updateEmpresa(e);
+		} catch (Exception e1) {
+			System.out.println(e1);
+		}
     }
     
     

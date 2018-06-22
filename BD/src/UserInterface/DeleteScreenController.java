@@ -8,6 +8,9 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.omg.CORBA.SystemException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -272,7 +275,11 @@ public class DeleteScreenController implements Initializable {
     @FXML
     void removerEmpresa(ActionEvent event) throws IOException{
     	Empresa e = new Empresa(cnpjEmpresa.getText(), nomeEmpresa.getText(), null, null, null);
-    	Empresa.deleteEmpresa(e);
+    	try {
+			Empresa.deleteEmpresa(e);
+		} catch (Exception e1) {
+			System.out.println(e1);;
+		}
     	/*
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		Empresa.remover(e);

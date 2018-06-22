@@ -2,9 +2,10 @@ package backend.tables;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
 import java.util.List;
-
 import backend.ConnectionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -99,38 +100,52 @@ public class Empresa {
 		}
 	}
 	
-	public static void insertEmpresa(Empresa empresa) {
+	public static void insertEmpresa(Empresa empresa) throws Exception {
 		String sql = "insert into EMPRESA (CNPJ, NOMEFANTASIA, RAZAOSOCIAL, ENDERECO) values("+empresa+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-			/*
-			switch(empresa.tipo) {
-				case "fornecedora":
-					Forncedora fornecedora = new Fornecedora(empresa.getCnpj());
-					Fornecedora.insertFornecedo(fornecedora);
-				break;
+		}catch(SQLIntegrityConstraintViolationException e){
+			System.out.println(e);
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há CNPJ com esse valor.Por favor digite outro valor para CNPJ.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Nome Fantasia, Razão Social e Endereco tem que ser preenchidos.";
 			}
-			*/
+			throw new Exception(mesg);
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateEmpresa(Empresa empresa) {
+	public static void updateEmpresa(Empresa empresa) throws Exception {
 		String sql = "update EMPRESA set"
 				+ empresa.toStringUpdates()
 				+ " where CNPJ = '"+empresa.cnpj+"'";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
+		}catch(SQLSyntaxErrorException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}
+			throw new Exception(mesg);
 		}catch(SQLException e) {
+			System.out.println(e+"\n"+sql);
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(Empresa empresa) {
-		String sql = "delete from EMPRESA"+empresa.toStringRestritions();
+	public static void deleteEmpresa(Empresa empresa) throws Exception {
+		String aux = empresa.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from EMPRESA"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -141,11 +156,11 @@ public class Empresa {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(nome.compareTo("") != 0) {
+		if(!nome.equals("")) {
 			res += " NOMEFANTASIA = '"+this.nome+"'";
 		}
-		if(endereco.compareTo("") != 0) {
-			if(res.compareTo("") != 0)
+		if(!endereco.equals("")) {
+			if(!res.equals(""))
 				res += ", ";
 			res += " ENDERECO = '"+this.endereco+"'";
 		}
@@ -154,15 +169,15 @@ public class Empresa {
 	
 	private String toStringRestritions() {
 		String res = " where ";
-		if(cnpj.compareTo("") != 0) {
+		if(!cnpj.equals("")) {
 			res += " CNPJ = '"+this.cnpj+"'";
 		}
-		if(nome.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!nome.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " NOMEFANTASIA = '"+this.nome+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}
