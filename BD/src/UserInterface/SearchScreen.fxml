@@ -143,7 +143,7 @@
                                           <JFXComboBox fx:id="anoInicial" layoutX="305.0" layoutY="291.0" prefHeight="31.0" prefWidth="70.0" promptText="Ano" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="387.0" layoutY="296.0" text="Até:" />
                                           <JFXComboBox fx:id="mesFinal" layoutX="422.0" layoutY="291.0" prefHeight="31.0" prefWidth="150.0" promptText="Mês" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="AnoFinal" layoutX="583.0" layoutY="291.0" prefHeight="31.0" prefWidth="70.0" promptText="Ano" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="anoFinal" layoutX="583.0" layoutY="291.0" prefHeight="31.0" prefWidth="70.0" promptText="Ano" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="152.0" layoutY="354.0" text="A tabela resultante irá conter todas as festas&#10;nas quais o funcionário selecionado trabalhou, bem como o valor&#10;recebido em cada festa e o total recebido no período determinado." textAlignment="CENTER" />
                                           <JFXButton fx:id="buscaFolhaPagamento" buttonType="RAISED" layoutX="347.0" layoutY="503.0" onAction="#buscarFolhaPagamento" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>

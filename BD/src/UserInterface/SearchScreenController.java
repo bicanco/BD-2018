@@ -100,12 +100,11 @@ public class SearchScreenController implements Initializable {
     	
     	List<String> list = new ArrayList<String>();
     	
-    	for(int i = 1900; i < 2020; i++){
+    	for(int i = 2000; i <= 2020; i++){
     		list.add(Integer.toString(i));
     	}
     	
-    	ObservableList<String> ano  = 
-        	    FXCollections.observableArrayList(list);
+    	ObservableList<String> ano = FXCollections.observableArrayList(list);
     	
     	mesInicial.setItems(mes);
     	
