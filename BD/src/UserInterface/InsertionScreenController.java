@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -79,7 +80,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     private JFXComboBox<String> categoriaCatFornecedora;
     @FXML
-    private JFXTextField precoCatFornecedora;
+    private JFXComboBox<String> precoCatFornecedora;
     @FXML
     private JFXButton inserirCatFornecedora;
     
@@ -277,6 +278,10 @@ public class InsertionScreenController implements Initializable {
         
         categoriaCatFornecedora.setItems(CategoriaFornecimento.getListaCategoria());
         
+        ObservableList<String> faixa = FXCollections.observableArrayList("1","2","3","4","5");
+       
+        precoCatFornecedora.setItems(faixa);
+        
         contratanteFesta.setItems(Contratante.getListaContratante());
         
         ObservableList<String> tipofesta = 
@@ -396,20 +401,37 @@ public class InsertionScreenController implements Initializable {
 		}
     }
     
+    void abrirErrorScreen(String msg) throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(LoginController.class.getResource("ErrorScreen.fxml"));
+        AnchorPane root = loader.load();
+
+        Stage erroStage = new Stage();
+        erroStage.setResizable(false);
+        erroStage.setTitle("Error");
+        erroStage.initModality(Modality.WINDOW_MODAL);
+        erroStage.initOwner(Main.getMyStage());
+        Scene scene = new Scene(root);
+        erroStage.setScene(scene);
+        ErrorScreenController controller = loader.getController();
+        controller.setAdicionarStage(erroStage, msg);
+        
+        erroStage.showAndWait();
+    }
+    
     @FXML
     void inserirContato(ActionEvent event) throws IOException{
-    	ContatoEmpresa c = new ContatoEmpresa(empresaContatos.getValue().split("[ /]")[0], emailContatos.getText(), nomeContatos.getText(), telefoneContatos.getText());
-    	try {
-			ContatoEmpresa.insertContatoEmpresa(c);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(empresaContatos.getValue() == null){
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	}
+    	else{
+	    	ContatoEmpresa c = new ContatoEmpresa(empresaContatos.getValue().split("[ /]")[0], emailContatos.getText(), nomeContatos.getText(), telefoneContatos.getText());
+	    	try {
+				ContatoEmpresa.insertContatoEmpresa(c);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML
@@ -420,28 +442,20 @@ public class InsertionScreenController implements Initializable {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.inserir();
-    	else
-    		tratamento dos erros (telas);
-    	*/
     }
     
     @FXML
     void inserirCategoriaFornecedora(ActionEvent event) throws IOException{
-    	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getText());
-    	try {
-			AtribuicaoCategoria.insertAtribuicaoCategoria(a);
-		} catch (Exception e) {
-			System.out.println(e);;
-		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(fornecedoraCatFornecedora.getValue() == null || categoriaCatFornecedora.getValue() == null || precoCatFornecedora.getValue() == null){
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	} else{
+	    	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getValue());
+	    	try {
+				AtribuicaoCategoria.insertAtribuicaoCategoria(a);
+			} catch (Exception e) {
+				System.out.println(e);;
+			}
+    	}
     }
     
     @FXML

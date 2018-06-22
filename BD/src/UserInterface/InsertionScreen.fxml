@@ -169,7 +169,7 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="463.0" layoutX="54.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <JFXComboBox fx:id="fornecedoraCatFornecedora" layoutX="212.0" layoutY="106.0" prefHeight="31.0" prefWidth="337.0" promptText="CNPJ / Nome Fantasia" style="-fx-background-color: ffffff;" />
                                           <JFXComboBox fx:id="categoriaCatFornecedora" layoutX="212.0" layoutY="249.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <JFXTextField fx:id="precoCatFornecedora" layoutX="212.0" layoutY="392.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="precoCatFornecedora" layoutX="212.0" layoutY="391.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="106.0" layoutY="111.0" text="Fornecedora:" />
                                           <Label layoutX="125.0" layoutY="254.0" text="Categoria:" />
                                           <Label layoutX="95.0" layoutY="396.0" text="Faixa de Preço:" />
