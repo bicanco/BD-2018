@@ -104,11 +104,10 @@ public class Empresa {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
 		}catch(SQLException e){
-			System.out.println(e);
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-00001")){
-					mesg = "Já há CNPJ com esse valor.Por favor digite outro valor para CNPJ.";
+					mesg = "Já há uma Empresa com esse CNPJ.Por favor digite outro valor para CNPJ.";
 			}else if(aux.equals("ORA-01400")) {
 					mesg = "Os campos Nome Fantasia, Razão Social e Endereco tem que ser preenchidos.";
 			}else if(aux.equals("ORA-12899")) {

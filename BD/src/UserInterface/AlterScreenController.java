@@ -354,7 +354,12 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarCategoriaFornecimento(ActionEvent event) throws IOException{
-    	
+    	CategoriaFornecimento c = new CategoriaFornecimento(nomeCatFornecimento.getValue(), descricaoCatFornecimento.getText());
+    	try {
+			CategoriaFornecimento.updateCategoriaFornecimento(c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML

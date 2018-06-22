@@ -70,30 +70,54 @@ public class CategoriaFornecimento {
 		}
 	}
 	
-	public static void insertCategoriaFornecimento(CategoriaFornecimento categoriaFornecimento) {
+	public static void insertCategoriaFornecimento(CategoriaFornecimento categoriaFornecimento) throws Exception {
 		String sql = "insert into CATEGORIAFORNECIMENTO (NOMEREF, DESCRICAO) values("+categoriaFornecimento+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há uma Categoria de Fornecimento com esse nome.Por favor digite outro nome.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Nome e Descrição tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracters dos campos são: Nome-20 Descrição-140";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateCategoriaFornecimento(CategoriaFornecimento categoriaFornecimento) {
+	public static void updateCategoriaFornecimento(CategoriaFornecimento categoriaFornecimento) throws Exception {
 		String sql = "update CATEGORIAFORNECIMENTO set"
 				+ categoriaFornecimento.toStringUpdates()
 				+ " where NOMEREF = '"+categoriaFornecimento.nomeRef+"'";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracters dos campos são: Descrição-140";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(CategoriaFornecimento categoriaFornecimento) {
-		String sql = "delete from CATEGORIAFORNECIMENTO"+categoriaFornecimento.toStringRestritions();
+	public static void deleteCategoriaFornecimento(CategoriaFornecimento categoriaFornecimento) throws Exception {
+		String aux = categoriaFornecimento.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from CATEGORIAFORNECIMENTO"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();

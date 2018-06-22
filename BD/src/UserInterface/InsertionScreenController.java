@@ -420,9 +420,13 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirCategoriaFornecimento(ActionEvent event) throws IOException{
-    	/*
     	CategoriaFornecimento c = new CategoriaFornecimento(nomeCatFornecimento.getText(), descricaoCatFornecimento.getText());
-    	
+    	try {
+			CategoriaFornecimento.insertCategoriaFornecimento(c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+    	/*
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		c.inserir();
     	else

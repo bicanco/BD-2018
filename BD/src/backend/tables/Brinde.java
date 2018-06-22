@@ -64,12 +64,10 @@ public class Brinde {
 	
 	public static void insertBrinde(Brinde brinde) throws Exception {
 		String sql = "insert into BRINDE (COQUETEL, NOME, DESCRICAO) values("+brinde+")";
-		System.out.println(sql);
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
 		}catch(SQLException e){
-			System.out.println(e);
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-00001")){
