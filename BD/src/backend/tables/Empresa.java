@@ -2,8 +2,6 @@ package backend.tables;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
 import java.util.List;
 import backend.ConnectionManager;
@@ -105,7 +103,7 @@ public class Empresa {
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLIntegrityConstraintViolationException e){
+		}catch(SQLException e){
 			System.out.println(e);
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
@@ -115,7 +113,7 @@ public class Empresa {
 					mesg = "Os campos Nome Fantasia, Razão Social e Endereco tem que ser preenchidos.";
 			}
 			throw new Exception(mesg);
-		}catch(SQLException e) {
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
@@ -127,15 +125,14 @@ public class Empresa {
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLSyntaxErrorException e){
+		}catch(SQLException e){
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-01747")){
 					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
 			}
 			throw new Exception(mesg);
-		}catch(SQLException e) {
-			System.out.println(e+"\n"+sql);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}

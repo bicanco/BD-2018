@@ -275,7 +275,7 @@ public class InsertionScreenController implements Initializable {
         
         fornecedoraCatFornecedora.setItems(Fornecedora.getListaFornecedora());
         
-        //categoriaCatFornecedora.setItems(CategoriaFornecimento.getListaCategoria());
+        categoriaCatFornecedora.setItems(CategoriaFornecimento.getListaCategoria());
         
         contratanteFesta.setItems(Contratante.getListaContratante());
         
@@ -432,9 +432,13 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirCategoriaFornecedora(ActionEvent event) throws IOException{
+    	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getText());
+    	try {
+			AtribuicaoCategoria.insertAtribuicaoCategoria(a);
+		} catch (Exception e) {
+			System.out.println(e);;
+		}
     	/*
-    	CategoriaFornecedora c = new CategoriaFornecedora(fornecedoraCatFornecedora.getValue(), categoriaCatFornecedora.getValue(), precoCatFornecedora.getText());
-    	
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		c.inserir();
     	else

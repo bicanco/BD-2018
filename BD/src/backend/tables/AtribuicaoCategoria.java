@@ -62,31 +62,55 @@ public class AtribuicaoCategoria {
 		}
 	}
 	
-	public static void insertAtribuicaoCategoria(AtribuicaoCategoria atribuicaoCategoria) {
+	public static void insertAtribuicaoCategoria(AtribuicaoCategoria atribuicaoCategoria) throws Exception {
 		String sql = "insert into ATRIBUICAOCATEGORIA (FORNECEDORA, CATEGORIA, FAIXAPRECO) values("+atribuicaoCategoria+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-12899") || aux.equals("ORA-02290")){
+					mesg = "O campo faixa de preco deve ser preenchido com : 1,2,3,4 ou 5.";
+			}else if(aux.equals("ORA-00001")) {
+					mesg = "Essa empresa já está associada a essa categoria. Por favor selecione outra empresa e/ou categoria.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateAtribuicaoCategoria(AtribuicaoCategoria atribuicaoCategoria) {
+	public static void updateAtribuicaoCategoria(AtribuicaoCategoria atribuicaoCategoria) throws Exception {
 		String sql = "update ATRIBUICAOCATEGORIA set"
 				+ atribuicaoCategoria.toStringUpdates()
 				+ " where FORNECEDORA = '"+atribuicaoCategoria.fornecedora+"'"
 				+ "and CATEGORIA = '"+atribuicaoCategoria.categoria+"'";
+		System.out.println(sql);
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			System.out.println(e);
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}else if(aux.equals("ORA-02290")) {
+					mesg = "O campo faixa de preco deve ser preenchido com : 1,2,3,4 ou 5.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(AtribuicaoCategoria atribuicaoCategoria) {
-		String sql = "delete from ATRIBUICAOCATEGORIA"+atribuicaoCategoria.toStringRestritions();
+	public static void deleteAtribuicaoCategoria(AtribuicaoCategoria atribuicaoCategoria) throws Exception {
+		String aux = atribuicaoCategoria.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from ATRIBUICAOCATEGORIA"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -97,7 +121,7 @@ public class AtribuicaoCategoria {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(faixaPreco.compareTo("") != 0) {
+		if(!faixaPreco.equals("")) {
 			res += " FAIXAPRECO = '"+this.faixaPreco+"'";
 		}
 		return res;
@@ -105,15 +129,15 @@ public class AtribuicaoCategoria {
 	
 	private String toStringRestritions() {
 		String res = " where ";
-		if(fornecedora.compareTo("") != 0) {
+		if(!fornecedora.equals("")) {
 			res += " FORNECEDORA = '"+this.fornecedora+"'";
 		}
-		if(categoria.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!categoria.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " CATEGORIA = '"+this.categoria+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

@@ -338,7 +338,7 @@ public class AlterScreenController implements Initializable {
 
     @FXML
     void alterarEmpresa(ActionEvent event){
-    	Empresa e= new Empresa(cnpjEmpresa.getValue().split(" /")[0], nomeEmpresa.getText(), null, enderecoEmpresa.getText(), null);
+    	Empresa e = new Empresa(cnpjEmpresa.getValue().split("[ /]")[0], nomeEmpresa.getText(), null, enderecoEmpresa.getText(), null);
     	try {
 			Empresa.updateEmpresa(e);
 		} catch (Exception e1) {
@@ -359,7 +359,12 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarCategoriaFornecedora(ActionEvent event) throws IOException{
-    	
+    	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getText());
+    	try {
+    		AtribuicaoCategoria.updateAtribuicaoCategoria(a);
+    	}catch(Exception e) {
+    		System.out.println(e);
+    	}
     }
     
     @FXML
