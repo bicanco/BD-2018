@@ -429,7 +429,7 @@ public class InsertionScreenController implements Initializable {
 	    	try {
 				ContatoEmpresa.insertContatoEmpresa(c);
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
@@ -453,7 +453,7 @@ public class InsertionScreenController implements Initializable {
 	    	try {
 				AtribuicaoCategoria.insertAtribuicaoCategoria(a);
 			} catch (Exception e) {
-				System.out.println(e);;
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
