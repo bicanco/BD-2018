@@ -349,7 +349,12 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarContato(ActionEvent event) throws IOException{
-    	
+    	ContatoEmpresa c = new ContatoEmpresa(null, emailContatos.getValue().split("[ /]")[0], null, telefoneContatos.getText());
+    	try {
+			ContatoEmpresa.updateContatoEmpresa(c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML

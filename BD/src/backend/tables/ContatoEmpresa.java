@@ -89,30 +89,54 @@ public class ContatoEmpresa {
 		}
 	}
 	
-	public static void insertContatoEmpresa(ContatoEmpresa contatoEmpresa) {
+	public static void insertContatoEmpresa(ContatoEmpresa contatoEmpresa) throws Exception {
 		String sql = "insert into CONTATOEMPRESA (EMPRESA, EMAIL, NOME, TELEFONE) values("+contatoEmpresa+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há um Contato com esse Email associado a essa Empersa. Por favor digite outro email e/ou Empresa.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Empresa, Nome e Email tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracters dos campos são: Email-60 Nome-60 Telefone-11";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateContatoEmpresa(ContatoEmpresa contatoEmpresa) {
+	public static void updateContatoEmpresa(ContatoEmpresa contatoEmpresa) throws Exception {
 		String sql = "update CONTATOEMPRESA set"
 				+ contatoEmpresa.toStringUpdates()
 				+ " where EMAIL = '"+contatoEmpresa.email+"'";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracters dos campos são: Telefone-11";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(ContatoEmpresa contatoEmpresa) {
-		String sql = "delete from CONTATOEMPRESA"+contatoEmpresa.toStringRestritions();
+	public static void deleteContatoEmpresa(ContatoEmpresa contatoEmpresa) throws Exception {
+		String aux =contatoEmpresa.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from CONTATOEMPRESA"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();

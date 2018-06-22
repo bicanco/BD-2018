@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import backend.tables.AtribuicaoCategoria;
 import backend.tables.Brinde;
 import backend.tables.CategoriaFornecimento;
+import backend.tables.ContatoEmpresa;
 import backend.tables.Empresa;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
@@ -318,9 +319,13 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerContato(ActionEvent event) throws IOException{
+    	ContatoEmpresa c = new ContatoEmpresa(empresaContatos.getText(), emailContatos.getText(),  nomeContatos.getText(), null);
+    	try {
+			ContatoEmpresa.deleteContatoEmpresa(c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     	/*
-    	ContatoEmpresa c = new ContatoEmpresa(empresaContatos.getText(), nomeContatos.getText(), emailContatos.getText(), null);
-    	
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		c.remover();
     	else

@@ -408,9 +408,13 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirContato(ActionEvent event) throws IOException{
+    	ContatoEmpresa c = new ContatoEmpresa(empresaContatos.getValue().split("[ /]")[0], emailContatos.getText(), nomeContatos.getText(), telefoneContatos.getText());
+    	try {
+			ContatoEmpresa.insertContatoEmpresa(c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     	/*
-    	ContatoEmpresa c = new ContatoEmpresa(empresaContatos.getValue(), nomeContatos.getText(), emailContatos.getText(), telefoneContatos.getText());
-    	
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		c.inserir();
     	else
