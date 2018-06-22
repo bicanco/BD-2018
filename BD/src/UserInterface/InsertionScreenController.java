@@ -392,7 +392,7 @@ public class InsertionScreenController implements Initializable {
     	try {
 			Empresa.insertEmpresa(e);
 		} catch (Exception e1) {
-			System.out.println(e1);;
+			System.out.println(e1);
 		}
     }
     

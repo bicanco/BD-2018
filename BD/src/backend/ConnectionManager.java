@@ -15,13 +15,13 @@ public class ConnectionManager{
 	 * @param login login do usuario do banco
 	 * @param password senha do usuario do banco
 	 */
-	public static void connect(String login, String password) {
+	public static void connect(String login, String password) throws Exception{
 		String driver = "jdbc:oracle:thin:@grad.icmc.usp.br:15215:orcl";
 		try {
 			con = DriverManager.getConnection(driver,login,password);
 		}catch(SQLException e) {
 			System.out.println("Could not connect to database. Error:"+e);
-			System.exit(1);
+			throw new Exception();
 		}
 		System.out.println("Connected to database");
 	}

@@ -111,7 +111,7 @@ public class Empresa {
 			}else if(aux.equals("ORA-01400")) {
 					mesg = "Os campos Nome Fantasia, Razão Social e Endereco tem que ser preenchidos.";
 			}else if(aux.equals("ORA-12899")) {
-					mesg = "Os limites de caracters dos campos são: CNPJ-14 Nome Fantasia-60 Razão Social-120 Endereço-120";
+					mesg = "Os limites de caracteres dos campos são: CNPJ - 14; Nome Fantasia - 60; Razão Social - 120; Endereço - 120.";
 			}
 			throw new Exception(mesg);
 		}catch(Exception e) {

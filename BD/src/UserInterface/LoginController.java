@@ -54,14 +54,17 @@ public class LoginController implements Initializable {
      */
     @FXML
     void validarLogin(ActionEvent event) throws IOException {
-        String user = usuario.getText();
-        String pass = senha.getText();
+    	boolean exc = true;
         
-        if(user.equals("") || pass.equals(""))
-            abrirErroLogin();  
-        else{
-            abrirTela();
-        }
+        try {
+    		ConnectionManager.connect(usuario.getText(), senha.getText());
+    	} catch (Exception e){
+    		exc = false;
+    		abrirErroLogin();
+    	}
+        
+        if(exc)
+        	abrirTela();
     }
     
     /**
@@ -94,9 +97,7 @@ public class LoginController implements Initializable {
      * @throws IOException 
      */
     private void abrirTela() throws IOException {
-    	ConnectionManager.connect(usuario.getText(), senha.getText());
-    	
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+    	AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         
         Scene scene = new Scene(pane);
         
@@ -105,5 +106,4 @@ public class LoginController implements Initializable {
         myStage.setScene(scene);
         myStage.show();
     }
-   
 }
