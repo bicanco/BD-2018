@@ -394,17 +394,7 @@ public class InsertionScreenController implements Initializable {
 		} catch (Exception e1) {
 			System.out.println(e1);;
 		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		Empresa.inserir(e);
-    		ou
-    		e.inserir();
-    		-- nesse caso exclusivamente, quando formos inserir as empresas devemos também inserí-la na tabela de contratante e/ou fornecedora;
-    	else
-    		tratamento dos erros (telas);
-   		*/
     }
-    
     
     @FXML
     void inserirContato(ActionEvent event) throws IOException{
