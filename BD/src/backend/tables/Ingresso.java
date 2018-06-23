@@ -61,18 +61,34 @@ public class Ingresso {
 		}
 	}
 	
-	public static void insertIngresso(Ingresso ingresso) {
+	public static void insertIngresso(Ingresso ingresso) throws Exception {
 		String sql = "insert into INGRESSO (FESTFOOD, NUMERO, CPFCOMPRADOR) values("+ingresso+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há um Ingresso com esse Código para essa FestFood. Por favor digite outro Código e/ou FestFood.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Código e Comprador tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: CPFComprador - 11.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
+		
 	}
 	
-	public static void deleteEmpresa(Ingresso ingresso) {
-		String sql = "delete from INGRESSO"+ingresso.toStringRestritions();
+	public static void deleteIngresso(Ingresso ingresso) throws Exception {
+		String aux = ingresso.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from INGRESSO"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -87,16 +103,16 @@ public class Ingresso {
 			res += " FESTFOOD = "+this.festFood;
 		}
 		if(numero == 0) {
-			if(res.compareTo(" where ") != 0)
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " NUMERO = "+this.numero;
 		}
-		if(cpfComprador.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!cpfComprador.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " CPFCOMPRADOR = '"+this.cpfComprador+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

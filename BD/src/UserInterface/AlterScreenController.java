@@ -445,7 +445,16 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarFornecimentoCoquetel(ActionEvent event) throws IOException{
-    	
+    	if(fornecedoraFornecimento.getValue() == null || coquetelFornecimento.getValue() == null) {
+    		
+    	}else {
+    		FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getValue().split(" / ")[0], Integer.parseInt(coquetelFornecimento.getValue().split(" / ")[0]), Float.parseFloat(precoFornecimento.getText()));
+    		try {
+				FornecimentoCoquetel.updateFornecimentoCoquetel(f);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML

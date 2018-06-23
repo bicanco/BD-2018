@@ -69,6 +69,30 @@ public class Fornecedora {
 		}
 	}
 	
+	public static void deleteFornecedora(Fornecedora fornecedora) throws Exception {
+		String aux = fornecedora.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from FORNECEDORA"+aux;
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(!cnpj.equals("")) {
+			res += " CNPJ = '"+this.cnpj+"'";
+		}
+		if(res.equals(" where "))
+			res = " ";
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "'"+this.cnpj+"'";

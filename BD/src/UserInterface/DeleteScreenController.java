@@ -15,6 +15,9 @@ import backend.tables.Convite;
 import backend.tables.Coquetel;
 import backend.tables.Empresa;
 import backend.tables.FestFood;
+import backend.tables.Fornecedora;
+import backend.tables.FornecimentoCoquetel;
+import backend.tables.Ingresso;
 import backend.tables.Local;
 import backend.tables.ProdutosFornecidos;
 import javafx.scene.layout.AnchorPane;
@@ -295,14 +298,12 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerFornecedora(ActionEvent event) throws IOException{
-    	/*
     	Fornecedora f = new Fornecedora(cnpjFornecedora.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		f.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	try {
+			Fornecedora.deleteFornecedora(f);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
@@ -370,14 +371,12 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerIngresso(ActionEvent event) throws IOException{
-    	/*
-    	Ingresso i = new Ingresso(festfoodIngresso.getText(), codigoIngresso.getText(), compradorIngresso.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		i.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Ingresso i = new Ingresso(Integer.parseInt(festfoodIngresso.getText()), Integer.parseInt(codigoIngresso.getText()), compradorIngresso.getText());
+    	try {
+			Ingresso.deleteIngresso(i);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
@@ -422,14 +421,12 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerFornecimentoCoquetel(ActionEvent event) throws IOException{
-    	/*
-    	FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getText(), coquetelFornecimento.getText(), null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		f.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getText(), Integer.parseInt(coquetelFornecimento.getText()), 0);
+    	try {
+			FornecimentoCoquetel.deleteFornecimentoCoquetel(f);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML

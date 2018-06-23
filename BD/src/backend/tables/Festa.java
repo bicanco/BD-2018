@@ -119,24 +119,44 @@ public class Festa {
 		}
 	}
 	
-	public static void insertFesta(Festa festa) {
+	public static void insertFesta(Festa festa) throws Exception {
 		String sql = "insert into FESTA (ID, CONTRATANTE, DATA, NOME, HORAINICIO, DURACAO, TIPOFESTA) values("+festa+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há uma Festa associada a essa Empresa nessa Data. Por favor selecione outra Empresa e/ou Data.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Data, Nome, Horário de Início e Duração tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: Nome - 60.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateFesta(Festa festa) {
+	public static void updateFesta(Festa festa) throws Exception {
 		String sql = "update FESTA set"
 				+ festa.toStringUpdates()
 				+ " where ID = "+festa.id;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracters dos campos são: Nome - 60.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
@@ -196,6 +216,7 @@ public class Festa {
 	
 	@Override
 	public String toString() {
-		return this.id+",'"+this.contratante+"',to_date("+this.data+",'dd/mm/yyyy'),'"+this.nome+"',to_date('"+this.horaInicio+"','hh:mi'),to_date('"+this.duracao+"','hh:mi'),'"+this.tipoFesta+"'";
+		String aux = this.id == 0?"null": new Integer(this.id).toString();
+		return aux+",'"+this.contratante+"',to_date("+this.data+",'dd/mm/yyyy'),'"+this.nome+"',to_date('"+this.horaInicio+"','hh:mi'),to_date('"+this.duracao+"','hh:mi'),'"+this.tipoFesta+"'";
 	}
 }
