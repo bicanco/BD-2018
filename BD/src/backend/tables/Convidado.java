@@ -65,7 +65,7 @@ public class Convidado {
 	public static ObservableList<String> getListaConvidado(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
-		String sql="select NOME,EMAIL from CONVIDADO";
+		String sql="select EMAIL,NOME from CONVIDADO";
 		try {
 			res = ConnectionManager.query(sql);
 			while(res.next())
@@ -80,30 +80,54 @@ public class Convidado {
 		
 	}
 	
-	public static void insertConvidado(Convidado convidado) {
+	public static void insertConvidado(Convidado convidado) throws Exception {
 		String sql = "insert into CONVIDADO (EMAIL, NOME, TELEFONE) values("+convidado+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há um Convidado com esse Email.Por favor digite outro Email.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Email e Nome tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: Nome - 60; Email - 60; Telefone - 11.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateConvidado(Convidado convidado) {
+	public static void updateConvidado(Convidado convidado) throws Exception {
 		String sql = "update CONVIDADO set"
 				+ convidado.toStringUpdates()
 				+ " where EMAIL = '"+convidado.email+"'";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracters dos campos são: Telefone - 11.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(Convidado convidado) {
-		String sql = "delete from CONVIDADO"+convidado.toStringRestritions();
+	public static void deleteConvidado(Convidado convidado) throws Exception {
+		String aux = convidado.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from CONVIDADO"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -114,7 +138,7 @@ public class Convidado {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(telefone.compareTo("") != 0) {
+		if(!telefone.equals("")) {
 			res += " TELEFONE = '"+this.telefone+"'";
 		}
 		return res;
@@ -122,15 +146,15 @@ public class Convidado {
 	
 	private String toStringRestritions() {
 		String res = " where ";
-		if(nome.compareTo("") != 0) {
+		if(!nome.equals("")) {
 			res += " NOME = '"+this.nome+"'";
 		}
-		if(email.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!email.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " EMAIL = '"+this.email+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

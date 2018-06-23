@@ -128,7 +128,7 @@ public class CategoriaFornecimento {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(descricao.compareTo("") != 0) {
+		if(!descricao.equals("")) {
 			res += " DESCRICAO = '"+this.descricao+"'";
 		}
 		return res;
@@ -136,10 +136,10 @@ public class CategoriaFornecimento {
 	
 	private String toStringRestritions() {
 		String res = " where ";
-		if(nomeRef.compareTo("") != 0) {
+		if(!nomeRef.equals("")) {
 			res += " NOMEREF = '"+this.nomeRef+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

@@ -52,18 +52,29 @@ public class Convite {
 		}
 	}
 	
-	public static void insertConvite(Convite convite) {
+	public static void insertConvite(Convite convite) throws Exception {
 		String sql = "insert into CONVITE (CONVIDADO, COQUETEL) values("+convite+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há um Convite para essa Convidado nesse Coquetel.Por favor selecione outro Convidado e/ou Coquetel.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(Convite convite) {
-		String sql = "delete from CONVITE"+convite.toStringRestritions();
+	public static void deleteConvite(Convite convite) throws Exception {
+		String aux = convite.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from CONVITE"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -77,12 +88,12 @@ public class Convite {
 		if(coquetel != 0) {
 			res += " COQUETEL = "+this.coquetel;
 		}
-		if(convidado.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!convidado.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " CONVIDADO = '"+this.convidado+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

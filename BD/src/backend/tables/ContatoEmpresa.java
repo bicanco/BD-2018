@@ -147,7 +147,7 @@ public class ContatoEmpresa {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(telefone.compareTo("") != 0) {
+		if(!telefone.equals("")) {
 			res += " TELEFONE = '"+this.telefone+"'";
 		}
 		return res;
@@ -155,20 +155,20 @@ public class ContatoEmpresa {
 		
 	private String toStringRestritions() {
 		String res = " where ";
-		if(empresa.compareTo("") != 0) {
+		if(!empresa.equals("")) {
 			res += " EMPRESA = '"+this.empresa+"'";
 		}
-		if(nome.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!nome.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " NOME = '"+this.nome+"'";
 		}
-		if(email.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!email.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " EMAIL = '"+this.email+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

@@ -69,6 +69,30 @@ public class Contratante {
 		}
 	}
 	
+	public static void deleteContratante(Contratante contratante) throws Exception {
+		String aux = contratante.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from CONTRATANTE"+aux;
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException();
+		}
+	}
+	
+	private String toStringRestritions() {
+		String res = " where ";
+		if(!cnpj.equals("")) {
+			res += " CNPJ = '"+this.cnpj+"'";
+		}
+		if(res.equals(" where "))
+			res = " ";
+		return res;
+	}
+	
 	
 	@Override
 	public String toString() {

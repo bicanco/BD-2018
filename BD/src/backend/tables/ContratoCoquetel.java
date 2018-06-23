@@ -72,17 +72,28 @@ public class ContratoCoquetel {
 		}
 	}
 	
-	public static void insertContratoCoquetel(ContratoCoquetel contratoCoquetel) {
+	public static void insertContratoCoquetel(ContratoCoquetel contratoCoquetel) throws Exception {
 		String sql = "insert into CONTRATOCOQUETEL (COQUETEL, FUNCIONARIO, HORASTRABALHADAS, VALORPAGO) values("+contratoCoquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há uma Empresa com esse CNPJ.Por favor digite outro valor para CNPJ.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Nome Fantasia, Razão Social e Endereco tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: CNPJ - 14; Nome Fantasia - 60; Razão Social - 120; Endereço - 120.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateContratoCoquetel(ContratoCoquetel contratoCoquetel) {
+	public static void updateContratoCoquetel(ContratoCoquetel contratoCoquetel) throws Exception {
 		String sql = "update CONTRATOCOQUETEL set"
 				+ contratoCoquetel.toStringUpdates()
 				+ " where COQUETEL = "+contratoCoquetel.coquetel
@@ -90,13 +101,24 @@ public class ContratoCoquetel {
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(ContratoCoquetel contratoCoquetel) {
-		String sql = "delete from CONTRATOCOQUETEL"+contratoCoquetel.toStringRestritions();
+	public static void deleteContratoCoquetel(ContratoCoquetel contratoCoquetel) throws Exception {
+		String aux = contratoCoquetel.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from CONTRATOCOQUETEL"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -118,12 +140,12 @@ public class ContratoCoquetel {
 		if(coquetel != 0) {
 			res += " COQUETEL = "+this.coquetel;
 		}
-		if(funcionario.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!funcionario.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " FUNCIONARIO = '"+this.funcionario+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

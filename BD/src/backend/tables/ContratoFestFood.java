@@ -72,17 +72,28 @@ public class ContratoFestFood {
 		}
 	}
 	
-	public static void insertContratoFestFood(ContratoFestFood contratoFestFood) {
+	public static void insertContratoFestFood(ContratoFestFood contratoFestFood) throws Exception {
 		String sql = "insert into CONTRATOFESTFOOD (FESTFOOD, SEGURANCA, HORASTRABALHADAS, VALORPAGO) values("+contratoFestFood+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há uma Empresa com esse CNPJ.Por favor digite outro valor para CNPJ.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Nome Fantasia, Razão Social e Endereco tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: CNPJ - 14; Nome Fantasia - 60; Razão Social - 120; Endereço - 120.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateContratoFestFood(ContratoFestFood contratoFestFood) {
+	public static void updateContratoFestFood(ContratoFestFood contratoFestFood) throws Exception {
 		String sql = "update CONTRATOFESTFOOD set"
 				+ contratoFestFood.toStringUpdates()
 				+ " where FESTFOOD = "+contratoFestFood.festFood
@@ -90,13 +101,24 @@ public class ContratoFestFood {
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+				mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(ContratoFestFood contratoFestFood) {
-		String sql = "delete from CONTRATOFESTFOOD"+contratoFestFood.toStringRestritions();
+	public static void deleteContratoFestFood(ContratoFestFood contratoFestFood) throws Exception {
+		String aux = contratoFestFood.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from CONTRATOFESTFOOD"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -118,12 +140,12 @@ public class ContratoFestFood {
 		if(festFood != 0) {
 			res += " FESTFOOD = "+this.festFood;
 		}
-		if(seguranca.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!seguranca.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " SEGURANCA = '"+this.seguranca+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

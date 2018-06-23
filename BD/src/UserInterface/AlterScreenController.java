@@ -394,12 +394,29 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarCoquetel(ActionEvent event) throws IOException{
-    	
+    	if(festaCoquetel.getValue() == null || localCoquetel.getValue() == null) {
+    		
+    	}else {
+    		Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getValue().split(" / ")[0]), 0, localCoquetel.getValue().split(" / ")[0], localCoquetel.getValue().split(" / ")[1]);
+       		try {
+				Coquetel.updateCoquetel(c);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML
     void alterarConvidado(ActionEvent event) throws IOException{
-    	
+    	if(emailConvidado.getValue() == null) {
+    	}else {
+    		Convidado c = new Convidado(emailConvidado.getValue().split("[ /]")[0], null, telefoneConvidado.getText());
+    		try {
+				Convidado.updateConvidado(c);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML
@@ -449,11 +466,29 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarContratoCoquetel(ActionEvent event) throws IOException{
-    	
+    	if(coquetelContCoquetel.getValue() == null || funcionarioContCoquetel.getValue() == null) {
+    		
+    	}else {
+    	ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getValue().split(" / ")[0]), funcionarioContCoquetel.getValue().split(" / ")[1], Integer.parseInt(horastrabContCoquetel.getText()),0);
+    	try {
+			ContratoCoquetel.updateContratoCoquetel(cc);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+    	}
     }
     
     @FXML
     void alterarContratoFestFood(ActionEvent event) throws IOException{
-    	
+    	if(festfoodContFestFood.getValue() == null || segurancaContFestFood.getValue() == null) {
+    		
+    	}else {
+    	ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getValue().split(" / ")[0]), segurancaContFestFood.getValue().split(" / ")[1], Integer.parseInt(horastrabContFestFood.getText()),0);
+    	try {
+			ContratoFestFood.deleteContratoFestFood(cf);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+    	}
     }
 }

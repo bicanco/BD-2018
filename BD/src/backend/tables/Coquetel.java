@@ -90,17 +90,28 @@ public class Coquetel {
 		
 	}
 	
-	public static void insertCoquetel(Coquetel coquetel) {
+	public static void insertCoquetel(Coquetel coquetel) throws Exception {
 		String sql = "insert into COQUETEL (FESTA, ORCAMENTO, LOCAL, CIDADE) values("+coquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há uma Empresa com esse CNPJ.Por favor digite outro valor para CNPJ.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Nome Fantasia, Razão Social e Endereco tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: CNPJ - 14; Nome Fantasia - 60; Razão Social - 120; Endereço - 120.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateCoquetel(Coquetel coquetel) {
+	public static void updateCoquetel(Coquetel coquetel) throws Exception {
 		String sql = "update COQUETEL set"
 				+ coquetel.toStringUpdates()
 				+ " where FESTA = "+coquetel.festa;
@@ -112,8 +123,12 @@ public class Coquetel {
 		}
 	}
 	
-	public static void deleteEmpresa(Coquetel coquetel) {
-		String sql = "delete from COQUETEL"+coquetel.toStringRestritions();
+	public static void deleteCoquetel(Coquetel coquetel) throws Exception {
+		String aux = coquetel.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from COQUETEL"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -124,8 +139,8 @@ public class Coquetel {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(local.compareTo("") != 0) {
-			res += " LOCAL = '"+this.local+"'";
+		if(!local.equals("")) {
+			res += " LOCAL = '"+this.local+"', CIDADE = '"+this.cidade+"'";
 		}
 		return res;
 	}
@@ -135,17 +150,17 @@ public class Coquetel {
 		if(festa != 0) {
 			res += " FESTA = "+this.festa;
 		}
-		if(local.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!local.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " LOCAL = '"+this.local+"'";
 		}
-		if(cidade.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!cidade.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " CIDADE = '"+this.cidade+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

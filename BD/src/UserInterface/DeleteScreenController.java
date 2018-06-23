@@ -7,6 +7,12 @@ import backend.tables.AtribuicaoCategoria;
 import backend.tables.Brinde;
 import backend.tables.CategoriaFornecimento;
 import backend.tables.ContatoEmpresa;
+import backend.tables.Contratante;
+import backend.tables.ContratoCoquetel;
+import backend.tables.ContratoFestFood;
+import backend.tables.Convidado;
+import backend.tables.Convite;
+import backend.tables.Coquetel;
 import backend.tables.Empresa;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
@@ -282,15 +288,6 @@ public class DeleteScreenController implements Initializable {
 		} catch (Exception e1) {
 			System.out.println(e1);;
 		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		Empresa.remover(e);
-    		ou
-    		e.remover();
-
-    	else
-    		tratamento dos erros (telas);
-   		*/
     }
     
     @FXML
@@ -307,14 +304,12 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerContratante(ActionEvent event) throws IOException{
-    	/*
-    	Contratante c = new Contratante(cnpjContratante.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    		Contratante c = new Contratante(cnpjContratante.getText());
+    		try {
+				Contratante.deleteContratante(c);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
     }
     
     @FXML
@@ -325,12 +320,6 @@ public class DeleteScreenController implements Initializable {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
     }
     
     @FXML
@@ -341,12 +330,6 @@ public class DeleteScreenController implements Initializable {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.remover();
-    	else
-    		tratamento dos erros (telas);
-    	*/
     }
     
     @FXML
@@ -357,12 +340,6 @@ public class DeleteScreenController implements Initializable {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
     }
     
     @FXML
@@ -403,38 +380,32 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerCoquetel(ActionEvent event) throws IOException{
-    	/*
-    	Coquetel c = new Coquetel(festaCoquetel.getText(), localCoquetel.getText(), cidadeCoquetel.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getText()), 0 , localCoquetel.getText(), cidadeCoquetel.getText());
+    	try {
+			Coquetel.deleteCoquetel(c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
     void removerConvidado(ActionEvent event) throws IOException{
-    	/*
-    	Convidado c = new Convidado(nomeConvidado.getText(), emailConvidado.getText(), null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Convidado c = new Convidado(emailConvidado.getText(),nomeConvidado.getText(), null);
+    	try {
+			Convidado.deleteConvidado(c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
     void removerConvite(ActionEvent event) throws IOException{
-    	/*
-    	Convite c = new Convite(coquetelConvite.getText(), convidadoConvite.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Convite c = new Convite(convidadoConvite.getText(),Integer.parseInt(coquetelConvite.getText()));
+    	try {
+			Convite.deleteConvite(c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
@@ -445,12 +416,6 @@ public class DeleteScreenController implements Initializable {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		b.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
     }
     
     @FXML
@@ -527,26 +492,22 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerContratoCoquetel(ActionEvent event) throws IOException{
-    	/*
-    	ContratoCoquetel cc = new ContratoCoquetel(coquetelContCoquetel.getText(), funcionarioContCoquetel.getText(), null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		cc.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getText()), funcionarioContCoquetel.getText(), 0, 0);
+    	try {
+			ContratoCoquetel.deleteContratoCoquetel(cc);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
     void removerContratoFestFood(ActionEvent event) throws IOException{
-    	/*
-    	ContratoFestFood cf = new ContratoFestFood(festfoodContFestFood.getText(), segurancaContFestFood.getText(), null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		cf.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getText()), segurancaContFestFood.getText(), 0,0);
+    	try {
+			ContratoFestFood.deleteContratoFestFood(cf);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
 }
 

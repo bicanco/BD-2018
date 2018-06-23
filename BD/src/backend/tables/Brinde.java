@@ -121,7 +121,7 @@ public class Brinde {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(descricao.compareTo("") != 0) {
+		if(!descricao.equals("")) {
 			res += " DESCRICAO = '"+this.descricao+"'";
 		}
 		return res;
@@ -133,12 +133,12 @@ public class Brinde {
 		if(coquetel != 0) {
 			res += " COQUETEL = "+this.coquetel;
 		}
-		if(nome.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!nome.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " NOME = '"+this.nome+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

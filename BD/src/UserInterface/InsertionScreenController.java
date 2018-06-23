@@ -440,7 +440,7 @@ public class InsertionScreenController implements Initializable {
     	try {
 			CategoriaFornecimento.insertCategoriaFornecimento(c);
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -508,26 +508,26 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirConvidado(ActionEvent event) throws IOException{
-    	/*
-    	Convidado c = new Convidado(nomeConvidado.getText(), emailConvidado.getText(), telefoneConvidado.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Convidado c = new Convidado(emailConvidado.getText(), nomeConvidado.getText(), telefoneConvidado.getText());
+    	try {
+			Convidado.insertConvidado(c);
+		} catch (Exception e) {
+			abrirErrorScreen(e.getMessage());
+		}
     }
     
     @FXML
     void inserirConvite(ActionEvent event) throws IOException{
-    	/*
-    	Convite c = new Convite(coquetelConvite.getValue(), convidadoConvite.getValue());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(coquetelConvite.getValue() == null || convidadoConvite.getValue() == null) {
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	}else {
+    		Convite c = new Convite(convidadoConvite.getValue().split("[ /]")[0],Integer.parseInt(coquetelConvite.getValue().split("[ /]")[0]));
+    		try {
+				Convite.insertConvite(c);
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML
@@ -536,14 +536,8 @@ public class InsertionScreenController implements Initializable {
     	try {
 			Brinde.insertBrinde(b);
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
-    	/*
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		b.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
     }
     
     @FXML
@@ -621,8 +615,9 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirContratoCoquetel(ActionEvent event) throws IOException{
     	/*
-    	ContratoCoquetel cc = new ContratoCoquetel(coquetelContCoquetel.getValue(), funcionarioContCoquetel.getValue(), horastrabContCoquetel.getText());
-    	
+    	ContratoCoquetel cc = new ContratoCoquetel(coquetelContCoquetel.getValue().split("[/ ]")[0], funcionarioContCoquetel.getValue(), horastrabContCoquetel.getText(),null);
+    	ContratoCoquetel.insertContratoCoquetel(cc);
+
     	if(verificação dos atributos para saber se estão conforme as especificações)
     		cc.inserir();
     	else
