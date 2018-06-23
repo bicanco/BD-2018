@@ -110,7 +110,7 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="356.0" layoutX="81.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="597.0" />
                                           <Label layoutX="120.0" layoutY="167.0" text="Selecione uma Locação para que sejam informados os lotes relacionados a ela:" />
-                                          <JFXComboBox fx:id="locacaoBusca" layoutX="211.0" layoutY="243.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="locacaoBusca" layoutX="211.0" layoutY="243.0" prefHeight="31.0" prefWidth="337.0" promptText="ID / Festa / Local" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="95.0" layoutY="335.0" text="A tabela resultante irá conter todos os lotes vinculados à Locação selecionada, bem&#10;como o estado deles (adquiridos ou não) e, caso haja, as empresas que os adquiriram." textAlignment="CENTER" />
                                           <JFXButton fx:id="buscaLotes" buttonType="RAISED" layoutX="347.0" layoutY="503.0" onAction="#buscarLotes" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
@@ -123,7 +123,7 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="356.0" layoutX="81.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="597.0" />
                                           <Label layoutX="102.0" layoutY="165.0" text="Selecione um Coquetel para que seja informado o orçamento detalhado do mesmo:" />
-                                          <JFXComboBox fx:id="coquetelBusca" layoutX="211.0" layoutY="243.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="coquetelBusca" layoutX="211.0" layoutY="243.0" prefHeight="31.0" prefWidth="337.0" promptText="Festa / Data / Contratante ( CNPJ / Nome )" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="108.0" layoutY="324.0" text="A tabela resultante irá conter todas as fontes de gastos do coquetel selecionado,&#10;com seus respectivos preços, informando também o total&#10;a ser pago para realização do evento." textAlignment="CENTER" />
                                           <JFXButton fx:id="buscaOrcamento" buttonType="RAISED" layoutX="347.0" layoutY="503.0" onAction="#buscarOrcamento" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
@@ -136,7 +136,7 @@
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="356.0" layoutX="81.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="597.0" />
                                           <Label layoutX="286.0" layoutY="136.0" text="Selecione um Funcionário: " />
-                                          <JFXComboBox fx:id="funcionarioBusca" layoutX="211.0" layoutY="171.0" prefHeight="31.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="funcionarioBusca" layoutX="211.0" layoutY="171.0" prefHeight="31.0" prefWidth="337.0" promptText="Nome / CPF / Função" style="-fx-background-color: ffffff;" />
                                           <Label layoutX="203.0" layoutY="226.0" text="Selecione um período de tempo no qual deseja mostrar&#10;o relatório de pagamento do funcionário selecionado:" textAlignment="CENTER" />
                                           <Label layoutX="111.0" layoutY="296.0" text="De: " />
                                           <JFXComboBox fx:id="mesInicial" layoutX="144.0" layoutY="291.0" prefHeight="31.0" prefWidth="150.0" promptText="Mês" style="-fx-background-color: ffffff;" />
