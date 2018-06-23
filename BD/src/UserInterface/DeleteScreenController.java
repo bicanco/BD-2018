@@ -14,6 +14,7 @@ import backend.tables.Convidado;
 import backend.tables.Convite;
 import backend.tables.Coquetel;
 import backend.tables.Empresa;
+import backend.tables.FestFood;
 import backend.tables.Local;
 import backend.tables.ProdutosFornecidos;
 import javafx.scene.layout.AnchorPane;
@@ -358,14 +359,13 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerFestFood(ActionEvent event) throws IOException{
-    	/*
-    	FestFood f = new Festa(festaFestFood.getText(), null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		f.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	FestFood f = new FestFood(Integer.parseInt(festaFestFood.getText()), 0);
+    	try {
+			FestFood.deleteFestFood(f);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
     }
     
     @FXML

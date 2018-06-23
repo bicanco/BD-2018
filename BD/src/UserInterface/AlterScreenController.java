@@ -384,7 +384,16 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarFestFood(ActionEvent event) throws IOException{
-    	
+    	if(festaFestFood.getValue() == null) {
+    		
+    	}else{
+    		FestFood f = new FestFood(Integer.parseInt(festaFestFood.getValue().split(" / ")[4]), Float.parseFloat(precoFestFood.getText()));
+    		try {
+				FestFood.updateFestFood(f);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML

@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Spliterator;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -472,14 +473,16 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirFestFood(ActionEvent event) throws IOException{
-    	/*
-    	FestFood f = new Festa(festaFestFood.getValue(), precoFestFood.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		f.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(festaFestFood.getValue() == null) {
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	}else {
+    		FestFood f = new FestFood(Integer.parseInt(festaFestFood.getValue().split(" / ")[0]), Float.parseFloat(precoFestFood.getText()));
+    		try {
+				FestFood.insertFestFood(f);
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML

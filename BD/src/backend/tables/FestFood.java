@@ -54,11 +54,11 @@ public class FestFood {
 	public static ObservableList<String> getListaFestFood(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
-		String sql="select E.CNPJ, E.NOMEFANTASIA, F.DATA from EMPRESA E, FESTA F where F.TIPOFESTA = 'FESTFOOD' and F.CONTRATANTE = E.CNPJ";
+		String sql="select E.CNPJ, E.NOMEFANTASIA, F.DATA, F.ID from EMPRESA E, FESTA F where F.TIPOFESTA = 'FESTFOOD' and F.CONTRATANTE = E.CNPJ";
 		try {
 			res = ConnectionManager.query(sql);
 			while(res.next())
-				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getDate(3));
+				list.add(res.getString(1)+" / "+res.getString(2)+" / "+res.getDate(3)+" / "+res.getInt(4));
 			res.close();
 			ConnectionManager.closeQuery();
 			
@@ -69,30 +69,50 @@ public class FestFood {
 		
 	}
 	
-	public static void insertFestFood(FestFood festFood) {
+	public static void insertFestFood(FestFood festFood) throws Exception {
 		String sql = "insert into FESTFOOD (FESTA, PRECOINGRESSO) values("+festFood+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já foi definido um Preço de ingresso para esse FestFood.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "O campo Preço do ingresso tem que ser preenchido.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateFestFood(FestFood festFood) {
+	public static void updateFestFood(FestFood festFood) throws Exception {
 		String sql = "update FESTFOOD set"
 				+ festFood.toStringUpdates()
 				+ " where FESTA = "+festFood.festa;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(FestFood festFood) {
-		String sql = "delete from FESTFOOD"+festFood.toStringRestritions();
+	public static void deleteFestFood(FestFood festFood) throws Exception {
+		String aux = festFood.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from FESTFOOD"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -114,7 +134,7 @@ public class FestFood {
 		if(festa != 0) {
 			res += " FESTA = "+this.festa;
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}
