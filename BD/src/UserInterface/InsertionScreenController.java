@@ -265,6 +265,12 @@ public class InsertionScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         myStage = Main.getMyStage();
         
+        ObservableList<String> festfood = FestFood.getListaFestFood();
+        
+        ObservableList<String> coquetel = Coquetel.getListaCoquetel();
+        
+        ObservableList<String> fornecedora = Fornecedora.getListaFornecedora();
+        
         ObservableList<String> tipoempresa = 
         	    FXCollections.observableArrayList(
         	        "Fornecedora",
@@ -274,7 +280,7 @@ public class InsertionScreenController implements Initializable {
         
         empresaContatos.setItems(Empresa.getListaEmpresa());
         
-        fornecedoraCatFornecedora.setItems(Fornecedora.getListaFornecedora());
+        fornecedoraCatFornecedora.setItems(fornecedora);
         
         categoriaCatFornecedora.setItems(CategoriaFornecimento.getListaCategoria());
         
@@ -286,46 +292,46 @@ public class InsertionScreenController implements Initializable {
         
         ObservableList<String> tipofesta = 
         	    FXCollections.observableArrayList(
-        	        "FestDood",
+        	        "FestFood",
         	        "Coquetel");
        
         tipoFesta.setItems(tipofesta);
         
-        festaFestFood.setItems(FestFood.getListaFestFood());
+        festaFestFood.setItems(festfood);
         
-        festfoodIngresso.setItems(FestFood.getListaFestFood());
+        festfoodIngresso.setItems(festfood);
         
-        festaCoquetel.setItems(Coquetel.getListaCoquetel());
+        festaCoquetel.setItems(coquetel);
         
         localCoquetel.setItems(Local.getListaLocal());
         
-        coquetelConvite.setItems(Coquetel.getListaCoquetel());
+        coquetelConvite.setItems(coquetel);
         
         convidadoConvite.setItems(Convidado.getListaConvidado());
         
-        coquetelBrinde.setItems(Coquetel.getListaCoquetel());
+        coquetelBrinde.setItems(coquetel);
         
-        fornecedoraFornecimento.setItems(Fornecedora.getListaFornecedora());
+        fornecedoraFornecimento.setItems(fornecedora);
         
-        coquetelFornecimento.setItems(Coquetel.getListaCoquetel());
+        coquetelFornecimento.setItems(coquetel);
         
-        fornecedoraProdutos.setItems(Fornecedora.getListaFornecedora());
+        fornecedoraProdutos.setItems(fornecedora);
         
-        coquetelProdutos.setItems(Coquetel.getListaCoquetel());
+        coquetelProdutos.setItems(coquetel);
         
-        festfoodLocacao.setItems(FestFood.getListaFestFood());
+        festfoodLocacao.setItems(festfood);
         
         localLocacao.setItems(Local.getListaLocal());
         
-        fornecedoraLote.setItems(Fornecedora.getListaFornecedora());
+        fornecedoraLote.setItems(fornecedora);
         
         locacaoLote.setItems(Locacao.getListaLocacao());
         
-        coquetelContCoquetel.setItems(Coquetel.getListaCoquetel());
+        coquetelContCoquetel.setItems(coquetel);
         
         funcionarioContCoquetel.setItems(Funcionario.getListaFuncionario());
         
-        festfoodContFestFood.setItems(FestFood.getListaFestFood());
+        festfoodContFestFood.setItems(festfood);
         
         segurancaContFestFood.setItems(Funcionario.getListaSeguranca());
     }    
@@ -340,6 +346,7 @@ public class InsertionScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -352,6 +359,7 @@ public class InsertionScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -364,6 +372,7 @@ public class InsertionScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -376,6 +385,7 @@ public class InsertionScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -388,6 +398,7 @@ public class InsertionScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     void abrirErrorScreen(String msg) throws IOException{
@@ -428,11 +439,10 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirEmpresa(ActionEvent event) throws IOException{
-    	
     	Empresa e = new Empresa(cnpjEmpresa.getText(), nomeEmpresa.getText(), razaoEmpresa.getText(), enderecoEmpresa.getText(), tipoEmpresa.getValue());
     	try {
 			Empresa.insertEmpresa(e);
-			abrirSuccessScreen("Inserï¿½ï¿½o realizada com sucesso");
+			abrirSuccessScreen("Inserção realizada com sucesso");
 		} catch (Exception e1) {
 			System.out.println(e1);
 		}
@@ -441,7 +451,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirContato(ActionEvent event) throws IOException{
     	if(empresaContatos.getValue() == null){
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}
     	else{
 	    	ContatoEmpresa c = new ContatoEmpresa(empresaContatos.getValue().split("[ /]")[0], emailContatos.getText(), nomeContatos.getText(), telefoneContatos.getText());
@@ -466,7 +476,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirCategoriaFornecedora(ActionEvent event) throws IOException{
     	if(fornecedoraCatFornecedora.getValue() == null || categoriaCatFornecedora.getValue() == null || precoCatFornecedora.getValue() == null){
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	} else{
 	    	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getValue());
 	    	try {
@@ -480,7 +490,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirFesta(ActionEvent event) throws IOException{
     	if(contratanteFesta.getValue() == null || tipoFesta.getValue() == null) {
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		Festa f = new Festa(0,contratanteFesta.getValue().split(" / ")[0], dataFesta.getText(), nomeFesta.getText(), horarioFesta.getText(), duracaoFesta.getText(), tipoFesta.getValue());
     		try {
@@ -494,7 +504,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirFestFood(ActionEvent event) throws IOException{
     	if(festaFestFood.getValue() == null) {
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		FestFood f = new FestFood(Integer.parseInt(festaFestFood.getValue().split(" / ")[0]), Float.parseFloat(precoFestFood.getText()));
     		try {
@@ -508,7 +518,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirIngresso(ActionEvent event) throws IOException{
     	if(festfoodIngresso.getValue() == null) {
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		Ingresso i = new Ingresso(Integer.parseInt(festfoodIngresso.getValue().split(" / ")[3]), Integer.parseInt(codigoIngresso.getText()), compradorIngresso.getText());
     		try {
@@ -522,7 +532,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirCoquetel(ActionEvent event) throws IOException{
     	if(festaCoquetel.getValue() == null || localCoquetel.getValue() == null) {
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getValue().split(" / ")[0]), 0, localCoquetel.getValue().split(" / ")[0], localCoquetel.getValue().split(" / ")[1]);
     		try {
@@ -546,7 +556,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirConvite(ActionEvent event) throws IOException{
     	if(coquetelConvite.getValue() == null || convidadoConvite.getValue() == null) {
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		Convite c = new Convite(convidadoConvite.getValue().split("[ /]")[0],Integer.parseInt(coquetelConvite.getValue().split("[ /]")[0]));
     		try {
@@ -559,18 +569,22 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirBrinde(ActionEvent event) throws IOException{
-    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getValue().split("[ /]")[0]), nomeBrinde.getText(), descricaoBrinde.getText());
-    	try {
-			Brinde.insertBrinde(b);
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(coquetelBrinde.getValue() == null) {
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	}else {
+	    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getValue().split("[ /]")[0]), nomeBrinde.getText(), descricaoBrinde.getText());
+	    	try {
+				Brinde.insertBrinde(b);
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML
     void inserirFornecimentoCoquetel(ActionEvent event) throws IOException{
     	if(fornecedoraFornecimento.getValue() == null || coquetelFornecimento.getValue() == null) {
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getValue().split(" / ")[0], Integer.parseInt(coquetelFornecimento.getValue().split(" / ")[0]), Float.parseFloat(precoFornecimento.getText()));
     		try {
@@ -584,7 +598,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirProduto(ActionEvent event) throws IOException{
     	if(fornecedoraProdutos.getValue() == null || coquetelProdutos.getValue() == null) {
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getValue().split(" / ")[0], Integer.parseInt(coquetelProdutos.getValue().split(" / ")[0]), nomeProdutos.getText(), Integer.parseInt(quantidadeProdutos.getText()));
     		try {
@@ -623,7 +637,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirLote(ActionEvent event) throws IOException{
     	if(locacaoLote.getValue() == null) {
-    		abrirErrorScreen("Uma Locaï¿½ï¿½o precisa ser selecionada");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		String aux = fornecedoraLote.getValue();
     		aux = aux == null?" ":aux.split(" / ")[0];
@@ -649,7 +663,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirContratoCoquetel(ActionEvent event) throws IOException{
     	if(coquetelContCoquetel.getValue() == null || funcionarioContCoquetel.getValue() == null) {
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getValue().split("[/ ]")[0]), funcionarioContCoquetel.getValue().split(" / ")[1], Integer.parseInt(horastrabContCoquetel.getText()),0);
     		try {
@@ -663,7 +677,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirContratoFestFood(ActionEvent event) throws IOException{
     	if(festfoodContFestFood.getValue() == null || segurancaContFestFood.getValue() == null) {
-    		abrirErrorScreen("Necessï¿½rio selecionar todas as caixas de seleï¿½ï¿½o.");
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	}else {
     		ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getValue().split("[/ ]")[0]), segurancaContFestFood.getValue().split(" / ")[1], Integer.parseInt(horastrabContFestFood.getText()),0);
     		try {

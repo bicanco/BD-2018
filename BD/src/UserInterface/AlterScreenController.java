@@ -8,6 +8,8 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -221,37 +223,45 @@ public class AlterScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        myStage = Main.getMyStage(); 
+        myStage = Main.getMyStage();
+        
+        ObservableList<String> categoria = CategoriaFornecimento.getListaCategoria();
+        
+        ObservableList<String> festfood = FestFood.getListaFestFood();
+        
+        ObservableList<String> coquetel = Coquetel.getListaCoquetel();
+        
+        ObservableList<String> fornecedora = Fornecedora.getListaFornecedora();
         
         cnpjEmpresa.setItems(Empresa.getListaEmpresa());
         
         emailContatos.setItems(ContatoEmpresa.getListaEmail());
         
-        nomeCatFornecimento.setItems(CategoriaFornecimento.getListaCategoria());
+        nomeCatFornecimento.setItems(categoria);
         
-        fornecedoraCatFornecedora.setItems(Fornecedora.getListaFornecedora());
+        fornecedoraCatFornecedora.setItems(fornecedora);
         
-        categoriaCatFornecedora.setItems(CategoriaFornecimento.getListaCategoria());
+        categoriaCatFornecedora.setItems(categoria);
         
         idFesta.setItems(Festa.getListaFesta());
         
-        festaFestFood.setItems(FestFood.getListaFestFood());
+        festaFestFood.setItems(festfood);
         
-        festaCoquetel.setItems(Coquetel.getListaCoquetel());
+        festaCoquetel.setItems(coquetel);
  
         localCoquetel.setItems(Local.getListaLocal());
         
         emailConvidado.setItems(Convidado.getListaConvidado());
         
-        coquetelBrinde.setItems(Coquetel.getListaCoquetel());
+        coquetelBrinde.setItems(coquetel);
         
-        fornecedoraFornecimento.setItems(Fornecedora.getListaFornecedora());
+        fornecedoraFornecimento.setItems(fornecedora);
         
-        coquetelFornecimento.setItems(Coquetel.getListaCoquetel());
+        coquetelFornecimento.setItems(coquetel);
         
-        fornecedoraProdutos.setItems(Fornecedora.getListaFornecedora());
+        fornecedoraProdutos.setItems(fornecedora);
         
-        coquetelProdutos.setItems(Coquetel.getListaCoquetel());
+        coquetelProdutos.setItems(coquetel);
         
         nomeLocal.setItems(Local.getListaNome());
         
@@ -261,17 +271,17 @@ public class AlterScreenController implements Initializable {
         
         localLocacao.setItems(Local.getListaLocal());
         
-        fornecedoraLote.setItems(Fornecedora.getListaFornecedora());
+        fornecedoraLote.setItems(fornecedora);
         
         locacaoLote.setItems(Locacao.getListaLocacao());
         
         cpfFuncionario.setItems(Funcionario.getListaCpf());
         
-        coquetelContCoquetel.setItems(Coquetel.getListaCoquetel());
+        coquetelContCoquetel.setItems(coquetel);
         
         funcionarioContCoquetel.setItems(Funcionario.getListaFuncionario());
         
-        festfoodContFestFood.setItems(FestFood.getListaFestFood());
+        festfoodContFestFood.setItems(festfood);
         
         segurancaContFestFood.setItems(Funcionario.getListaSeguranca());
     }    
@@ -286,6 +296,7 @@ public class AlterScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -298,6 +309,7 @@ public class AlterScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -310,6 +322,7 @@ public class AlterScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -322,6 +335,7 @@ public class AlterScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -334,6 +348,7 @@ public class AlterScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
 
     @FXML

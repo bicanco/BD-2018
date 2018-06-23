@@ -419,6 +419,7 @@ public class ViewScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -431,6 +432,7 @@ public class ViewScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -443,6 +445,7 @@ public class ViewScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -455,6 +458,7 @@ public class ViewScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -467,6 +471,7 @@ public class ViewScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
    
 }

@@ -137,6 +137,7 @@ public class SearchScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -149,6 +150,7 @@ public class SearchScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -161,6 +163,7 @@ public class SearchScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -173,6 +176,7 @@ public class SearchScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -185,6 +189,7 @@ public class SearchScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
    
     @FXML

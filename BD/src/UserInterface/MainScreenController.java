@@ -57,6 +57,7 @@ public class MainScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -69,6 +70,7 @@ public class MainScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -81,6 +83,7 @@ public class MainScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -93,6 +96,7 @@ public class MainScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
     
     @FXML
@@ -105,6 +109,7 @@ public class MainScreenController implements Initializable {
                 
         myStage.setScene(scene);
         myStage.show();
+        myStage.setResizable(false);
     }
    
 }
