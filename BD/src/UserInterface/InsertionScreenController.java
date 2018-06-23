@@ -496,14 +496,16 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirCoquetel(ActionEvent event) throws IOException{
-    	/*
-    	Coquetel c = new Coquetel(festaCoquetel.getValue(), localCoquetel.getValue());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		c.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(festaCoquetel.getValue() == null || localCoquetel.getValue() == null) {
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	}else {
+    		Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getValue().split(" / ")[0]), 0, localCoquetel.getValue().split(" / ")[0], localCoquetel.getValue().split(" / ")[1]);
+    		try {
+				Coquetel.insertCoquetel(c);
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML
@@ -554,26 +556,27 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirProduto(ActionEvent event) throws IOException{
-    	/*
-    	Produtos p = new Produtos(fornecedoraProdutos.getValue(), coquetelProdutos.getValue(), nomeProdutos.getText(), quantidadeProdutos.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		p.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(fornecedoraProdutos.getValue() == null || coquetelProdutos.getValue() == null) {
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	}else {
+    		ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getValue().split(" / ")[0], Integer.parseInt(coquetelProdutos.getValue().split(" / ")[0]), nomeProdutos.getText(), Integer.parseInt(quantidadeProdutos.getText()));
+    		try {
+				ProdutosFornecidos.insertProdutosFornecidos(p);
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML
     void inserirLocal(ActionEvent event) throws IOException{
-    	/*
-    	Local l = new Local(nomeLocal.getText(), ruaLocal.getText(), numeroLocal.getText(), cidadeLocal.getText(), estadoLocal.getText(), capacidadeLocal.getText(), diariaLocal.getText(), aberturaLocal.getValue());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		l.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	String aux = aberturaLocal.isSelected()?"S":"N";
+    	Local l = new Local(nomeLocal.getText(), cidadeLocal.getText(), estadoLocal.getText(), ruaLocal.getText(), Integer.parseInt(numeroLocal.getText()), Integer.parseInt(capacidadeLocal.getText()), aux, Float.parseFloat(diariaLocal.getText()));
+    	try {
+			Local.insertLocal(l);
+		} catch (Exception e) {
+			abrirErrorScreen(e.getMessage());
+		}
     }
     
     @FXML
@@ -590,14 +593,18 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirLote(ActionEvent event) throws IOException{
-    	/*
-    	Lote l = new Lote(fornecedoraLote.getValue(), locacaoLote.getValue(), numeroLote.getText(), precoLote.getText(), larguraLote.getText(), comprimentoLote.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		l.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(locacaoLote.getValue() == null) {
+    		abrirErrorScreen("Uma Locação precisa ser selecionada");
+    	}else {
+    		String aux = fornecedoraLote.getValue();
+    		aux = aux == null?" ":aux.split(" / ")[0];
+    		Lote l = new Lote(Integer.parseInt(locacaoLote.getValue().split(" / ")[0]), Integer.parseInt(numeroLote.getText()),aux, Float.parseFloat(precoLote.getText()), Float.parseFloat(larguraLote.getText()), Float.parseFloat(comprimentoLote.getText()));
+    		try {
+				Lote.insertLote(l);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML
@@ -614,26 +621,29 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirContratoCoquetel(ActionEvent event) throws IOException{
-    	/*
-    	ContratoCoquetel cc = new ContratoCoquetel(coquetelContCoquetel.getValue().split("[/ ]")[0], funcionarioContCoquetel.getValue(), horastrabContCoquetel.getText(),null);
-    	ContratoCoquetel.insertContratoCoquetel(cc);
-
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		cc.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(coquetelContCoquetel.getValue() == null || funcionarioContCoquetel.getValue() == null) {
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	}else {
+    		ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getValue().split("[/ ]")[0]), funcionarioContCoquetel.getValue().split(" / ")[1], Integer.parseInt(horastrabContCoquetel.getText()),0);
+    		try {
+    			ContratoCoquetel.insertContratoCoquetel(cc);
+    		} catch (Exception e) {
+    			abrirErrorScreen(e.getMessage());
+    		}
+    	}
     }
     
     @FXML
     void inserirContratoFestFood(ActionEvent event) throws IOException{
-    	/*
-    	ContratoFestFood cf = new ContratoFestFood(festfoodContFestFood.getValue(), segurancaContFestFood.getValue(), horastrabContFestFood.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		cf.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(festfoodContFestFood.getValue() == null || segurancaContFestFood.getValue() == null) {
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	}else {
+    		ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getValue().split("[/ ]")[0]), segurancaContFestFood.getValue().split(" / ")[1], Integer.parseInt(horastrabContFestFood.getText()),0);
+    		try {
+    			ContratoFestFood.insertContratoFestFood(cf);
+    		} catch (Exception e) {
+    			abrirErrorScreen(e.getMessage());
+    		}
+    	}
     }
 }

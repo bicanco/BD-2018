@@ -72,17 +72,28 @@ public class ProdutosFornecidos {
 		}
 	}
 	
-	public static void insertProdutosFornecidos(ProdutosFornecidos produtosFornecidos) {
+	public static void insertProdutosFornecidos(ProdutosFornecidos produtosFornecidos) throws Exception {
 		String sql = "insert into PRODUTOSFORNECIDOS (FORNECEDORA, COQUETEL, NOME, QUANTIDADE) values("+produtosFornecidos+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Essa Fornecedora já está fornecendo um porduto com esse Nome para esse Coquetel. Por favor selecione outra Fornecedora e/ou Nome e/ou Coquetel.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Nome e Quantidade tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: Nome - 30.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateProdutosFornecidos(ProdutosFornecidos produtosFornecidos) {
+	public static void updateProdutosFornecidos(ProdutosFornecidos produtosFornecidos) throws Exception {
 		String sql = "update PRODUTOSFORNECIDOS set"
 				+ produtosFornecidos.toStringUpdates()
 				+ " where FORNECEDORA = '"+produtosFornecidos.fornecedora+"'"
@@ -91,13 +102,24 @@ public class ProdutosFornecidos {
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(ProdutosFornecidos produtosFornecidos) {
-		String sql = "delete from PRODUTOSFORNECIDOS"+produtosFornecidos.toStringRestritions();
+	public static void deleteProdutosFornecidos(ProdutosFornecidos produtosFornecidos) throws Exception {
+		String aux = produtosFornecidos.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from PRODUTOSFORNECIDOS"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -116,20 +138,20 @@ public class ProdutosFornecidos {
 	
 	private String toStringRestritions() {
 		String res = " where ";
-		if(fornecedora.compareTo("") != 0) {
+		if(!fornecedora.equals("")) {
 			res += " FORNECEDORA = '"+this.fornecedora+"'";
 		}
 		if(coquetel != 0) {
-			if(res.compareTo(" where ") != 0)
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " COQUETEL = "+this.coquetel;
 		}
-		if(nome.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!nome.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " NOME = '"+this.nome+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where ") )
 			res = " ";
 		return res;
 	}

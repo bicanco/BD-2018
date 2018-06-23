@@ -441,12 +441,31 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarProduto(ActionEvent event) throws IOException{
-
+    	if(fornecedoraProdutos.getValue() == null || coquetelProdutos.getValue() == null || nomeProdutos.getText() == null) {
+    		
+    	}else{
+    		ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getValue().split(" / ")[0], Integer.parseInt(coquetelProdutos.getValue().split(" / ")[0]), nomeProdutos.getText(), Integer.parseInt(quantidadeProdutos.getText()));
+    		try {
+				ProdutosFornecidos.updateProdutosFornecidos(p);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML
     void alterarLocal(ActionEvent event) throws IOException{
-    	
+    	if(nomeLocal.getValue() == null || cidadeLocal.getValue() == null) {
+    		
+    	}else {
+    		String aux = aberturaLocal.isSelected()?"S":"N";
+    		Local l = new Local(nomeLocal.getValue(), cidadeLocal.getValue(), null, ruaLocal.getText(), Integer.parseInt(numeroLocal.getText()), Integer.parseInt(capacidadeLocal.getText()), aux, Integer.parseInt(diariaLocal.getText()));
+    		try {
+				Local.updateLocal(l);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML
@@ -456,7 +475,18 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarLote(ActionEvent event) throws IOException{
-    	
+    	if(locacaoLote.getValue() == null || numeroLote.getText() == null) {
+    		
+    	}else {
+    		String aux = fornecedoraLote.getValue();
+    		aux = aux == null?" ":aux.split(" / ")[0];
+    		Lote l = new Lote(Integer.parseInt(locacaoLote.getValue().split(" / ")[0]), Integer.parseInt(numeroLote.getText()), aux, Float.parseFloat(precoLote.getText()), Float.parseFloat(larguraLote.getText()), Float.parseFloat(comprimentoLote.getText()));
+    		try {
+				Lote.updateLote(l);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML

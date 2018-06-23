@@ -81,11 +81,7 @@ public class ContratoCoquetel {
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-00001")){
-					mesg = "Já há uma Empresa com esse CNPJ.Por favor digite outro valor para CNPJ.";
-			}else if(aux.equals("ORA-01400")) {
-					mesg = "Os campos Nome Fantasia, Razão Social e Endereco tem que ser preenchidos.";
-			}else if(aux.equals("ORA-12899")) {
-					mesg = "Os limites de caracteres dos campos são: CNPJ - 14; Nome Fantasia - 60; Razão Social - 120; Endereço - 120.";
+					mesg = "Esse Funcionário já está associado a esse Coquetel. Por favor selecione outro Funcionário e/ou Coquetel.";
 			}
 			throw new Exception(mesg);
 		}catch(Exception e) {

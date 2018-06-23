@@ -165,17 +165,28 @@ public class Local {
 		
 	}
 	
-	public static void insertLocal(Local local) {
+	public static void insertLocal(Local local) throws Exception {
 		String sql = "insert into LOCAL (NOME, CIDADE, ESTADO, RUA, NUMERO, MAXFREQUENTADORES, POSSUIABERTURA, DIARIALOCACAO) values("+local+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há um Local com esse Nome nessa Cidade. Por favor digite outro Nome e/ou Cidade.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Nome, Rua, Número, Cidade, Estado, Capacidade e Valor da Diária tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: Nome - 60; Cidade - 40; Estado - 19; Rua - 40.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateLocal(Local local) {
+	public static void updateLocal(Local local) throws Exception {
 		String sql = "update LOCAL set"
 				+ local.toStringUpdates()
 				+ " where NOME = '"+local.nome+"'"
@@ -183,13 +194,26 @@ public class Local {
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracters dos campos são:Nome Fantasia-60 Endereço-120";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(Local local) {
-		String sql = "delete from LOCAL"+local.toStringRestritions();
+	public static void deleteLocal(Local local) throws Exception {
+		String aux = local.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from LOCAL"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -200,31 +224,31 @@ public class Local {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(rua.compareTo("") != 0) {
+		if(!rua.equals("")) {
 			res += " RUA = '"+this.rua+"'";
 		}
-		if(estado.compareTo("") != 0) {
-			if(res.compareTo("") != 0)
+		if(!estado.equals("")) {
+			if(!res.equals(""))
 				res += ", ";
 			res += " ESTADO = '"+this.estado+"'";
 		}
 		if(numero != 0) {
-			if(res.compareTo("") != 0)
+			if(!res.equals(""))
 				res += ", ";
 			res += " NUMERO = "+this.numero;
 		}
 		if(maxFrequentadores != 0) {
-			if(res.compareTo("") != 0)
+			if(!res.equals(""))
 				res += ", ";
 			res += " MAXFREQUENTADORES = "+this.maxFrequentadores;
 		}
 		if(diariaLocacao != 0) {
-			if(res.compareTo("") != 0)
+			if(!res.equals(""))
 				res += ", ";
 			res += " DIARIALOCAO = "+this.diariaLocacao;
 		}
-		if(possuiAbertura.compareTo("") != 0) {
-			if(res.compareTo("") != 0)
+		if(!possuiAbertura.equals("")) {
+			if(!res.equals(""))
 				res += ", ";
 			res += " POSSUIABERTURA = '"+this.possuiAbertura+"'";
 		}
@@ -233,20 +257,20 @@ public class Local {
 	
 	private String toStringRestritions() {
 		String res = " where ";
-		if(nome.compareTo("") != 0) {
+		if(!nome.equals("")) {
 			res += " NOME = '"+this.nome+"'";
 		}
-		if(cidade.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!cidade.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " CIDADE = '"+this.cidade+"'";
 		}
-		if(estado.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!estado.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " ESTADO = '"+this.estado+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

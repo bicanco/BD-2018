@@ -91,17 +91,26 @@ public class Lote {
 		}
 	}
 	
-	public static void insertLote(Lote lote) {
+	public static void insertLote(Lote lote) throws Exception {
 		String sql = "insert into LOTE (LOCACAO, NUMERO, FORNECEDORA, PRECO, LARGURA, COMPRIMENTO) values("+lote+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há um Lote com esse Número nessa Locação.Por favor selecione outra Locação e/ou Número.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos Preço e Número tem que ser preenchidos.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateLote(Lote lote) {
+	public static void updateLote(Lote lote) throws Exception {
 		String sql = "update LOTE set"
 				+ lote.toStringUpdates()
 				+ " where LOCACAO = "+lote.locacao
@@ -109,13 +118,24 @@ public class Lote {
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(Lote lote) {
-		String sql = "delete from LOTE"+lote.toStringRestritions();
+	public static void deleteLote(Lote lote) throws Exception {
+		String aux = lote.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from LOTE"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -126,21 +146,21 @@ public class Lote {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(fornecedora.compareTo("") != 0) {
+		if(!fornecedora.equals("")) {
 			res += " FORNECEDORA = '"+this.fornecedora+"'";
 		}
 		if(preco != 0) {
-			if(res.compareTo("") != 0)
+			if(!res.equals(""))
 				res += ", ";
 			res += " PRECO = "+preco;
 		}
 		if(largura != 0) {
-			if(res.compareTo("") != 0)
+			if(!res.equals(""))
 				res += ", ";
 			res += " LARGURA = "+this.largura;
 		}
 		if(comprimento != 0) {
-			if(res.compareTo("") != 0)
+			if(!res.equals(""))
 				res += ", ";
 			res += " COMPRIMENTO = "+this.comprimento;
 		}
@@ -149,20 +169,20 @@ public class Lote {
 	
 	private String toStringRestritions() {
 		String res = " where ";
-		if(fornecedora.compareTo("") != 0) {
+		if(!fornecedora.equals("")) {
 			res += " FORNECEDORA = '"+this.fornecedora+"'";
 		}
 		if(locacao != 0) {
-			if(res.compareTo(" where ") != 0)
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " LOCACAO = "+this.locacao;
 		}
 		if(numero != 0) {
-			if(res.compareTo(" where ") != 0)
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " NUMERO = "+this.numero;
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

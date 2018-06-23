@@ -14,6 +14,8 @@ import backend.tables.Convidado;
 import backend.tables.Convite;
 import backend.tables.Coquetel;
 import backend.tables.Empresa;
+import backend.tables.Local;
+import backend.tables.ProdutosFornecidos;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
@@ -432,26 +434,22 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerProduto(ActionEvent event) throws IOException{
-    	/*
-    	Produtos p = new Produtos(fornecedoraProdutos.getText(), coquetelProdutos.getText(), nomeProdutos.getText(), null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		p.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getText(), Integer.parseInt(coquetelProdutos.getText()), nomeProdutos.getText(), 0);
+    	try {
+			ProdutosFornecidos.deleteProdutosFornecidos(p);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
     void removerLocal(ActionEvent event) throws IOException{
-    	/*
-    	Local l = new Local(nomeLocal.getText(), null, null, cidadeLocal.getText(), estadoLocal.getText(), capacidadeLocal.getText(), null, null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		l.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Local l = new Local(nomeLocal.getText(), cidadeLocal.getText(), estadoLocal.getText(),null, 0, 0, null, 0);
+    	try {
+			Local.deleteLocal(l);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
