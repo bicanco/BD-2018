@@ -425,10 +425,10 @@
                                        <children>
                                           <Label layoutX="54.0" layoutY="8.0" text="Preencha os campos abaixo para localizar os registros a serem alterados:" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="180.0" layoutX="54.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
-                                          <JFXComboBox fx:id="funcionarioContCoquetel" layoutX="214.0" layoutY="149.0" prefHeight="31.0" prefWidth="337.0" promptText="Nome / CPF / Função" style="-fx-background-color: ffffff;" />
-                                          <JFXComboBox fx:id="coquetelContCoquetel" layoutX="214.0" layoutY="68.0" prefHeight="31.0" prefWidth="337.0" promptText="Festa / Data / Contratante ( CNPJ / Nome )" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="116.0" layoutY="154.0" text="Funcionário:" />
-                                          <Label layoutX="134.0" layoutY="73.0" text="Coquetel:" />
+                                          <JFXComboBox fx:id="funcionarioContCoquetel" layoutX="214.0" layoutY="148.0" prefHeight="31.0" prefWidth="337.0" promptText="Nome / CPF / Função" style="-fx-background-color: ffffff;" />
+                                          <JFXComboBox fx:id="coquetelContCoquetel" layoutX="214.0" layoutY="75.0" prefHeight="31.0" prefWidth="337.0" promptText="Festa / Data / Contratante ( CNPJ / Nome )" style="-fx-background-color: ffffff;" />
+                                          <Label layoutX="116.0" layoutY="153.0" text="Funcionário:" />
+                                          <Label layoutX="134.0" layoutY="80.0" text="Coquetel:" />
                                           <Label layoutX="54.0" layoutY="262.0" text="Preencha os campos abaixo para alterar as informações do(s) registro(s):" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="180.0" layoutX="54.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <JFXTextField fx:id="horastrabContCoquetel" layoutX="214.0" layoutY="366.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
@@ -450,7 +450,7 @@
                                           <Label layoutX="54.0" layoutY="262.0" text="Preencha os campos abaixo para alterar as informações do(s) registro(s):" />
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="180.0" layoutX="54.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
                                           <JFXTextField fx:id="horastrabContFestFood" layoutX="214.0" layoutY="366.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="74.0" layoutY="370.0" text="Horas Trabalhadas:" />
+                                          <Label layoutX="71.0" layoutY="370.0" text="Horas Trabalhadas:" />
                                           <JFXButton fx:id="alterarContFestFood" buttonType="RAISED" layoutX="349.0" layoutY="526.0" onAction="#alterarContratoFestFood" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Alterar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>

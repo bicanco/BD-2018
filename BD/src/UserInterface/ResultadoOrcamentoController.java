@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  *
  * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
  */
-public class ResultadoOrçamentoController {
+public class ResultadoOrcamentoController {
 	private Stage orcamentoStage;
 
     public Stage getAdicionarStage() {

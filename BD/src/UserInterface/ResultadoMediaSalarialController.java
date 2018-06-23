@@ -2,6 +2,11 @@ package UserInterface;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -10,6 +15,15 @@ import javafx.stage.Stage;
  * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
  */
 public class ResultadoMediaSalarialController {
+	@FXML
+    private TableView<Object> mediasalarialTabela;
+    @FXML
+    private TableColumn<Object, String> funcaoMediaSalarial;
+    @FXML
+    private TableColumn<Object, String> quantMediaSalarial;
+    @FXML
+    private TableColumn<Object, String> mediaMediaSalarial;
+    
 	private Stage mediasalarialStage;
 
     public Stage getAdicionarStage() {
@@ -19,6 +33,11 @@ public class ResultadoMediaSalarialController {
     public void setAdicionarStage(Stage adicionarStage) {
         this.mediasalarialStage = adicionarStage;
         mediasalarialStage.setResizable(false);
+        
+        funcaoMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("funcao"));
+        quantMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("quant"));
+        mediaMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("media"));
+       	//mediasalarialTabela.setItems(BuscaAvancada.mediasalarialView());
     }
     
     public void initialize(URL url, ResourceBundle rb) {

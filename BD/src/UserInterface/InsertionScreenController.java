@@ -390,17 +390,6 @@ public class InsertionScreenController implements Initializable {
         myStage.show();
     }
     
-    @FXML
-    void inserirEmpresa(ActionEvent event) throws IOException{
-    	
-    	Empresa e = new Empresa(cnpjEmpresa.getText(), nomeEmpresa.getText(), razaoEmpresa.getText(), enderecoEmpresa.getText(), tipoEmpresa.getValue());
-    	try {
-			Empresa.insertEmpresa(e);
-		} catch (Exception e1) {
-			System.out.println(e1);
-		}
-    }
-    
     void abrirErrorScreen(String msg) throws IOException{
     	FXMLLoader loader = new FXMLLoader();
         loader.setLocation(LoginController.class.getResource("ErrorScreen.fxml"));
@@ -417,6 +406,36 @@ public class InsertionScreenController implements Initializable {
         controller.setAdicionarStage(erroStage, msg);
         
         erroStage.showAndWait();
+    }
+    
+    void abrirSuccessScreen(String msg) throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(LoginController.class.getResource("ErrorScreen.fxml"));
+        AnchorPane root = loader.load();
+
+        Stage erroStage = new Stage();
+        erroStage.setResizable(false);
+        erroStage.setTitle("Success");
+        erroStage.initModality(Modality.WINDOW_MODAL);
+        erroStage.initOwner(Main.getMyStage());
+        Scene scene = new Scene(root);
+        erroStage.setScene(scene);
+        ErrorScreenController controller = loader.getController();
+        controller.setAdicionarStage(erroStage, msg);
+        
+        erroStage.showAndWait();
+    }
+    
+    @FXML
+    void inserirEmpresa(ActionEvent event) throws IOException{
+    	
+    	Empresa e = new Empresa(cnpjEmpresa.getText(), nomeEmpresa.getText(), razaoEmpresa.getText(), enderecoEmpresa.getText(), tipoEmpresa.getValue());
+    	try {
+			Empresa.insertEmpresa(e);
+			abrirSuccessScreen("Inserção realizada com sucesso");
+		} catch (Exception e1) {
+			System.out.println(e1);
+		}
     }
     
     @FXML
