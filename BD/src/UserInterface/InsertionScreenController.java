@@ -608,14 +608,16 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirLocacao(ActionEvent event) throws IOException{
-    	/*
-    	Locacao l = new Locacao(festfoodLocacao.getValue(), localLocacao.getValue());
-    	
-    	if(verificaï¿½ï¿½o dos atributos para saber se estï¿½o conforme as especificaï¿½ï¿½es)
-    		l.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	if(festaFestFood.getValue() == null || localLocacao.getValue() == null) {
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	}else {
+    		Locacao l = new Locacao(0,Integer.parseInt(festfoodLocacao.getValue().split(" / ")[3]), localLocacao.getValue().split(" / ")[0], localLocacao.getValue().split(" / ")[1]);
+    		try {
+				Locacao.insertLocacao(l);
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML
@@ -636,14 +638,12 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirFuncionario(ActionEvent event) throws IOException{
-    	/*
-    	Funcionario f = new Funcionario(cpfFuncionario.getText(), nomeFuncionario.getText(), rgFuncionario.getText(), numeroFuncionario.getText(), ruaFuncionario.getText(), cidadeFuncionario.getText(), estadoFuncionario.getText(), emailFuncionario.getText(), telefoneFuncionario.getText(), celularFuncionario.getText(), valorFuncionario.getText(), funcaoFuncionario.getText());
-    	
-    	if(verificaï¿½ï¿½o dos atributos para saber se estï¿½o conforme as especificaï¿½ï¿½es)
-    		f.inserir();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Funcionario f = new Funcionario(cpfFuncionario.getText(), rgFuncionario.getText(), estadoFuncionario.getText(), nomeFuncionario.getText(), cidadeFuncionario.getText(), ruaFuncionario.getText(),Integer.parseInt(numeroFuncionario.getText()), emailFuncionario.getText(), telefoneFuncionario.getText(), celularFuncionario.getText(), Float.parseFloat(valorFuncionario.getText()), funcaoFuncionario.getText());
+    	try {
+			Funcionario.insertFuncionario(f);
+		} catch (Exception e) {
+			abrirErrorScreen(e.getMessage());
+		}
     }
     
     @FXML

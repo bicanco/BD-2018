@@ -107,30 +107,48 @@ public class Locacao {
 		}
 	}
 	
-	public static void insertLocacao(Locacao locacao) {
+	public static void insertLocacao(Locacao locacao) throws Exception {
 		String sql = "insert into LOCACAO (ID, FESTFOOD, NOMELOCAL, CIDADELOCAL) values("+locacao+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já foi alocado um Local para esse FestFood.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateLocacao(Locacao locacao) {
+	public static void updateLocacao(Locacao locacao) throws Exception {
 		String sql = "update LOCACAO set"
 				+ locacao.toStringUpdates()
 				+ " where ID = "+locacao.id;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(Locacao locacao) {
-		String sql = "delete from LOCACAO"+locacao.toStringRestritions();
+	public static void deleteLocacao(Locacao locacao) throws Exception {
+		String aux = locacao.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from LOCACAO"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -141,7 +159,7 @@ public class Locacao {
 	
 	private String toStringUpdates() {
 		String res = "";
-	if(nomeLocal.compareTo("") != 0 && cidadeLocal.compareTo("") != 0) {
+	if(!nomeLocal.equals("") && !cidadeLocal.equals("")) {
 			res += " NOMELOCAL = '"+this.nomeLocal+"',"
 				+ "CIDADELOCAL = '"+this.cidadeLocal+"'";
 		}
@@ -153,23 +171,24 @@ public class Locacao {
 		if(festFood != 0) {
 			res += " FESTFOOD = "+this.festFood;
 		}
-		if(nomeLocal.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!nomeLocal.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " NOMELOCAL = '"+this.nomeLocal+"'";
 		}
-		if(cidadeLocal.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!cidadeLocal.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " CIDADELOCAL = '"+this.cidadeLocal+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}
 	
 	@Override
 	public String toString() {
-		return this.id+","+this.festFood+",'"+this.nomeLocal+"','"+this.cidadeLocal+"'";
+		String aux = this.id == 0?"null": new Integer(this.id).toString();
+		return aux+","+this.festFood+",'"+this.nomeLocal+"','"+this.cidadeLocal+"'";
 	}
 }

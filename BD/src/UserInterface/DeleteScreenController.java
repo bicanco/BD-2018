@@ -15,10 +15,14 @@ import backend.tables.Convite;
 import backend.tables.Coquetel;
 import backend.tables.Empresa;
 import backend.tables.FestFood;
+import backend.tables.Festa;
 import backend.tables.Fornecedora;
 import backend.tables.FornecimentoCoquetel;
+import backend.tables.Funcionario;
 import backend.tables.Ingresso;
+import backend.tables.Locacao;
 import backend.tables.Local;
+import backend.tables.Lote;
 import backend.tables.ProdutosFornecidos;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
@@ -348,14 +352,12 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerFesta(ActionEvent event) throws IOException{
-    	/*
-    	Festa f = new Festa(contratanteFesta.getText(), dataFesta.getText(), nomeFesta.getText(), null, null, null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		f.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Festa f = new Festa(0,contratanteFesta.getText(), dataFesta.getText(), nomeFesta.getText(), null, null, null);
+    	try {
+			Festa.deleteFesta(f);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
@@ -450,39 +452,34 @@ public class DeleteScreenController implements Initializable {
     }
     
     @FXML
-    void removerLocacao(ActionEvent event) throws IOException{
-    	/*
-    	Locacao l = new Locacao(festfoodLocacao.getText(), localLocacao.getText(), cidadeLocacao.getText());
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		l.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    void removerLocacao(ActionEvent event){
+    	Locacao l = new Locacao(0,Integer.parseInt(festfoodLocacao.getText()), localLocacao.getText(), cidadeLocacao.getText());
+    	try {
+			Locacao.deleteLocacao(l);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML
     void removerLote(ActionEvent event) throws IOException{
-    	/*
-    	Lote l = new Lote(fornecedoraLote.getText(), locacaoLote.getText(), numeroLote.getText(), null, null, null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		l.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Lote l = new Lote(Integer.parseInt(locacaoLote.getText()),Integer.parseInt(numeroLote.getText()),fornecedoraLote.getText(), 0, 0, 0);
+    	try {
+			Lote.deleteLote(l);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
     }
     
     @FXML
     void removerFuncionario(ActionEvent event) throws IOException{
-    	/*
-    	Funcionario f = new Funcionario(cpfFuncionario.getText(), nomeFuncionario.getText(), null, null, null, cidadeFuncionario.getText(), estadoFuncionario.getText(), null, null, null, null, null);
-    	
-    	if(verificação dos atributos para saber se estão conforme as especificações)
-    		f.remover();
-    	else
-    		tratamento dos erros (telas);
-   		*/
+    	Funcionario f = new Funcionario(cpfFuncionario.getText(), null, estadoFuncionario.getText(), nomeFuncionario.getText(), cidadeFuncionario.getText(), null, 0, null, null, null, 0, null);
+    	try {
+			Funcionario.deleteFuncionario(f);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
     
     @FXML

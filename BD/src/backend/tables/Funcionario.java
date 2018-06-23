@@ -223,30 +223,54 @@ public class Funcionario {
 		}
 	}
 	
-	public static void insertFuncionario(Funcionario funcionario) {
+	public static void insertFuncionario(Funcionario funcionario) throws Exception {
 		String sql = "insert into FUNCIONARIO (CPF, RG, ESTADO, NOME, CIDADE, RUA, NUMERO, EMAIL, TELRESIDENCIAL, TELCELULAR, VALORPORHORA, FUNCAO) values("+funcionario+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-00001")){
+					mesg = "Já há uma Funcionário com esse CPF.Por favor digite outro valor para CPF.";
+			}else if(aux.equals("ORA-01400")) {
+					mesg = "Os campos RG, Estado, Nome, Cidade, Email, Valor/Hora e Função tem que ser preenchidos.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: CPF - 11; RG - 15; Estado - 19; Nome - 60; Cidade - 40; Rua - 40; Email - 60; Telefone - 11; Celular - 11; Função - 12.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void updateFuncionario(Funcionario funcionario) {
+	public static void updateFuncionario(Funcionario funcionario) throws Exception {
 		String sql = "update FUNCIONARIO set"
 				+ funcionario.toStringUpdates()
 				+ " where CPF = '"+funcionario.cpf+"'";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
-		}catch(SQLException e) {
+		}catch(SQLException e){
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01747")){
+					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
+			}else if(aux.equals("ORA-12899")) {
+					mesg = "Os limites de caracteres dos campos são: Estado - 19; Cidade - 40; Rua - 40; Email - 60; Residencial - 11; Celular - 11.";
+			}
+			throw new Exception(mesg);
+		}catch(Exception e) {
 			throw new RuntimeException();
 		}
 	}
 	
-	public static void deleteEmpresa(Funcionario funcionario) {
-		String sql = "delete from FUNCIONARIO"+funcionario.toStringRestritions();
+	public static void deleteFuncionario(Funcionario funcionario) throws Exception {
+		String aux = funcionario.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from FUNCIONARIO"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();

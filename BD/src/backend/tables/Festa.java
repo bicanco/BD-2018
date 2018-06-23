@@ -161,8 +161,12 @@ public class Festa {
 		}
 	}
 	
-	public static void deleteEmpresa(Festa festa) {
-		String sql = "delete from FESTA"+festa.toStringRestritions();
+	public static void deleteFesta(Festa festa) throws Exception {
+		String aux = festa.toStringRestritions();
+		if(aux.equals(" ")) {
+			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+		}
+		String sql = "delete from FESTA"+aux;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -173,21 +177,21 @@ public class Festa {
 	
 	private String toStringUpdates() {
 		String res = "";
-		if(data.compareTo("") != 0) {
+		if(!data.equals("")) {
 			res += " DATA = to_date('"+this.data+"','dd/mm/yyyy')";
 		}
-		if(nome.compareTo("") != 0) {
-			if(res.compareTo("") != 0)
+		if(!nome.equals("")) {
+			if(!res.equals(""))
 				res += ", ";
 			res += " NOME = '"+this.nome+"'";
 		}
-		if(horaInicio.compareTo("") != 0) {
-			if(res.compareTo("") != 0)
+		if(!horaInicio.equals("")) {
+			if(!res.equals(""))
 				res += ", ";
 			res += " HORAINICIO = to_date('"+this.horaInicio+"','hh:mi')";
 		}
-		if(duracao.compareTo("") != 0) {
-			if(res.compareTo("") != 0)
+		if(!duracao.equals("")) {
+			if(!res.equals(""))
 				res += ", ";
 			res += " DURACAO = to_date('"+this.duracao+"','hh:mi')";
 		}
@@ -196,20 +200,20 @@ public class Festa {
 	
 	private String toStringRestritions() {
 		String res = " where ";
-		if(contratante.compareTo("") != 0) {
+		if(!contratante.equals("")) {
 			res += " CONTRATANTE = '"+this.contratante+"'";
 		}
-		if(data.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!data.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " DATA = to_date("+this.data+",'dd/mm/yyyy')";
 		}
-		if(nome.compareTo("") != 0) {
-			if(res.compareTo(" where ") != 0)
+		if(!nome.equals("")) {
+			if(!res.equals(" where "))
 				res += " and ";
 			res += " NOME = '"+this.nome+"'";
 		}
-		if(res.compareTo(" where ") == 0)
+		if(res.equals(" where "))
 			res = " ";
 		return res;
 	}

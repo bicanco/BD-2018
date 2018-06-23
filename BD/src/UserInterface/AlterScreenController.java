@@ -379,6 +379,16 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarFesta(ActionEvent event) throws IOException{
+    	if(idFesta.getValue() == null) {
+    		
+    	}else {
+    		Festa f = new Festa(Integer.parseInt(idFesta.getValue().toString()), null, dataFesta.getText(), nomeFesta.getText(), horarioFesta.getText(), duracaoFesta.getText(), null);
+    		try {
+				Festa.updateFesta(f);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     	
     }
     
@@ -488,7 +498,15 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarLocacao(ActionEvent event) throws IOException{
-    	
+    	if(idLocacao.getValue() == null || localLocacao.getValue() == null) {
+    	}else {
+    		Locacao l = new Locacao(Integer.parseInt(idLocacao.getValue().toString()), 0, localLocacao.getValue().split(" / ")[0], localLocacao.getValue().split(" / ")[1]);
+    		try {
+    			Locacao.updateLocacao(l);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+    	}
     }
     
     @FXML
@@ -509,7 +527,16 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarFuncionario(ActionEvent event) throws IOException{
-    	
+    	if(cpfFuncionario.getValue() == null) {
+    		
+    	}else {
+    		Funcionario f = new Funcionario(cpfFuncionario.getValue(), null, estadoFuncionario.getText(), null, cidadeFuncionario.getText(), ruaFuncionario.getText(), Integer.parseInt(numeroFuncionario.getText()), emailFuncionario.getText(), telefoneFuncionario.getText(), celularFuncionario.getText(), Float.parseFloat(valorFuncionario.getText()), null);
+    		try {
+				Funcionario.updateFuncionario(f);
+			} catch (Exception e) {
+				System.out.print(e);
+			}
+    	}
     }
     
     @FXML
