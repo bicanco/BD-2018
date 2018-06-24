@@ -10,7 +10,16 @@ SELECT LT.NUMERO, LT.PRECO, LT.LARGURA, LT.COMPRIMENTO, EM.NOMEFANTASIA, LT.FORN
         LEFT JOIN EMPRESA EM ON LT.FORNECEDORA = EM.CNPJ
     WHERE LOCACAO = /* ID_LOCACAO */ 1;
     
--- 2) (.........................)
+-- 2) Para um número de convidados mínimo, mostrar quanto custou cada coquetel.
+
+-- NO_CONV_MIN: numero minimo de convidados
+
+SELECT F.NOME, F.CONTRATANTE, F.DATA, COUNT(CON.CONVIDADO) AS NOCONVIDADOS, COQ.ORCAMENTO
+    FROM COQUETEL COQ
+        INNER JOIN CONVITE CON ON COQ.FESTA = CON.COQUETEL
+        INNER JOIN FESTA F ON F.ID = COQ.FESTA
+    GROUP BY F.ID, F.NOME, F.CONTRATANTE, F.DATA, COQ.ORCAMENTO
+        HAVING COUNT(CON.CONVIDADO) >= /* NO_CONV_MIN */ 1;
 
 -- 3) Para um funcionário, informar quais são as festas que ele trabalhou em certo período de tempo e o quanto ele deve receber.
 
@@ -72,4 +81,5 @@ SELECT F.NOME, F.DATA, F.CONTRATANTE, QLOTE.TOTALLOTES, QLOTE.LOTESVENDIDOS, QIN
     FROM FESTA F, FESTFOOD FF, QING, QLOTE
     WHERE F.ID = FF.FESTA
         AND FF.FESTA = QING.FESTFOOD
-        AND QING.FESTFOOD = QLOTE.FESTFOOD;
+        AND QING.FESTFOOD = QLOTE.FESTFOOD
+        AND F.DATA > SYSDATE;
