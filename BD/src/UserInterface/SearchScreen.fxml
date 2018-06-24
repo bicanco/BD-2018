@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
@@ -117,15 +118,15 @@
                                     </Pane>
                                  </content>
                               </Tab>
-                              <Tab text="Orçamento Detalhado do Coquetel">
+                              <Tab text="Custo dos Coqueteis">
                                  <content>
                                     <Pane prefHeight="200.0" prefWidth="200.0">
                                        <children>
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="356.0" layoutX="81.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="597.0" />
-                                          <Label layoutX="102.0" layoutY="165.0" text="Selecione um Coquetel para que seja informado o orçamento detalhado do mesmo:" />
-                                          <JFXComboBox fx:id="coquetelBusca" layoutX="211.0" layoutY="243.0" prefHeight="31.0" prefWidth="337.0" promptText="Festa / Data / Contratante ( CNPJ / Nome )" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="108.0" layoutY="324.0" text="A tabela resultante irá conter todas as fontes de gastos do coquetel selecionado,&#10;com seus respectivos preços, informando também o total&#10;a ser pago para realização do evento." textAlignment="CENTER" />
-                                          <JFXButton fx:id="buscaOrcamento" buttonType="RAISED" layoutX="347.0" layoutY="503.0" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
+                                          <Label layoutX="145.0" layoutY="162.0" text="Informe o número mínimo de convidados&#10;para que sejam selecionados os Coqueteis que atendem essa restrição:" textAlignment="CENTER" />
+                                          <Label layoutX="110.0" layoutY="330.0" text="A tabela resultante irá conter todos os Coqueteis com número de convidados&#10; igual ou superior ao número mínimo informado, bem como seu orçamento total." textAlignment="CENTER" />
+                                          <JFXButton fx:id="buscaCustoCoquetel" buttonType="RAISED" layoutX="347.0" layoutY="503.0" onAction="#buscarCustoCoquetel" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
+                                          <JFXTextField fx:id="minConvidadosBusca" layoutX="211.0" layoutY="245.0" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: ffffff;" />
                                        </children>
                                     </Pane>
                                  </content>

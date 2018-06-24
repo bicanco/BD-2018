@@ -2,7 +2,9 @@ package UserInterface;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 
+import backend.advancedQueries.CustoCoquetel;
 import backend.advancedQueries.FaixaPrecoFrequente;
 import backend.advancedQueries.LotesLocacao;
 import backend.advancedQueries.PagamentoFuncionario;
@@ -56,6 +58,11 @@ public class SearchScreenController implements Initializable {
     private JFXButton buscaLotes;
     
     @FXML
+    private JFXTextField minConvidadosBusca;
+    @FXML
+    private JFXButton buscaCustoCoquetel;
+    
+    @FXML
     private JFXComboBox<String> funcionarioBusca;
     @FXML
     private JFXComboBox<String> mesInicial;
@@ -67,6 +74,7 @@ public class SearchScreenController implements Initializable {
     private JFXComboBox<String> anoFinal;
     @FXML
     private JFXButton buscaFolhaPagamento;
+    
     
     @FXML
     private JFXComboBox<String> estadoBusca;
@@ -233,13 +241,38 @@ public class SearchScreenController implements Initializable {
     }
     
     @FXML
+    void buscarCustoCoquetel(ActionEvent event) throws IOException{
+    	if(!minConvidadosBusca.getText().matches("^[0-9]*$")){
+    		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Mínimo de Convidados - inteiro.");
+    	} else{
+    		ObservableList<CustoCoquetel> custo = CustoCoquetel.tableView(Integer.parseInt(minConvidadosBusca.getText()));
+    		
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(LoginController.class.getResource("ResultadoCustoCoquetel.fxml"));
+            AnchorPane root = loader.load();
+
+            Stage custoStage = new Stage();
+            custoStage.setResizable(false);
+            custoStage.setTitle("Resultado da Busca");
+            custoStage.initModality(Modality.WINDOW_MODAL);
+            custoStage.initOwner(Main.getMyStage());
+            Scene scene = new Scene(root);
+            custoStage.setScene(scene);
+            ResultadoCustoCoquetelController controller = loader.getController();
+            controller.setAdicionarStage(custoStage, custo);
+            
+            custoStage.showAndWait();
+    	}
+    }
+    
+    @FXML
     void buscarFolhaPagamento(ActionEvent event) throws IOException{
     	if(funcionarioBusca.getValue() == null || mesInicial.getValue() == null || anoInicial.getValue() == null || mesFinal.getValue() == null || anoFinal.getValue() == null){
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	} else{
     		String dataInicial = mesInicial.getValue() + "/" + anoInicial.getValue();
     		String dataFinal = mesFinal.getValue() + "/" + anoFinal.getValue();
-    		ObservableList<PagamentoFuncionario> pagamento = PagamentoFuncionario.tableView(funcionarioBusca.getValue().split("[ /]")[1], dataInicial, dataFinal);
+    		ObservableList<PagamentoFuncionario> pagamento = PagamentoFuncionario.tableView(funcionarioBusca.getValue().split(" / ")[1], dataInicial, dataFinal);
     		
     		FXMLLoader loader = new FXMLLoader();
             loader.setLocation(LoginController.class.getResource("ResultadoFolhaPagamento.fxml"));

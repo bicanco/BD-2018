@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.ResultadoCustoCoquetelController">
+   <children>
+      <BorderPane prefHeight="600.0" prefWidth="800.0">
+         <top>
+            <AnchorPane prefHeight="74.0" prefWidth="800.0" style="-fx-background-color: #2A3132;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="283.0" layoutY="20.0" text="Custo dos Coqueteis" textFill="WHITE">
+                     <font>
+                        <Font name="Bodoni MT" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="64.0" fitWidth="61.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Icons/Search.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <TableView fx:id="custoTabela" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="nomeCusto" prefWidth="161.0" text="Nome do Coquetel" />
+                <TableColumn fx:id="contratanteCusto" prefWidth="173.0" text="Contratante" />
+                  <TableColumn fx:id="dataCusto" prefWidth="154.0" text="Data" />
+                  <TableColumn fx:id="convidadosCusto" prefWidth="190.0" text="Número de Convidados" />
+                  <TableColumn fx:id="orcamentoCusto" prefWidth="121.0" text="Orçamento" />
+              </columns>
+            </TableView>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

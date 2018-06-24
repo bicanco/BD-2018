@@ -2,7 +2,6 @@ package UserInterface;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import backend.advancedQueries.PagamentoFuncionario;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
