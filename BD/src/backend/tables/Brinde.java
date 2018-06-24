@@ -71,7 +71,7 @@ public class Brinde {
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-00001")){
-					mesg = "Já há um brinde com esse nome associado a esse coquetel. Por favo selecione outro coquetel e/ou nome";
+					mesg = "Já há um brinde com esse nome associado a esse coquetel. Por favor selecione outro coquetel e/ou nome";
 			}else if(aux.equals("ORA-01400")) {
 					mesg = "Os campos Nome e Descrição devem ser preenchidos.";
 			}else if(aux.equals("ORA-12899")) {

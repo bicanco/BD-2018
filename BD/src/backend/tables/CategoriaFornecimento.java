@@ -79,7 +79,7 @@ public class CategoriaFornecimento {
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-00001")){
-					mesg = "Já há uma Categoria de Fornecimento com esse nome.Por favor digite outro nome.";
+					mesg = "Já há uma Categoria de Fornecimento com esse Nome. Por favor digite outro Nome.";
 			}else if(aux.equals("ORA-01400")) {
 					mesg = "Os campos Nome e Descrição tem que ser preenchidos.";
 			}else if(aux.equals("ORA-12899")) {

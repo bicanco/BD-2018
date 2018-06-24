@@ -509,7 +509,7 @@ public class InsertionScreenController implements Initializable {
     void inserirFestFood(ActionEvent event) throws IOException{
     	if(festaFestFood.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
-    	} else if(!precoFestFood.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+    	} else if(!precoFestFood.getText().matches("^[0-9]+[.]?[0-9]*$")){
     		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Preço - decimal.");
     	} else {
     		FestFood f = new FestFood(Integer.parseInt(festaFestFood.getValue().split(" / ")[0]), Float.parseFloat(precoFestFood.getText()));
@@ -526,10 +526,10 @@ public class InsertionScreenController implements Initializable {
     void inserirIngresso(ActionEvent event) throws IOException{
     	if(festfoodIngresso.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
-    	} else if(!codigoIngresso.getText().matches("^[0-9]*$")){
+    	} else if(!codigoIngresso.getText().matches("^[0-9]+$")){
     		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Código - inteiro.");
     	} else {
-    		Ingresso i = new Ingresso(Integer.parseInt(festfoodIngresso.getValue().split(" / ")[3]), Integer.parseInt(codigoIngresso.getText()), compradorIngresso.getText());
+    		Ingresso i = new Ingresso(Integer.parseInt(festfoodIngresso.getValue().split(" / ")[0]), Integer.parseInt(codigoIngresso.getText()), compradorIngresso.getText());
     		try {
 				Ingresso.insertIngresso(i);
 				abrirSuccessScreen("Inserção realizada com sucesso");
@@ -570,7 +570,7 @@ public class InsertionScreenController implements Initializable {
     	if(coquetelConvite.getValue() == null || convidadoConvite.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	} else {
-    		Convite c = new Convite(convidadoConvite.getValue().split("[ /]")[0],Integer.parseInt(coquetelConvite.getValue().split("[ /]")[0]));
+    		Convite c = new Convite(convidadoConvite.getValue().split(" / ")[0],Integer.parseInt(coquetelConvite.getValue().split(" / ")[0]));
     		try {
 				Convite.insertConvite(c);
 				abrirSuccessScreen("Inserção realizada com sucesso");
@@ -599,7 +599,7 @@ public class InsertionScreenController implements Initializable {
     void inserirFornecimentoCoquetel(ActionEvent event) throws IOException{
     	if(fornecedoraFornecimento.getValue() == null || coquetelFornecimento.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
-    	} else if(!precoFornecimento.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+    	} else if(!precoFornecimento.getText().matches("^[0-9]+[.]?[0-9]*$")){
     		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Preço - decimal.");
     	} else {
     		FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getValue().split(" / ")[0], Integer.parseInt(coquetelFornecimento.getValue().split(" / ")[0]), Float.parseFloat(precoFornecimento.getText()));
@@ -616,7 +616,7 @@ public class InsertionScreenController implements Initializable {
     void inserirProduto(ActionEvent event) throws IOException{
     	if(fornecedoraProdutos.getValue() == null || coquetelProdutos.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
-    	} else if(!quantidadeProdutos.getText().matches("^[0-9]*$")){
+    	} else if(!quantidadeProdutos.getText().matches("^[0-9]+$")){
     		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Quantidade - inteiro.");
     	} else {
     		ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getValue().split(" / ")[0], Integer.parseInt(coquetelProdutos.getValue().split(" / ")[0]), nomeProdutos.getText(), Integer.parseInt(quantidadeProdutos.getText()));
@@ -632,7 +632,7 @@ public class InsertionScreenController implements Initializable {
     @FXML
     void inserirLocal(ActionEvent event) throws IOException{
     	String aux = aberturaLocal.isSelected()?"S":"N";
-    	if(!numeroLocal.getText().matches("^[0-9]*$") || !capacidadeLocal.getText().matches("^[0-9]*$") || !diariaLocal.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+    	if(!numeroLocal.getText().matches("^[0-9]+$") || !capacidadeLocal.getText().matches("^[0-9]+$") || !diariaLocal.getText().matches("^[0-9]+[.]?[0-9]*$")){
      		abrirErrorScreen("Os seguintes campos aceitam somente valores numéricos: Número e Capacidade - inteiro; Valor da Diária - decimal.");
      	} else{
 	    	Local l = new Local(nomeLocal.getText(), cidadeLocal.getText(), estadoLocal.getText(), ruaLocal.getText(), Integer.parseInt(numeroLocal.getText()), Integer.parseInt(capacidadeLocal.getText()), aux, Float.parseFloat(diariaLocal.getText()));
@@ -647,10 +647,10 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirLocacao(ActionEvent event) throws IOException{
-    	if(festaFestFood.getValue() == null || localLocacao.getValue() == null) {
+    	if(festfoodLocacao.getValue() == null || localLocacao.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	} else {
-    		Locacao l = new Locacao(0,Integer.parseInt(festfoodLocacao.getValue().split(" / ")[3]), localLocacao.getValue().split(" / ")[0], localLocacao.getValue().split(" / ")[1]);
+    		Locacao l = new Locacao(0,Integer.parseInt(festfoodLocacao.getValue().split(" / ")[0]), localLocacao.getValue().split(" / ")[0], localLocacao.getValue().split(" / ")[1]);
     		try {
 				Locacao.insertLocacao(l);
 				abrirSuccessScreen("Inserção realizada com sucesso");
@@ -664,7 +664,7 @@ public class InsertionScreenController implements Initializable {
     void inserirLote(ActionEvent event) throws IOException{
     	if(locacaoLote.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
-    	} else if(!numeroLote.getText().matches("^[0-9]*$") || !precoLote.getText().matches("^[0-9]*[,|.]?[0-9]*$") || !larguraLote.getText().matches("^[0-9]*[,|.]?[0-9]*$") || !comprimentoLote.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+    	} else if(!numeroLote.getText().matches("^[0-9]+$") || !precoLote.getText().matches("^[0-9]+[.]?[0-9]*$") || !larguraLote.getText().matches("^[0-9]+[.]?[0-9]*$") || !comprimentoLote.getText().matches("^[0-9]+[.]?[0-9]*$")){
     		abrirErrorScreen("Os seguintes campos aceitam somente valores numéricos: Número - inteiro; Preço, Largura e Comprimento - decimal.");
     	} else {
     		String aux = fornecedoraLote.getValue();
@@ -681,7 +681,7 @@ public class InsertionScreenController implements Initializable {
     
     @FXML
     void inserirFuncionario(ActionEvent event) throws IOException{
-    	if(!numeroFuncionario.getText().matches("^[0-9]*$") || !valorFuncionario.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+    	if(!numeroFuncionario.getText().matches("^[0-9]+$") || !valorFuncionario.getText().matches("^[0-9]+[.]?[0-9]*$")){
      		abrirErrorScreen("Os seguintes campos aceitam somente valores numéricos: Número - inteiro; Valor/Hora - decimal.");
      	} else{
 	    	Funcionario f = new Funcionario(cpfFuncionario.getText(), rgFuncionario.getText(), estadoFuncionario.getText(), nomeFuncionario.getText(), cidadeFuncionario.getText(), ruaFuncionario.getText(),Integer.parseInt(numeroFuncionario.getText()), emailFuncionario.getText(), telefoneFuncionario.getText(), celularFuncionario.getText(), Float.parseFloat(valorFuncionario.getText()), funcaoFuncionario.getText());
@@ -698,7 +698,7 @@ public class InsertionScreenController implements Initializable {
     void inserirContratoCoquetel(ActionEvent event) throws IOException{
     	if(coquetelContCoquetel.getValue() == null || funcionarioContCoquetel.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
-    	} else if(!horastrabContCoquetel.getText().matches("^[0-9]*$")){
+    	} else if(!horastrabContCoquetel.getText().matches("^[0-9]+$")){
     		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Horas Trabalhadas - inteiro.");
     	} else {
     		ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getValue().split("[/ ]")[0]), funcionarioContCoquetel.getValue().split(" / ")[1], Integer.parseInt(horastrabContCoquetel.getText()),0);
@@ -715,7 +715,7 @@ public class InsertionScreenController implements Initializable {
     void inserirContratoFestFood(ActionEvent event) throws IOException{
     	if(festfoodContFestFood.getValue() == null || segurancaContFestFood.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
-    	} else if(!horastrabContFestFood.getText().matches("^[0-9]*$")){
+    	} else if(!horastrabContFestFood.getText().matches("^[0-9]+$")){
     		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Horas Trabalhadas - inteiro.");
     	} else {
     		ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getValue().split("[/ ]")[0]), segurancaContFestFood.getValue().split(" / ")[1], Integer.parseInt(horastrabContFestFood.getText()),0);

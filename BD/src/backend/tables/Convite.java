@@ -61,7 +61,7 @@ public class Convite {
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-00001")){
-					mesg = "Já há um Convite para essa Convidado nesse Coquetel.Por favor selecione outro Convidado e/ou Coquetel.";
+					mesg = "Já há um Convite para essa Convidado nesse Coquetel. Por favor selecione outro Convidado e/ou Coquetel.";
 			}
 			throw new Exception(mesg);
 		}catch(Exception e) {

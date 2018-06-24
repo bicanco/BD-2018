@@ -98,7 +98,7 @@ public class ContatoEmpresa {
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-00001")){
-					mesg = "Já há um Contato com esse Email associado a essa Empersa. Por favor digite outro email e/ou Empresa.";
+					mesg = "Já há um Contato com esse Email associado a essa Empersa. Por favor digite outro Email e/ou Empresa.";
 			}else if(aux.equals("ORA-01400")) {
 					mesg = "Os campos Empresa, Nome e Email tem que ser preenchidos.";
 			}else if(aux.equals("ORA-12899")) {

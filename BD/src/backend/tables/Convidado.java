@@ -89,7 +89,7 @@ public class Convidado {
 			String mesg="";
 			String aux = e.getMessage().split("[:(). ]")[0];
 			if(aux.equals("ORA-00001")){
-					mesg = "Já há um Convidado com esse Email.Por favor digite outro Email.";
+					mesg = "Já há um Convidado com esse Email. Por favor digite outro Email.";
 			}else if(aux.equals("ORA-01400")) {
 					mesg = "Os campos Email e Nome tem que ser preenchidos.";
 			}else if(aux.equals("ORA-12899")) {

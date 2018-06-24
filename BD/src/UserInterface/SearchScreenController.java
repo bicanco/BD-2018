@@ -242,7 +242,7 @@ public class SearchScreenController implements Initializable {
     
     @FXML
     void buscarCustoCoquetel(ActionEvent event) throws IOException{
-    	if(!minConvidadosBusca.getText().matches("^[0-9]*$")){
+    	if(!minConvidadosBusca.getText().matches("^[0-9]+$")){
     		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Mínimo de Convidados - inteiro.");
     	} else{
     		ObservableList<CustoCoquetel> custo = CustoCoquetel.tableView(Integer.parseInt(minConvidadosBusca.getText()));
