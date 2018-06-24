@@ -339,7 +339,7 @@ public class DeleteScreenController implements Initializable {
 			Empresa.deleteEmpresa(e);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e1) {
-			System.out.println(e1);;
+			abrirErrorScreen(e1.getMessage());
 		}
     }
     
@@ -350,7 +350,7 @@ public class DeleteScreenController implements Initializable {
 			Fornecedora.deleteFornecedora(f);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -361,7 +361,7 @@ public class DeleteScreenController implements Initializable {
 				Contratante.deleteContratante(c);
 				abrirSuccessScreen("Remoção realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     }
     
@@ -372,7 +372,7 @@ public class DeleteScreenController implements Initializable {
 			ContatoEmpresa.deleteContatoEmpresa(c);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -383,7 +383,7 @@ public class DeleteScreenController implements Initializable {
 			CategoriaFornecimento.deleteCategoriaFornecimento(c);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -394,7 +394,7 @@ public class DeleteScreenController implements Initializable {
 			AtribuicaoCategoria.deleteAtribuicaoCategoria(a);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -405,7 +405,7 @@ public class DeleteScreenController implements Initializable {
 			Festa.deleteFesta(f);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -416,7 +416,7 @@ public class DeleteScreenController implements Initializable {
 			FestFood.deleteFestFood(f);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
 
     }
@@ -428,7 +428,7 @@ public class DeleteScreenController implements Initializable {
 			Ingresso.deleteIngresso(i);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -439,7 +439,7 @@ public class DeleteScreenController implements Initializable {
 			Coquetel.deleteCoquetel(c);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -450,7 +450,7 @@ public class DeleteScreenController implements Initializable {
 			Convidado.deleteConvidado(c);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -461,7 +461,7 @@ public class DeleteScreenController implements Initializable {
 			Convite.deleteConvite(c);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -472,7 +472,7 @@ public class DeleteScreenController implements Initializable {
 			Brinde.deleteBrinde(b);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -483,7 +483,7 @@ public class DeleteScreenController implements Initializable {
 			FornecimentoCoquetel.deleteFornecimentoCoquetel(f);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -494,7 +494,7 @@ public class DeleteScreenController implements Initializable {
 			ProdutosFornecidos.deleteProdutosFornecidos(p);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -505,18 +505,18 @@ public class DeleteScreenController implements Initializable {
 			Local.deleteLocal(l);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
     @FXML
-    void removerLocacao(ActionEvent event){
+    void removerLocacao(ActionEvent event) throws IOException{
     	Locacao l = new Locacao(0,Integer.parseInt(festfoodLocacao.getText()), localLocacao.getText(), cidadeLocacao.getText());
     	try {
 			Locacao.deleteLocacao(l);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -527,7 +527,7 @@ public class DeleteScreenController implements Initializable {
 			Lote.deleteLote(l);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
 
     }
@@ -539,7 +539,7 @@ public class DeleteScreenController implements Initializable {
 			Funcionario.deleteFuncionario(f);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -550,7 +550,7 @@ public class DeleteScreenController implements Initializable {
 			ContratoCoquetel.deleteContratoCoquetel(cc);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
     
@@ -561,7 +561,7 @@ public class DeleteScreenController implements Initializable {
 			ContratoFestFood.deleteContratoFestFood(cf);
 			abrirSuccessScreen("Remoção realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     }
 }
