@@ -109,7 +109,25 @@ public class Coquetel {
 	}
 	
 	public static void insertCoquetel(Coquetel coquetel) throws Exception {
-		String sql = "insert into COQUETEL (FESTA, ORCAMENTO, LOCAL, CIDADE) values("+coquetel+")";
+		ResultSet res;
+		String sql ="select DATA from FESTA where ID = "+coquetel.festa;
+		String date;
+		try {
+			res = ConnectionManager.query(sql);
+			res.next();
+			date = res.getString(1);
+			ConnectionManager.closeQuery();
+			date = date.split(" ")[0];
+			sql="select count(*) from FESTA F, COQUETEL C, LOCACAO L where ((C.LOCAL = '"+coquetel.local+"' and C.CIDADE = '"+coquetel.cidade+"' and C.FESTA = F.ID) or (L.NOMELOCAL = '"+coquetel.local+"' and L.CIDADELOCAL = '"+coquetel.cidade+"' and L.FESTFOOD = F.ID)) and F.DATA = to_date('"+date+"','yyyy-mm-dd')";
+			res = ConnectionManager.query(sql);
+			res.next();
+			System.out.println(res.getInt(1));
+			if(res.getInt(1) > 0)
+				throw new Exception("Esse Local já está ocupado nesse dia");
+		}catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		sql = "insert into COQUETEL (FESTA, ORCAMENTO, LOCAL, CIDADE) values("+coquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -135,7 +153,25 @@ public class Coquetel {
 	}
 	
 	public static void updateCoquetel(Coquetel coquetel) throws Exception {
-		String sql = "update COQUETEL set"
+		ResultSet res;
+		String sql ="select DATA from FESTA where ID = "+coquetel.festa;
+		String date;
+		try {
+			res = ConnectionManager.query(sql);
+			res.next();
+			date = res.getString(1);
+			ConnectionManager.closeQuery();
+			date = date.split(" ")[0];
+			sql="select count(*) from FESTA F, COQUETEL C, LOCACAO L where ((C.LOCAL = '"+coquetel.local+"' and C.CIDADE = '"+coquetel.cidade+"' and C.FESTA = F.ID) or (L.NOMELOCAL = '"+coquetel.local+"' and L.CIDADELOCAL = '"+coquetel.cidade+"' and L.FESTFOOD = F.ID)) and F.DATA = to_date('"+date+"','yyyy-mm-dd')";
+			res = ConnectionManager.query(sql);
+			res.next();
+			System.out.println(res.getInt(1));
+			if(res.getInt(1) > 0)
+				throw new Exception("Esse Local já está ocupado nesse dia");
+		}catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		sql = "update COQUETEL set"
 				+ coquetel.toStringUpdates()
 				+ " where FESTA = "+coquetel.festa;
 		try {

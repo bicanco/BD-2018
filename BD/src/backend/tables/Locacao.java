@@ -108,7 +108,25 @@ public class Locacao {
 	}
 	
 	public static void insertLocacao(Locacao locacao) throws Exception {
-		String sql = "insert into LOCACAO (ID, FESTFOOD, NOMELOCAL, CIDADELOCAL) values("+locacao+")";
+		ResultSet res;
+		String sql ="select DATA from FESTA where ID = "+locacao.festFood;
+		String date;
+		try {
+			res = ConnectionManager.query(sql);
+			res.next();
+			date = res.getString(1);
+			ConnectionManager.closeQuery();
+			date = date.split(" ")[0];
+			sql="select count(*) from FESTA F, COQUETEL C, LOCACAO L where ((C.LOCAL = '"+locacao.nomeLocal+"' and C.CIDADE = '"+locacao.cidadeLocal+"' and C.FESTA = F.ID) or (L.NOMELOCAL = '"+locacao.nomeLocal+"' and L.CIDADELOCAL = '"+locacao.cidadeLocal+"' and L.FESTFOOD = F.ID)) and F.DATA = to_date('"+date+"','yyyy-mm-dd')";
+			res = ConnectionManager.query(sql);
+			res.next();
+			System.out.println(res.getInt(1));
+			if(res.getInt(1) > 0)
+				throw new Exception("Esse Local já está ocupado nesse dia");
+		}catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		sql = "insert into LOCACAO (ID, FESTFOOD, NOMELOCAL, CIDADELOCAL) values("+locacao+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -125,7 +143,25 @@ public class Locacao {
 	}
 	
 	public static void updateLocacao(Locacao locacao) throws Exception {
-		String sql = "update LOCACAO set"
+		ResultSet res;
+		String sql ="select F.DATA from FESTA F, LOCACAO L where L.ID = "+locacao.id+" and L.FESTFOOD = F.ID";
+		String date;
+		try {
+			res = ConnectionManager.query(sql);
+			res.next();
+			date = res.getString(1);
+			ConnectionManager.closeQuery();
+			date = date.split(" ")[0];
+			sql="select count(*) from FESTA F, COQUETEL C, LOCACAO L where ((C.LOCAL = '"+locacao.nomeLocal+"' and C.CIDADE = '"+locacao.cidadeLocal+"' and C.FESTA = F.ID) or (L.NOMELOCAL = '"+locacao.nomeLocal+"' and L.CIDADELOCAL = '"+locacao.cidadeLocal+"' and L.FESTFOOD = F.ID)) and F.DATA = to_date('"+date+"','yyyy-mm-dd')";
+			res = ConnectionManager.query(sql);
+			res.next();
+			System.out.println(res.getInt(1));
+			if(res.getInt(1) > 0)
+				throw new Exception("Esse Local já está ocupado nesse dia");
+		}catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		sql = "update LOCACAO set"
 				+ locacao.toStringUpdates()
 				+ " where ID = "+locacao.id;
 		try {

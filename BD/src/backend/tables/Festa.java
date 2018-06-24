@@ -221,7 +221,7 @@ public class Festa {
 		if(!data.equals("")) {
 			if(!res.equals(" where "))
 				res += " and ";
-			res += " DATA = to_date("+this.data+",'dd/mm/yyyy')";
+			res += " DATA = to_date('"+this.data+"','dd/mm/yyyy')";
 		}
 		if(!nome.equals("")) {
 			if(!res.equals(" where "))
