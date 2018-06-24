@@ -411,36 +411,47 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerFestFood(ActionEvent event) throws IOException{
-    	FestFood f = new FestFood(Integer.parseInt(festaFestFood.getText()), 0);
-    	try {
-			FestFood.deleteFestFood(f);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
-
+    	if(!festaFestFood.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Festa - inteiro.");
+	    } else{
+	    	FestFood f = new FestFood(Integer.parseInt(festaFestFood.getText()), 0);
+	    	try {
+				FestFood.deleteFestFood(f);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+	    }
     }
     
     @FXML
     void removerIngresso(ActionEvent event) throws IOException{
-    	Ingresso i = new Ingresso(Integer.parseInt(festfoodIngresso.getText()), Integer.parseInt(codigoIngresso.getText()), compradorIngresso.getText());
-    	try {
-			Ingresso.deleteIngresso(i);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(!festfoodIngresso.getText().matches("^[0-9]*$") || !codigoIngresso.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Fest Food e Código  - inteiro.");
+	    } else{
+	    	Ingresso i = new Ingresso(Integer.parseInt(festfoodIngresso.getText()), Integer.parseInt(codigoIngresso.getText()), compradorIngresso.getText());
+	    	try {
+				Ingresso.deleteIngresso(i);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+	    }
     }
     
     @FXML
     void removerCoquetel(ActionEvent event) throws IOException{
-    	Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getText()), 0 , localCoquetel.getText(), cidadeCoquetel.getText());
-    	try {
-			Coquetel.deleteCoquetel(c);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(!festaCoquetel.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Festa - inteiro.");
+	    } else{	
+	    	Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getText()), 0 , localCoquetel.getText(), cidadeCoquetel.getText());
+	    	try {
+				Coquetel.deleteCoquetel(c);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+	    }
     }
     
     @FXML
@@ -456,46 +467,62 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerConvite(ActionEvent event) throws IOException{
-    	Convite c = new Convite(convidadoConvite.getText(),Integer.parseInt(coquetelConvite.getText()));
-    	try {
-			Convite.deleteConvite(c);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(!coquetelConvite.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
+	    } else{	
+	    	Convite c = new Convite(convidadoConvite.getText(),Integer.parseInt(coquetelConvite.getText()));
+	    	try {
+				Convite.deleteConvite(c);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+	    }
     }
     
     @FXML
     void removerBrinde(ActionEvent event) throws IOException{
-    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getText()), nomeBrinde.getText(), null);
-    	try {
-			Brinde.deleteBrinde(b);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(!coquetelBrinde.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
+	    } else{	
+    		Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getText()), nomeBrinde.getText(), null);
+	    	try {
+				Brinde.deleteBrinde(b);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+	    }
     }
     
     @FXML
     void removerFornecimentoCoquetel(ActionEvent event) throws IOException{
-    	FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getText(), Integer.parseInt(coquetelFornecimento.getText()), 0);
-    	try {
-			FornecimentoCoquetel.deleteFornecimentoCoquetel(f);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(!coquetelFornecimento.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
+	    } else{
+	    	FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getText(), Integer.parseInt(coquetelFornecimento.getText()), 0);
+	    	try {
+				FornecimentoCoquetel.deleteFornecimentoCoquetel(f);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+	    }
     }
     
     @FXML
     void removerProduto(ActionEvent event) throws IOException{
-    	ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getText(), Integer.parseInt(coquetelProdutos.getText()), nomeProdutos.getText(), 0);
-    	try {
-			ProdutosFornecidos.deleteProdutosFornecidos(p);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(!coquetelProdutos.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
+	    } else{
+	    	ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getText(), Integer.parseInt(coquetelProdutos.getText()), nomeProdutos.getText(), 0);
+	    	try {
+				ProdutosFornecidos.deleteProdutosFornecidos(p);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+	    }
     }
     
     @FXML
@@ -511,25 +538,32 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerLocacao(ActionEvent event) throws IOException{
-    	Locacao l = new Locacao(0,Integer.parseInt(festfoodLocacao.getText()), localLocacao.getText(), cidadeLocacao.getText());
-    	try {
-			Locacao.deleteLocacao(l);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(!festfoodLocacao.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Fest Food - inteiro.");
+	    } else{
+	    	Locacao l = new Locacao(0,Integer.parseInt(festfoodLocacao.getText()), localLocacao.getText(), cidadeLocacao.getText());
+	    	try {
+				Locacao.deleteLocacao(l);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+	    }
     }
     
     @FXML
     void removerLote(ActionEvent event) throws IOException{
-    	Lote l = new Lote(Integer.parseInt(locacaoLote.getText()),Integer.parseInt(numeroLote.getText()),fornecedoraLote.getText(), 0, 0, 0);
-    	try {
-			Lote.deleteLote(l);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
-
+    	if(!locacaoLote.getText().matches("^[0-9]*$") || !numeroLote.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("Os seguintes campos aceitam somente valores numéricos: Locação e Número - inteiro.");
+	    } else{
+    		Lote l = new Lote(Integer.parseInt(locacaoLote.getText()),Integer.parseInt(numeroLote.getText()),fornecedoraLote.getText(), 0, 0, 0);
+	    	try {
+				Lote.deleteLote(l);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML
@@ -545,24 +579,32 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerContratoCoquetel(ActionEvent event) throws IOException{
-    	ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getText()), funcionarioContCoquetel.getText(), 0, 0);
-    	try {
-			ContratoCoquetel.deleteContratoCoquetel(cc);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(!coquetelContCoquetel.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
+	    } else{
+	    	ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getText()), funcionarioContCoquetel.getText(), 0, 0);
+	    	try {
+				ContratoCoquetel.deleteContratoCoquetel(cc);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+	    }
     }
     
     @FXML
     void removerContratoFestFood(ActionEvent event) throws IOException{
-    	ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getText()), segurancaContFestFood.getText(), 0,0);
-    	try {
-			ContratoFestFood.deleteContratoFestFood(cf);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+	    if(!festfoodContFestFood.getText().matches("^[0-9]*$")){
+	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Fest Food - inteiro.");
+	    } else{
+    		ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getText()), segurancaContFestFood.getText(), 0,0);
+	    	try {
+				ContratoFestFood.deleteContratoFestFood(cf);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
 }
 

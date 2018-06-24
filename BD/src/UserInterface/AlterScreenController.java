@@ -392,7 +392,7 @@ public class AlterScreenController implements Initializable {
     void alterarEmpresa(ActionEvent event) throws IOException{
     	if(cnpjEmpresa.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else {
     		Empresa e = new Empresa(cnpjEmpresa.getValue().split("[ /]")[0], nomeEmpresa.getText(), null, enderecoEmpresa.getText(), null);
     		try {
 				Empresa.updateEmpresa(e);
@@ -408,7 +408,7 @@ public class AlterScreenController implements Initializable {
     void alterarContato(ActionEvent event) throws IOException{
     	if(emailContatos.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else {
 	    	ContatoEmpresa c = new ContatoEmpresa(null, emailContatos.getValue().split("[ /]")[0], null, telefoneContatos.getText());
 	    	try {
 				ContatoEmpresa.updateContatoEmpresa(c);
@@ -423,7 +423,7 @@ public class AlterScreenController implements Initializable {
     void alterarCategoriaFornecimento(ActionEvent event) throws IOException{
     	if(nomeCatFornecimento.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else {
 	    	CategoriaFornecimento c = new CategoriaFornecimento(nomeCatFornecimento.getValue(), descricaoCatFornecimento.getText());
 	    	try {
 				CategoriaFornecimento.updateCategoriaFornecimento(c);
@@ -438,14 +438,14 @@ public class AlterScreenController implements Initializable {
     void alterarCategoriaFornecedora(ActionEvent event) throws IOException{
     	if(fornecedoraCatFornecedora.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
-    	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getText());
-    	try {
-    		AtribuicaoCategoria.updateAtribuicaoCategoria(a);
-    		abrirSuccessScreen("Atualização realizada com sucesso");
-    	}catch(Exception e) {
-    		abrirErrorScreen(e.getMessage());
-    	}
+    	} else {
+	    	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getText());
+	    	try {
+	    		AtribuicaoCategoria.updateAtribuicaoCategoria(a);
+	    		abrirSuccessScreen("Atualização realizada com sucesso");
+	    	}catch(Exception e) {
+	    		abrirErrorScreen(e.getMessage());
+	    	}
     	}
     }
     
@@ -453,7 +453,7 @@ public class AlterScreenController implements Initializable {
     void alterarFesta(ActionEvent event) throws IOException{
     	if(idFesta.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else {
     		Festa f = new Festa(Integer.parseInt(idFesta.getValue().toString()), null, dataFesta.getText(), nomeFesta.getText(), horarioFesta.getText(), duracaoFesta.getText(), null);
     		try {
 				Festa.updateFesta(f);
@@ -469,7 +469,9 @@ public class AlterScreenController implements Initializable {
     void alterarFestFood(ActionEvent event) throws IOException{
     	if(festaFestFood.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else{
+    	} else if(!precoFestFood.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+    		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Preço - decimal.");
+    	} else{
     		FestFood f = new FestFood(Integer.parseInt(festaFestFood.getValue().split(" / ")[4]), Float.parseFloat(precoFestFood.getText()));
     		try {
 				FestFood.updateFestFood(f);
@@ -484,7 +486,7 @@ public class AlterScreenController implements Initializable {
     void alterarCoquetel(ActionEvent event) throws IOException{
     	if(festaCoquetel.getValue() == null || localCoquetel.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else {
     		Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getValue().split(" / ")[0]), 0, localCoquetel.getValue().split(" / ")[0], localCoquetel.getValue().split(" / ")[1]);
        		try {
 				Coquetel.updateCoquetel(c);
@@ -499,7 +501,7 @@ public class AlterScreenController implements Initializable {
     void alterarConvidado(ActionEvent event) throws IOException{
     	if(emailConvidado.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else {
     		Convidado c = new Convidado(emailConvidado.getValue().split("[ /]")[0], null, telefoneConvidado.getText());
     		try {
 				Convidado.updateConvidado(c);
@@ -514,7 +516,7 @@ public class AlterScreenController implements Initializable {
     void alterarBrinde(ActionEvent event) throws IOException{
     	if(coquetelBrinde.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else {
 	    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getValue().split("[ /]")[0]), nomeBrinde.getText(), descricaoBrinde.getText());
 	    	try {
 				Brinde.updateBrinde(b);
@@ -529,7 +531,9 @@ public class AlterScreenController implements Initializable {
     void alterarFornecimentoCoquetel(ActionEvent event) throws IOException{
     	if(fornecedoraFornecimento.getValue() == null || coquetelFornecimento.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else if(!precoFornecimento.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+    		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Preço - decimal.");
+    	} else {
     		FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getValue().split(" / ")[0], Integer.parseInt(coquetelFornecimento.getValue().split(" / ")[0]), Float.parseFloat(precoFornecimento.getText()));
     		try {
 				FornecimentoCoquetel.updateFornecimentoCoquetel(f);
@@ -544,7 +548,9 @@ public class AlterScreenController implements Initializable {
     void alterarProduto(ActionEvent event) throws IOException{
     	if(fornecedoraProdutos.getValue() == null || coquetelProdutos.getValue() == null || nomeProdutos.getText() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else{
+    	} else if(!quantidadeProdutos.getText().matches("^[0-9]*$")){
+    		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Quantidade - inteiro.");
+    	}  else{
     		ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getValue().split(" / ")[0], Integer.parseInt(coquetelProdutos.getValue().split(" / ")[0]), nomeProdutos.getText(), Integer.parseInt(quantidadeProdutos.getText()));
     		try {
 				ProdutosFornecidos.updateProdutosFornecidos(p);
@@ -559,7 +565,9 @@ public class AlterScreenController implements Initializable {
     void alterarLocal(ActionEvent event) throws IOException{
     	if(nomeLocal.getValue() == null || cidadeLocal.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else if(!numeroLocal.getText().matches("^[0-9]*$") || !capacidadeLocal.getText().matches("^[0-9]*$") || !diariaLocal.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+     		abrirErrorScreen("Os seguintes campos aceitam somente valores numéricos: Número e Capacidade - inteiro; Valor da Diária - decimal.");
+     	} else {
     		String aux = aberturaLocal.isSelected()?"S":"N";
     		Local l = new Local(nomeLocal.getValue(), cidadeLocal.getValue(), null, ruaLocal.getText(), Integer.parseInt(numeroLocal.getText()), Integer.parseInt(capacidadeLocal.getText()), aux, Integer.parseInt(diariaLocal.getText()));
     		try {
@@ -575,7 +583,7 @@ public class AlterScreenController implements Initializable {
     void alterarLocacao(ActionEvent event) throws IOException{
     	if(idLocacao.getValue() == null || localLocacao.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else {
     		Locacao l = new Locacao(Integer.parseInt(idLocacao.getValue().toString()), 0, localLocacao.getValue().split(" / ")[0], localLocacao.getValue().split(" / ")[1]);
     		try {
     			Locacao.updateLocacao(l);
@@ -590,7 +598,9 @@ public class AlterScreenController implements Initializable {
     void alterarLote(ActionEvent event) throws IOException{
     	if(locacaoLote.getValue() == null || numeroLote.getText() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else if(!numeroLote.getText().matches("^[0-9]*$") || !precoLote.getText().matches("^[0-9]*[,|.]?[0-9]*$") || !larguraLote.getText().matches("^[0-9]*[,|.]?[0-9]*$") || !comprimentoLote.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+    		abrirErrorScreen("Os seguintes campos aceitam somente valores numéricos: Número - inteiro; Preço, Largura e Comprimento - decimal.");
+    	} else {
     		String aux = fornecedoraLote.getValue();
     		aux = aux == null?" ":aux.split(" / ")[0];
     		Lote l = new Lote(Integer.parseInt(locacaoLote.getValue().split(" / ")[0]), Integer.parseInt(numeroLote.getText()), aux, Float.parseFloat(precoLote.getText()), Float.parseFloat(larguraLote.getText()), Float.parseFloat(comprimentoLote.getText()));
@@ -607,7 +617,9 @@ public class AlterScreenController implements Initializable {
     void alterarFuncionario(ActionEvent event) throws IOException{
     	if(cpfFuncionario.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else if(!numeroFuncionario.getText().matches("^[0-9]*$") || !valorFuncionario.getText().matches("^[0-9]*[,|.]?[0-9]*$")){
+     		abrirErrorScreen("Os seguintes campos aceitam somente valores numéricos: Número - inteiro; Valor/Hora - decimal.");
+     	} else {
     		Funcionario f = new Funcionario(cpfFuncionario.getValue(), null, estadoFuncionario.getText(), null, cidadeFuncionario.getText(), ruaFuncionario.getText(), Integer.parseInt(numeroFuncionario.getText()), emailFuncionario.getText(), telefoneFuncionario.getText(), celularFuncionario.getText(), Float.parseFloat(valorFuncionario.getText()), null);
     		try {
 				Funcionario.updateFuncionario(f);
@@ -622,7 +634,9 @@ public class AlterScreenController implements Initializable {
     void alterarContratoCoquetel(ActionEvent event) throws IOException{
     	if(coquetelContCoquetel.getValue() == null || funcionarioContCoquetel.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
-    	}else {
+    	} else if(!horastrabContCoquetel.getText().matches("^[0-9]*$")){
+    		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Horas Trabalhadas - inteiro.");
+    	}  else {
 	    	ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getValue().split(" / ")[0]), funcionarioContCoquetel.getValue().split(" / ")[1], Integer.parseInt(horastrabContCoquetel.getText()),0);
 	    	try {
 				ContratoCoquetel.updateContratoCoquetel(cc);
@@ -637,14 +651,16 @@ public class AlterScreenController implements Initializable {
     void alterarContratoFestFood(ActionEvent event) throws IOException{
     	if(festfoodContFestFood.getValue() == null || segurancaContFestFood.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");	
-    	}else {
-    	ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getValue().split(" / ")[0]), segurancaContFestFood.getValue().split(" / ")[1], Integer.parseInt(horastrabContFestFood.getText()),0);
-    	try {
-			ContratoFestFood.deleteContratoFestFood(cf);
-			abrirSuccessScreen("Atualização realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	} else if(!horastrabContFestFood.getText().matches("^[0-9]*$")){
+    		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Horas Trabalhadas - inteiro.");
+    	}  else {
+	    	ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getValue().split(" / ")[0]), segurancaContFestFood.getValue().split(" / ")[1], Integer.parseInt(horastrabContFestFood.getText()),0);
+	    	try {
+				ContratoFestFood.deleteContratoFestFood(cf);
+				abrirSuccessScreen("Atualização realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
     	}
     }
 }
