@@ -133,6 +133,10 @@ public class Festa {
 					mesg = "Os campos Data, Nome, Horário de Início e Duração tem que ser preenchidos.";
 			}else if(aux.equals("ORA-12899")) {
 					mesg = "Os limites de caracteres dos campos são: Nome - 60.";
+			} else if(aux.equals("ORA-01843") || aux.equals("ORA-01839") || aux.equals("ORA-01847")){
+					mesg = "Insira um dia/mês válido.";
+			} else if(aux.equals("ORA-01850") || aux.equals("ORA-01851")){
+				mesg = "Insira um horário válido.";
 			}
 			throw new Exception(mesg);
 		}catch(Exception e) {
