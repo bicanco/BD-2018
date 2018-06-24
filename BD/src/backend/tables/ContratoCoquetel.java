@@ -87,6 +87,13 @@ public class ContratoCoquetel {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
+		sql = "execute COQUETEL_CALCULAORCAMENTO("+contratoCoquetel.coquetel+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	public static void updateContratoCoquetel(ContratoCoquetel contratoCoquetel) throws Exception {
@@ -107,6 +114,13 @@ public class ContratoCoquetel {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
+		sql = "execute COQUETEL_CALCULAORCAMENTO("+contratoCoquetel.coquetel+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	public static void deleteContratoCoquetel(ContratoCoquetel contratoCoquetel) throws Exception {
@@ -120,6 +134,13 @@ public class ContratoCoquetel {
 			ConnectionManager.closeQuery();
 		}catch(SQLException e) {
 			throw new RuntimeException();
+		}
+		sql = "execute COQUETEL_CALCULAORCAMENTO("+contratoCoquetel.coquetel+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 	

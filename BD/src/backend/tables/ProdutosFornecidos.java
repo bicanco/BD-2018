@@ -91,6 +91,13 @@ public class ProdutosFornecidos {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
+		sql = "execute COQUETEL_CALCULAORCAMENTO("+produtosFornecidos.coquetel+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	public static void updateProdutosFornecidos(ProdutosFornecidos produtosFornecidos) throws Exception {
@@ -112,6 +119,13 @@ public class ProdutosFornecidos {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
+		sql = "execute COQUETEL_CALCULAORCAMENTO("+produtosFornecidos.coquetel+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	public static void deleteProdutosFornecidos(ProdutosFornecidos produtosFornecidos) throws Exception {
@@ -125,6 +139,13 @@ public class ProdutosFornecidos {
 			ConnectionManager.closeQuery();
 		}catch(SQLException e) {
 			throw new RuntimeException();
+		}
+		sql = "execute COQUETEL_CALCULAORCAMENTO("+produtosFornecidos.coquetel+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 	

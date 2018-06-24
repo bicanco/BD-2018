@@ -124,6 +124,13 @@ public class Coquetel {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
+		sql = "execute COQUETEL_CALCULAORCAMENTO("+coquetel.festa+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	public static void deleteCoquetel(Coquetel coquetel) throws Exception {
