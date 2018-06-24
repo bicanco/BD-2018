@@ -158,6 +158,10 @@ public class Festa {
 					mesg = "É necessário preencher pelo menos 1 dos campos a alterar.";
 			}else if(aux.equals("ORA-12899")) {
 					mesg = "Os limites de caracters dos campos são: Nome - 60.";
+			} else if(aux.equals("ORA-01843") || aux.equals("ORA-01839") || aux.equals("ORA-01847")){
+					mesg = "Insira um dia/mês válido.";
+			} else if(aux.equals("ORA-01850") || aux.equals("ORA-01851")){
+					mesg = "Insira um horário válido.";
 			}
 			throw new Exception(mesg);
 		}catch(Exception e) {
@@ -166,16 +170,23 @@ public class Festa {
 	}
 	
 	public static void deleteFesta(Festa festa) throws Exception {
-		String aux = festa.toStringRestritions();
-		if(aux.equals(" ")) {
+		String param = festa.toStringRestritions();
+		if(param.equals(" ")) {
 			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
 		}
-		String sql = "delete from FESTA"+aux;
+		String sql = "delete from FESTA"+param;
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
 		}catch(SQLException e) {
-			throw new RuntimeException();
+			String mesg="";
+			String aux = e.getMessage().split("[:(). ]")[0];
+			if(aux.equals("ORA-01843") || aux.equals("ORA-01839") || aux.equals("ORA-01847")){
+					mesg = "Insira um dia/mês válido.";
+			} else if(aux.equals("ORA-01850") || aux.equals("ORA-01851")){
+					mesg = "Insira um horário válido.";
+			}
+			throw new Exception(mesg);
 		}
 	}
 	
