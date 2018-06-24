@@ -436,7 +436,7 @@ public class AlterScreenController implements Initializable {
     
     @FXML
     void alterarCategoriaFornecedora(ActionEvent event) throws IOException{
-    	if(fornecedoraCatFornecedora.getValue() == null) {
+    	if(fornecedoraCatFornecedora.getValue() == null || categoriaCatFornecedora.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	} else {
 	    	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getText());
@@ -474,7 +474,7 @@ public class AlterScreenController implements Initializable {
     	} else if(!precoFestFood.getText().matches("^[0-9]+[.]?[0-9]*$")){
     		abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Preço - decimal.");
     	} else{
-    		FestFood f = new FestFood(Integer.parseInt(festaFestFood.getValue().split(" / ")[4]), Float.parseFloat(precoFestFood.getText()));
+    		FestFood f = new FestFood(Integer.parseInt(festaFestFood.getValue().split(" / ")[0]), Float.parseFloat(precoFestFood.getText()));
     		try {
 				FestFood.updateFestFood(f);
 				abrirSuccessScreen("Atualização realizada com sucesso");
