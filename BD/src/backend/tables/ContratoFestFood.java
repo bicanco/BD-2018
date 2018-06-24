@@ -73,7 +73,24 @@ public class ContratoFestFood {
 	}
 	
 	public static void insertContratoFestFood(ContratoFestFood contratoFestFood) throws Exception {
-		String sql = "insert into CONTRATOFESTFOOD (FESTFOOD, SEGURANCA, HORASTRABALHADAS, VALORPAGO) values("+contratoFestFood+")";
+		ResultSet res;
+		String sql ="select DATA from FESTA where ID = "+contratoFestFood.festFood;
+		String date;
+		try {
+			res = ConnectionManager.query(sql);
+			res.next();
+			date = res.getString(1);
+			ConnectionManager.closeQuery();
+			date = date.split(" ")[0];
+			sql="select count(*) from FESTA F, CONTRATOCOQUETEL CC, CONTRATOFESTFOOD CF where ((CC.FUNCIONARIO = '"+contratoFestFood.seguranca+"' and F.ID = CC.COQUETEL) or(CF.SEGURANCA = '"+contratoFestFood.seguranca+"' and F.ID = CF.FESTFOOD)) and F.DATA = to_date('"+date+"','yyyy-mm-dd')";
+			res = ConnectionManager.query(sql);
+			res.next();
+			if(res.getInt(1) > 0)
+				throw new Exception("Esse Funcionario já trabalha nesse dia");
+		}catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		sql = "insert into CONTRATOFESTFOOD (FESTFOOD, SEGURANCA, HORASTRABALHADAS, VALORPAGO) values("+contratoFestFood+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();

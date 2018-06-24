@@ -73,7 +73,24 @@ public class ContratoCoquetel {
 	}
 	
 	public static void insertContratoCoquetel(ContratoCoquetel contratoCoquetel) throws Exception {
-		String sql = "insert into CONTRATOCOQUETEL (COQUETEL, FUNCIONARIO, HORASTRABALHADAS, VALORPAGO) values("+contratoCoquetel+")";
+		ResultSet res;
+		String sql ="select DATA from FESTA where ID = "+contratoCoquetel.coquetel;
+		String date;
+		try {
+			res = ConnectionManager.query(sql);
+			res.next();
+			date = res.getString(1);
+			ConnectionManager.closeQuery();
+			date = date.split(" ")[0];
+			sql="select count(*) from FESTA F, CONTRATOCOQUETEL CC, CONTRATOFESTFOOD CF where ((CC.FUNCIONARIO = '"+contratoCoquetel.funcionario+"' and F.ID = CC.COQUETEL) or(CF.SEGURANCA = '"+contratoCoquetel.funcionario+"' and F.ID = CF.FESTFOOD)) and F.DATA = to_date('"+date+"','yyyy-mm-dd')";
+			res = ConnectionManager.query(sql);
+			res.next();
+			if(res.getInt(1) > 0)
+				throw new Exception("Esse Funcionario já trabalha nesse dia");
+		}catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		sql = "insert into CONTRATOCOQUETEL (COQUETEL, FUNCIONARIO, HORASTRABALHADAS, VALORPAGO) values("+contratoCoquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
