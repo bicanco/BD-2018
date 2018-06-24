@@ -35,9 +35,9 @@ public class ResultadoMediaSalarialController {
         mediasalarialStage.setResizable(false);
         
         funcaoMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("funcao"));
-        quantMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("quant"));
-        mediaMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("media"));
-       	//mediasalarialTabela.setItems(BuscaAvancada.mediasalarialView());
+        quantMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        mediaMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("mediaSalarial"));
+       	//mediasalarialTabela.setItems(SalarioPorEstado.tableView(estado));
     }
     
     public void initialize(URL url, ResourceBundle rb) {

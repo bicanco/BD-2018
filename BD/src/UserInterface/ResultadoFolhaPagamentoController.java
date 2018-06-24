@@ -41,9 +41,9 @@ public class ResultadoFolhaPagamentoController {
         nomeFolhaPag.setCellValueFactory(new PropertyValueFactory<>("nome"));
         dataFolhaPag.setCellValueFactory(new PropertyValueFactory<>("data"));
         contratanteFolhaPag.setCellValueFactory(new PropertyValueFactory<>("contratante"));
-        tipoFolhaPag.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        tipoFolhaPag.setCellValueFactory(new PropertyValueFactory<>("tipoFesta"));
         valorpagoFolhaPag.setCellValueFactory(new PropertyValueFactory<>("valorpago"));
-       	//folhapagTabela.setItems(BuscaAvancada.folhapagView());
+        //folhapagTabela.setItems(PagamentoFuncionario.viewTable(cpfFuncionario, dataInic, dataMax));
     }
     
     public void initialize(URL url, ResourceBundle rb) {

@@ -265,6 +265,7 @@ public class InsertionScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         myStage = Main.getMyStage();
         
+        
         ObservableList<String> festfood = FestFood.getListaFestFood();
         
         ObservableList<String> coquetel = Coquetel.getListaCoquetel();
@@ -444,7 +445,7 @@ public class InsertionScreenController implements Initializable {
 			Empresa.insertEmpresa(e);
 			abrirSuccessScreen("Inserção realizada com sucesso");
 		} catch (Exception e1) {
-			System.out.println(e1);
+			abrirErrorScreen(e1.getMessage());
 		}
     }
     

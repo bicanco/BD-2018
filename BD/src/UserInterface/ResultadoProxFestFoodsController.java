@@ -44,9 +44,9 @@ public class ResultadoProxFestFoodsController {
         dataProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("data"));
         contratanteProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("contratante"));
         totalLotesProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("totalLotes"));
-        lotesVendProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("lotesVend"));
-        ingVendProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("ingVend"));
-       	//proxFestFoodsTabela.setItems(BuscaAvancada.ProxFestFoodsView());
+        lotesVendProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("lotesVendidos"));
+        ingVendProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("ingressosVendidos"));
+       	//proxFestFoodsTabela.setItems(ProximasFestFoods.tableView());
     }
     
     public void initialize(URL url, ResourceBundle rb) {

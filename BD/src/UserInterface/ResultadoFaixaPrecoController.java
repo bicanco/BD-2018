@@ -34,10 +34,10 @@ public class ResultadoFaixaPrecoController {
         this.faixaprecoStage = adicionarStage;
         faixaprecoStage.setResizable(false);
         
-        nomeFaixaPreco.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        nomeFaixaPreco.setCellValueFactory(new PropertyValueFactory<>("nomeFantasia"));
         cnpjFaixaPreco.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
-        faixaFaixaPreco.setCellValueFactory(new PropertyValueFactory<>("faixa"));
-       	//faixaprecoTabela.setItems(BuscaAvancada.faixaprecoView());
+        faixaFaixaPreco.setCellValueFactory(new PropertyValueFactory<>("faixaPreco"));
+       	//faixaprecoTabela.setItems(FaixaPrecoFrequente.tableView(categoria));
     }
     
     public void initialize(URL url, ResourceBundle rb) {
