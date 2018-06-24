@@ -457,6 +457,7 @@ public class InsertionScreenController implements Initializable {
 	    	ContatoEmpresa c = new ContatoEmpresa(empresaContatos.getValue().split("[ /]")[0], emailContatos.getText(), nomeContatos.getText(), telefoneContatos.getText());
 	    	try {
 				ContatoEmpresa.insertContatoEmpresa(c);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -468,6 +469,7 @@ public class InsertionScreenController implements Initializable {
     	CategoriaFornecimento c = new CategoriaFornecimento(nomeCatFornecimento.getText(), descricaoCatFornecimento.getText());
     	try {
 			CategoriaFornecimento.insertCategoriaFornecimento(c);
+			abrirSuccessScreen("Inserção realizada com sucesso");
 		} catch (Exception e) {
 			abrirErrorScreen(e.getMessage());
 		}
@@ -481,7 +483,8 @@ public class InsertionScreenController implements Initializable {
 	    	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getValue());
 	    	try {
 				AtribuicaoCategoria.insertAtribuicaoCategoria(a);
-			} catch (Exception e) {
+				abrirSuccessScreen("Inserção realizada com sucesso");
+	    	} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
     	}
@@ -495,6 +498,7 @@ public class InsertionScreenController implements Initializable {
     		Festa f = new Festa(0,contratanteFesta.getValue().split(" / ")[0], dataFesta.getText(), nomeFesta.getText(), horarioFesta.getText(), duracaoFesta.getText(), tipoFesta.getValue());
     		try {
 				Festa.insertFesta(f);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -511,6 +515,7 @@ public class InsertionScreenController implements Initializable {
     		FestFood f = new FestFood(Integer.parseInt(festaFestFood.getValue().split(" / ")[0]), Float.parseFloat(precoFestFood.getText()));
     		try {
 				FestFood.insertFestFood(f);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -527,6 +532,7 @@ public class InsertionScreenController implements Initializable {
     		Ingresso i = new Ingresso(Integer.parseInt(festfoodIngresso.getValue().split(" / ")[3]), Integer.parseInt(codigoIngresso.getText()), compradorIngresso.getText());
     		try {
 				Ingresso.insertIngresso(i);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -541,6 +547,7 @@ public class InsertionScreenController implements Initializable {
     		Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getValue().split(" / ")[0]), 0, localCoquetel.getValue().split(" / ")[0], localCoquetel.getValue().split(" / ")[1]);
     		try {
 				Coquetel.insertCoquetel(c);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -552,6 +559,7 @@ public class InsertionScreenController implements Initializable {
     	Convidado c = new Convidado(emailConvidado.getText(), nomeConvidado.getText(), telefoneConvidado.getText());
     	try {
 			Convidado.insertConvidado(c);
+			abrirSuccessScreen("Inserção realizada com sucesso");
 		} catch (Exception e) {
 			abrirErrorScreen(e.getMessage());
 		}
@@ -565,6 +573,7 @@ public class InsertionScreenController implements Initializable {
     		Convite c = new Convite(convidadoConvite.getValue().split("[ /]")[0],Integer.parseInt(coquetelConvite.getValue().split("[ /]")[0]));
     		try {
 				Convite.insertConvite(c);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -579,6 +588,7 @@ public class InsertionScreenController implements Initializable {
 	    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getValue().split("[ /]")[0]), nomeBrinde.getText(), descricaoBrinde.getText());
 	    	try {
 				Brinde.insertBrinde(b);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -595,6 +605,7 @@ public class InsertionScreenController implements Initializable {
     		FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getValue().split(" / ")[0], Integer.parseInt(coquetelFornecimento.getValue().split(" / ")[0]), Float.parseFloat(precoFornecimento.getText()));
     		try {
 				FornecimentoCoquetel.insertFornecimentoCoquetel(f);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -611,6 +622,7 @@ public class InsertionScreenController implements Initializable {
     		ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getValue().split(" / ")[0], Integer.parseInt(coquetelProdutos.getValue().split(" / ")[0]), nomeProdutos.getText(), Integer.parseInt(quantidadeProdutos.getText()));
     		try {
 				ProdutosFornecidos.insertProdutosFornecidos(p);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -626,6 +638,7 @@ public class InsertionScreenController implements Initializable {
 	    	Local l = new Local(nomeLocal.getText(), cidadeLocal.getText(), estadoLocal.getText(), ruaLocal.getText(), Integer.parseInt(numeroLocal.getText()), Integer.parseInt(capacidadeLocal.getText()), aux, Float.parseFloat(diariaLocal.getText()));
 	    	try {
 				Local.insertLocal(l);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -640,6 +653,7 @@ public class InsertionScreenController implements Initializable {
     		Locacao l = new Locacao(0,Integer.parseInt(festfoodLocacao.getValue().split(" / ")[3]), localLocacao.getValue().split(" / ")[0], localLocacao.getValue().split(" / ")[1]);
     		try {
 				Locacao.insertLocacao(l);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -658,6 +672,7 @@ public class InsertionScreenController implements Initializable {
     		Lote l = new Lote(Integer.parseInt(locacaoLote.getValue().split(" / ")[0]), Integer.parseInt(numeroLote.getText()),aux, Float.parseFloat(precoLote.getText()), Float.parseFloat(larguraLote.getText()), Float.parseFloat(comprimentoLote.getText()));
     		try {
 				Lote.insertLote(l);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -672,6 +687,7 @@ public class InsertionScreenController implements Initializable {
 	    	Funcionario f = new Funcionario(cpfFuncionario.getText(), rgFuncionario.getText(), estadoFuncionario.getText(), nomeFuncionario.getText(), cidadeFuncionario.getText(), ruaFuncionario.getText(),Integer.parseInt(numeroFuncionario.getText()), emailFuncionario.getText(), telefoneFuncionario.getText(), celularFuncionario.getText(), Float.parseFloat(valorFuncionario.getText()), funcaoFuncionario.getText());
 	    	try {
 				Funcionario.insertFuncionario(f);
+				abrirSuccessScreen("Inserção realizada com sucesso");
 			} catch (Exception e) {
 				abrirErrorScreen(e.getMessage());
 			}
@@ -688,6 +704,7 @@ public class InsertionScreenController implements Initializable {
     		ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getValue().split("[/ ]")[0]), funcionarioContCoquetel.getValue().split(" / ")[1], Integer.parseInt(horastrabContCoquetel.getText()),0);
     		try {
     			ContratoCoquetel.insertContratoCoquetel(cc);
+    			abrirSuccessScreen("Inserção realizada com sucesso");
     		} catch (Exception e) {
     			abrirErrorScreen(e.getMessage());
     		}
@@ -704,6 +721,7 @@ public class InsertionScreenController implements Initializable {
     		ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getValue().split("[/ ]")[0]), segurancaContFestFood.getValue().split(" / ")[1], Integer.parseInt(horastrabContFestFood.getText()),0);
     		try {
     			ContratoFestFood.insertContratoFestFood(cf);
+    			abrirSuccessScreen("Inserção realizada com sucesso");
     		} catch (Exception e) {
     			abrirErrorScreen(e.getMessage());
     		}

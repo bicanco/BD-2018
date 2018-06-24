@@ -117,6 +117,26 @@ public class Empresa {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
+		if(empresa.tipo.equals("Fornecedora")) {
+			sql = "insert into FORNECEDORA (CNPJ) values ('"+empresa.cnpj+"')";
+		}else if(empresa.tipo.equals("Contratante")) {
+			sql = "insert into CONTRATANTE (CNPJ) values ('"+empresa.cnpj+"')";
+		}else {
+			sql = "insert into FORNECEDORA (CNPJ) values ('"+empresa.cnpj+"')";
+			try{
+				ConnectionManager.query(sql);
+				ConnectionManager.closeQuery();
+			}catch(SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+			sql = "insert into CONTRATANTE (CNPJ) values ('"+empresa.cnpj+"')";
+		}
+		try{
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	public static void updateEmpresa(Empresa empresa) throws Exception {

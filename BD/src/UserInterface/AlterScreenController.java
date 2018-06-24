@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import backend.tables.*;
 
@@ -351,57 +352,114 @@ public class AlterScreenController implements Initializable {
         myStage.setResizable(false);
     }
 
+    void abrirErrorScreen(String msg) throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(LoginController.class.getResource("ErrorScreen.fxml"));
+        AnchorPane root = loader.load();
+
+        Stage erroStage = new Stage();
+        erroStage.setResizable(false);
+        erroStage.setTitle("Error");
+        erroStage.initModality(Modality.WINDOW_MODAL);
+        erroStage.initOwner(Main.getMyStage());
+        Scene scene = new Scene(root);
+        erroStage.setScene(scene);
+        ErrorScreenController controller = loader.getController();
+        controller.setAdicionarStage(erroStage, msg);
+        
+        erroStage.showAndWait();
+    }
+    
+    void abrirSuccessScreen(String msg) throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(LoginController.class.getResource("ErrorScreen.fxml"));
+        AnchorPane root = loader.load();
+
+        Stage erroStage = new Stage();
+        erroStage.setResizable(false);
+        erroStage.setTitle("Success");
+        erroStage.initModality(Modality.WINDOW_MODAL);
+        erroStage.initOwner(Main.getMyStage());
+        Scene scene = new Scene(root);
+        erroStage.setScene(scene);
+        ErrorScreenController controller = loader.getController();
+        controller.setAdicionarStage(erroStage, msg);
+        
+        erroStage.showAndWait();
+    }
+    
     @FXML
-    void alterarEmpresa(ActionEvent event){
-    	Empresa e = new Empresa(cnpjEmpresa.getValue().split("[ /]")[0], nomeEmpresa.getText(), null, enderecoEmpresa.getText(), null);
-    	try {
-			Empresa.updateEmpresa(e);
-		} catch (Exception e1) {
-			System.out.println(e1);
-		}
+    void alterarEmpresa(ActionEvent event) throws IOException{
+    	if(cnpjEmpresa.getValue() == null) {
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
+    	}else {
+    		Empresa e = new Empresa(cnpjEmpresa.getValue().split("[ /]")[0], nomeEmpresa.getText(), null, enderecoEmpresa.getText(), null);
+    		try {
+				Empresa.updateEmpresa(e);
+				abrirSuccessScreen("Atualização realizada com sucesso");
+			} catch (Exception e1) {
+				abrirErrorScreen(e1.getMessage());
+			}
+    	}
     }
     
     
     @FXML
     void alterarContato(ActionEvent event) throws IOException{
-    	ContatoEmpresa c = new ContatoEmpresa(null, emailContatos.getValue().split("[ /]")[0], null, telefoneContatos.getText());
-    	try {
-			ContatoEmpresa.updateContatoEmpresa(c);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+    	if(emailContatos.getValue() == null) {
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
+    	}else {
+	    	ContatoEmpresa c = new ContatoEmpresa(null, emailContatos.getValue().split("[ /]")[0], null, telefoneContatos.getText());
+	    	try {
+				ContatoEmpresa.updateContatoEmpresa(c);
+				abrirSuccessScreen("Atualização realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML
     void alterarCategoriaFornecimento(ActionEvent event) throws IOException{
-    	CategoriaFornecimento c = new CategoriaFornecimento(nomeCatFornecimento.getValue(), descricaoCatFornecimento.getText());
-    	try {
-			CategoriaFornecimento.updateCategoriaFornecimento(c);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+    	if(nomeCatFornecimento.getValue() == null) {
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
+    	}else {
+	    	CategoriaFornecimento c = new CategoriaFornecimento(nomeCatFornecimento.getValue(), descricaoCatFornecimento.getText());
+	    	try {
+				CategoriaFornecimento.updateCategoriaFornecimento(c);
+				abrirSuccessScreen("Atualização realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML
     void alterarCategoriaFornecedora(ActionEvent event) throws IOException{
+    	if(fornecedoraCatFornecedora.getValue() == null) {
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
+    	}else {
     	AtribuicaoCategoria a = new AtribuicaoCategoria(fornecedoraCatFornecedora.getValue().split("[ /]")[0], categoriaCatFornecedora.getValue(), precoCatFornecedora.getText());
     	try {
     		AtribuicaoCategoria.updateAtribuicaoCategoria(a);
+    		abrirSuccessScreen("Atualização realizada com sucesso");
     	}catch(Exception e) {
-    		System.out.println(e);
+    		abrirErrorScreen(e.getMessage());
+    	}
     	}
     }
     
     @FXML
     void alterarFesta(ActionEvent event) throws IOException{
     	if(idFesta.getValue() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else {
     		Festa f = new Festa(Integer.parseInt(idFesta.getValue().toString()), null, dataFesta.getText(), nomeFesta.getText(), horarioFesta.getText(), duracaoFesta.getText(), null);
     		try {
 				Festa.updateFesta(f);
+				abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     	
@@ -410,32 +468,29 @@ public class AlterScreenController implements Initializable {
     @FXML
     void alterarFestFood(ActionEvent event) throws IOException{
     	if(festaFestFood.getValue() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else{
     		FestFood f = new FestFood(Integer.parseInt(festaFestFood.getValue().split(" / ")[4]), Float.parseFloat(precoFestFood.getText()));
     		try {
 				FestFood.updateFestFood(f);
+				abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
     
     @FXML
-    void alterarIngresso(ActionEvent event) throws IOException{
-    	
-    }
-    
-    @FXML
     void alterarCoquetel(ActionEvent event) throws IOException{
     	if(festaCoquetel.getValue() == null || localCoquetel.getValue() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else {
     		Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getValue().split(" / ")[0]), 0, localCoquetel.getValue().split(" / ")[0], localCoquetel.getValue().split(" / ")[1]);
        		try {
 				Coquetel.updateCoquetel(c);
+				abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
@@ -443,41 +498,44 @@ public class AlterScreenController implements Initializable {
     @FXML
     void alterarConvidado(ActionEvent event) throws IOException{
     	if(emailConvidado.getValue() == null) {
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else {
     		Convidado c = new Convidado(emailConvidado.getValue().split("[ /]")[0], null, telefoneConvidado.getText());
     		try {
 				Convidado.updateConvidado(c);
+				abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
     
     @FXML
-    void alterarConvite(ActionEvent event) throws IOException{
-    	
-    }
-    
-    @FXML
     void alterarBrinde(ActionEvent event) throws IOException{
-    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getValue().split("[ /]")[0]), nomeBrinde.getText(), descricaoBrinde.getText());
-    	try {
-			Brinde.updateBrinde(b);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+    	if(coquetelBrinde.getValue() == null) {
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
+    	}else {
+	    	Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getValue().split("[ /]")[0]), nomeBrinde.getText(), descricaoBrinde.getText());
+	    	try {
+				Brinde.updateBrinde(b);
+				abrirSuccessScreen("Atualização realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+    	}
     }
     
     @FXML
     void alterarFornecimentoCoquetel(ActionEvent event) throws IOException{
     	if(fornecedoraFornecimento.getValue() == null || coquetelFornecimento.getValue() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else {
     		FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getValue().split(" / ")[0], Integer.parseInt(coquetelFornecimento.getValue().split(" / ")[0]), Float.parseFloat(precoFornecimento.getText()));
     		try {
 				FornecimentoCoquetel.updateFornecimentoCoquetel(f);
+				abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
@@ -485,13 +543,14 @@ public class AlterScreenController implements Initializable {
     @FXML
     void alterarProduto(ActionEvent event) throws IOException{
     	if(fornecedoraProdutos.getValue() == null || coquetelProdutos.getValue() == null || nomeProdutos.getText() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else{
     		ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getValue().split(" / ")[0], Integer.parseInt(coquetelProdutos.getValue().split(" / ")[0]), nomeProdutos.getText(), Integer.parseInt(quantidadeProdutos.getText()));
     		try {
 				ProdutosFornecidos.updateProdutosFornecidos(p);
+				abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
@@ -499,14 +558,15 @@ public class AlterScreenController implements Initializable {
     @FXML
     void alterarLocal(ActionEvent event) throws IOException{
     	if(nomeLocal.getValue() == null || cidadeLocal.getValue() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else {
     		String aux = aberturaLocal.isSelected()?"S":"N";
     		Local l = new Local(nomeLocal.getValue(), cidadeLocal.getValue(), null, ruaLocal.getText(), Integer.parseInt(numeroLocal.getText()), Integer.parseInt(capacidadeLocal.getText()), aux, Integer.parseInt(diariaLocal.getText()));
     		try {
 				Local.updateLocal(l);
+				abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
@@ -514,12 +574,14 @@ public class AlterScreenController implements Initializable {
     @FXML
     void alterarLocacao(ActionEvent event) throws IOException{
     	if(idLocacao.getValue() == null || localLocacao.getValue() == null) {
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else {
     		Locacao l = new Locacao(Integer.parseInt(idLocacao.getValue().toString()), 0, localLocacao.getValue().split(" / ")[0], localLocacao.getValue().split(" / ")[1]);
     		try {
     			Locacao.updateLocacao(l);
+    			abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
@@ -527,15 +589,16 @@ public class AlterScreenController implements Initializable {
     @FXML
     void alterarLote(ActionEvent event) throws IOException{
     	if(locacaoLote.getValue() == null || numeroLote.getText() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else {
     		String aux = fornecedoraLote.getValue();
     		aux = aux == null?" ":aux.split(" / ")[0];
     		Lote l = new Lote(Integer.parseInt(locacaoLote.getValue().split(" / ")[0]), Integer.parseInt(numeroLote.getText()), aux, Float.parseFloat(precoLote.getText()), Float.parseFloat(larguraLote.getText()), Float.parseFloat(comprimentoLote.getText()));
     		try {
 				Lote.updateLote(l);
+				abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.println(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
@@ -543,13 +606,14 @@ public class AlterScreenController implements Initializable {
     @FXML
     void alterarFuncionario(ActionEvent event) throws IOException{
     	if(cpfFuncionario.getValue() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else {
     		Funcionario f = new Funcionario(cpfFuncionario.getValue(), null, estadoFuncionario.getText(), null, cidadeFuncionario.getText(), ruaFuncionario.getText(), Integer.parseInt(numeroFuncionario.getText()), emailFuncionario.getText(), telefoneFuncionario.getText(), celularFuncionario.getText(), Float.parseFloat(valorFuncionario.getText()), null);
     		try {
 				Funcionario.updateFuncionario(f);
+				abrirSuccessScreen("Atualização realizada com sucesso");
 			} catch (Exception e) {
-				System.out.print(e);
+				abrirErrorScreen(e.getMessage());
 			}
     	}
     }
@@ -557,27 +621,29 @@ public class AlterScreenController implements Initializable {
     @FXML
     void alterarContratoCoquetel(ActionEvent event) throws IOException{
     	if(coquetelContCoquetel.getValue() == null || funcionarioContCoquetel.getValue() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");
     	}else {
-    	ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getValue().split(" / ")[0]), funcionarioContCoquetel.getValue().split(" / ")[1], Integer.parseInt(horastrabContCoquetel.getText()),0);
-    	try {
-			ContratoCoquetel.updateContratoCoquetel(cc);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+	    	ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getValue().split(" / ")[0]), funcionarioContCoquetel.getValue().split(" / ")[1], Integer.parseInt(horastrabContCoquetel.getText()),0);
+	    	try {
+				ContratoCoquetel.updateContratoCoquetel(cc);
+				abrirSuccessScreen("Atualização realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
     	}
     }
     
     @FXML
     void alterarContratoFestFood(ActionEvent event) throws IOException{
     	if(festfoodContFestFood.getValue() == null || segurancaContFestFood.getValue() == null) {
-    		
+    		abrirErrorScreen("Necessário preencher as caixas de seleção.");	
     	}else {
     	ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getValue().split(" / ")[0]), segurancaContFestFood.getValue().split(" / ")[1], Integer.parseInt(horastrabContFestFood.getText()),0);
     	try {
 			ContratoFestFood.deleteContratoFestFood(cf);
+			abrirSuccessScreen("Atualização realizada com sucesso");
 		} catch (Exception e) {
-			System.out.println(e);
+			abrirErrorScreen(e.getMessage());
 		}
     	}
     }
