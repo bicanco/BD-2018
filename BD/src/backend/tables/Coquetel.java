@@ -105,6 +105,13 @@ public class Coquetel {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
+		sql = "execute COQUETEL_CALCULAORCAMENTO("+coquetel.festa+")";
+		try {
+			ConnectionManager.query(sql);
+			ConnectionManager.closeQuery();
+		}catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 	public static void updateCoquetel(Coquetel coquetel) throws Exception {

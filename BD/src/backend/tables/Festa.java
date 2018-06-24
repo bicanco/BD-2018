@@ -134,6 +134,7 @@ public class Festa {
 			}else if(aux.equals("ORA-12899")) {
 					mesg = "Os limites de caracteres dos campos são: Nome - 60.";
 			}
+			System.out.println(e+sql);
 			throw new Exception(mesg);
 		}catch(Exception e) {
 			throw new RuntimeException();
@@ -221,6 +222,6 @@ public class Festa {
 	@Override
 	public String toString() {
 		String aux = this.id == 0?"null": new Integer(this.id).toString();
-		return aux+",'"+this.contratante+"',to_date("+this.data+",'dd/mm/yyyy'),'"+this.nome+"',to_date('"+this.horaInicio+"','hh:mi'),to_date('"+this.duracao+"','hh:mi'),'"+this.tipoFesta+"'";
+		return aux+",'"+this.contratante+"',to_date('"+this.data+"','dd/mm/yyyy'),'"+this.nome+"',to_date('"+this.horaInicio+"','hh24:mi'),to_date('"+this.duracao+"','hh24:mi'),'"+this.tipoFesta+"'";
 	}
 }

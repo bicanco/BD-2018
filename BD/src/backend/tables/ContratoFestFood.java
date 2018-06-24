@@ -148,6 +148,7 @@ public class ContratoFestFood {
 	
 	@Override
 	public String toString() {
-		return this.festFood+",'"+this.seguranca+"',"+this.horasTrabalhadas+","+this.valorPago;
+		String aux = this.valorPago == 0?"null":new Float(this.valorPago).toString();
+		return this.festFood+",'"+this.seguranca+"',"+this.horasTrabalhadas+","+aux;
 	}
 }

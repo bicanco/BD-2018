@@ -495,7 +495,7 @@ public class InsertionScreenController implements Initializable {
     	if(contratanteFesta.getValue() == null || tipoFesta.getValue() == null) {
     		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
     	} else {
-    		Festa f = new Festa(0,contratanteFesta.getValue().split(" / ")[0], dataFesta.getText(), nomeFesta.getText(), horarioFesta.getText(), duracaoFesta.getText(), tipoFesta.getValue());
+    		Festa f = new Festa(0,contratanteFesta.getValue().split(" / ")[0], dataFesta.getText(), nomeFesta.getText(), horarioFesta.getText(), duracaoFesta.getText(), tipoFesta.getValue().toUpperCase());
     		try {
 				Festa.insertFesta(f);
 				abrirSuccessScreen("Inserção realizada com sucesso");

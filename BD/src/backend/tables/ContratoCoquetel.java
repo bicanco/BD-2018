@@ -148,6 +148,7 @@ public class ContratoCoquetel {
 	
 	@Override
 	public String toString() {
-		return this.coquetel+",'"+this.funcionario+"',"+this.horasTrabalhadas+","+this.valorPago;
+		String aux = this.valorPago == 0?"null":new Float(this.valorPago).toString();
+		return this.coquetel+",'"+this.funcionario+"',"+this.horasTrabalhadas+","+aux;
 	}
 }
