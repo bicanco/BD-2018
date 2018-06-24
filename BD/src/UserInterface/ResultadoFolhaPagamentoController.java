@@ -3,6 +3,8 @@ package UserInterface;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import backend.advancedQueries.PagamentoFuncionario;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,17 +18,17 @@ import javafx.stage.Stage;
  */
 public class ResultadoFolhaPagamentoController {
 	@FXML
-    private TableView<Object> folhapagTabela;
+    private TableView<PagamentoFuncionario> folhapagTabela;
     @FXML
-    private TableColumn<Object, String> nomeFolhaPag;
+    private TableColumn<PagamentoFuncionario, String> nomeFolhaPag;
     @FXML
-    private TableColumn<Object, String> dataFolhaPag;
+    private TableColumn<PagamentoFuncionario, String> dataFolhaPag;
     @FXML
-    private TableColumn<Object, String> contratanteFolhaPag;
+    private TableColumn<PagamentoFuncionario, String> contratanteFolhaPag;
     @FXML
-    private TableColumn<Object, String> tipoFolhaPag;
+    private TableColumn<PagamentoFuncionario, String> tipoFolhaPag;
     @FXML
-    private TableColumn<Object, String> valorpagoFolhaPag;
+    private TableColumn<PagamentoFuncionario, String> valorpagoFolhaPag;
     
 	private Stage folhapagamentoStage;
 
@@ -34,7 +36,7 @@ public class ResultadoFolhaPagamentoController {
         return folhapagamentoStage;
     }
 
-    public void setAdicionarStage(Stage adicionarStage) {
+    public void setAdicionarStage(Stage adicionarStage, ObservableList<PagamentoFuncionario> folhapag) {
         this.folhapagamentoStage = adicionarStage;
         folhapagamentoStage.setResizable(false);
         
@@ -43,7 +45,7 @@ public class ResultadoFolhaPagamentoController {
         contratanteFolhaPag.setCellValueFactory(new PropertyValueFactory<>("contratante"));
         tipoFolhaPag.setCellValueFactory(new PropertyValueFactory<>("tipoFesta"));
         valorpagoFolhaPag.setCellValueFactory(new PropertyValueFactory<>("valorpago"));
-        //folhapagTabela.setItems(PagamentoFuncionario.viewTable(cpfFuncionario, dataInic, dataMax));
+        folhapagTabela.setItems(folhapag);
     }
     
     public void initialize(URL url, ResourceBundle rb) {

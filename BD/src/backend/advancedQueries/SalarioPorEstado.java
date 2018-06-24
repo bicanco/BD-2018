@@ -39,7 +39,7 @@ public class SalarioPorEstado {
 		this.mediaSalarial = mediaSalarial;
 	}
 	
-	public static ObservableList<SalarioPorEstado> viewTable(String estado){
+	public static ObservableList<SalarioPorEstado> tableView(String estado){
 		ResultSet res;
 		List<SalarioPorEstado> list = new ArrayList<SalarioPorEstado>();
 		String sql = "select FUNCAO, count(*) as QUANTIDADE, avg(VALORPORHORA) as MEDIASALARIAL " + 

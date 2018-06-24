@@ -3,6 +3,8 @@ package UserInterface;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import backend.advancedQueries.SalarioPorEstado;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,13 +18,13 @@ import javafx.stage.Stage;
  */
 public class ResultadoMediaSalarialController {
 	@FXML
-    private TableView<Object> mediasalarialTabela;
+    private TableView<SalarioPorEstado> mediasalarialTabela;
     @FXML
-    private TableColumn<Object, String> funcaoMediaSalarial;
+    private TableColumn<SalarioPorEstado, String> funcaoMediaSalarial;
     @FXML
-    private TableColumn<Object, String> quantMediaSalarial;
+    private TableColumn<SalarioPorEstado, String> quantMediaSalarial;
     @FXML
-    private TableColumn<Object, String> mediaMediaSalarial;
+    private TableColumn<SalarioPorEstado, String> mediaMediaSalarial;
     
 	private Stage mediasalarialStage;
 
@@ -30,14 +32,14 @@ public class ResultadoMediaSalarialController {
         return mediasalarialStage;
     }
 
-    public void setAdicionarStage(Stage adicionarStage) {
+    public void setAdicionarStage(Stage adicionarStage, ObservableList<SalarioPorEstado> salario) {
         this.mediasalarialStage = adicionarStage;
         mediasalarialStage.setResizable(false);
         
         funcaoMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("funcao"));
         quantMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         mediaMediaSalarial.setCellValueFactory(new PropertyValueFactory<>("mediaSalarial"));
-       	//mediasalarialTabela.setItems(SalarioPorEstado.tableView(estado));
+       	mediasalarialTabela.setItems(salario);
     }
     
     public void initialize(URL url, ResourceBundle rb) {

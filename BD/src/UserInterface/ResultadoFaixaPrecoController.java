@@ -3,6 +3,8 @@ package UserInterface;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import backend.advancedQueries.FaixaPrecoFrequente;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,13 +18,13 @@ import javafx.stage.Stage;
  */
 public class ResultadoFaixaPrecoController {
 	@FXML
-    private TableView<Object> faixaprecoTabela;
+    private TableView<FaixaPrecoFrequente> faixaprecoTabela;
     @FXML
-    private TableColumn<Object, String> nomeFaixaPreco;
+    private TableColumn<FaixaPrecoFrequente, String> nomeFaixaPreco;
     @FXML
-    private TableColumn<Object, String> cnpjFaixaPreco;
+    private TableColumn<FaixaPrecoFrequente, String> cnpjFaixaPreco;
     @FXML
-    private TableColumn<Object, String> faixaFaixaPreco;
+    private TableColumn<FaixaPrecoFrequente, String> faixaFaixaPreco;
     
     private Stage faixaprecoStage;
 
@@ -30,14 +32,14 @@ public class ResultadoFaixaPrecoController {
         return faixaprecoStage;
     }
 
-    public void setAdicionarStage(Stage adicionarStage) {
+    public void setAdicionarStage(Stage adicionarStage, ObservableList<FaixaPrecoFrequente> faixapreco) {
         this.faixaprecoStage = adicionarStage;
         faixaprecoStage.setResizable(false);
         
         nomeFaixaPreco.setCellValueFactory(new PropertyValueFactory<>("nomeFantasia"));
         cnpjFaixaPreco.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
         faixaFaixaPreco.setCellValueFactory(new PropertyValueFactory<>("faixaPreco"));
-       	//faixaprecoTabela.setItems(FaixaPrecoFrequente.tableView(categoria));
+       	faixaprecoTabela.setItems(faixapreco);
     }
     
     public void initialize(URL url, ResourceBundle rb) {

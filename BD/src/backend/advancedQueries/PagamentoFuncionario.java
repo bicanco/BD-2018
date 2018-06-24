@@ -55,22 +55,22 @@ public class PagamentoFuncionario {
 		this.valorpago = valorpago;
 	}
 	
-	public static ObservableList<PagamentoFuncionario> viewTable(String cpfFuncionario, String dataInic, String dataMax){
+	public static ObservableList<PagamentoFuncionario> tableView(String cpfFuncionario, String dataInic, String dataFinal){
 		ResultSet res;
 		List<PagamentoFuncionario> list = new ArrayList<PagamentoFuncionario>();
 		String sql = "select F.NOME, F.DATA, F.CONTRATANTE, F.TIPOFESTA, C.VALORPAGO " + 
 					 "from FESTA F, CONTRATOCOQUETEL C " + 
 					 "where F.ID = C.COQUETEL " + 
 					 "and C.FUNCIONARIO = '"+cpfFuncionario+"' "+ 
-					 "and F.DATA >= to_date('"+dataInic+"', 'dd/mm/yyyy') " + 
-					 "and F.DATA <= to_date('"+dataMax+"', 'dd/mm/yyyy') " + 
+					 "and F.DATA >= to_date('"+dataInic+"', 'mm/yyyy') " + 
+					 "and F.DATA <= to_date('"+dataFinal+"', 'mm/yyyy') " + 
 					 "union "+ 
 					 "select F.NOME, F.DATA, F.CONTRATANTE, F.TIPOFESTA, C.VALORPAGO " + 
 					 "from FESTA F, CONTRATOFESTFOOD C " + 
 					 "where F.ID = C.FESTFOOD " + 
 					 "and C.SEGURANCA = '"+cpfFuncionario+"' " + 
-					 "and F.DATA >= to_date('"+dataInic+"', 'dd/mm/yyyy') " + 
-					 "and F.DATA <= to_date('"+dataMax+"', 'dd/mm/yyyy')";
+					 "and F.DATA >= to_date('"+dataInic+"', 'mm/yyyy') " + 
+					 "and F.DATA <= to_date('"+dataFinal+"', 'mm/yyyy')";
 		try{
 			res = ConnectionManager.query(sql);
 			while(res.next())

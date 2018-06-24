@@ -3,8 +3,12 @@ package UserInterface;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 
+import backend.advancedQueries.FaixaPrecoFrequente;
+import backend.advancedQueries.LotesLocacao;
+import backend.advancedQueries.PagamentoFuncionario;
+import backend.advancedQueries.ProximasFestFoods;
+import backend.advancedQueries.SalarioPorEstado;
 import backend.tables.CategoriaFornecimento;
-import backend.tables.Coquetel;
 import backend.tables.Funcionario;
 import backend.tables.Locacao;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -49,11 +54,6 @@ public class SearchScreenController implements Initializable {
     private JFXComboBox<String> locacaoBusca;
     @FXML
     private JFXButton buscaLotes;
-    
-    @FXML
-    private JFXComboBox<String> coquetelBusca;
-    @FXML
-    private JFXButton buscaOrcamento;
     
     @FXML
     private JFXComboBox<String> funcionarioBusca;
@@ -93,10 +93,9 @@ public class SearchScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     	ObservableList<String> mes = 
         	    FXCollections.observableArrayList(
-        	        "Janeiro", "Fevereiro", "Março",
-        	        "Abril", "Maio", "Junho",
-        	        "Julho", "Agosto", "Setembro",
-        	        "Outubro", "Novembro", "Dezembro");
+        	        "1", "2", "3", "4",
+        	        "5", "6", "7", "8",
+        	        "9", "10", "11", "12");
     	
     	List<String> list = new ArrayList<String>();
     	
@@ -115,8 +114,6 @@ public class SearchScreenController implements Initializable {
     	anoFinal.setItems(ano);
     	
     	locacaoBusca.setItems(Locacao.getListaLocacao());
-    	
-    	coquetelBusca.setItems(Coquetel.getListaCoquetel());
     	
     	funcionarioBusca.setItems(Funcionario.getListaFuncionario());
     	
@@ -192,33 +189,144 @@ public class SearchScreenController implements Initializable {
         myStage.setResizable(false);
     }
    
-    @FXML
-    void buscarLotes(ActionEvent event) throws IOException{
+    void abrirErrorScreen(String msg) throws IOException{
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(LoginController.class.getResource("ErrorScreen.fxml"));
+        AnchorPane root = loader.load();
 
+        Stage erroStage = new Stage();
+        erroStage.setResizable(false);
+        erroStage.setTitle("Error");
+        erroStage.initModality(Modality.WINDOW_MODAL);
+        erroStage.initOwner(Main.getMyStage());
+        Scene scene = new Scene(root);
+        erroStage.setScene(scene);
+        ErrorScreenController controller = loader.getController();
+        controller.setAdicionarStage(erroStage, msg);
+        
+        erroStage.showAndWait();
     }
     
     @FXML
-    void buscarOrcamento(ActionEvent event) throws IOException{
-    	
+    void buscarLotes(ActionEvent event) throws IOException{
+    	if(locacaoBusca.getValue() == null){
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	} else{
+    		ObservableList<LotesLocacao> lotes = LotesLocacao.tableView(Integer.parseInt(locacaoBusca.getValue().split("[ /]")[0]));
+    		
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(LoginController.class.getResource("ResultadoLotes.fxml"));
+            AnchorPane root = loader.load();
+
+            Stage lotesStage = new Stage();
+            lotesStage.setResizable(false);
+            lotesStage.setTitle("Resultado da Busca");
+            lotesStage.initModality(Modality.WINDOW_MODAL);
+            lotesStage.initOwner(Main.getMyStage());
+            Scene scene = new Scene(root);
+            lotesStage.setScene(scene);
+            ResultadoLotesController controller = loader.getController();
+            controller.setAdicionarStage(lotesStage, lotes);
+            
+            lotesStage.showAndWait();
+    	}
     }
     
     @FXML
     void buscarFolhaPagamento(ActionEvent event) throws IOException{
-    	
+    	if(funcionarioBusca.getValue() == null || mesInicial.getValue() == null || anoInicial.getValue() == null || mesFinal.getValue() == null || anoFinal.getValue() == null){
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	} else{
+    		String dataInicial = mesInicial.getValue() + "/" + anoInicial.getValue();
+    		String dataFinal = mesFinal.getValue() + "/" + anoFinal.getValue();
+    		ObservableList<PagamentoFuncionario> pagamento = PagamentoFuncionario.tableView(funcionarioBusca.getValue().split("[ /]")[1], dataInicial, dataFinal);
+    		
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(LoginController.class.getResource("ResultadoFolhaPagamento.fxml"));
+            AnchorPane root = loader.load();
+
+            Stage pagamentoStage = new Stage();
+            pagamentoStage.setResizable(false);
+            pagamentoStage.setTitle("Resultado da Busca");
+            pagamentoStage.initModality(Modality.WINDOW_MODAL);
+            pagamentoStage.initOwner(Main.getMyStage());
+            Scene scene = new Scene(root);
+            pagamentoStage.setScene(scene);
+            ResultadoFolhaPagamentoController controller = loader.getController();
+            controller.setAdicionarStage(pagamentoStage, pagamento);
+            
+            pagamentoStage.showAndWait();
+    	}
     }
     
     @FXML
     void buscarMediaSalarial(ActionEvent event) throws IOException{
-    	
+    	if(estadoBusca.getValue() == null){
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	} else{
+    		ObservableList<SalarioPorEstado> salario = SalarioPorEstado.tableView(estadoBusca.getValue());
+    		
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(LoginController.class.getResource("ResultadoMediaSalarial.fxml"));
+            AnchorPane root = loader.load();
+
+            Stage salarioStage = new Stage();
+            salarioStage.setResizable(false);
+            salarioStage.setTitle("Resultado da Busca");
+            salarioStage.initModality(Modality.WINDOW_MODAL);
+            salarioStage.initOwner(Main.getMyStage());
+            Scene scene = new Scene(root);
+            salarioStage.setScene(scene);
+            ResultadoMediaSalarialController controller = loader.getController();
+            controller.setAdicionarStage(salarioStage, salario);
+            
+            salarioStage.showAndWait();
+    	}
     }
     
     @FXML
     void buscarFaixaPreco(ActionEvent event) throws IOException{
-    	
+    	if(categoriaBusca.getValue() == null){
+    		abrirErrorScreen("Necessário selecionar todas as caixas de seleção.");
+    	} else{
+    		ObservableList<FaixaPrecoFrequente> faixapreco = FaixaPrecoFrequente.tableView(categoriaBusca.getValue());
+    		
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(LoginController.class.getResource("ResultadoFaixaPreco.fxml"));
+            AnchorPane root = loader.load();
+
+            Stage faixaprecoStage = new Stage();
+            faixaprecoStage.setResizable(false);
+            faixaprecoStage.setTitle("Resultado da Busca");
+            faixaprecoStage.initModality(Modality.WINDOW_MODAL);
+            faixaprecoStage.initOwner(Main.getMyStage());
+            Scene scene = new Scene(root);
+            faixaprecoStage.setScene(scene);
+            ResultadoFaixaPrecoController controller = loader.getController();
+            controller.setAdicionarStage(faixaprecoStage, faixapreco);
+            
+            faixaprecoStage.showAndWait();
+    	}
     }
     
     @FXML
     void buscarProxFestFoods(ActionEvent event) throws IOException{
-    	
+    	ObservableList<ProximasFestFoods> proxfest = ProximasFestFoods.tableView();
+		
+		FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(LoginController.class.getResource("ResultadoProxFestFoods.fxml"));
+        AnchorPane root = loader.load();
+
+        Stage proxfestStage = new Stage();
+        proxfestStage.setResizable(false);
+        proxfestStage.setTitle("Resultado da Busca");
+        proxfestStage.initModality(Modality.WINDOW_MODAL);
+        proxfestStage.initOwner(Main.getMyStage());
+        Scene scene = new Scene(root);
+        proxfestStage.setScene(scene);
+        ResultadoProxFestFoodsController controller = loader.getController();
+        controller.setAdicionarStage(proxfestStage, proxfest);
+        
+        proxfestStage.showAndWait();
     }
 }

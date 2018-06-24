@@ -3,6 +3,8 @@ package UserInterface;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import backend.advancedQueries.ProximasFestFoods;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,19 +18,19 @@ import javafx.stage.Stage;
  */
 public class ResultadoProxFestFoodsController {
 	@FXML
-    private TableView<Object> proxfestfoodsTabela;
+    private TableView<ProximasFestFoods> proxfestfoodsTabela;
     @FXML
-    private TableColumn<Object, String> nomeProxFestFoods;
+    private TableColumn<ProximasFestFoods, String> nomeProxFestFoods;
     @FXML
-    private TableColumn<Object, String> dataProxFestFoods;
+    private TableColumn<ProximasFestFoods, String> dataProxFestFoods;
     @FXML
-    private TableColumn<Object, String> contratanteProxFestFoods;
+    private TableColumn<ProximasFestFoods, String> contratanteProxFestFoods;
     @FXML
-    private TableColumn<Object, String> totalLotesProxFestFoods;
+    private TableColumn<ProximasFestFoods, String> totalLotesProxFestFoods;
     @FXML
-    private TableColumn<Object, String> lotesVendProxFestFoods;
+    private TableColumn<ProximasFestFoods, String> lotesVendProxFestFoods;
     @FXML
-    private TableColumn<Object, String> ingVendProxFestFoods;
+    private TableColumn<ProximasFestFoods, String> ingVendProxFestFoods;
     
 	private Stage proxfestfoodStage;
 
@@ -36,7 +38,7 @@ public class ResultadoProxFestFoodsController {
         return proxfestfoodStage;
     }
 
-    public void setAdicionarStage(Stage adicionarStage) {
+    public void setAdicionarStage(Stage adicionarStage, ObservableList<ProximasFestFoods> proxfest) {
         this.proxfestfoodStage = adicionarStage;
         proxfestfoodStage.setResizable(false);
         
@@ -46,7 +48,7 @@ public class ResultadoProxFestFoodsController {
         totalLotesProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("totalLotes"));
         lotesVendProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("lotesVendidos"));
         ingVendProxFestFoods.setCellValueFactory(new PropertyValueFactory<>("ingressosVendidos"));
-       	//proxFestFoodsTabela.setItems(ProximasFestFoods.tableView());
+       	proxfestfoodsTabela.setItems(proxfest);
     }
     
     public void initialize(URL url, ResourceBundle rb) {

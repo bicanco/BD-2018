@@ -172,7 +172,7 @@ public class Funcionario {
 	public static ObservableList<String> getListaSeguranca(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
-		String sql="select F.NOME,F.CPF from FUNCIONARIO F";
+		String sql="select F.NOME,F.CPF from FUNCIONARIO F where (upper(FUNCAO) = 'SEGURANÇA' OR upper(FUNCAO) = 'SEGURANCA')";
 		try {
 			res = ConnectionManager.query(sql);
 			while(res.next())
@@ -184,7 +184,6 @@ public class Funcionario {
 		}catch(SQLException e){
 			throw new RuntimeException(e);
 		}
-		
 	}
 	
 	public static ObservableList<String> getListaCpf(){

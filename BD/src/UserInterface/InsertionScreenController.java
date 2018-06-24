@@ -668,7 +668,7 @@ public class InsertionScreenController implements Initializable {
     		abrirErrorScreen("Os seguintes campos aceitam somente valores numéricos: Número - inteiro; Preço, Largura e Comprimento - decimal.");
     	} else {
     		String aux = fornecedoraLote.getValue();
-    		aux = aux == null?" ":aux.split(" / ")[0];
+    		aux = (aux == null)?" ":aux.split(" / ")[0];
     		Lote l = new Lote(Integer.parseInt(locacaoLote.getValue().split(" / ")[0]), Integer.parseInt(numeroLote.getText()),aux, Float.parseFloat(precoLote.getText()), Float.parseFloat(larguraLote.getText()), Float.parseFloat(comprimentoLote.getText()));
     		try {
 				Lote.insertLote(l);

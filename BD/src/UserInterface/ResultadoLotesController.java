@@ -3,6 +3,8 @@ package UserInterface;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import backend.advancedQueries.LotesLocacao;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,19 +18,19 @@ import javafx.stage.Stage;
  */
 public class ResultadoLotesController {
 	@FXML
-    private TableView<Object> lotesTabela;
+    private TableView<LotesLocacao> lotesTabela;
     @FXML
-    private TableColumn<Object, String> numeroLote;
+    private TableColumn<LotesLocacao, String> numeroLote;
     @FXML
-    private TableColumn<Object, String> precoLote;
+    private TableColumn<LotesLocacao, String> precoLote;
     @FXML
-    private TableColumn<Object, String> larguraLote;
+    private TableColumn<LotesLocacao, String> larguraLote;
     @FXML
-    private TableColumn<Object, String> comprimentoLote;
+    private TableColumn<LotesLocacao, String> comprimentoLote;
     @FXML
-    private TableColumn<Object, String> nomefornLote;
+    private TableColumn<LotesLocacao, String> nomefornLote;
     @FXML
-    private TableColumn<Object, String> cnpjfornLote;
+    private TableColumn<LotesLocacao, String> cnpjfornLote;
     
 	private Stage lotesStage;
 
@@ -36,7 +38,7 @@ public class ResultadoLotesController {
         return lotesStage;
     }
 
-    public void setAdicionarStage(Stage adicionarStage) {
+    public void setAdicionarStage(Stage adicionarStage, ObservableList<LotesLocacao> lotes) {
         this.lotesStage = adicionarStage;
         lotesStage.setResizable(false);
         
@@ -46,7 +48,7 @@ public class ResultadoLotesController {
         comprimentoLote.setCellValueFactory(new PropertyValueFactory<>("comprimento"));
         nomefornLote.setCellValueFactory(new PropertyValueFactory<>("nomeFantasia"));
         cnpjfornLote.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
-       	//lotesTabela.setItems(LotesLocacao.tableView(locacao));
+       	lotesTabela.setItems(lotes);
     }
     
     public void initialize(URL url, ResourceBundle rb) {
