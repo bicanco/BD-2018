@@ -75,6 +75,24 @@ public class Coquetel {
 	public static ObservableList<String> getListaCoquetel(){
 		ResultSet res;
 		List<String> list = new ArrayList<String>();
+		String sql="select F.ID,F.DATA,E.NOMEFANTASIA,E.CNPJ from EMPRESA E, FESTA F, COQUETEL C where F.TIPOFESTA = 'COQUETEL' and F.CONTRATANTE = E.CNPJ and C.FESTA = F.ID";
+		try {
+			res = ConnectionManager.query(sql);
+			while(res.next())
+				list.add(res.getInt(1)+" / "+res.getDate(2)+" / "+res.getString(3)+" / "+res.getString(4));
+			res.close();
+			ConnectionManager.closeQuery();
+			
+			return FXCollections.observableList(list);
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		
+	}
+	
+	public static ObservableList<String> getListaFestasCoquetel(){
+		ResultSet res;
+		List<String> list = new ArrayList<String>();
 		String sql="select F.ID,F.DATA,E.NOMEFANTASIA,E.CNPJ from EMPRESA E, FESTA F where F.TIPOFESTA = 'COQUETEL' and F.CONTRATANTE = E.CNPJ";
 		try {
 			res = ConnectionManager.query(sql);
@@ -105,11 +123,13 @@ public class Coquetel {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
-		sql = "execute COQUETEL_CALCULAORCAMENTO("+coquetel.festa+")";
+		sql = "call COQUETEL_CALCULAORCAMENTO("+coquetel.festa+")";
+		System.out.println(sql);
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
 		}catch (SQLException e) {
+			System.out.println(e);
 			throw new RuntimeException(e.getMessage());
 		}
 	}
@@ -124,7 +144,7 @@ public class Coquetel {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
-		sql = "execute COQUETEL_CALCULAORCAMENTO("+coquetel.festa+")";
+		sql = "call COQUETEL_CALCULAORCAMENTO("+coquetel.festa+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();

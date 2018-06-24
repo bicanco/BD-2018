@@ -268,6 +268,8 @@ public class InsertionScreenController implements Initializable {
         
         ObservableList<String> festfood = FestFood.getListaFestFood();
         
+        ObservableList<String> festasCoquetel = Coquetel.getListaFestasCoquetel();
+        
         ObservableList<String> coquetel = Coquetel.getListaCoquetel();
         
         ObservableList<String> fornecedora = Fornecedora.getListaFornecedora();
@@ -302,7 +304,7 @@ public class InsertionScreenController implements Initializable {
         
         festfoodIngresso.setItems(festfood);
         
-        festaCoquetel.setItems(coquetel);
+        festaCoquetel.setItems(festasCoquetel);
         
         localCoquetel.setItems(Local.getListaLocal());
         

@@ -79,7 +79,7 @@ public class FornecimentoCoquetel {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
-		sql = "execute COQUETEL_CALCULAORCAMENTO("+fornecimentoCoquetel.coquetel+")";
+		sql = "call COQUETEL_CALCULAORCAMENTO("+fornecimentoCoquetel.coquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -106,7 +106,7 @@ public class FornecimentoCoquetel {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
-		sql = "execute COQUETEL_CALCULAORCAMENTO("+fornecimentoCoquetel.coquetel+")";
+		sql = "call COQUETEL_CALCULAORCAMENTO("+fornecimentoCoquetel.coquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -118,7 +118,7 @@ public class FornecimentoCoquetel {
 	public static void deleteFornecimentoCoquetel(FornecimentoCoquetel fornecimentoCoquetel) throws Exception {
 		String aux = fornecimentoCoquetel.toStringRestritions();
 		if(aux.equals(" ")) {
-			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+			throw new Exception("É necessário preencher os dois campos identificadores do registro a remover.");
 		}
 		String sql = "delete from FORNECIMENTOCOQUETEL"+aux;
 		try {
@@ -127,7 +127,7 @@ public class FornecimentoCoquetel {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
-		sql = "execute COQUETEL_CALCULAORCAMENTO("+fornecimentoCoquetel.coquetel+")";
+		sql = "call COQUETEL_CALCULAORCAMENTO("+fornecimentoCoquetel.coquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -149,14 +149,16 @@ public class FornecimentoCoquetel {
 		String res = " where ";
 		if(!fornecedora.equals("")) {
 			res += " FORNECEDORA = '"+this.fornecedora+"'";
+		}else {
+			res = " ";
 		}
 		if(coquetel != 0) {
 			if(!res.equals(" where "))
 				res += " and ";
 			res += " COQUETEL = "+this.coquetel;
-		}
-		if(res.equals(" where "))
+		}else{
 			res = " ";
+		}
 		return res;
 	}
 	

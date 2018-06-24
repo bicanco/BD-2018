@@ -134,7 +134,6 @@ public class Festa {
 			}else if(aux.equals("ORA-12899")) {
 					mesg = "Os limites de caracteres dos campos são: Nome - 60.";
 			}
-			System.out.println(e+sql);
 			throw new Exception(mesg);
 		}catch(Exception e) {
 			throw new RuntimeException();

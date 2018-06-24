@@ -87,7 +87,7 @@ public class ContratoCoquetel {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
-		sql = "execute COQUETEL_CALCULAORCAMENTO("+contratoCoquetel.coquetel+")";
+		sql = "call COQUETEL_CALCULAORCAMENTO("+contratoCoquetel.coquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -114,7 +114,7 @@ public class ContratoCoquetel {
 		}catch(Exception e) {
 			throw new RuntimeException();
 		}
-		sql = "execute COQUETEL_CALCULAORCAMENTO("+contratoCoquetel.coquetel+")";
+		sql = "call COQUETEL_CALCULAORCAMENTO("+contratoCoquetel.coquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -126,7 +126,7 @@ public class ContratoCoquetel {
 	public static void deleteContratoCoquetel(ContratoCoquetel contratoCoquetel) throws Exception {
 		String aux = contratoCoquetel.toStringRestritions();
 		if(aux.equals(" ")) {
-			throw new Exception("É necessário preencher pelo menos 1 dos campos identificadores do registro a remover.");
+			throw new Exception("É necessário preencher os dois campos identificadores do registro a remover.");
 		}
 		String sql = "delete from CONTRATOCOQUETEL"+aux;
 		try {
@@ -135,7 +135,7 @@ public class ContratoCoquetel {
 		}catch(SQLException e) {
 			throw new RuntimeException();
 		}
-		sql = "execute COQUETEL_CALCULAORCAMENTO("+contratoCoquetel.coquetel+")";
+		sql = "call COQUETEL_CALCULAORCAMENTO("+contratoCoquetel.coquetel+")";
 		try {
 			ConnectionManager.query(sql);
 			ConnectionManager.closeQuery();
@@ -156,14 +156,16 @@ public class ContratoCoquetel {
 		String res = " where ";
 		if(coquetel != 0) {
 			res += " COQUETEL = "+this.coquetel;
+		}else {
+			res = " ";
 		}
 		if(!funcionario.equals("")) {
 			if(!res.equals(" where "))
 				res += " and ";
 			res += " FUNCIONARIO = '"+this.funcionario+"'";
-		}
-		if(res.equals(" where "))
+		}else {
 			res = " ";
+		}
 		return res;
 	}
 	
