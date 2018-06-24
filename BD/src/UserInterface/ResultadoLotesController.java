@@ -2,6 +2,7 @@ package UserInterface;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,9 +44,9 @@ public class ResultadoLotesController {
         precoLote.setCellValueFactory(new PropertyValueFactory<>("preco"));
         larguraLote.setCellValueFactory(new PropertyValueFactory<>("largura"));
         comprimentoLote.setCellValueFactory(new PropertyValueFactory<>("comprimento"));
-        nomefornLote.setCellValueFactory(new PropertyValueFactory<>("nomeForn"));
-        cnpjfornLote.setCellValueFactory(new PropertyValueFactory<>("cnpjForn"));
-       	//lotesTabela.setItems(BuscaAvancada.lotesView());
+        nomefornLote.setCellValueFactory(new PropertyValueFactory<>("nomeFantasia"));
+        cnpjfornLote.setCellValueFactory(new PropertyValueFactory<>("fornecedora"));
+       	//lotesTabela.setItems(LotesLocacao.tableView(locacao));
     }
     
     public void initialize(URL url, ResourceBundle rb) {
