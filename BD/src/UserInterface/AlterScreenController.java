@@ -453,6 +453,8 @@ public class AlterScreenController implements Initializable {
     void alterarFesta(ActionEvent event) throws IOException{
     	if(idFesta.getValue() == null) {
     		abrirErrorScreen("Necessário preencher as caixas de seleção.");
+    	} else if(!dataFesta.getText().matches("[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]") || !horarioFesta.getText().matches("[0-9][0-9]:[0-9][0-9]") || !duracaoFesta.getText().matches("[0-9][0-9]:[0-9][0-9]")) {
+    		abrirErrorScreen("Formato necessário: Data - XX/XX/XXXX; Horário de Início e Duração - XX:XX");
     	} else {
     		Festa f = new Festa(Integer.parseInt(idFesta.getValue().toString()), null, dataFesta.getText(), nomeFesta.getText(), horarioFesta.getText(), duracaoFesta.getText(), null);
     		try {

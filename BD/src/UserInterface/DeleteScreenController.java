@@ -400,13 +400,17 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerFesta(ActionEvent event) throws IOException{
-    	Festa f = new Festa(0,contratanteFesta.getText(), dataFesta.getText(), nomeFesta.getText(), null, null, null);
-    	try {
-			Festa.deleteFesta(f);
-			abrirSuccessScreen("Remoção realizada com sucesso");
-		} catch (Exception e) {
-			abrirErrorScreen(e.getMessage());
-		}
+    	if(!dataFesta.getText().matches("[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]")) {
+     		abrirErrorScreen("Formato necessário: Data - XX/XX/XXXX");
+     	} else{
+	    	Festa f = new Festa(0,contratanteFesta.getText(), dataFesta.getText(), nomeFesta.getText(), null, null, null);
+	    	try {
+				Festa.deleteFesta(f);
+				abrirSuccessScreen("Remoção realizada com sucesso");
+			} catch (Exception e) {
+				abrirErrorScreen(e.getMessage());
+			}
+     	}
     }
     
     @FXML
