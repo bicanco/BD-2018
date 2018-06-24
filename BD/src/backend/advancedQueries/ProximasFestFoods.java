@@ -80,7 +80,8 @@ public class ProximasFestFoods {
 				     "from FESTA F, FESTFOOD FF, QING, QLOTE " + 
 				     "where F.ID = FF.FESTA " + 
 				     "and FF.FESTA = QING.FESTFOOD " + 
-				     "and QING.FESTFOOD = QLOTE.FESTFOOD";
+				     "and QING.FESTFOOD = QLOTE.FESTFOOD "+
+				     "and F.DATA > SYSDATE";
 		try {
 			res = ConnectionManager.query(sql);
 			while(res.next())
