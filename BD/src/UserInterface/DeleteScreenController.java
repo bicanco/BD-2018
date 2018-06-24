@@ -411,7 +411,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerFestFood(ActionEvent event) throws IOException{
-    	if(!festaFestFood.getText().matches("^[0-9]*$")){
+    	if(!festaFestFood.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Festa - inteiro.");
 	    } else{
 	    	FestFood f = new FestFood(Integer.parseInt(festaFestFood.getText()), 0);
@@ -426,7 +426,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerIngresso(ActionEvent event) throws IOException{
-    	if(!festfoodIngresso.getText().matches("^[0-9]*$") || !codigoIngresso.getText().matches("^[0-9]*$")){
+    	if(!festfoodIngresso.getText().matches("^[0-9]+$") || !codigoIngresso.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Fest Food e Código  - inteiro.");
 	    } else{
 	    	Ingresso i = new Ingresso(Integer.parseInt(festfoodIngresso.getText()), Integer.parseInt(codigoIngresso.getText()), compradorIngresso.getText());
@@ -441,7 +441,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerCoquetel(ActionEvent event) throws IOException{
-    	if(!festaCoquetel.getText().matches("^[0-9]*$")){
+    	if(!festaCoquetel.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Festa - inteiro.");
 	    } else{	
 	    	Coquetel c = new Coquetel(Integer.parseInt(festaCoquetel.getText()), 0 , localCoquetel.getText(), cidadeCoquetel.getText());
@@ -467,7 +467,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerConvite(ActionEvent event) throws IOException{
-    	if(!coquetelConvite.getText().matches("^[0-9]*$")){
+    	if(!coquetelConvite.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
 	    } else{	
 	    	Convite c = new Convite(convidadoConvite.getText(),Integer.parseInt(coquetelConvite.getText()));
@@ -482,7 +482,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerBrinde(ActionEvent event) throws IOException{
-    	if(!coquetelBrinde.getText().matches("^[0-9]*$")){
+    	if(!coquetelBrinde.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
 	    } else{	
     		Brinde b = new Brinde(Integer.parseInt(coquetelBrinde.getText()), nomeBrinde.getText(), null);
@@ -497,7 +497,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerFornecimentoCoquetel(ActionEvent event) throws IOException{
-    	if(!coquetelFornecimento.getText().matches("^[0-9]*$")){
+    	if(!coquetelFornecimento.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
 	    } else{
 	    	FornecimentoCoquetel f = new FornecimentoCoquetel(fornecedoraFornecimento.getText(), Integer.parseInt(coquetelFornecimento.getText()), 0);
@@ -512,7 +512,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerProduto(ActionEvent event) throws IOException{
-    	if(!coquetelProdutos.getText().matches("^[0-9]*$")){
+    	if(!coquetelProdutos.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
 	    } else{
 	    	ProdutosFornecidos p = new ProdutosFornecidos(fornecedoraProdutos.getText(), Integer.parseInt(coquetelProdutos.getText()), nomeProdutos.getText(), 0);
@@ -538,7 +538,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerLocacao(ActionEvent event) throws IOException{
-    	if(!festfoodLocacao.getText().matches("^[0-9]*$")){
+    	if(!festfoodLocacao.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Fest Food - inteiro.");
 	    } else{
 	    	Locacao l = new Locacao(0,Integer.parseInt(festfoodLocacao.getText()), localLocacao.getText(), cidadeLocacao.getText());
@@ -553,7 +553,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerLote(ActionEvent event) throws IOException{
-    	if(!locacaoLote.getText().matches("^[0-9]*$") || !numeroLote.getText().matches("^[0-9]*$")){
+    	if(!locacaoLote.getText().matches("^[0-9]+$") || !numeroLote.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("Os seguintes campos aceitam somente valores numéricos: Locação e Número - inteiro.");
 	    } else{
     		Lote l = new Lote(Integer.parseInt(locacaoLote.getText()),Integer.parseInt(numeroLote.getText()),fornecedoraLote.getText(), 0, 0, 0);
@@ -579,7 +579,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerContratoCoquetel(ActionEvent event) throws IOException{
-    	if(!coquetelContCoquetel.getText().matches("^[0-9]*$")){
+    	if(!coquetelContCoquetel.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Coquetel - inteiro.");
 	    } else{
 	    	ContratoCoquetel cc = new ContratoCoquetel(Integer.parseInt(coquetelContCoquetel.getText()), funcionarioContCoquetel.getText(), 0, 0);
@@ -594,7 +594,7 @@ public class DeleteScreenController implements Initializable {
     
     @FXML
     void removerContratoFestFood(ActionEvent event) throws IOException{
-	    if(!festfoodContFestFood.getText().matches("^[0-9]*$")){
+	    if(!festfoodContFestFood.getText().matches("^[0-9]+$")){
 	    	abrirErrorScreen("O seguinte campo aceita somente valores numéricos: Fest Food - inteiro.");
 	    } else{
     		ContratoFestFood cf = new ContratoFestFood(Integer.parseInt(festfoodContFestFood.getText()), segurancaContFestFood.getText(), 0,0);
