@@ -112,7 +112,7 @@
                                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="356.0" layoutX="81.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="597.0" />
                                           <Label layoutX="120.0" layoutY="167.0" text="Selecione uma Locação para que sejam informados os lotes relacionados a ela:" />
                                           <JFXComboBox fx:id="locacaoBusca" layoutX="211.0" layoutY="243.0" prefHeight="31.0" prefWidth="337.0" promptText="ID / Festa / Local" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="95.0" layoutY="335.0" text="A tabela resultante irá conter todos os lotes vinculados à Locação selecionada, bem&#10;como o estado deles (adquiridos ou não) e, caso haja, as empresas que os adquiriram." textAlignment="CENTER" />
+                                          <Label layoutX="156.0" layoutY="328.0" text="A tabela resultante irá conter todos os lotes vinculados&#10;à Locação selecionada, e, caso haja, as empresas que os adquiriram." textAlignment="CENTER" />
                                           <JFXButton fx:id="buscaLotes" buttonType="RAISED" layoutX="347.0" layoutY="503.0" onAction="#buscarLotes" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
@@ -145,7 +145,7 @@
                                           <Label layoutX="387.0" layoutY="296.0" text="Até:" />
                                           <JFXComboBox fx:id="mesFinal" layoutX="422.0" layoutY="291.0" prefHeight="31.0" prefWidth="85.0" promptText="Mês" style="-fx-background-color: ffffff;" />
                                           <JFXComboBox fx:id="anoFinal" layoutX="523.0" layoutY="291.0" prefHeight="31.0" prefWidth="130.0" promptText="Ano" style="-fx-background-color: ffffff;" />
-                                          <Label layoutX="152.0" layoutY="354.0" text="A tabela resultante irá conter todas as festas&#10;nas quais o funcionário selecionado trabalhou, bem como o valor&#10;recebido em cada festa e o total recebido no período determinado." textAlignment="CENTER" />
+                                          <Label layoutX="211.0" layoutY="351.0" text="A tabela resultante irá conter todas&#10;as festas nas quais o funcionário selecionado&#10;trabalhou, bem como o valor recebido em cada festa." textAlignment="CENTER" />
                                           <JFXButton fx:id="buscaFolhaPagamento" buttonType="RAISED" layoutX="347.0" layoutY="503.0" onAction="#buscarFolhaPagamento" ripplerFill="TRANSPARENT" style="-fx-background-color: #07575B; -fx-border-color: #000000; -fx-border-radius: 5; -fx-border-width: 0.7;" text="Buscar" textAlignment="JUSTIFY" textFill="WHITE" />
                                        </children>
                                     </Pane>
