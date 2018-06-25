@@ -9,6 +9,11 @@ import backend.ConnectionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe de busca avancada custo dos coqueteis com mais de um numero de convidados
+ * 
+ * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
+ */
 public class CustoCoquetel {
 	private String nome;
 	private String contratante;

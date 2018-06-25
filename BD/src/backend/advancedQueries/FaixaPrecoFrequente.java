@@ -9,6 +9,11 @@ import backend.ConnectionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe de busca avancada faixa de preco mais frequente
+ * 
+ * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
+ */
 public class FaixaPrecoFrequente {
 	private String nomeFantasia;
 	private String cnpj;

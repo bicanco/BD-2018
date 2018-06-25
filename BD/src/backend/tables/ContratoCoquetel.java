@@ -9,6 +9,11 @@ import backend.ConnectionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe que gerencia a tabela CONTRATOCOQUETEL
+ * 
+ * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
+ */
 public class ContratoCoquetel {
 	private int coquetel;
 	private String funcionario;

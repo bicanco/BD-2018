@@ -9,6 +9,11 @@ import backend.ConnectionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe que gerencia a tabela CONVITE
+ * 
+ * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
+ */
 public class Convite {
 	private String convidado;
 	private int coquetel;

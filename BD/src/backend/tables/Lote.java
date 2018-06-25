@@ -9,6 +9,11 @@ import backend.ConnectionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe que gerencia a tabela LOTE
+ * 
+ * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
+ */
 public class Lote {
 	private int locacao;
 	private int numero;

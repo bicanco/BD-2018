@@ -9,6 +9,11 @@ import backend.ConnectionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe que gerencia a tabela PRODUTOSFORNECIDOS
+ * 
+ * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
+ */
 public class ProdutosFornecidos {
 	private String fornecedora;
 	private int coquetel;

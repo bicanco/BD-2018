@@ -9,6 +9,11 @@ import backend.ConnectionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe que gerencia a tabela ATRIBUICAOCATEGORIA
+ * 
+ * @author David Rodrigues, Gabriel Toschi, Marcos Wendell
+ */
 public class AtribuicaoCategoria {
 	private String fornecedora;
 	private String categoria;
